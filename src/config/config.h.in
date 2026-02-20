@@ -1,0 +1,14 @@
+#pragma once
+
+#include <cstdint>
+#include <string_view>
+#include <string>
+
+namespace config {
+  constexpr std::string_view project_name = "@PROJECT_NAME@";
+  constexpr std::string_view project_version = "@PROJECT_VERSION@";
+
+  constexpr std::int32_t project_version_major{@PROJECT_VERSION_MAJOR@};
+  constexpr std::int32_t project_version_minor{@PROJECT_VERSION_MINOR@};
+  constexpr std::int32_t project_version_patch{@PROJECT_VERSION_PATCH@};
+}

@@ -1,0 +1,124 @@
+#+title: ankicpp
+#+author: natan
+#+STARTUP: indent
+#+TODO: TODO DOING CANCELED | DONE
+#+OPTIONS: H:2
+
+* Base docs
+https://docs.ankiweb.net/getting-started.html
+
+* Data Structure
+https://github.com/ankidroid/Anki-Android/wiki/Database-Structure
+
+* Tasks
+** 1. Analyse the .apkg
+In each step of the below tasks, collect database columns and jsons to make diffs.
+*** 1.1. Analyse .apkg with a card
+*** 1.2. Analyse .apkg with a card and two tags
+*** 1.3. Analyse .apkg from cloze card
+*** CANCELED 1.4. Analyse a .colpkg
+*** 1.5. Analyse .apkg with media
+** 2. Design and write the classes  
+*** 2.1. Design the classes
+**** Anki Classes:
+- Card
+  Fundamental element of study.
+- Card Type (Not required)
+  Cards have only one type, that defines how it is shown during studying.
+  It may not be required as it is not persisted in dabatase. Note Type may
+  be sufficient, as it points to templates.
+- Template
+  1. Each card type have two templates: front and back templates.
+  2. Example of back/answer template:
+     #+begin_example
+     Q: {{French}}
+     A: {{English}}<br>
+     Page #{{Page}}
+     #+end_example
+     {{...}} Are references to fields
+- Note
+  1. Many cards can be created from it. Cards created from it shares its fields.
+  2. Can have one or more card types. Each card type automatically creates a card.
+  3. When a note is created, one card for each card type is created.
+  4. It is like a card factory instance
+- Note Type
+  1. Defines fields and card types of a note.
+  2. According to docs: "It’s a good idea to create a separate note type for each broad topic you’re studying."
+  3. Cloze is a note type that allows hide some piece of information.
+- Field
+  Piece of information that exists in cards and notes.
+- Deck
+  Container of note types, notes, card types and cards.
+- Collection
+  Container of decks and its contents.
+
+**** Persistence classes (Repository or DAO):
+- Repository
+- [AnkiClass]SQLRepository
+- [AnkiClass]SQLDTO
+
+**** Exporter
+- Exporter
+  Contains export rules. Can execute all rules.
+- Export Rule/Command
+  Execute a export rule
+**** Usage
+***** Usage of genanki-js:
+#+begin_src js
+#+end_src
+
+***** Usage
+****** Basic usage:
+#+begin_src c++
+  Package package;
+  Deck deck{"deck-name"};
+  Note note;
+
+  note.setType(NotesType.BASIC);
+  note.setField("Front", "...");
+  note.setField("Back", "...");
+
+  note.addTag("tag1");
+
+  deck.addNote(note);
+  deck.save("./path");
+#+end_src
+
+****** Basic with multiples card types:
+#+begin_src c++
+  Package package;
+  Deck deck{"deck-name"};
+  Note note;
+
+  note.setType(NotesType.BASIC);
+  note.setField("Front", "...");
+  note.setField("Back", "...");
+
+  CardType newType;
+  newType.setFrontTemplate("{{Front}}");
+  newType.setBackTemplate(R"(
+  {{FrontSide}}
+
+  <hr id=answer>
+
+  {{Back}}
+          )");
+  newType.setStyle(R"(
+   .card {
+     font-family: arial;
+     font-size: 20px;
+     line-height: 1.5;
+     text-align: center;
+     color: black;
+     background-color: white;
+   }
+  )");
+  note.addCardType(newType);
+
+  deck.addNote(note);
+  deck.save("./path");
+#+end_src
+*** 2.2. Setup the project
+*** 2.3. Write the base code to write a single anki card
+*** 2.4. Upgrade the code to use note type
+*** 2.5. Write docs

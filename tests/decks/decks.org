@@ -1,0 +1,340 @@
+#+title: ankicpp-decks
+#+author: natan
+#+STARTUP: indent
+#+OPTIONS: H:2
+
+* Decks
+** Deck-1
+This deck has only one card, a note and a note type.
+The card has front as 'front 1' and back as 'back 2'.
+
+*** Tables
+**** cards
+|            id |           nid |           did | ord |        mod | usn | type | queue | due | ivl | factor | reps | lapses | left | odue | odid | flags | data |
+|---------------+---------------+---------------+-----+------------+-----+------+-------+-----+-----+--------+------+--------+------+------+------+-------+------|
+| 1771561768793 | 1771561768793 | 1771561732354 |   0 | 1771561768 |  -1 |    0 |     0 |   3 |   0 |      0 |    0 |      0 |    0 |    0 |    0 |     0 | {}   |
+**** col
+| id |        crt |           mod |           scm | ver | dty | usn | ls | conf | models | decks | dconf | tags |
+|----+------------+---------------+---------------+-----+-----+-----+----+------+--------+-------+-------+------|
+|  1 | 1769497200 | 1771561838192 | 1771561838183 |  18 |   0 |   0 |  0 |      |        |       |       |      |
+**** config
+| KEY            | usn | mtime_secs | val           |
+|----------------|-----|------------|---------------|
+| activeDecks    | 0   | 0          | [1]           |
+| addToCur       | 0   | 0          | true          |
+| collapseTime   | 0   | 0          | 1200          |
+| creationOffset | 0   | 0          | 180           |
+| curDeck        | 0   | 0          | 1             |
+| curModel       | -1  | 1771561838 | 1771561838186 |
+| dayLearnFirst  | 0   | 0          | false         |
+| dueCounts      | 0   | 0          | true          |
+| estTimes       | 0   | 0          | true          |
+| newSpread      | 0   | 0          | 0             |
+| nextPos        | 0   | 0          | 1             |
+| sched2021      | 0   | 0          | true          |
+| schedVer       | 0   | 0          | 2             |
+| sortBackwards  | 0   | 0          | false         |
+| sortType       | 0   | 0          | \"noteFld\"   |
+| timeLim        | 0   | 0          | 0             |
+**** deck_config
+| id | name    | mtime_secs | usn | config                                                                                                                                                                                                                                                                                                                                             |
+|----|---------|------------|-----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1  | Default | 0          | 0   | \n\b\u0000\u0000�?\u0000\u0000 A\u0012\u0004\u0000\u0000 A\"\u001c\u0000\u0000�?\u0000\u0000�?\u0000\u0000�?\u0000\u0000�?\u0000\u0000�?\u0000\u0000�?\u0000\u0000�?H\u0014P�\u0001]\u0000\u0000 @eff�?m���?}\u0000\u0000�?�\u0001��\u0002�\u0001\u0001�\u0001\u0001�\u0001\u0004�\u0001\u0001�\u0001\b�\u0001<�\u0002fff?�\u0002fff?�\u0002\u0001 |
+**** decks
+|            id | name    | mtime_secs | usn | common               | kind             |
+|---------------+---------+------------+-----+----------------------+------------------|
+|             1 | Default |          0 |   0 | \b\u0001\u0010\u0001 | \n\u0002\b\u0001 |
+| 1771561732354 | test    | 1771561732 |  -1 |                      | \n\u0002\b\u0001 |
+**** fields
+| ntid          | ord | name        | config                                                 |
+|---------------|-----|-------------|--------------------------------------------------------|
+| 1769560450236 | 0   | Front       | \u001a\u0005Arial \u0014H��ו���w                       |
+| 1769560450236 | 1   | Back        | \u001a\u0005Arial \u0014H���榀��\u0001                 |
+| 1771561838186 | 0   | Front       | \u001a\u0005Arial \u0014H�ɩ�����\/                     |
+| 1771561838186 | 1   | Back        | \u001a\u0005Arial \u0014H������\u0001                 |
+| 1771561838187 | 0   | Front       | \u001a\u0005Arial \u0014H�����̂��\u0001                 |
+| 1771561838187 | 1   | Back        | \u001a\u0005Arial \u0014H�������\u0001                 |
+| 1771561838188 | 0   | Front       | \u001a\u0005Arial \u0014H�ѓ͉��R                         |
+| 1771561838188 | 1   | Back        | \u001a\u0005Arial \u0014H��������\u0018                |
+| 1771561838188 | 2   | Add Reverse | \u001a\u0005Arial \u0014H����\u000b                   |
+| 1771561838189 | 0   | Front       | \u001a\u0005Arial \u0014H�ʤ������\u0001                |
+| 1771561838189 | 1   | Back        | \u001a\u0005Arial \u0014H������ΰ�\u0001                |
+| 1771561838190 | 0   | Text        | \u001a\u0005Arial \u0014H��ō圠�\u0012P\u0000X\u0001    |
+| 1771561838190 | 1   | Back Extra  | \u001a\u0005Arial \u0014H�������\u0001P\u0001          |
+| 1771561838191 | 0   | Occlusion   | \u001a\u0005Arial \u0014H�����ա\u0019P\u0000X\u0001    |
+| 1771561838191 | 1   | Image       | \u001a\u0005Arial \u0014H�����ڪ��\u0001P\u0001X\u0001  |
+| 1771561838191 | 2   | Header      | \u001a\u0005Arial \u0014H�����铯0P\u0002X\u0001        |
+| 1771561838191 | 3   | Back Extra  | \u001a\u0005Arial \u0014H�����\u0010P\u0003X\u0001    |
+| 1771561838191 | 4   | Comments    | \u001a\u0005Arial \u0014H�Ȍĵ����\u0001P\u0004          |
+**** graves
+| oid | type | usn |
+|-----|------|-----|
+**** notes
+|            id | guid            |           mid |        mod | usn | tags | flds            | sfld    |       csum | flags | data |
+|---------------+-----------------+---------------+------------+-----+------+-----------------+---------+------------+-------+------|
+| 1771561768793 | fNLcQcF)3&#124; | 1769560450236 | 1771561768 |  -1 |      | front 1back 2 | front 1 | 2151688904 |     0 |      |
+**** notetypes
+|            id | name  | mtime_secs | usn | config |
+|---------------+-------+------------+-----+--------|
+| 1769560450236 | Basic |          0 |   0 |   ...  |
+**** revlog
+| id | cid | usn | ease | ivl | lastIvl | factor | time | type |
+|----|-----|-----|------|-----|---------|--------|------|------|
+|    |     |     |      |     |         |        |      |      |
+**** templates
+|          ntid | ord | name            | mtime_secs | usn | config                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+|---------------+-----+-----------------+------------+-----+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1769560450236 |   0 | Card 1          |          0 |   0 | \n\t{{Front}}\u0012'{{FrontSide}}\n\n<hr id=answer>\n\n{{Back}}@��������Q                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| 1771561838186 |   0 | Card 1          |          0 |   0 | \n\t{{Front}}\u0012'{{FrontSide}}\n\n<hr id=answer>\n\n{{Back}}@�ͥ������\u0001                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| 1771561838187 |   0 | Card 1          |          0 |   0 | \n\t{{Front}}\u0012'{{FrontSide}}\n\n<hr id=answer>\n\n{{Back}}@���������\u0001                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| 1771561838187 |   1 | Card 2          |          0 |   0 | \n\b{{Back}}\u0012({{FrontSide}}\n\n<hr id=answer>\n\n{{Front}}@�����ǋ��\u0001                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| 1771561838188 |   0 | Card 1          |          0 |   0 | \n\t{{Front}}\u0012'{{FrontSide}}\n\n<hr id=answer>\n\n{{Back}}@��ߨע���\u0001                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| 1771561838188 |   1 | Card 2          |          0 |   0 | \n({{#Add Reverse}}{{Back}}{{\/Add Reverse}}\u0012({{FrontSide}}\n\n<hr id=answer>\n\n{{Front}}@������\u0014                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| 1771561838189 |   0 | Card 1          |          0 |   0 | \n\u0018{{Front}}\n\n{{type:Back}}\u0012({{Front}}\n\n<hr id=answer>\n\n{{type:Back}}@��◬\u0016                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| 1771561838190 |   0 | Cloze           |          0 |   0 | \n\u000e{{cloze:Text}}\u0012!{{cloze:Text}}<br>\n{{Back Extra}}@��������\u0018                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| 1771561838191 |   0 | Image Occlusion |          0 |   0 | \n�\u0003{{#Header}}<div>{{Header}}<\/div>{{\/Header}}\n<div style=\"display: none\">{{cloze:Occlusion}}<\/div>\n<div id=\"err\"><\/div>\n<div id=\"image-occlusion-container\">\n    {{Image}}\n    <canvas id=\"image-occlusion-canvas\"><\/canvas>\n<\/div>\n<script>\ntry {\n    anki.imageOcclusion.setup();\n} catch (exc) {\n    document.getElementById(\"err\").innerHTML = `Error loading image occlusion. Is your Anki version up to date?<br><br>${exc}`;\n}\n<\/script>\n\u0012�\u0004{{#Header}}<div>{{Header}}<\/div>{{\/Header}}\n<div style=\"display: none\">{{cloze:Occlusion}}<\/div>\n<div id=\"err\"><\/div>\n<div id=\"image-occlusion-container\">\n    {{Image}}\n    <canvas id=\"image-occlusion-canvas\"><\/canvas>\n<\/div>\n<script>\ntry {\n    anki.imageOcclusion.setup();\n} catch (exc) {\n    document.getElementById(\"err\").innerHTML = `Error loading image occlusion. Is your Anki version up to date?<br><br>${exc}`;\n}\n<\/script>\n\n<div><button id=\"toggle\">Toggle Masks<\/button><\/div>\n{{#Back Extra}}<div>{{Back Extra}}<\/div>{{\/Back Extra}}\n@�թ������\u0001 |
+
+*** Conclusion
+**** Card
+| field       |         value | type   | description                            |
+|-------------+---------------+--------+----------------------------------------|
+| card.id     | 1771561768793 | int    | same as note.id                        |
+| card.nid    | 1771561768793 | int    | same as note.id                        |
+| card.did    | 1771561732354 | int    | deck id                                |
+| card.ord    |             0 | int    | which card template or cloze deletions |
+| card.mod    |    1771561768 | int    | modified time                          |
+| card.usn    |            -1 | int    | syncing - keep -1                     |
+| card.type   |             0 | int    | internal use                           |
+| card.queue  |             0 | int    | internal use                           |
+| card.due    |             3 | int    | internal use                           |
+| card.ivl    |             0 | int    | internal use                           |
+| card.factor |             0 | int    | internal use                           |
+| card.reps   |             0 | int    | internal use                           |
+| card.lapses |             0 | int    | internal use                           |
+| card.left   |             0 | int    | internal use                           |
+| card.odue   |             0 | int    | internal use                           |
+| card.odid   |             0 | int    | internal use                           |
+| card.flags  |             0 | int    | internal use                           |
+| card.data   |            {} | string | internal use                           |
+|             |               |        |                                        |
+**** Collection
+| field             |         value | type   | description          |
+|-------------------+---------------+--------+----------------------|
+| collection.id     |             1 | int    | arbitrary            |
+| collection.crt    |    1769497200 | int    | timestamp            |
+| collection.mod    | 1771561838192 | int    | modified time        |
+| collection.scm    | 1771561838183 | int    | schema modified time |
+| collection.ver    |            18 | int    | version              |
+| collection.dty    |             0 | int    | 0                    |
+| collection.usn    |             0 | int    | internal use         |
+| collection.ls     |             0 | int    | internal use         |
+| collection.conf   |               | string | internal use         |
+| collection.models |               | string | internal use         |
+| collection.decks  |               | string | internal use         |
+| collection.dconf  |               | string | internal use         |
+| collection.tags   |               | string | internal use         |
+**** Config
+| field          | value | type | description                |
+| key.usn        | -     | int  | related to update - keep 0 |
+| key.mtime_secs | -     | int  | syncing - keep 0          |
+| key.val        | -     | blob | blob ascii                 |
+
+keys:
+- activeDecks   
+- addToCur      
+- collapseTime  
+- creationOffset
+- curDeck       
+- curModel      
+- dayLearnFirst 
+- dueCounts     
+- estTimes      
+- newSpread     
+- nextPos       
+- sched2021     
+- schedVer      
+- sortBackwards 
+- sortType      
+- timeLim       
+**** Deck config
+| field      |   value | type   | description   |
+|------------+---------+--------+---------------|
+| id         |       1 | int    | id            |
+| name       | Default | string | name          |
+| mtime_secs |       0 | int    | time - keep 0 |
+| usn        |       0 | int    | syncing      |
+| config     |         | blob   | internal use  |
+**** Deck
+Deck "default":
+| field      | value                | type   | description        |
+|------------+----------------------+--------+--------------------|
+| id         | 1                    | int    | id                 |
+| name       | Default              | string | name               |
+| mtime_secs | 0                    | int    | time - keep 0      |
+| usn        | 0                    | int    | syncing - keep -1 |
+| common     | \b\u0001\u0010\u0001 | blob   | internal use       |
+| kind       | \n\u0002\b\u0001     | blob   | internal use       |
+|            |                      |        |                    |
+
+Deck "test":
+| field      | value         |
+|------------+---------------|
+| id         | 1771561732354 |
+| name       | test          |
+| mtime_secs | 1771561732    |
+| usn        | -1            |
+| common     | ...           |
+| kind       | ...           |
+|            |               |
+**** Field
+| field        | value                           | type   | description       |
+|--------------+---------------------------------+--------+-------------------|
+| field.ntid   | 1769560450236                   | int    | note type id      |
+| field.ord    | 0                               | int    | internal use      |
+| field.name   | Front                           | string | name              |
+| field.config | \u001a\u0005Arial \u0014H��ו���w |blob    | field text config |
+**** Grave
+| field      | value | type | description  |
+|------------+-------+------+--------------|
+| grave.oid  |       | int  | internal use |
+| grave.type |       | int  | internal use |
+| grave.usn  |       | int  | internal use |
+|            |       |      |              |
+**** Note
+| field      |           value | type   | description                    |
+| note.id    |   1771561768793 | int    | time                           |
+| note.guid  | fNLcQcF)3&#124; | string | internal use                   |
+| note.mid   |   1769560450236 | int    | note type id                   |
+| note.mod   |      1771561768 | int    | time                           |
+| note.usn   |              -1 | int    | syncing - keek -1              |
+| note.tags  |                 | string | tags separated by space        |
+| note.flds  | front 1back 2 | string | field values separated by 0x1F |
+| note.sfld  |         front 1 | int    | first field                    |
+| note.csum  |      2151688904 | int    | internal use                   |
+| note.flags |               0 | int    | internal use                   |
+| note.data  |                 | string | internal use                   |
+**** Note type
+| field               |         value | type   | description      |
+|---------------------+---------------+--------+------------------|
+| noteType.id         | 1769560450236 | int    | id               |
+| noteType.name       |         Basic | string | name             |
+| noteType.mtime_secs |             0 | int    | time - keep 0    |
+| noteType.usn        |             0 | int    | syncing - keep 0 |
+| noteType.config     |           ... | blob   | card css         |
+**** Revlog
+| field          | value | type | description  |
+|----------------+-------+------+--------------|
+| revlog.id      |       | int  | internal use |
+| revlog.cid     |       | int  | internal use |
+| revlog.usn     |       | int  | internal use |
+| revlog.ease    |       | int  | internal use |
+| revlog.ivl     |       | int  | internal use |
+| revlog.lastIvl |       | int  | internal use |
+| revlog.factor  |       | int  | internal use |
+| revlog.time    |       | int  | internal use |
+| revlog.type    |       | int  | internal use |
+**** Template
+| field               |         value | type   | description                            |
+|---------------------+---------------+--------+----------------------------------------|
+| template.ntid       | 1769560450236 | int    | note type id                           |
+| template.ord        |             0 | int    | internal use                           |
+| template.name       |        Card 1 | string | name                                   |
+| template.mtime_secs |             0 | int    | time - keep 0                          |
+| template.usn        |             0 | int    | syncing - keek 0                       |
+| template.config     |           ... | blob   | config separated by special characters |
+** Deck-2
+This deck has only one card, a note and a note type.
+The note has two tags.
+The card has front as 'front 1' and back as 'back 2'.
+*** Tables
+**** notes
+| id            | guid       | mid           | mod        | usn | tags      | flds            | sfld    | csum       | flags | data |
+|---------------|------------|---------------|------------|-----|-----------|-----------------|---------|------------|-------|------|
+| 1771649947477 | Q8]CTN#R7- | 1769560450236 | 1771649947 | -1  | tag1 tag2 | front 1back 2 | front 1 | 2151688904 | 0     |      |
+*** Conclusion
+**** Note
+| field      |              value | type   | description                    |
+| note.id    |      1771649947477 | int    | time                           |
+| note.guid  |         Q8]CTN#R7- | string | internal use                   |
+| note.mid   |      1769560450236 | int    | note type id                   |
+| note.mod   |         1771649947 | int    | time                           |
+| note.usn   |                 -1 | int    | syncing - keek -1              |
+| note.tags  | ->       tag1 tag2 | string | tags separated by space        |
+| note.flds  |    front 1back 2 | string | field values separated by 0x1F |
+| note.sfld  |            front 1 | int    | first field                    |
+| note.csum  |         2151688904 | int    | internal use                   |
+| note.flags |                  0 | int    | internal use                   |
+| note.data  |                    | string | internal use                   |
+** Deck-3
+This deck has only one note and one note type.
+The note has two cloze expressions.
+Cloze note type implies in as many card types as cloze expressions.
+*** Tables
+**** cards
+| id            | nid           | did           | ord | mod        | usn | type | queue | due | ivl | factor | reps | lapses | left | odue | odid | flags | data |
+|---------------|---------------|---------------|-----|------------|-----|------|-------|-----|-----|--------|------|--------|------|------|------|-------|------|
+| 1771648015170 | 1771648015169 | 1771561732354 | 1   | 1771648015 | -1  | 0    | 0     | 5   | 0   | 0      | 0    | 0      | 0    | 0    | 0    | 0     | {}   |
+| 1771648015171 | 1771648015169 | 1771561732354 | 0   | 1771648015 | -1  | 0    | 0     | 5   | 0   | 0      | 0    | 0      | 0    | 0    | 0    | 0     | {}   |
+**** fields
+|          ntid | ord | name       | config                                             |
+|---------------+-----+------------+----------------------------------------------------|
+| 1769560450240 |   0 | Text       | \u001a\u0005Arial \u0014H���ϙ���MP\u0000X\u0001 |
+| 1769560450240 |   1 | Back Extra | \u001a\u0005Arial \u0014H���߃���-P\u0001        |
+**** notes
+|            id | guid       |           mid |        mod | usn | tags | flds                           | sfld                   |       csum | flags | data |
+|---------------+------------+---------------+------------+-----+------+--------------------------------+------------------------+------------+-------+------|
+| 1771648015169 | ArN!$m_!TV | 1769560450240 | 1771648015 |  -1 |      | {{c1::test}} {{c2::1}}back 2 | {{c1::test}} {{c2::1}} | 3975816580 |     0 |      |
+**** notetypes
+| id            | name  | mtime_secs | usn | config                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|---------------|-------|------------|-----|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1769560450240 | Cloze | 0          | 0   | \b\u0001\u001a�\u0001.card {\n    font-family: arial;\n    font-size: 20px;\n    line-height: 1.5;\n    text-align: center;\n    color: black;\n    background-color: white;\n}\n.cloze {\n    font-weight: bold;\n    color: blue;\n}\n.nightMode .cloze {\n    color: lightblue;\n}\n*�\u0001\\documentclass[12pt]{article}\n\\special{papersize=3in,5in}\n\\usepackage[utf8]{inputenc}\n\\usepackage{amssymb,amsmath}\n\\pagestyle{empty}\n\\setlength{\\parindent}{0in}\n\\begin{document}\n2\u000e\\end{document}B\u0005\u0010\u0001\u001a\u0001\u0000H\u0005 |
+**** templates
+|          ntid | ord | name  | mtime_secs | usn | config                                                                               |
+|---------------+-----+-------+------------+-----+--------------------------------------------------------------------------------------|
+| 1769560450240 |   0 | Cloze |          0 |   0 | \n\u000e{{cloze:Text}}\u0012!{{cloze:Text}}<br>\n{{Back Extra}}@���������\u0001 |
+*** Conclusion
+**** Card
+Two cards, one for each cloze expression.
+**** Fields
+One main field and a second field called "back extra".
+**** Note
+One note.
+Cloze expressions in flds.
+| field      |                          value | type   | description                    |
+| note.id    |                  1771648015169 | int    | time                           |
+| note.guid  |                     ArN!$m_!TV | string | internal use                   |
+| note.mid   |                  1769560450240 | int    | note type id                   |
+| note.mod   |                     1771648015 | int    | time                           |
+| note.usn   |                             -1 | int    | syncing - keek -1              |
+| note.tags  |                                | string | tags separated by space        |
+| note.flds  | {{c1::test}} {{c2::1}}back 2 | string | cloze fields separated by 0x1F |
+| note.sfld  |         {{c1::test}} {{c2::1}} | int    | first field                    |
+| note.csum  |                     3975816580 | int    | internal use                   |
+| note.flags |                              0 | int    | internal use                   |
+| note.data  |                                | string | internal use                   |
+**** Templates
+One card type for each different cloze expression.
+** Deck-4
+This deck has only one card, one card type, one note and one note type.
+*** Tables
+**** notes
+| id            | guid       | mid           | mod        | usn | tags | flds                                                                   | sfld                                            | csum       | flags | data |
+|---------------|------------|---------------|------------|-----|------|------------------------------------------------------------------------|-------------------------------------------------|------------|-------|------|
+| 1771649254549 | K{,e.)UoCZ | 1769560450236 | 1771649254 | -1  |      | front 1<br><img src="Screenshot from 2026-01-22 18-29-16.png">back 2 | front 1 Screenshot from 2026-01-22 18-29-16.png | 1933924076 | 0     |      |
+*** Conclusion
+**** Note
+One note with flds pointing to the image
+| field      |                                                                  value | type   | description                    |
+| note.id    |                                                          1771649254549 | int    | time                           |
+| note.guid  |                                                             K{,e.)UoCZ | string | internal use                   |
+| note.mid   |                                                          1769560450236 | int    | note type id                   |
+| note.mod   |                                                             1771649254 | int    | time                           |
+| note.usn   |                                                                     -1 | int    | syncing - keek -1              |
+| note.tags  |                                                                        | string | tags separated by space        |
+| note.flds  | front 1<br><img src="Screenshot from 2026-01-22 18-29-16.png">back 2 | string | cloze fields separated by 0x1F |
+| note.sfld  |                        front 1 Screenshot from 2026-01-22 18-29-16.png | int    | first field                    |
+| note.csum  |                                                             1933924076 | int    | internal use                   |
+| note.flags |                                                                      0 | int    | internal use                   |
+| note.data  |                                                                        | string | internal use                   |
+**** Media
+No relation to the media "0" and the note.flds.
