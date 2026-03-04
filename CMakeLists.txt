@@ -59,12 +59,28 @@ endif()
 # ----------------------------------------------------------------------------------------
 set(LIBRARY_NAME lib)
 add_library(${LIBRARY_NAME} STATIC
-  "${CMAKE_SOURCE_DIR}/src/lib/hello-world.cc"
-  "${CMAKE_SOURCE_DIR}/src/lib/hello-world.h"
+  "${CMAKE_SOURCE_DIR}/src/card/card-type.cc"
+  "${CMAKE_SOURCE_DIR}/src/card/card-type.h"
+  "${CMAKE_SOURCE_DIR}/src/card/card.cc"
+  "${CMAKE_SOURCE_DIR}/src/card/card.h"
+
+  "${CMAKE_SOURCE_DIR}/src/deck/deck.cc"
+  "${CMAKE_SOURCE_DIR}/src/deck/deck.h"
+
+  "${CMAKE_SOURCE_DIR}/src/field/field.cc"
+  "${CMAKE_SOURCE_DIR}/src/field/field.h"
+
+  "${CMAKE_SOURCE_DIR}/src/lib/ankicpp.h"
+
+  "${CMAKE_SOURCE_DIR}/src/note/note-type.cc"
+  "${CMAKE_SOURCE_DIR}/src/note/note-type.h"
+  "${CMAKE_SOURCE_DIR}/src/note/note.cc"
+  "${CMAKE_SOURCE_DIR}/src/note/note.h"
+
+  "${CMAKE_SOURCE_DIR}/src/util/time.cc"
+  "${CMAKE_SOURCE_DIR}/src/util/time.h"
 )
-target_link_libraries(${LIBRARY_NAME} PUBLIC
- 
-)
+target_link_libraries(${LIBRARY_NAME} PUBLIC)
 target_include_directories(${LIBRARY_NAME} PUBLIC "${CMAKE_SOURCE_DIR}/src")
 
 # target executable

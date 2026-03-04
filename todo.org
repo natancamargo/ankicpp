@@ -18,6 +18,7 @@ In each step of the below tasks, collect database columns and jsons to make diff
 *** 1.3. Analyse .apkg from cloze card
 *** CANCELED 1.4. Analyse a .colpkg
 *** 1.5. Analyse .apkg with media
+*** 1.6. Analyse .apkg with flags
 ** 2. Design and write the classes  
 *** 2.1. Design the classes
 **** Anki Classes:
@@ -65,12 +66,44 @@ In each step of the below tasks, collect database columns and jsons to make diff
 **** Usage
 ***** Usage of genanki-js:
 #+begin_src js
+  var m = new Model({
+    name: "Basic (and reversed card)",
+    id: "1543634829843",
+    flds: [
+      { name: "Front" },
+      { name: "Back" }
+    ],
+    req: [
+      [ 0, "all", [ 0 ] ],
+      [ 1, "all", [ 1 ] ]
+    ],
+    tmpls: [
+      {
+        name: "Card 1",
+        qfmt: "{{Front}}",
+        afmt: "{{FrontSide}}\n\n<hr id=answer>\n\n{{Back}}",
+      },
+      {
+        name: "Card 2",
+        qfmt: "{{Back}}",
+        afmt: "{{FrontSide}}\n\n<hr id=answer>\n\n{{Front}}",
+      }
+    ],
+  })
+
+  var d = new Deck(1276438724672, "Test Deck")
+
+  d.addNote(m.note(['this is front', 'this is back']))
+
+  var p = new Package()
+  p.addDeck(d)
+
+  p.writeToFile('deck.apkg')
 #+end_src
 
 ***** Usage
 ****** Basic usage:
 #+begin_src c++
-  Package package;
   Deck deck{"deck-name"};
   Note note;
 
@@ -86,7 +119,6 @@ In each step of the below tasks, collect database columns and jsons to make diff
 
 ****** Basic with multiples card types:
 #+begin_src c++
-  Package package;
   Deck deck{"deck-name"};
   Note note;
 
@@ -94,7 +126,7 @@ In each step of the below tasks, collect database columns and jsons to make diff
   note.setField("Front", "...");
   note.setField("Back", "...");
 
-  CardType newType;
+  CardType newType{"card-type-name"};
   newType.setFrontTemplate("{{Front}}");
   newType.setBackTemplate(R"(
   {{FrontSide}}
@@ -118,7 +150,35 @@ In each step of the below tasks, collect database columns and jsons to make diff
   deck.addNote(note);
   deck.save("./path");
 #+end_src
+
+****** Cloze type
+#+begin_src c++
+  Deck deck{"deck-name"};
+  Note note;
+
+  note.setType(NotesType.Cloze);
+  note.setField("Text", "{{c1::text1}} {{c2::text2}}");
+
+  deck.addNote(note);
+  deck.save("./path");
+#+end_src
+
+****** With media
+#+begin_src c++
+  Deck deck{"deck-name"};
+  Note note;
+
+  note.setType(NotesType.BASIC);
+  note.setField("Front", "...");
+  note.setField("Back", "...");
+
+  note.addMedia("file-name", file);
+  deck.addNote(note);
+  deck.save("./path");
+#+end_src
 *** 2.2. Setup the project
 *** 2.3. Write the base code to write a single anki card
 *** 2.4. Upgrade the code to use note type
 *** 2.5. Write docs
+*** 2.6. Upgrades
+**** Add all Field properties

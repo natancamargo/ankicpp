@@ -3,8 +3,8 @@
 #include <map>
 #include <string>
 
-#include "lib/hello-world.h"
+#include "lib/ankicpp.h"
 
 TEST_CASE("Lib should work properly", "[lib]") {
-  REQUIRE_NOTHROW(helloWorld());
+  REQUIRE_NOTHROW([](){}());
 }

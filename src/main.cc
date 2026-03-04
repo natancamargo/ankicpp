@@ -1,6 +1,5 @@
-#include "lib/hello-world.h"
+#include "lib/ankicpp.h"
 
-int main() {
-  helloWorld();  
+int main() {  
   return 0;
 }
