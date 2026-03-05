@@ -3,6 +3,7 @@
 #include <string>
 #include <map>
 #include <set>
+#include <cstdint>
 
 #include "util/time.h"
 #include "note/note-type.h"

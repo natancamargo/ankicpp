@@ -103,7 +103,7 @@ The card has front as 'front 1' and back as 'back 2'.
 | card.did    | 1771561732354 | int    | deck id                                |
 | card.ord    |             0 | int    | which card template or cloze deletions |
 | card.mod    |    1771561768 | int    | modified time                          |
-| card.usn    |            -1 | int    | syncing - keep -1                     |
+| card.usn    |            -1 | int    | syncing - keep -1                      |
 | card.type   |             0 | int    | internal use                           |
 | card.queue  |             0 | int    | internal use                           |
 | card.due    |             3 | int    | internal use                           |

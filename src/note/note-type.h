@@ -3,6 +3,7 @@
 #include <list>
 #include <string>
 #include <algorithm>
+#include <cstdint>
 
 #include "card/card-type.h"
 #include "field/field.h"
