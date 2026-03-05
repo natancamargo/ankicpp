@@ -4,6 +4,7 @@
 #include <string>
 #include <algorithm>
 
+#include "card/card-type.h"
 #include "field/field.h"
 #include "util/time.h"
 
@@ -13,27 +14,32 @@ namespace ankicpp {
     NoteType() = default;
     NoteType(std::string name);
 
-    std::int64_t getId();
+    std::int64_t getId() const;
     void setId(std::int64_t id);
 
-    std::string getName();
+    std::string getName() const;
     void setName(std::string name);
+    
+    std::list<CardType> &getCardTypes();
+    void addCardType(CardType cardType);
+    void removeCardType(CardType cardType);
 
     std::list<Field> &getFields();
     void addField(std::string name);
     void removeField(std::string name);
 
-    std::string getHeader();
+    std::string getHeader() const;
     void setHeader(std::string header);
 
-    std::string getFooter();
+    std::string getFooter() const;
     void setFooter(std::string footer);
 
-    std::string getStyle();
+    std::string getStyle() const;
     void setStyle(std::string style);
   private:
     std::int64_t _id = getNow();
     std::string _name;
+    std::list<CardType> _cardTypes;
     std::list<Field> _fields;
     std::string _header;
     std::string _footer;

@@ -9,16 +9,16 @@ namespace ankicpp {
     Field() = default;
     Field(std::string name);
 
-    std::string getName();
+    std::string getName() const;
     void setName(const std::string &name);
 
-    std::string getDescription();
+    std::string getDescription() const;
     void setDescription(std::string description);
 
-    std::string getFont();
+    std::string getFont() const;
     void setFont(std::string font);
 
-    uint getFontSize();
+    uint getFontSize() const;
     void setFontSize(uint fontSize);
   private:
     std::string _name;

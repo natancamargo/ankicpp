@@ -3,20 +3,36 @@
 namespace ankicpp {
   NoteType::NoteType(std::string name) : _name(name) {}
 
-  std::int64_t NoteType::getId() {
+  std::int64_t NoteType::getId() const {
     return _id;
   }
   void NoteType::setId(std::int64_t id) {
     _id = id;
   }
 
-  std::string NoteType::getName() {
+  std::string NoteType::getName() const {
     return _name;
   }
   void NoteType::setName(std::string name) {
     _name = name;
   }
- 
+
+  std::list<CardType> &NoteType::getCardTypes() {
+    return _cardTypes;
+  }
+  void NoteType::addCardType(CardType cardType) {
+    auto it = std::find_if(_cardTypes.begin(), _cardTypes.end(),
+                           [cardType](CardType _cardType) {
+                             return cardType.getName() == _cardType.getName();
+                           });
+    if (it == _cardTypes.end()) {
+      _cardTypes.push_back(cardType);
+    }
+  }
+  void NoteType::removeCardType(CardType cardType) {
+    _cardTypes.remove_if([cardType](CardType _cardType){ return cardType.getName() == _cardType.getName(); });
+  }
+
   std::list<Field> &NoteType::getFields() {
     return _fields;
   }
@@ -32,21 +48,21 @@ namespace ankicpp {
     _fields.remove_if([name](Field field){ return field.getName() == name; });
   }
 
-  std::string NoteType::getHeader() {
+  std::string NoteType::getHeader() const {
     return _header;
   }
   void NoteType::setHeader(std::string header) {
     _header = header;
   }
 
-  std::string NoteType::getFooter() {
+  std::string NoteType::getFooter() const {
     return _footer;
   }
   void NoteType::setFooter(std::string footer) {
     _footer = footer;
   }
 
-  std::string NoteType::getStyle() {
+  std::string NoteType::getStyle() const {
     return _style;
   }
   void NoteType::setStyle(std::string style) {

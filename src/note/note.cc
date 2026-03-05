@@ -1,21 +1,21 @@
 #include "note/note.h"
 
 namespace ankicpp {
-  std::int64_t Note::getId() {
+  std::int64_t Note::getId() const {
     return _id;
   }
   void Note::setId(std::int64_t id) {
     _id = id;
   }
 
-  NoteType *Note::getType() {
+  NoteType *Note::getType() const {
     return _type;
   }
   void Note::setType(NoteType* type) {
     _type = type;
   }
 
-  const std::map<std::string, std::string> &Note::getFields() {
+  std::map<std::string, std::string> &Note::getFields() {
     return _fields;
   }
   std::string Note::getField(std::string name) {
@@ -35,7 +35,7 @@ namespace ankicpp {
     _tags.erase(name);
   }
 
-  int Note::getFlags() {
+  int Note::getFlags() const {
     return _flags;
   }
   void Note::setFlags(int flags) {

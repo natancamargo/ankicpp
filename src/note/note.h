@@ -10,13 +10,13 @@
 namespace ankicpp {
   class Note {
   public:
-    std::int64_t getId();
+    std::int64_t getId() const;
     void setId(std::int64_t id);
 
-    NoteType *getType();
+    NoteType *getType() const;
     void setType(NoteType *type);
 
-    const std::map<std::string, std::string> &getFields();
+    std::map<std::string, std::string> &getFields();
     std::string getField(std::string name);
     void setField(std::string name, std::string value);
  
@@ -24,7 +24,7 @@ namespace ankicpp {
     void addTag(std::string name);
     void removeTag(std::string name);
 
-    int getFlags();
+    int getFlags() const;
     void setFlags(int flags);
   private:
     std::int64_t _id = getNow();

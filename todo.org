@@ -126,7 +126,7 @@ In each step of the below tasks, collect database columns and jsons to make diff
   note.setField("Front", "...");
   note.setField("Back", "...");
 
-  CardType newType{"card-type-name"};
+  CardType newType{"Card 1"};
   newType.setFrontTemplate("{{Front}}");
   newType.setBackTemplate(R"(
   {{FrontSide}}
@@ -135,7 +135,7 @@ In each step of the below tasks, collect database columns and jsons to make diff
 
   {{Back}}
           )");
-  newType.setStyle(R"(
+  note.setStyle(R"(
    .card {
      font-family: arial;
      font-size: 20px;
