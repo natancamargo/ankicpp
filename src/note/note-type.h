@@ -20,7 +20,7 @@ namespace ankicpp {
 
     std::string getName() const;
     void setName(std::string name);
-    
+
     std::list<CardType*> &getCardTypes();
     void addCardType(CardType *cardType);
     void removeCardType(CardType *cardType);

@@ -21,4 +21,14 @@ namespace ankicpp {
   void Card::setNote(Note *note) {
     _note = note;
   }
+
+  bool Card::operator==(const Card &rhs) {
+    return getId() == rhs.getId();
+  }
+  bool Card::operator!=(const Card &rhs) {
+    return !(*this == rhs);
+  }
+  bool Card::operator<(const Card &rhs) {
+    return getId() < rhs.getId();
+  }
 }

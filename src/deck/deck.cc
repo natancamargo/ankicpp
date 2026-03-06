@@ -1,0 +1,41 @@
+#include "deck/deck.h"
+
+namespace ankicpp {
+  std::int64_t Deck::getId() const {
+    return _id;
+  }
+  void Deck::setId(std::int64_t id) {
+    _id = id;
+  }
+
+  std::string Deck::getName() const {
+    return _name;
+  }
+  void Deck::setName(std::string name) {
+    _name = name;
+  }
+
+  std::set<Note*> &Deck::getNotes() {
+    return _notes;
+  }
+  void Deck::addNote(Note *note) {
+    _note.insert(note);
+  }
+  void Deck::removeNote(Note *note) {
+    _note.insert(note);
+  }
+
+  std::set<Card*> &Deck::getCards() {
+    return _cards;
+  }
+  void Deck::addCard(Card *card) {
+    _cards.insert(card);
+  }
+  void Deck::removeCard(Card *card) {
+    _cards.erase(card);
+  }
+
+  void Deck::generateCards() {
+    
+  }
+}

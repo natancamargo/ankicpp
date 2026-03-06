@@ -17,6 +17,10 @@ namespace ankicpp {
 
     Note* getNote() const;
     void setNote(Note *note);
+
+    bool operator==(const Card &rhs);
+    bool operator!=(const Card &rhs);
+    bool operator<(const Card &rhs);
   private:
     std::int64_t _id;
     CardType *_cardType;

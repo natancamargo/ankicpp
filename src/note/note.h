@@ -27,6 +27,10 @@ namespace ankicpp {
 
     int getFlags() const;
     void setFlags(int flags);
+
+    bool operator==(const Note &rhs);
+    bool operator!=(const Note &rhs);
+    bool operator<(const Note &rhs);
   private:
     std::int64_t _id = getNow();
     NoteType *_type;

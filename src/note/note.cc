@@ -41,4 +41,14 @@ namespace ankicpp {
   void Note::setFlags(int flags) {
     _flags = flags;
   }
+
+  bool Note::operator==(const Note &rhs) {
+    return getId() == rhs.getId();
+  }
+  bool Note::operator!=(const Note &rhs) {
+    return !(*this == rhs);
+  }
+  bool Note::operator<(const Note &rhs) {
+    return getId() < rhs.getId();
+  }
 }
