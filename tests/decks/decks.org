@@ -4,7 +4,7 @@
 #+OPTIONS: H:2
 
 * Decks
-** Deck-1
+** 01-deck-basic
 This deck has only one card, a note and a note type.
 The card has front as 'front 1' and back as 'back 2'.
 
@@ -66,7 +66,7 @@ The card has front as 'front 1' and back as 'back 2'.
 | 1771561838191 | 2   | Header      | \u001a\u0005Arial \u0014H�����铯0P\u0002X\u0001        |
 | 1771561838191 | 3   | Back Extra  | \u001a\u0005Arial \u0014H�����\u0010P\u0003X\u0001    |
 | 1771561838191 | 4   | Comments    | \u001a\u0005Arial \u0014H�Ȍĵ����\u0001P\u0004          |
-**** graves
+*** graves
 | oid | type | usn |
 |-----|------|-----|
 **** notes
@@ -242,7 +242,7 @@ Deck "test":
 | template.mtime_secs |             0 | int    | time - keep 0                          |
 | template.usn        |             0 | int    | syncing - keek 0                       |
 | template.config     |           ... | blob   | config separated by special characters |
-** Deck-2
+** 02-deck-with-tags
 This deck has only one card, a note and a note type.
 The note has two tags.
 The card has front as 'front 1' and back as 'back 2'.
@@ -265,7 +265,7 @@ The card has front as 'front 1' and back as 'back 2'.
 | note.csum  |         2151688904 | int    | internal use                   |
 | note.flags |                  0 | int    | internal use                   |
 | note.data  |                    | string | internal use                   |
-** Deck-3
+** 03-deck-cloze
 This deck has only one note and one note type.
 The note has two cloze expressions.
 Cloze note type implies in as many card types as cloze expressions.
@@ -314,7 +314,7 @@ Cloze expressions in flds.
 | note.data  |                                | string | internal use                   |
 **** Templates
 One card type for each different cloze expression.
-** Deck-4
+** 04-deck-with-media
 This deck has only one card, one card type, one note and one note type.
 *** Tables
 **** notes
