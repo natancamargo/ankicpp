@@ -19,10 +19,10 @@ namespace ankicpp {
     return _notes;
   }
   void Deck::addNote(Note *note) {
-    _note.insert(note);
+    _notes.insert(note);
   }
   void Deck::removeNote(Note *note) {
-    _note.insert(note);
+    _notes.insert(note);
   }
 
   std::set<Card*> &Deck::getCards() {
