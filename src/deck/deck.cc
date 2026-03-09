@@ -34,6 +34,9 @@ namespace ankicpp {
   void Deck::removeCard(Card *card) {
     _cards.erase(card);
   }
+  void Deck::clearCards() {
+    _cards.clear();
+  }
 
   void Deck::generateCards() {
     

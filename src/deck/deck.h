@@ -24,6 +24,7 @@ namespace ankicpp {
     std::set<Card*> &getCards();
     void addCard(Card *card);
     void removeCard(Card *card);
+    void clearCards();
 
     void generateCards();
   private:
