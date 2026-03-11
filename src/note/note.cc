@@ -21,10 +21,13 @@ namespace ankicpp {
   std::string Note::getField(std::string name) {
     return _fields[name];
   }
-  void Note::setField(std::string name, std::string value) {
+  void Note::addField(std::string name, std::string value) {
     _fields[name] = value;
   }
- 
+  void Note::removeField(std::string name) {
+    _fields.erase(name);
+  }
+
   std::set<std::string> &Note::getTags() {
     return _tags;
   }
