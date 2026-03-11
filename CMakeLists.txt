@@ -57,7 +57,7 @@ endif()
 
 # target library
 # ----------------------------------------------------------------------------------------
-set(LIBRARY_NAME lib)
+set(LIBRARY_NAME ankicpp)
 add_library(${LIBRARY_NAME} STATIC
   "${CMAKE_SOURCE_DIR}/src/card/card-type.cc"
   "${CMAKE_SOURCE_DIR}/src/card/card-type.h"
