@@ -3,6 +3,7 @@
 #include <string>
 
 namespace ankicpp {
+  class NoteType;
   class CardType {
   public:
     CardType(std::string name);
@@ -15,9 +16,13 @@ namespace ankicpp {
 
     std::string getBackTemplate() const;
     void setBackTemplate(std::string backTemplate);
+
+    NoteType *getNoteType();
+    void setNoteType(NoteType *noteType);
   private:
     std::string _name;
     std::string _frontTemplate;
     std::string _backTemplate;
+    NoteType *_noteType;
   };
 }

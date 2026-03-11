@@ -23,4 +23,11 @@ namespace ankicpp {
   void CardType::setBackTemplate(std::string backTemplate) {
     _backTemplate = backTemplate;
   }
+
+  NoteType *CardType::getNoteType(){
+    return _noteType;
+  }
+  void CardType::setNoteType(NoteType *noteType) {
+    _noteType = noteType;
+  }
 }
