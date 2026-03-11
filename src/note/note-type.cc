@@ -68,4 +68,9 @@ namespace ankicpp {
   void NoteType::setStyle(std::string style) {
     _style = style;
   }
+
+  std::shared_ptr<NoteType> BasicNoteTypePtr = std::make_shared<NoteType>("ankicpp::Basic");
+  std::shared_ptr<NoteType> ClozeNoteTypePtr = std::make_shared<NoteType>("ankicpp::Cloze");
+  NoteType *BasicNoteType = BasicNoteTypePtr.get();
+  NoteType *ClozeNoteType = ClozeNoteTypePtr.get();
 }

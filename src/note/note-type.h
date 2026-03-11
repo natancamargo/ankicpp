@@ -4,6 +4,7 @@
 #include <string>
 #include <algorithm>
 #include <cstdint>
+#include <memory>
 
 #include "card/card-type.h"
 #include "field/field.h"
@@ -45,4 +46,10 @@ namespace ankicpp {
     std::string _footer;
     std::string _style;
   };
+
+  extern std::shared_ptr<NoteType> BasicNoteTypePtr;
+  extern std::shared_ptr<NoteType> ClozeNoteTypePtr;
+  extern NoteType *BasicNoteType;
+  extern NoteType *ClozeNoteType;
+
 }
