@@ -27,7 +27,7 @@ gdb ./build/ankicpp/exe
 ```shell
 cmake -S . -B build
 cmake --build build --target unit-tests
-./build/tests/unit-tests
+./build/unit-tests
 ```
 
 ### Watch with nodemon
