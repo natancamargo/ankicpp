@@ -36,7 +36,7 @@ TEST_CASE("NoteType should work properly", "[note-type]") {
   SECTION("when created", "[note-type]") {
     REQUIRE(noteType.getId() != 0);
   }
-  SECTION("when setting fields", "[note-type]") {
+  SECTION("when setting fields", "[note-type][field]") {
     ankicpp::Field fieldFront{"Front"};
     ankicpp::Field fieldBack{"Back"};
     noteType.addField(&fieldFront);
@@ -53,7 +53,7 @@ TEST_CASE("NoteType should work properly", "[note-type]") {
     noteType.addCardType(&card1);
     noteType.addCardType(&card2);
     REQUIRE(noteType.getCardTypes().size() == 2);
-    noteType.removeCardType(&card1);
+    noteType.removeCardType(&card2);
     REQUIRE(noteType.getCardTypes().size() == 1);
   }
 }
@@ -62,5 +62,25 @@ TEST_CASE("Deck should work properly", "[deck]") {
   ankicpp::Deck deck{"deck-name"};
   SECTION("when created", "[deck]") {
     REQUIRE(deck.getId() != 0);
+  }
+  SECTION("when setting notes", "[deck][note]") {
+    ankicpp::Note note1;
+    ankicpp::Note note2;
+    deck.addNote(&note1);
+    deck.addNote(&note2);
+    REQUIRE(deck.getNotes().size() == 2);
+    deck.removeNote(&note2);
+    REQUIRE(deck.getNotes().size() == 1);
+  }
+  SECTION("when setting cards", "[deck][card]") {
+    ankicpp::Card card1;
+    ankicpp::Card card2;
+    deck.addCard(&card1);
+    deck.addCard(&card2);
+    REQUIRE(deck.getCards().size() == 2);
+    deck.removeCard(&card2);
+    REQUIRE(deck.getCards().size() == 1);
+    deck.clearCards();
+    REQUIRE(deck.getCards().size() == 0);
   }
 }

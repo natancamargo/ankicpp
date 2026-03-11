@@ -24,7 +24,7 @@ namespace ankicpp {
     _notes.insert(note);
   }
   void Deck::removeNote(Note *note) {
-    _notes.insert(note);
+    _notes.erase(note);
   }
 
   std::set<Card*> &Deck::getCards() {
