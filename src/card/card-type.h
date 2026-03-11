@@ -5,6 +5,8 @@
 namespace ankicpp {
   class CardType {
   public:
+    CardType(std::string name);
+
     std::string getName() const;
     void setName(std::string name);
 

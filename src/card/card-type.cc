@@ -1,6 +1,8 @@
 #include "card/card-type.h"
 
 namespace ankicpp {
+  CardType::CardType(std::string name): _name(name) {}
+
   std::string CardType::getName() const {
     return _name;
   }

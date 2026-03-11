@@ -12,7 +12,6 @@
 namespace ankicpp {
   class NoteType {
   public:
-    NoteType() = default;
     NoteType(std::string name);
 
     std::int64_t getId() const;

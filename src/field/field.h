@@ -6,7 +6,6 @@
 namespace ankicpp {
   class Field {
   public:
-    Field() = default;
     Field(std::string name);
 
     std::string getName() const;

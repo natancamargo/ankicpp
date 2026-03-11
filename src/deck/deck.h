@@ -11,6 +11,8 @@
 namespace ankicpp {
   class Deck {
   public:
+    Deck(std::string name);
+
     std::int64_t getId() const;
     void setId(std::int64_t id);
 

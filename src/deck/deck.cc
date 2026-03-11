@@ -1,6 +1,8 @@
 #include "deck/deck.h"
 
 namespace ankicpp {
+  Deck::Deck(std::string name): _name(name) {}
+
   std::int64_t Deck::getId() const {
     return _id;
   }
