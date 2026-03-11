@@ -3,6 +3,7 @@
 #include <string>
 #include <cstdint>
 
+#include "util/time.h"
 #include "card/card-type.h"
 #include "note/note.h"
 
@@ -22,7 +23,7 @@ namespace ankicpp {
     bool operator!=(const Card &rhs);
     bool operator<(const Card &rhs);
   private:
-    std::int64_t _id;
+    std::int64_t _id = getNow();
     CardType *_cardType;
     Note *_note;
   };
