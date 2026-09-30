@@ -60,25 +60,16 @@ endif()
 set(LIBRARY_NAME ankicpp)
 add_library(${LIBRARY_NAME} STATIC
   "${CMAKE_SOURCE_DIR}/src/card/card-type.cc"
-  "${CMAKE_SOURCE_DIR}/src/card/card-type.h"
   "${CMAKE_SOURCE_DIR}/src/card/card.cc"
-  "${CMAKE_SOURCE_DIR}/src/card/card.h"
 
   "${CMAKE_SOURCE_DIR}/src/deck/deck.cc"
-  "${CMAKE_SOURCE_DIR}/src/deck/deck.h"
 
   "${CMAKE_SOURCE_DIR}/src/field/field.cc"
-  "${CMAKE_SOURCE_DIR}/src/field/field.h"
-
-  "${CMAKE_SOURCE_DIR}/src/lib/ankicpp.h"
 
   "${CMAKE_SOURCE_DIR}/src/note/note-type.cc"
-  "${CMAKE_SOURCE_DIR}/src/note/note-type.h"
   "${CMAKE_SOURCE_DIR}/src/note/note.cc"
-  "${CMAKE_SOURCE_DIR}/src/note/note.h"
 
   "${CMAKE_SOURCE_DIR}/src/util/time.cc"
-  "${CMAKE_SOURCE_DIR}/src/util/time.h"
 )
 target_link_libraries(${LIBRARY_NAME} PUBLIC)
 target_include_directories(${LIBRARY_NAME} PUBLIC "${CMAKE_SOURCE_DIR}/src")
@@ -106,7 +97,7 @@ target_link_libraries(${TEST_NAME} PUBLIC ${LIBRARY_NAME} Catch2::Catch2WithMain
 # config file
 # ----------------------------------------------------------------------------------------
 configure_file(
-  "${CMAKE_SOURCE_DIR}/src/config/config.h.in"
-  "${CMAKE_BINARY_DIR}/config/config.h" ESCAPE_QUOTES
+  "${CMAKE_SOURCE_DIR}/src/config/lib-config.h.in"
+  "${CMAKE_BINARY_DIR}/config/lib-config.h" ESCAPE_QUOTES
 )
 target_include_directories(${LIBRARY_NAME} PUBLIC "${CMAKE_BINARY_DIR}")

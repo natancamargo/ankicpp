@@ -2,7 +2,7 @@
 
 #include "card/card-type.h"
 #include "card/card.h"
-#include "config/config.h"
+#include "config/lib-config.h"
 #include "deck/deck.h"
 #include "field/field.h"
 #include "note/note-type.h"
