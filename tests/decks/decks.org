@@ -342,7 +342,7 @@ No relation to the media "0" and the note.flds.
 * Handle apkg
 - Unzip
 #+begin_src shell
-  unzip deck.apkg
+  unzip deck.apkg -d unzip
 #+end_src
 
 - Zip
@@ -352,10 +352,10 @@ No relation to the media "0" and the note.flds.
 
 - Unzstd the collection.anki21b 
 #+begin_src shell
-  unzip collection.anki21b
+  unzstd collection.anki21b -o collection.anki21b.database
 #+end_src
 
 - Zstd
   #+begin_src shell
-    
+    zstd collection.anki21b.database -o collection.anki21b
   #+end_src

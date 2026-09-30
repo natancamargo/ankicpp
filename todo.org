@@ -11,7 +11,8 @@ https://docs.ankiweb.net/getting-started.html
 https://github.com/ankidroid/Anki-Android/wiki/Database-Structure
 
 * Tasks
-** 1. Analyse the .apkg
+** DONE Reformat the codes to use lsp formatting
+** Analyse the .apkg
 In each step of the below tasks, collect database columns and jsons to make diffs.
 *** DONE 1.1. Analyse .apkg with a card
 *** DONE 1.2. Analyse .apkg with a card and two tags
@@ -21,7 +22,10 @@ In each step of the below tasks, collect database columns and jsons to make diff
 *** CANCELED 1.6. Analyse .apkg without some tables and files
 *** 1.7. Analyse .apkg with flags
 *** 1.8. Analyse csv with a card
-** 2. Design and write the code  
+** Minimal tables
+- Try to remove tables from .anki2 and .anki21b to check
+  only the required tables
+** Design and write the code  
 *** 2.1. Design the classes
 **** Anki Classes:
 - Card
@@ -272,7 +276,3 @@ In each step of the below tasks, collect database columns and jsons to make diff
 *** 2.5. Write docs
 *** 2.6. Upgrades
 **** Add all Field properties 
-** 3. Reformat the codes to use lsp formatting
-** 4. Minimal tables
-- Try to remove tables from .anki2 and .anki21b to check
-  only the required tables
