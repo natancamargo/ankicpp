@@ -4,5 +4,5 @@
 #include <cstdint>
 
 namespace ankicpp {
-  int64_t getNow();
+int64_t getNow();
 }

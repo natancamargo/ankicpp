@@ -1,33 +1,21 @@
 #include "card/card-type.h"
 
 namespace ankicpp {
-  CardType::CardType(std::string name): _name(name) {}
+CardType::CardType(std::string name) : _name(name) {}
 
-  std::string CardType::getName() const {
-    return _name;
-  }
-  void CardType::setName(std::string name) {
-    _name = name;
-  }
+std::string CardType::getName() const { return _name; }
+void CardType::setName(std::string name) { _name = name; }
 
-  std::string CardType::getFrontTemplate() const {
-    return _frontTemplate;
-  }
-  void CardType::setFrontTemplate(std::string frontTemplate) {
-    _frontTemplate = frontTemplate;
-  }
-
-  std::string CardType::getBackTemplate() const {
-    return _backTemplate;
-  }
-  void CardType::setBackTemplate(std::string backTemplate) {
-    _backTemplate = backTemplate;
-  }
-
-  NoteType *CardType::getNoteType(){
-    return _noteType;
-  }
-  void CardType::setNoteType(NoteType *noteType) {
-    _noteType = noteType;
-  }
+std::string CardType::getFrontTemplate() const { return _frontTemplate; }
+void CardType::setFrontTemplate(std::string frontTemplate) {
+  _frontTemplate = frontTemplate;
 }
+
+std::string CardType::getBackTemplate() const { return _backTemplate; }
+void CardType::setBackTemplate(std::string backTemplate) {
+  _backTemplate = backTemplate;
+}
+
+NoteType *CardType::getNoteType() { return _noteType; }
+void CardType::setNoteType(NoteType *noteType) { _noteType = noteType; }
+} // namespace ankicpp
