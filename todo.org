@@ -54,7 +54,95 @@ In each step of the below tasks, collect database columns and jsons to make diff
   Container of note types, notes, card types and cards.
 - Collection
   Container of decks and its contents.
+**** Note types
+***** Basic
+****** Fields
+- Front
+- Back
+****** Options
+******* Header
+#+begin_export ascii
+\documentclass[12pt]{article}
+\special{papersize=3in,5in}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb,amsmath}
+\pagestyle{empty}
+\setlength{\parindent}{0in}
+\begin{document}
+#+end_export
+******* Footer
+  #+begin_export ascii
+  \end{document}
+  #+end_export
+******* Style
+  #+begin_export ascii
+  .card {
+      font-family: arial;
+      font-size: 20px;
+      line-height: 1.5;
+      text-align: center;
+      color: black;
+      background-color: white;
+  }
+  #+end_export
+- Front template
+  #+begin_export ascii
+  {{Front}}
+  #+end_export
+- Back template
+  #+begin_export ascii
+  {{FrontSide}}
 
+  <hr id=answer>
+
+  {{Back}}
+  #+end_export
+***** Cloze
+****** Fields
+- Text
+- Back extra
+******* Options
+******** Header
+  #+begin_export ascii
+  \documentclass[12pt]{article}
+  \special{papersize=3in,5in}
+  \usepackage[utf8]{inputenc}
+  \usepackage{amssymb,amsmath}
+  \pagestyle{empty}
+  \setlength{\parindent}{0in}
+  \begin{document}
+  #+end_export
+******** Footer
+  #+begin_export ascii
+  \end{document}
+  #+end_export
+******** Style
+  #+begin_export ascii
+  .card {
+       font-family: arial;
+       font-size: 20px;
+       line-height: 1.5;
+       text-align: center;
+       color: black;
+       background-color: white;
+   }
+   .cloze {
+       font-weight: bold;
+       color: blue;
+   }
+   .nightMode .cloze {
+       color: lightblue;
+   }
+  #+end_export
+******** Front template
+  #+begin_export ascii
+  {{cloze:Text}}
+  #+end_export
+******** Back template
+  #+begin_export ascii
+  {{cloze:Text}}<br>
+  {{Back Extra}}
+  #+end_export
 **** Persistence classes (Repository or DAO):
 - Repository
 - [AnkiClass]SQLRepository
@@ -115,7 +203,7 @@ In each step of the below tasks, collect database columns and jsons to make diff
 
   note.addTag("tag1");
 
-  deck.addNote(&note);
+  deck.addNote(note);
   deck.export("./path");
 #+end_src
 
@@ -147,9 +235,9 @@ In each step of the below tasks, collect database columns and jsons to make diff
      background-color: white;
    }
   )");
-  note.addCardType(&newType);
+  note.addCardType(newType);
 
-  deck.addNote(&note);
+  deck.addNote(note);
   deck.export("./path");
 #+end_src
 
@@ -184,3 +272,7 @@ In each step of the below tasks, collect database columns and jsons to make diff
 *** 2.5. Write docs
 *** 2.6. Upgrades
 **** Add all Field properties 
+** 3. Reformat the codes to use lsp formatting
+** 4. Minimal tables
+- Try to remove tables from .anki2 and .anki21b to check
+  only the required tables

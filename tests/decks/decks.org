@@ -66,7 +66,7 @@ The card has front as 'front 1' and back as 'back 2'.
 | 1771561838191 | 2   | Header      | \u001a\u0005Arial \u0014H�����铯0P\u0002X\u0001        |
 | 1771561838191 | 3   | Back Extra  | \u001a\u0005Arial \u0014H�����\u0010P\u0003X\u0001    |
 | 1771561838191 | 4   | Comments    | \u001a\u0005Arial \u0014H�Ȍĵ����\u0001P\u0004          |
-*** graves
+**** graves
 | oid | type | usn |
 |-----|------|-----|
 **** notes
@@ -136,7 +136,7 @@ The card has front as 'front 1' and back as 'back 2'.
 **** Config
 | field          | value | type | description                |
 | key.usn        | -     | int  | related to update - keep 0 |
-| key.mtime_secs | -     | int  | syncing - keep 0          |
+| key.mtime_secs | -     | int  | syncing - keep 0           |
 | key.val        | -     | blob | blob ascii                 |
 
 keys:
@@ -162,7 +162,7 @@ keys:
 | id         |       1 | int    | id            |
 | name       | Default | string | name          |
 | mtime_secs |       0 | int    | time - keep 0 |
-| usn        |       0 | int    | syncing      |
+| usn        |       0 | int    | syncing       |
 | config     |         | blob   | internal use  |
 **** Deck
 Deck "default":
@@ -265,6 +265,7 @@ The card has front as 'front 1' and back as 'back 2'.
 | note.csum  |         2151688904 | int    | internal use                   |
 | note.flags |                  0 | int    | internal use                   |
 | note.data  |                    | string | internal use                   |
+|            |                    |        |                                |
 ** 03-deck-cloze
 This deck has only one note and one note type.
 The note has two cloze expressions.
@@ -338,3 +339,23 @@ One note with flds pointing to the image
 | note.data  |                                                                        | string | internal use                   |
 **** Media
 No relation to the media "0" and the note.flds.
+* Handle apkg
+- Unzip
+#+begin_src shell
+  unzip deck.apkg
+#+end_src
+
+- Zip
+#+begin_src shell
+  zip -r test.apkg collection.anki2 collection.anki21b media meta
+#+end_src
+
+- Unzstd the collection.anki21b 
+#+begin_src shell
+  unzip collection.anki21b
+#+end_src
+
+- Zstd
+  #+begin_src shell
+    
+  #+end_src
