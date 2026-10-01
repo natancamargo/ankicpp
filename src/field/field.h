@@ -1,5 +1,6 @@
 #pragma once
 
+#include "field/field-dto.h"
 #include <cstdint>
 #include <string>
 

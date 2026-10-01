@@ -1,12 +1,12 @@
 #pragma once
 
-#include "card/card-type.h"
 #include "card/card.h"
-#include "lib/config-lib.h"
+#include "compression/compression.h"
 #include "deck/deck.h"
 #include "field/field.h"
-#include "note/note-type.h"
-#include "note/note.h"
+#include "lib/config-lib.h"
 #include "lib/export.h"
+#include "note/note.h"
+#include "util/util.h"
 
 namespace ankicpp {}

@@ -1,0 +1,25 @@
+#    -*- mode: org -*-
+
+
+Archived entries from file /home/natan/Projects/ankicpp/todo.org
+
+
+* CANCELED Minimal tables
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-10-01 Thu 12:23
+:ARCHIVE_FILE: ~/Projects/ankicpp/todo.org
+:ARCHIVE_OLPATH: Tasks
+:ARCHIVE_CATEGORY: todo
+:ARCHIVE_TODO: CANCELED
+:END:
+- Try to remove tables from .anki2 and .anki21b to check
+  only the required tables
+
+* DONE Reformat the codes to use lsp formatting
+:PROPERTIES:
+:ARCHIVE_TIME: 2026-10-01 Thu 12:23
+:ARCHIVE_FILE: ~/Projects/ankicpp/todo.org
+:ARCHIVE_OLPATH: Tasks
+:ARCHIVE_CATEGORY: todo
+:ARCHIVE_TODO: DONE
+:END:

@@ -21,7 +21,7 @@ bool exportDeck(Deck deck, std::string_view filename) {
   std::filesystem::path mediaPath = parentPath / std::filesystem::path("media");
   std::filesystem::path metaPath = parentPath / std::filesystem::path("meta");
   std::filesystem::path databasePath =
-      parentPath / std::filesystem::path("collection.anki21b");
+      parentPath / std::filesystem::path("collection.anki21b.db");
   std::cout << std::format("Exporting to folder: {}\n", parentPath.c_str());
 
   std::ofstream metaOutstream = std::ofstream(metaPath, std::ios::binary);

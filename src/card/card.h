@@ -3,6 +3,7 @@
 #include <cstdint>
 
 #include "card/card-type.h"
+#include "card/card-dto.h"
 #include "note/note.h"
 #include "util/time.h"
 

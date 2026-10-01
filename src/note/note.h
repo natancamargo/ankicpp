@@ -5,6 +5,8 @@
 #include <set>
 #include <string>
 
+#include "note/note-dto.h"
+#include "note/note-type-dto.h"
 #include "note/note-type.h"
 #include "util/time.h"
 

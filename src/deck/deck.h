@@ -4,6 +4,8 @@
 #include <set>
 #include <string>
 
+#include "deck/deck-config-dto.h"
+#include "deck/deck-dto.h"
 #include "card/card.h"
 #include "note/note.h"
 #include "util/time.h"
