@@ -1,6 +1,7 @@
 #include <catch2/catch_test_macros.hpp>
 
 #include "lib/ankicpp.h"
+#include "lib/export.h"
 
 TEST_CASE("Note should work properly", "[note]") {
   ankicpp::Note note;
@@ -82,5 +83,13 @@ TEST_CASE("Deck should work properly", "[deck]") {
     REQUIRE(deck.getCards().size() == 1);
     deck.clearCards();
     REQUIRE(deck.getCards().size() == 0);
+  }
+}
+
+
+TEST_CASE("Export should work properly", "[export]") {
+  ankicpp::Deck deck{"deck-name"};
+  SECTION("when trying to export an empty deck it should fail", "[deck][empty][fail]") {
+    REQUIRE(ankicpp::exportDeck(deck, "./tmp/test.apkg") == false);
   }
 }

@@ -26,7 +26,7 @@ void NoteType::removeCardType(CardType *cardType) {
 std::list<Field *> &NoteType::getFields() { return _fields; }
 void NoteType::addField(Field *field) {
   auto it =
-      std::find_if_not(_fields.begin(), _fields.end(),
+      std::find_if(_fields.begin(), _fields.end(),
                        [field](Field *_field) { return field == _field; });
   if (it == _fields.end()) {
     _fields.push_back(field);

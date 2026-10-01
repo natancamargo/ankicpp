@@ -15,7 +15,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # c standard
 # ----------------------------------------------------------------------------------------
-set(CMAKE_CXX_STANDARD          17)
+set(CMAKE_CXX_STANDARD          20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS        OFF)
 
@@ -66,6 +66,8 @@ add_library(${LIBRARY_NAME} STATIC
 
   "${CMAKE_SOURCE_DIR}/src/field/field.cc"
 
+  "${CMAKE_SOURCE_DIR}/src/lib/export.cc"
+
   "${CMAKE_SOURCE_DIR}/src/note/note-type.cc"
   "${CMAKE_SOURCE_DIR}/src/note/note.cc"
 
@@ -97,7 +99,7 @@ target_link_libraries(${TEST_NAME} PUBLIC ${LIBRARY_NAME} Catch2::Catch2WithMain
 # config file
 # ----------------------------------------------------------------------------------------
 configure_file(
-  "${CMAKE_SOURCE_DIR}/src/config/lib-config.h.in"
-  "${CMAKE_BINARY_DIR}/config/lib-config.h" ESCAPE_QUOTES
+  "${CMAKE_SOURCE_DIR}/src/lib/config-lib.h.in"
+  "${CMAKE_BINARY_DIR}/lib/config-lib.h" ESCAPE_QUOTES
 )
 target_include_directories(${LIBRARY_NAME} PUBLIC "${CMAKE_BINARY_DIR}")
