@@ -70,10 +70,11 @@ add_library(${LIBRARY_NAME} STATIC
   "${CMAKE_SOURCE_DIR}/src/card/card-type.cc"
   "${CMAKE_SOURCE_DIR}/src/card/card.cc"
 
-
   "${CMAKE_SOURCE_DIR}/src/compression/compression.cc"
   "${CMAKE_SOURCE_DIR}/src/compression/zip-utils.cc"
   "${CMAKE_SOURCE_DIR}/src/compression/zstd-utils.cc"
+
+  "${CMAKE_SOURCE_DIR}/src/database/sql.cc"
 
   "${CMAKE_SOURCE_DIR}/src/deck/deck.cc"
 
@@ -119,3 +120,11 @@ configure_file(
   "${CMAKE_BINARY_DIR}/lib/config-lib.h" ESCAPE_QUOTES
 )
 target_include_directories(${LIBRARY_NAME} PUBLIC "${CMAKE_BINARY_DIR}")
+
+# docs
+# ----------------------------------------------------------------------------------------
+add_custom_target(docs
+    COMMAND doxygen doxygen
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+    COMMENT "Generating HTML documentation with Doxygen"
+)
