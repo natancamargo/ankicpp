@@ -28,8 +28,29 @@ bool exportDeck(Deck deck, std::string_view filename) {
   const std::filesystem::path zstdDatabasePath =
       parentPath / std::filesystem::path("collection.anki21b");
 
+  if (!createFiles(outPath, metaPath, mediaPath, databasePath)) {
+    return false;
+  }
+
+  populateDatabase(deck);
+
+  const std::vector<std::string> zstdInputs = {databasePath.string()};
+  const std::vector<std::string> zstdOutputs = {zstdDatabasePath.string()};
+  const std::vector<std::string> zipInputs = {
+      metaPath.string(), mediaPath.string(), zstdDatabasePath.string()};
+  if (!compress(zstdInputs, zstdOutputs, zipInputs, outPath.string())) {
+    std::cout << std::format("export: Failed.\n");
+    return false;
+  }
+
+  std::cout << std::format("export: Done.\n");
+  return true;
+}
+bool createFiles(std::filesystem::path outPath, std::filesystem::path metaPath,
+                 std::filesystem::path mediaPath,
+                 std::filesystem::path databasePath) {
   std::cout << std::format("export: Exporting to folder: {}\n",
-                           parentPath.c_str());
+                           outPath.parent_path().c_str());
 
   std::ofstream metaOutstream = std::ofstream(metaPath, std::ios::binary);
   std::ofstream mediaOutstream = std::ofstream(mediaPath, std::ios::binary);
@@ -68,22 +89,14 @@ bool exportDeck(Deck deck, std::string_view filename) {
   mediaOutstream.close();
   databaseOutstream.close();
 
+  return true;
+}
+bool populateDatabase(Deck deck) {
   deck.generateCards();
   for (const Note *note : deck.getNotes()) {
     for (const Card *card : deck.getCards()) {
     }
   }
-
-  const std::vector<std::string> zstdInputs = {databasePath.string()};
-  const std::vector<std::string> zstdOutputs = {zstdDatabasePath.string()};
-  const std::vector<std::string> zipInputs = {
-      metaPath.string(), mediaPath.string(), zstdDatabasePath.string()};
-  if (!compress(zstdInputs, zstdOutputs, zipInputs, outPath.string())) {
-    std::cout << std::format("export: Failed.\n");
-    return false;
-  }
-
-  std::cout << std::format("export: Done.\n");
   return true;
 }
 } // namespace ankicpp

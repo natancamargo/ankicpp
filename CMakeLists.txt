@@ -86,7 +86,10 @@ add_library(${LIBRARY_NAME} STATIC
 
   "${CMAKE_SOURCE_DIR}/src/util/time.cc"
 )
-target_link_libraries(${LIBRARY_NAME} PUBLIC MINIZIP::minizipstatic zstd)
+target_link_libraries(${LIBRARY_NAME} PUBLIC
+  MINIZIP::minizipstatic
+  zstd
+)
 target_include_directories(${LIBRARY_NAME} PUBLIC "${CMAKE_SOURCE_DIR}/src")
 
 # target executable
