@@ -30,6 +30,12 @@ cmake --build build --target unit-tests
 ./build/unit-tests
 ```
 
+### Docs
+```shell
+cmake -S . -B build
+cmake --build build --target docs
+```
+
 ### Watch with nodemon
 ```shell
 npx nodemon --exec "cmake -S . -B build && cmake --build build && ./build/ankicpp/exe" --watch src -e cpp,hpp,txt
