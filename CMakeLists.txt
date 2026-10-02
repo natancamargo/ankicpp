@@ -32,6 +32,7 @@ endif()
 # versions
 set(CATCH2_VERSION v3.5.3)
 set(ZLIB_VERSION v1.3.2)
+set(ZSTD_VERSION v1.5.7)
 
 # dependency: catch2
 if(ENABLE_TEST)
@@ -54,6 +55,14 @@ FetchContent_Declare(
     GIT_SHALLOW TRUE)
 FetchContent_MakeAvailable(zlib)
 
+# dependency: zstd
+FetchContent_Declare(
+    zstd
+    GIT_REPOSITORY https://github.com/facebook/zstd
+    GIT_TAG ${ZSTD_VERSION}
+    GIT_SHALLOW TRUE)
+FetchContent_MakeAvailable(zstd)
+
 # target library
 # ----------------------------------------------------------------------------------------
 set(LIBRARY_NAME ankicpp)
@@ -61,7 +70,10 @@ add_library(${LIBRARY_NAME} STATIC
   "${CMAKE_SOURCE_DIR}/src/card/card-type.cc"
   "${CMAKE_SOURCE_DIR}/src/card/card.cc"
 
+
   "${CMAKE_SOURCE_DIR}/src/compression/compression.cc"
+  "${CMAKE_SOURCE_DIR}/src/compression/zip-utils.cc"
+  "${CMAKE_SOURCE_DIR}/src/compression/zstd-utils.cc"
 
   "${CMAKE_SOURCE_DIR}/src/deck/deck.cc"
 
@@ -74,7 +86,7 @@ add_library(${LIBRARY_NAME} STATIC
 
   "${CMAKE_SOURCE_DIR}/src/util/time.cc"
 )
-target_link_libraries(${LIBRARY_NAME} PUBLIC MINIZIP::minizipstatic)
+target_link_libraries(${LIBRARY_NAME} PUBLIC MINIZIP::minizipstatic zstd)
 target_include_directories(${LIBRARY_NAME} PUBLIC "${CMAKE_SOURCE_DIR}/src")
 
 # target executable

@@ -13,17 +13,23 @@ namespace ankicpp {
 ExportError exportError = ExportError::NO_ERROR;
 
 bool exportDeck(Deck deck, std::string_view filename) {
-  std::cout << std::format("Exporting starting...\n");
+  std::cout << std::format("export: Starting...\n");
 
   exportError = ExportError::NO_ERROR;
 
-  std::filesystem::path path = std::filesystem::path(filename.data());
-  std::filesystem::path parentPath = path.parent_path();
-  std::filesystem::path mediaPath = parentPath / std::filesystem::path("media");
-  std::filesystem::path metaPath = parentPath / std::filesystem::path("meta");
-  std::filesystem::path databasePath =
+  const std::filesystem::path outPath = std::filesystem::path(filename.data());
+  const std::filesystem::path parentPath = outPath.parent_path();
+  const std::filesystem::path mediaPath =
+      parentPath / std::filesystem::path("media");
+  const std::filesystem::path metaPath =
+      parentPath / std::filesystem::path("meta");
+  const std::filesystem::path databasePath =
       parentPath / std::filesystem::path("collection.anki21b.db");
-  std::cout << std::format("Exporting to folder: {}\n", parentPath.c_str());
+  const std::filesystem::path zstdDatabasePath =
+      parentPath / std::filesystem::path("collection.anki21b");
+
+  std::cout << std::format("export: Exporting to folder: {}\n",
+                           parentPath.c_str());
 
   std::ofstream metaOutstream = std::ofstream(metaPath, std::ios::binary);
   std::ofstream mediaOutstream = std::ofstream(mediaPath, std::ios::binary);
@@ -31,7 +37,7 @@ bool exportDeck(Deck deck, std::string_view filename) {
 
   if (!metaOutstream.is_open() || !mediaOutstream.is_open() ||
       !databaseOutstream.is_open()) {
-    perror("Error while opening the file.\n");
+    perror("export: Error while opening the file.\n");
     exportError = ExportError::OPENING_ERROR;
     return false;
   }
@@ -54,7 +60,7 @@ bool exportDeck(Deck deck, std::string_view filename) {
     exportError = ExportError::WRITING_ERROR;
     std::cout << std::format("Error:\n{}\nError code: {}\n", e.what(),
                              e.code().value());
-    std::cout << std::format("Exporting done.\n");
+    std::cout << std::format("export: Failed.\n");
     return false;
   }
 
@@ -68,13 +74,16 @@ bool exportDeck(Deck deck, std::string_view filename) {
     }
   }
 
-  if (!compress({metaPath.string(), mediaPath.string(), databasePath.string()},
-                path.string())) {
-    std::cout << std::format("Exporting failed.\n");
+  const std::vector<std::string> zstdInputs = {databasePath.string()};
+  const std::vector<std::string> zstdOutputs = {zstdDatabasePath.string()};
+  const std::vector<std::string> zipInputs = {
+      metaPath.string(), mediaPath.string(), zstdDatabasePath.string()};
+  if (!compress(zstdInputs, zstdOutputs, zipInputs, outPath.string())) {
+    std::cout << std::format("export: Failed.\n");
     return false;
   }
 
-  std::cout << std::format("Exporting done.\n");
+  std::cout << std::format("export: Done.\n");
   return true;
 }
 } // namespace ankicpp

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <string_view>
+#include <string>
 #include <vector>
 
 namespace ankicpp {
@@ -9,8 +9,12 @@ enum class CompressError {
   UNKNOWN_ERROR,
   FILE_NOT_FOUND_ERROR,
   FILE_READING_ERROR,
-  MINIZIP_ERROR
+  MINIZIP_ERROR,
+  ZSTD_ERROR
 };
 extern CompressError compressError;
-bool compress(std::vector<std::string_view> inputs, std::string_view output);
+bool compress(const std::vector<std::string> &zstdInputs,
+              const std::vector<std::string> &zstdOutputs,
+              const std::vector<std::string> &zipInputs,
+              const std::string &zipOutput);
 } // namespace ankicpp
