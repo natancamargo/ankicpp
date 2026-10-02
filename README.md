@@ -18,7 +18,7 @@ cmake --build build
 
 ### Debug
 ```shell
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -G "Ninja"
 cmake --build build
 gdb ./build/ankicpp/exe
 ```

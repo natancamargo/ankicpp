@@ -1,4 +1,5 @@
 #include "lib/export.h"
+#include "compression/compression.h"
 #include "deck/deck.h"
 #include "note/note.h"
 #include <cstdio>
@@ -53,7 +54,8 @@ bool exportDeck(Deck deck, std::string_view filename) {
     exportError = ExportError::WRITING_ERROR;
     std::cout << std::format("Error:\n{}\nError code: {}\n", e.what(),
                              e.code().value());
-    return false;    
+    std::cout << std::format("Exporting done.\n");
+    return false;
   }
 
   metaOutstream.close();
@@ -64,6 +66,12 @@ bool exportDeck(Deck deck, std::string_view filename) {
   for (const Note *note : deck.getNotes()) {
     for (const Card *card : deck.getCards()) {
     }
+  }
+
+  if (!compress({metaPath.string(), mediaPath.string(), databasePath.string()},
+                path.string())) {
+    std::cout << std::format("Exporting failed.\n");
+    return false;
   }
 
   std::cout << std::format("Exporting done.\n");

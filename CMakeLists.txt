@@ -43,6 +43,10 @@ if(ENABLE_TEST)
     FetchContent_MakeAvailable(Catch2)
 endif()
 
+
+# dependency: zlib
+set(ZLIB_BUILD_MINIZIP true CACHE BOOL "Build minizip")
+set(MINIZIP_BUILD_STATIC true CACHE BOOL "Build minizip staticly")
 FetchContent_Declare(
     zlib
     GIT_REPOSITORY https://github.com/madler/zlib
@@ -70,7 +74,7 @@ add_library(${LIBRARY_NAME} STATIC
 
   "${CMAKE_SOURCE_DIR}/src/util/time.cc"
 )
-target_link_libraries(${LIBRARY_NAME} PUBLIC zlib)
+target_link_libraries(${LIBRARY_NAME} PUBLIC MINIZIP::minizipstatic)
 target_include_directories(${LIBRARY_NAME} PUBLIC "${CMAKE_SOURCE_DIR}/src")
 
 # target executable
