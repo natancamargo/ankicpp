@@ -1,0 +1,60 @@
+\doxysection{note-\/type.h}
+\hypertarget{note-type_8h_source}{}\label{note-type_8h_source}\index{src/note/note-\/type.h@{src/note/note-\/type.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}card/card-\/type.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}field/field.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}util/time.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classankicpp_1_1NoteType}{NoteType}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \mbox{\hyperlink{classankicpp_1_1NoteType}{NoteType}}(std::string\ name);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ std::int64\_t\ getId()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00018\ \ \ \textcolor{keywordtype}{void}\ setId(std::int64\_t\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ std::string\ getName()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{void}\ setName(std::string\ name);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ std::list<CardType\ *>\ \&getCardTypes();}
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{void}\ addCardType(\mbox{\hyperlink{classankicpp_1_1CardType}{CardType}}\ *cardType);}
+\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{void}\ removeCardType(\mbox{\hyperlink{classankicpp_1_1CardType}{CardType}}\ *cardType);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ std::list<Field\ *>\ \&getFields();}
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{void}\ addField(\mbox{\hyperlink{classankicpp_1_1Field}{Field}}\ *field);}
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{void}\ removeField(\mbox{\hyperlink{classankicpp_1_1Field}{Field}}\ *field);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ std::string\ getHeader()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{void}\ setHeader(std::string\ header);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ std::string\ getFooter()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{void}\ setFooter(std::string\ footer);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ std::string\ getStyle()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{void}\ setStyle(std::string\ style);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00041\ \ \ std::int64\_t\ \_id\ =\ getNow();}
+\DoxyCodeLine{00042\ \ \ std::string\ \_name;}
+\DoxyCodeLine{00043\ \ \ std::list<CardType\ *>\ \_cardTypes;}
+\DoxyCodeLine{00044\ \ \ std::list<Field\ *>\ \_fields;}
+\DoxyCodeLine{00045\ \ \ std::string\ \_header;}
+\DoxyCodeLine{00046\ \ \ std::string\ \_footer;}
+\DoxyCodeLine{00047\ \ \ std::string\ \_style;}
+\DoxyCodeLine{00048\ \};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{extern}\ std::shared\_ptr<NoteType>\ BasicNoteTypeSmartPtr;}
+\DoxyCodeLine{00051\ \textcolor{keyword}{extern}\ std::shared\_ptr<NoteType>\ ClozeNoteTypeSmartPtr;}
+\DoxyCodeLine{00052\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{classankicpp_1_1NoteType}{NoteType}}\ *BasicNoteType;}
+\DoxyCodeLine{00053\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{classankicpp_1_1NoteType}{NoteType}}\ *ClozeNoteType;}
+\DoxyCodeLine{00054\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
+
+\end{DoxyCode}

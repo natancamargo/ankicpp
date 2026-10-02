@@ -1,0 +1,19 @@
+\doxysection{repository.\+h}
+\hypertarget{repository_8h_source}{}\label{repository_8h_source}\index{src/database/repository.h@{src/database/repository.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
+\DoxyCodeLine{00005\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ K,\ \textcolor{keyword}{typename}\ D>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classankicpp_1_1Repository}{Repository}}\ \{}
+\DoxyCodeLine{00006\ \ \ std::vector<T>\ read();}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \ \ T\ readById(K\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00009\ \ \ T\ create(T\ entity);}
+\DoxyCodeLine{00010\ \ \ T\ update(T\ entity);}
+\DoxyCodeLine{00011\ \ \ T\ del(T\ entity);}
+\DoxyCodeLine{00012\ \};}
+\DoxyCodeLine{00013\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
+
+\end{DoxyCode}

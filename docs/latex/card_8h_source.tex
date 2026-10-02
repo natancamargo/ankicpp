@@ -1,0 +1,37 @@
+\doxysection{card.\+h}
+\hypertarget{card_8h_source}{}\label{card_8h_source}\index{src/card/card.h@{src/card/card.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}card/card-\/type.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}card/card-\/dto.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}note/note.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}util/time.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classankicpp_1_1Card}{Card}}\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ std::int64\_t\ getId()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00014\ \ \ \textcolor{keywordtype}{void}\ setId(std::int64\_t\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \mbox{\hyperlink{classankicpp_1_1CardType}{CardType}}\ *getCardType()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00017\ \ \ \textcolor{keywordtype}{void}\ setCardType(\mbox{\hyperlink{classankicpp_1_1CardType}{CardType}}\ *cardType);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \mbox{\hyperlink{classankicpp_1_1Note}{Note}}\ *getNote()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00020\ \ \ \textcolor{keywordtype}{void}\ setNote(\mbox{\hyperlink{classankicpp_1_1Note}{Note}}\ *note);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ \mbox{\hyperlink{classankicpp_1_1Card}{Card}}\ \&rhs);}
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{bool}\ operator!=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classankicpp_1_1Card}{Card}}\ \&rhs);}
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{bool}\ operator<(\textcolor{keyword}{const}\ \mbox{\hyperlink{classankicpp_1_1Card}{Card}}\ \&rhs);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00027\ \ \ std::int64\_t\ \_id\ =\ getNow();}
+\DoxyCodeLine{00028\ \ \ \mbox{\hyperlink{classankicpp_1_1CardType}{CardType}}\ *\_cardType;}
+\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{classankicpp_1_1Note}{Note}}\ *\_note;}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
+
+\end{DoxyCode}

@@ -1,0 +1,35 @@
+\doxysection{card-\/type.h}
+\hypertarget{card-type_8h_source}{}\label{card-type_8h_source}\index{src/card/card-\/type.h@{src/card/card-\/type.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }NoteType;}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classankicpp_1_1CardType}{CardType}}\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ \mbox{\hyperlink{classankicpp_1_1CardType}{CardType}}(std::string\ name);}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \ \ std::string\ getName()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00012\ \ \ \textcolor{keywordtype}{void}\ setName(std::string\ name);}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ std::string\ getFrontTemplate()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00015\ \ \ \textcolor{keywordtype}{void}\ setFrontTemplate(std::string\ frontTemplate);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ std::string\ getBackTemplate()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00018\ \ \ \textcolor{keywordtype}{void}\ setBackTemplate(std::string\ backTemplate);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \mbox{\hyperlink{classankicpp_1_1NoteType}{NoteType}}\ *getNoteType();}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{void}\ setNoteType(\mbox{\hyperlink{classankicpp_1_1NoteType}{NoteType}}\ *noteType);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ std::string\ \_name;}
+\DoxyCodeLine{00025\ \ \ std::string\ \_frontTemplate;}
+\DoxyCodeLine{00026\ \ \ std::string\ \_backTemplate;}
+\DoxyCodeLine{00027\ \ \ \mbox{\hyperlink{classankicpp_1_1NoteType}{NoteType}}\ *\_noteType;}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
+
+\end{DoxyCode}
