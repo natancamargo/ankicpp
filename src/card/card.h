@@ -5,32 +5,23 @@
 #include "template/template.h"
 #include "card/card-dto.h"
 #include "note/note.h"
-#include "util/time.h"
+#include "util/identifyable.h"
 
 namespace ankicpp {
 class Deck;
-class Card {
+  class Card: public Identifyable {
 public:
-  std::uint32_t getId() const;
-  void setId(std::uint32_t id);
-
-  Deck *getDeck() const;
-  void setDeck(Deck *deck);
+  std::shared_ptr<Deck> getDeck() const;
+  void setDeck(std::shared_ptr<Deck> deck);
   
-  Template *getTemplate() const;
-  void setTemplate(Template *cardType);
+  std::shared_ptr<Template> getTemplate() const;
+  void setTemplate(std::shared_ptr<Template> cardType);
 
-  Note *getNote() const;
-  void setNote(Note *note);
-
-  bool operator==(const Card &rhs);
-  bool operator!=(const Card &rhs);
-  bool operator<(const Card &rhs);
-
+  std::shared_ptr<Note> getNote() const;
+  void setNote(std::shared_ptr<Note> note);
 private:
-  std::int64_t _id = getNow();
-  Deck *_deck;
-  Template *_template;
-  Note *_note;
+  std::shared_ptr<Deck> _deck;
+  std::shared_ptr<Template> _template;
+  std::shared_ptr<Note> _note;
 };
 } // namespace ankicpp

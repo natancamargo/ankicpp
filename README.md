@@ -3,6 +3,79 @@
 ## Anki cpp
 Small api to create anki notes.
 
+### Usage
+#### Basic
+```c++
+  #include "ankicpp"
+
+  using namespace ankicpp;
+
+  Deck deck{"deck-name"};
+  Note note;
+
+  note.setType(NoteType.BASIC);
+  note.setField("Front", "...");
+  note.setField("Back", "...");
+
+  note.addTag("tag1");
+
+  deck.addNote(note);
+  exportDeck(deck, "./ankicpp.apkg");
+```
+### With a new template
+```c++
+  #include "ankicpp"
+
+  using namespace ankicpp;
+
+  Deck deck{"deck-name"};
+  Note note;
+
+  note.setType(NotesType.BASIC);
+  note.setField("Front", "...");
+  note.setField("Back", "...");
+
+  Template templatee{"Card 1"};
+  templatee.setFrontTemplate("{{Front}}");
+  templatee.setBackTemplate(R"(
+  {{FrontSide}}
+
+  <hr id=answer>
+
+  {{Back}}
+          )");
+  note.setStyle(R"(
+   .card {
+     font-family: arial;
+     font-size: 20px;
+     line-height: 1.5;
+     text-align: center;
+     color: black;
+     background-color: white;
+   }
+  )");
+  note.addTemplate(newType);
+
+  deck.addNote(note);
+  exportDeck(deck, "./ankicpp.apkg");
+```
+### Cloze
+```c++
+  #include "ankicpp"
+ 
+  using namespace ankicpp;
+
+  Deck deck{"deck-name"};
+  Note note;
+
+  note.setType(NotesType.Cloze);
+  note.setField("Text", "{{c1::text1}} {{c2::text2}}");
+
+  deck.addNote(&note);
+  deck.export("./path");
+```
+
+
 ### Build
 ```shell
 export CC=/usr/bin/gcc

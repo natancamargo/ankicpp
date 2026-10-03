@@ -1,16 +1,19 @@
 #pragma once
 
 #include "field/field-dto.h"
-#include <cstdint>
+#include "util/identifyable.h"
+#include "util/nameable.h"
+#include <memory>
 #include <string>
 
 namespace ankicpp {
-class Field {
+class NoteType;
+class Field : public Identifyable, public Nameable {
 public:
   Field(std::string name);
 
-  std::string getName() const;
-  void setName(const std::string &name);
+  std::shared_ptr<NoteType> getNoteType() const;
+  void setNoteType(std::shared_ptr<NoteType> noteType);
 
   std::string getDescription() const;
   void setDescription(std::string description);
@@ -22,7 +25,7 @@ public:
   void setFontSize(uint fontSize);
 
 private:
-  std::string _name;
+  std::shared_ptr<NoteType> _noteType;
   std::string _description;
   std::string _font;
   uint _fontSize;

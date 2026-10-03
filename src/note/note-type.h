@@ -1,32 +1,25 @@
 #pragma once
 
-#include <cstdint>
-#include <list>
 #include <memory>
 #include <string>
 
-#include "template/template.h"
 #include "field/field.h"
-#include "util/time.h"
+#include "template/template.h"
+#include "util/identifyable.h"
+#include "util/nameable.h"
 
 namespace ankicpp {
-class NoteType {
+class NoteType : public Identifyable, public Nameable {
 public:
   NoteType(std::string name);
 
-  std::int64_t getId() const;
-  void setId(std::int64_t id);
+  std::vector<std::shared_ptr<Template>> &getTemplates();
+  void addTemplate(std::shared_ptr<Template> templatee);
+  void removeTemplate(std::shared_ptr<Template> templatee);
 
-  std::string getName() const;
-  void setName(std::string name);
-
-  std::list<Template *> &getTemplates();
-  void addTemplate(Template *cardType);
-  void removeTemplate(Template *cardType);
-
-  std::list<Field *> &getFields();
-  void addField(Field *field);
-  void removeField(Field *field);
+  std::vector<std::shared_ptr<Field>> &getFields();
+  void addField(std::shared_ptr<Field> field);
+  void removeField(std::shared_ptr<Field> field);
 
   std::string getHeader() const;
   void setHeader(std::string header);
@@ -38,17 +31,16 @@ public:
   void setStyle(std::string style);
 
 private:
-  std::int64_t _id = getNow();
-  std::string _name;
-  std::list<Template *> _templates;
-  std::list<Field *> _fields;
+  std::vector<std::shared_ptr<Template>> _templates;
+  std::vector<std::shared_ptr<Field>> _fields;
   std::string _header;
   std::string _footer;
   std::string _style;
 };
 
-extern std::shared_ptr<NoteType> BasicNoteTypeSmartPtr;
-extern std::shared_ptr<NoteType> ClozeNoteTypeSmartPtr;
-extern NoteType *BasicNoteType;
-extern NoteType *ClozeNoteType;
+extern std::shared_ptr<NoteType> basicNoteType;
+extern std::shared_ptr<Template> basicTemplate;
+
+extern std::shared_ptr<NoteType> clozeNoteType;
+extern std::shared_ptr<Template> clozeTemplate;
 } // namespace ankicpp

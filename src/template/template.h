@@ -1,16 +1,17 @@
 #pragma once
 
 #include "template/template-dto.h"
+#include "util/identifyable.h"
+#include "util/nameable.h"
+#include <cstdint>
+#include <memory>
 #include <string>
 
 namespace ankicpp {
 class NoteType;
-class Template {
+class Template : public Identifyable, public Nameable {
 public:
   Template(std::string name);
-
-  std::string getName() const;
-  void setName(std::string name);
 
   std::string getFrontTemplate() const;
   void setFrontTemplate(std::string frontTemplate);
@@ -18,13 +19,12 @@ public:
   std::string getBackTemplate() const;
   void setBackTemplate(std::string backTemplate);
 
-  NoteType *getNoteType();
-  void setNoteType(NoteType *noteType);
+  std::shared_ptr<NoteType> getNoteType();
+  void setNoteType(std::shared_ptr<NoteType> noteType);
 
 private:
-  std::string _name;
   std::string _frontTemplate;
   std::string _backTemplate;
-  NoteType *_noteType;
+  std::shared_ptr<NoteType> _noteType;
 };
 } // namespace ankicpp

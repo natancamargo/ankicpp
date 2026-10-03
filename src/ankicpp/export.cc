@@ -1,4 +1,4 @@
-#include "lib/export.h"
+#include "ankicpp/export.h"
 #include "compression/compression.h"
 #include "deck/deck.h"
 #include "note/note.h"

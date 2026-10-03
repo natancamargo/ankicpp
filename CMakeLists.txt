@@ -80,13 +80,15 @@ add_library(${LIBRARY_NAME} STATIC
 
   "${CMAKE_SOURCE_DIR}/src/field/field.cc"
 
-  "${CMAKE_SOURCE_DIR}/src/lib/export.cc"
+  "${CMAKE_SOURCE_DIR}/src/ankicpp/export.cc"
 
   "${CMAKE_SOURCE_DIR}/src/note/note-type.cc"
   "${CMAKE_SOURCE_DIR}/src/note/note.cc"
 
   "${CMAKE_SOURCE_DIR}/src/template/template.cc"
 
+  "${CMAKE_SOURCE_DIR}/src/util/nameable.cc"
+  "${CMAKE_SOURCE_DIR}/src/util/identifyable.cc"
   "${CMAKE_SOURCE_DIR}/src/util/time.cc"
 )
 target_link_libraries(${LIBRARY_NAME} PUBLIC
@@ -118,8 +120,8 @@ target_link_libraries(${TEST_NAME} PUBLIC ${LIBRARY_NAME} Catch2::Catch2WithMain
 # config file
 # ----------------------------------------------------------------------------------------
 configure_file(
-  "${CMAKE_SOURCE_DIR}/src/lib/config-lib.h.in"
-  "${CMAKE_BINARY_DIR}/lib/config-lib.h" ESCAPE_QUOTES
+  "${CMAKE_SOURCE_DIR}/src/ankicpp/config-lib.h.in"
+  "${CMAKE_BINARY_DIR}/ankicpp/config-lib.h" ESCAPE_QUOTES
 )
 target_include_directories(${LIBRARY_NAME} PUBLIC "${CMAKE_BINARY_DIR}")
 

@@ -1,41 +1,34 @@
 #pragma once
 
-#include <cstdint>
+#include <memory>
 #include <set>
 #include <string>
 
+#include "card/card.h"
 #include "deck/deck-config-dto.h"
 #include "deck/deck-dto.h"
-#include "card/card.h"
 #include "note/note.h"
-#include "util/time.h"
+#include "util/identifyable.h"
+#include "util/nameable.h"
 
 namespace ankicpp {
-class Deck {
+  class Deck: public Identifyable, public Nameable {
 public:
   Deck(std::string name);
 
-  std::int64_t getId() const;
-  void setId(std::int64_t id);
+  std::set<std::shared_ptr<Note>> &getNotes();
+  void addNote(std::shared_ptr<Note> note);
+  void removeNote(std::shared_ptr<Note> note);
 
-  std::string getName() const;
-  void setName(std::string name);
-
-  std::set<Note *> &getNotes();
-  void addNote(Note *note);
-  void removeNote(Note *note);
-
-  std::set<Card *> &getCards();
-  void addCard(Card *card);
-  void removeCard(Card *card);
+  std::set<std::shared_ptr<Card>> &getCards();
+  void addCard(std::shared_ptr<Card> card);
+  void removeCard(std::shared_ptr<Card> card);
   void clearCards();
 
   void generateCards();
 
 private:
-  std::int64_t _id = getNow();
-  std::string _name;
-  std::set<Note *> _notes;
-  std::set<Card *> _cards;
+  std::set<std::shared_ptr<Note>> _notes;
+  std::set<std::shared_ptr<Card>> _cards;
 };
 } // namespace ankicpp
