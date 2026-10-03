@@ -191,7 +191,7 @@ In each step of the below tasks, collect database columns and jsons to make diff
 #+end_src
 
 ***** Usage
-****** Basic usage:
+****** DONE Basic usage:
 #+begin_src c++
   Deck deck{"deck-name"};
   Note note;
@@ -206,7 +206,7 @@ In each step of the below tasks, collect database columns and jsons to make diff
   deck.export("./path");
 #+end_src
 
-****** Basic with multiples card types:
+****** DONE Basic with multiples card types:
 #+begin_src c++
   Deck deck{"deck-name"};
   Note note;
@@ -240,7 +240,7 @@ In each step of the below tasks, collect database columns and jsons to make diff
   deck.export("./path");
 #+end_src
 
-****** Cloze type
+****** DONE Cloze type
 #+begin_src c++
   Deck deck{"deck-name"};
   Note note;
@@ -273,8 +273,8 @@ In each step of the below tasks, collect database columns and jsons to make diff
 - sql to create tables and to write cards
 **** DONE Add NoteType config 
 **** DONE Add Fields to basicNoteTye and clozeTemplate
-**** Add tests to the default usage
+**** CANCELED Add tests to the default usage
 *** DONE Upgrade the code to use note type
-*** Write docs
-*** Upgrades
+*** DONE Write initial docs
+*** DONE Upgrades
 **** Add all Field properties 

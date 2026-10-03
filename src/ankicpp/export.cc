@@ -1,4 +1,5 @@
 #include "ankicpp/export.h"
+#include "ankicpp/config-lib.h"
 #include "compression/compression.h"
 #include "deck/deck.h"
 #include "note/note.h"
@@ -13,6 +14,12 @@ namespace ankicpp {
 ExportError exportError = ExportError::NO_ERROR;
 
 bool exportDeck(Deck deck, std::string_view filename) {
+  std::cout << std::format(R"(
+================
+{}@{}
+================\n)",
+                           project_name, project_version);
+
   std::cout << std::format("export: Starting...\n");
 
   exportError = ExportError::NO_ERROR;

@@ -3,6 +3,8 @@
 
 #include "ankicpp/ankicpp.h"
 
+
+
 TEST_CASE("Note should work properly", "[note]") {
   ankicpp::Note note;
   SECTION("when created", "[note]") { REQUIRE(note.getId() == 0); }
@@ -61,8 +63,8 @@ TEST_CASE("NoteType should work properly", "[note-type]") {
     REQUIRE(ankicpp::basicNoteType->getFields().size() == 2);
     REQUIRE(ankicpp::basicNoteType->getTemplates().size() == 1);
     REQUIRE(ankicpp::clozeNoteType->getFields().size() == 2);
-    REQUIRE(ankicpp::clozeNoteType->getTemplates().size() == 1);    
-  }  
+    REQUIRE(ankicpp::clozeNoteType->getTemplates().size() == 1);
+  }
 }
 
 TEST_CASE("Deck should work properly", "[deck]") {
@@ -87,6 +89,18 @@ TEST_CASE("Deck should work properly", "[deck]") {
     REQUIRE(deck.getCards().size() == 1);
     deck.clearCards();
     REQUIRE(deck.getCards().size() == 0);
+  }
+  SECTION("when setting a complete note", "[deck][card]") {
+    ankicpp::Deck deck{"deck-name"};
+    ankicpp::Note note;
+
+    ankicpp::note.setType(NoteType.BASIC);
+    note.setField("Front", "...");
+    note.setField("Back", "...");
+
+    note.addTag("tag1");
+
+    deck.addNote(note);
   }
 }
 
