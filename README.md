@@ -14,7 +14,7 @@ Small library to create anki notes.
   Deck deck{"deck-name"};
   Note note;
 
-  note.setType(NoteType.BASIC);
+  note.setType(basicNoteType);
   note.setField("Front", "...");
   note.setField("Back", "...");
 
@@ -32,7 +32,7 @@ Small library to create anki notes.
   Deck deck{"deck-name"};
   Note note;
 
-  note.setType(NotesType.Cloze);
+  note.setType(clozeNoteType);
   note.setField("Text", "{{c1::text1}} {{c2::text2}}");
 
   deck.addNote(&note);
@@ -47,11 +47,11 @@ Small library to create anki notes.
   Deck deck{"deck-name"};
   Note note;
 
-  note.setType(NotesType.BASIC);
+  note.setType(basicNoteType);
   note.setField("Front", "...");
   note.setField("Back", "...");
 
-  Template templatee{"Card 1"};
+  Template templatee{"Card 2"};
   templatee.setFrontTemplate("{{Front}}");
   templatee.setBackTemplate(R"(
   {{FrontSide}}
