@@ -1,11 +1,14 @@
 #include "card/card.h"
 
 namespace ankicpp {
-std::int64_t Card::getId() const { return _id; }
-void Card::setId(std::int64_t id) { _id = id; }
+std::uint32_t Card::getId() const { return _id; }
+void Card::setId(std::uint32_t id) { _id = id; }
 
-CardType *Card::getCardType() const { return _cardType; }
-void Card::setCardType(CardType *cardType) { _cardType = cardType; }
+Deck *Card::getDeck() const { return _deck; }
+void Card::setDeck(Deck *deck) { _deck = deck; }
+
+Template *Card::getTemplate() const { return _template; }
+void Card::setTemplate(Template *templatee) { _template = templatee; }
 
 Note *Card::getNote() const { return _note; }
 void Card::setNote(Note *note) { _note = note; }

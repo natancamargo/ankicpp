@@ -5,7 +5,7 @@
 #include <memory>
 #include <string>
 
-#include "card/card-type.h"
+#include "template/template.h"
 #include "field/field.h"
 #include "util/time.h"
 
@@ -20,9 +20,9 @@ public:
   std::string getName() const;
   void setName(std::string name);
 
-  std::list<CardType *> &getCardTypes();
-  void addCardType(CardType *cardType);
-  void removeCardType(CardType *cardType);
+  std::list<Template *> &getTemplates();
+  void addTemplate(Template *cardType);
+  void removeTemplate(Template *cardType);
 
   std::list<Field *> &getFields();
   void addField(Field *field);
@@ -40,7 +40,7 @@ public:
 private:
   std::int64_t _id = getNow();
   std::string _name;
-  std::list<CardType *> _cardTypes;
+  std::list<Template *> _templates;
   std::list<Field *> _fields;
   std::string _header;
   std::string _footer;

@@ -93,10 +93,10 @@ bool createFiles(std::filesystem::path outPath, std::filesystem::path metaPath,
 }
 bool populateDatabase(Deck deck) {
   deck.generateCards();
-  for (const Note *note : deck.getNotes()) {
-    for (const Card *card : deck.getCards()) {
-    }
-  }
+  // for (const Note *note : deck.getNotes()) {
+  //   for (const Card *card : deck.getCards()) {
+  //   }
+  // }
   return true;
 }
 } // namespace ankicpp

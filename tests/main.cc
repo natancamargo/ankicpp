@@ -49,13 +49,13 @@ TEST_CASE("NoteType should work properly", "[note-type]") {
     REQUIRE(noteType.getFields().size() == 1);
   }
   SECTION("when setting card-types", "[note-type][card-type]") {
-    ankicpp::CardType card1{"Card 1"};
-    ankicpp::CardType card2{"Card 2"};
-    noteType.addCardType(&card1);
-    noteType.addCardType(&card2);
-    REQUIRE(noteType.getCardTypes().size() == 2);
-    noteType.removeCardType(&card2);
-    REQUIRE(noteType.getCardTypes().size() == 1);
+    ankicpp::Template template1{"Card 1"};
+    ankicpp::Template template2{"Card 2"};
+    noteType.addTemplate(&template1);
+    noteType.addTemplate(&template2);
+    REQUIRE(noteType.getTemplates().size() == 2);
+    noteType.removeTemplate(&template2);
+    REQUIRE(noteType.getTemplates().size() == 1);
   }
 }
 

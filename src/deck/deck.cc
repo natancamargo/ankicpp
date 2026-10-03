@@ -19,12 +19,12 @@ void Deck::removeCard(Card *card) { _cards.erase(card); }
 void Deck::clearCards() { _cards.clear(); }
 
 void Deck::generateCards() {
-  // for(Note *note: notes) {
-  //   std::set<Card*> cards = ...;
-  //   clearCards();
-  //   for(Card *card: cards) {
-  //     addCard(card);
-  //   }
-  // }
+  for(Note *note: notes) {
+    std::set<Card*> cards = ...;
+    clearCards();
+    for(Card *card: cards) {
+      addCard(card);
+    }
+  }
 }
 } // namespace ankicpp

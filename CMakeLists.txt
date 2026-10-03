@@ -67,7 +67,7 @@ FetchContent_MakeAvailable(zstd)
 # ----------------------------------------------------------------------------------------
 set(LIBRARY_NAME ankicpp)
 add_library(${LIBRARY_NAME} STATIC
-  "${CMAKE_SOURCE_DIR}/src/card/card-type.cc"
+  "${CMAKE_SOURCE_DIR}/src/card/card-repository.cc"
   "${CMAKE_SOURCE_DIR}/src/card/card.cc"
 
   "${CMAKE_SOURCE_DIR}/src/compression/compression.cc"
@@ -84,6 +84,8 @@ add_library(${LIBRARY_NAME} STATIC
 
   "${CMAKE_SOURCE_DIR}/src/note/note-type.cc"
   "${CMAKE_SOURCE_DIR}/src/note/note.cc"
+
+  "${CMAKE_SOURCE_DIR}/src/template/template.cc"
 
   "${CMAKE_SOURCE_DIR}/src/util/time.cc"
 )

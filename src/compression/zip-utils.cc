@@ -42,7 +42,7 @@ bool compress(std::vector<std::string> inputs, std::string output) {
       inStream.read(&buffer[0], size);
       inStream.close();
 
-      zip_fileinfo zfi = {0};
+      zip_fileinfo zfi = {};
 
       if (ZIP_OK == zipOpenNewFileInZip(myZipFile, filename.c_str(), &zfi, NULL,
                                         0, NULL, 0, NULL, Z_DEFLATED,

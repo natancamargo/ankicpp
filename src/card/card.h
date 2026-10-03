@@ -2,19 +2,23 @@
 
 #include <cstdint>
 
-#include "card/card-type.h"
+#include "template/template.h"
 #include "card/card-dto.h"
 #include "note/note.h"
 #include "util/time.h"
 
 namespace ankicpp {
+class Deck;
 class Card {
 public:
-  std::int64_t getId() const;
-  void setId(std::int64_t id);
+  std::uint32_t getId() const;
+  void setId(std::uint32_t id);
 
-  CardType *getCardType() const;
-  void setCardType(CardType *cardType);
+  Deck *getDeck() const;
+  void setDeck(Deck *deck);
+  
+  Template *getTemplate() const;
+  void setTemplate(Template *cardType);
 
   Note *getNote() const;
   void setNote(Note *note);
@@ -25,7 +29,8 @@ public:
 
 private:
   std::int64_t _id = getNow();
-  CardType *_cardType;
+  Deck *_deck;
+  Template *_template;
   Note *_note;
 };
 } // namespace ankicpp

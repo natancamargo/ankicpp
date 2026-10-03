@@ -2,12 +2,15 @@
 
 #include <vector>
 namespace ankicpp {
-template <typename T, typename K, typename D> class Repository {
+template <typename T, typename K, typename M> class Repository {
+ public:  
   std::vector<T> read();
-
   T readById(K id);
-  T create(T entity);
-  T update(T entity);
-  T del(T entity);
+  T create(T dto);
+  T update(T dto);
+  T del(T dto);
+
+  T modelToDTO(M model);
+  M modelFromDTO(T dto);
 };
 } // namespace ankicpp
