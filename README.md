@@ -1,7 +1,7 @@
 [![](https://img.shields.io/badge/c++-black?logo=c++&style=for-the-badge)](https://learnxinyminutes.com/c++/)
 
 ## Anki cpp
-Small api to create anki notes.
+Small library to create anki notes.
 
 ### Usage
 #### Basic
