@@ -1,10 +1,11 @@
 [![](https://img.shields.io/badge/c++-black?logo=c++&style=for-the-badge)](https://learnxinyminutes.com/c++/)
 
-## Anki cpp
+# Anki cpp
 Small library to create anki notes.
 
 ### Usage
-#### Basic
+---
+#### Basic usage
 ```c++
   #include "ankicpp"
 
@@ -22,7 +23,22 @@ Small library to create anki notes.
   deck.addNote(note);
   exportDeck(deck, "./ankicpp.apkg");
 ```
-### With a new template
+### Cloze usage
+```c++
+  #include "ankicpp"
+ 
+  using namespace ankicpp;
+
+  Deck deck{"deck-name"};
+  Note note;
+
+  note.setType(NotesType.Cloze);
+  note.setField("Text", "{{c1::text1}} {{c2::text2}}");
+
+  deck.addNote(&note);
+  deck.export("./path");
+```
+### With a new template usage
 ```c++
   #include "ankicpp"
 
@@ -59,24 +75,9 @@ Small library to create anki notes.
   deck.addNote(note);
   exportDeck(deck, "./ankicpp.apkg");
 ```
-### Cloze
-```c++
-  #include "ankicpp"
- 
-  using namespace ankicpp;
-
-  Deck deck{"deck-name"};
-  Note note;
-
-  note.setType(NotesType.Cloze);
-  note.setField("Text", "{{c1::text1}} {{c2::text2}}");
-
-  deck.addNote(&note);
-  deck.export("./path");
-```
-
 
 ### Build
+---
 ```shell
 export CC=/usr/bin/gcc
 export CXX=/usr/bin/g++
@@ -85,11 +86,13 @@ cmake --build build
 ```
 
 ### Run
+---
 ```shell
 ./build/ankicpp/exe
 ```
 
 ### Debug
+---
 ```shell
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -G "Ninja"
 cmake --build build
@@ -97,6 +100,7 @@ gdb ./build/ankicpp/exe
 ```
 
 ### Tests
+---
 ```shell
 cmake -S . -B build
 cmake --build build --target unit-tests
@@ -104,6 +108,7 @@ cmake --build build --target unit-tests
 ```
 
 ### Docs
+---
 ```shell
 cmake -S . -B build
 cmake --build build --target docs
