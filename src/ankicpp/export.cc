@@ -1,6 +1,7 @@
 #include "ankicpp/export.h"
 #include "ankicpp/config-lib.h"
 #include "compression/compression.h"
+#include "database/database.h"
 #include "deck/deck.h"
 #include "note/note.h"
 #include <cstdio>
@@ -14,15 +15,15 @@ namespace ankicpp {
 ExportError exportError = ExportError::NO_ERROR;
 
 bool exportDeck(Deck deck, std::string_view filename) {
-  std::cout << std::format(R"(
-================
-{}@{}
-================\n)",
-                           project_name, project_version);
-
   std::cout << std::format("export: Starting...\n");
 
   exportError = ExportError::NO_ERROR;
+
+  if (deck.getNotes().size() == 0) {
+    exportError = ExportError::EMPTY_DECK_ERROR;
+    std::cout << std::format("export: deck without notes. Failed.\n");
+    return false;
+  }
 
   const std::filesystem::path outPath = std::filesystem::path(filename.data());
   const std::filesystem::path parentPath = outPath.parent_path();
@@ -39,13 +40,16 @@ bool exportDeck(Deck deck, std::string_view filename) {
     return false;
   }
 
-  populateDatabase(deck);
+  if (!populateDatabase(deck, databasePath.string())) {
+    return false;
+  }
 
   const std::vector<std::string> zstdInputs = {databasePath.string()};
   const std::vector<std::string> zstdOutputs = {zstdDatabasePath.string()};
   const std::vector<std::string> zipInputs = {
       metaPath.string(), mediaPath.string(), zstdDatabasePath.string()};
   if (!compress(zstdInputs, zstdOutputs, zipInputs, outPath.string())) {
+    exportError = ExportError::COMPRESS_ERROR;
     std::cout << std::format("export: Failed.\n");
     return false;
   }
@@ -65,7 +69,10 @@ bool createFiles(std::filesystem::path outPath, std::filesystem::path metaPath,
 
   if (!metaOutstream.is_open() || !mediaOutstream.is_open() ||
       !databaseOutstream.is_open()) {
-    perror("export: Error while opening the file.\n");
+    perror(std::format(
+               "export: Error while opening the files. Directory {} exists?.\n",
+               metaPath.parent_path().string())
+               .c_str());
     exportError = ExportError::OPENING_ERROR;
     return false;
   }
@@ -98,12 +105,20 @@ bool createFiles(std::filesystem::path outPath, std::filesystem::path metaPath,
 
   return true;
 }
-bool populateDatabase(Deck deck) {
+bool populateDatabase(Deck deck, std::string filename) {
   deck.generateCards();
-  // for (const Note *note : deck.getNotes()) {
-  //   for (const Card *card : deck.getCards()) {
-  //   }
-  // }
+  
+  if (!database::connect(filename)) {
+    exportError = ExportError::DATABASE_ERROR;
+    std::cout << std::format("export: Failed.\n");
+    return false;
+  }
+  if (!database::createDatabase()) {
+    exportError = ExportError::DATABASE_ERROR;
+    std::cout << std::format("export: Failed.\n");
+    return false;
+  }
+
   return true;
 }
 } // namespace ankicpp

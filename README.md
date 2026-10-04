@@ -11,14 +11,12 @@ Small library to create anki notes.
 
   using namespace ankicpp;
 
-  Deck deck{"deck-name"};
-  Note note;
+  ankicpp::Deck deck{"deck-name"};
+  std::shared_ptr<ankicpp::Note> note{};
 
-  note.setType(basicNoteType);
-  note.setField("Front", "...");
-  note.setField("Back", "...");
-
-  note.addTag("tag1");
+  note->setType(ankicpp::basicNoteType);
+  note->setField("Front", "...");
+  note->setField("Back", "...");
 
   deck.addNote(note);
   exportDeck(deck, "./ankicpp.apkg");
@@ -30,7 +28,7 @@ Small library to create anki notes.
   using namespace ankicpp;
 
   Deck deck{"deck-name"};
-  Note note;
+  std::shared_ptr<ankicpp::Note> note{};
 
   note.setType(clozeNoteType);
   note.setField("Text", "{{c1::text1}} {{c2::text2}}");
@@ -40,7 +38,7 @@ Small library to create anki notes.
 ```
 ### With a new template usage
 ```c++
-  #include "ankicpp"
+#include "ankicpp"
 
   using namespace ankicpp;
 
@@ -74,7 +72,7 @@ Small library to create anki notes.
 
   deck.addNote(note);
   exportDeck(deck, "./ankicpp.apkg");
-```
+  ```
 
 ### Build
 ---

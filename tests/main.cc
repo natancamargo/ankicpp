@@ -3,23 +3,21 @@
 
 #include "ankicpp/ankicpp.h"
 
-
-
 TEST_CASE("Note should work properly", "[note]") {
   ankicpp::Note note;
   SECTION("when created", "[note]") { REQUIRE(note.getId() == 0); }
   SECTION("when setting fields", "[note]") {
-    note.addField("front", "some front text");
-    note.addField("back", "some back text");
+    note.setField("Front", "some front text");
+    note.setField("Back", "some back text");
     REQUIRE(note.getFields().size() == 2);
-    note.removeField("front");
+    note.unsetField("Front");
     REQUIRE(note.getFields().size() == 1);
   }
   SECTION("when setting tags", "[note]") {
-    note.addTag("tag1");
-    note.addTag("tag2");
+    note.addTag("Tag1");
+    note.addTag("Tag2");
     REQUIRE(note.getTags().size() == 2);
-    note.removeTag("tag1");
+    note.removeTag("Tag1");
     REQUIRE(note.getTags().size() == 1);
   }
   SECTION("when setting flags", "[note]") {
@@ -92,22 +90,39 @@ TEST_CASE("Deck should work properly", "[deck]") {
   }
   SECTION("when setting a complete note", "[deck][card]") {
     ankicpp::Deck deck{"deck-name"};
-    ankicpp::Note note;
+    std::shared_ptr<ankicpp::Note> note = std::make_shared<ankicpp::Note>();
 
-    ankicpp::note.setType(NoteType.BASIC);
-    note.setField("Front", "...");
-    note.setField("Back", "...");
-
-    note.addTag("tag1");
+    note->setType(ankicpp::basicNoteType);
+    note->setField("Front", "...");
+    note->setField("Back", "...");
 
     deck.addNote(note);
+    deck.generateCards();
+
+    REQUIRE(deck.getNotes().size() == 1);
+    REQUIRE(deck.getCards().size() == 1);
+    REQUIRE(note->getType() == ankicpp::basicNoteType);
+    REQUIRE(note->getFields().size() == 2);
   }
 }
 
 TEST_CASE("Export should work properly", "[export]") {
   ankicpp::Deck deck{"deck-name"};
   SECTION("when trying to export an empty deck it should fail",
-          "[deck][empty][fail]") {
-    REQUIRE(ankicpp::exportDeck(deck, "./tmp/test.apkg") == false);
+          "[deck][export]") {
+    REQUIRE(ankicpp::exportDeck(deck, "./tmp/empty-deck.apkg") == false);
+  }
+
+  SECTION("when trying to export a basic deck", "[deck][export]") {
+    std::shared_ptr<ankicpp::Note> note = std::make_shared<ankicpp::Note>();
+
+    note->setType(ankicpp::basicNoteType);
+    note->setField("Front", "...");
+    note->setField("Back", "...");
+
+    deck.addNote(note);
+    deck.generateCards();
+
+    REQUIRE(ankicpp::exportDeck(deck, "./tmp/basic-deck.apkg"));
   }
 }

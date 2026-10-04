@@ -16,6 +16,7 @@ public:
   std::vector<std::shared_ptr<Template>> &getTemplates();
   void addTemplate(std::shared_ptr<Template> templatee);
   void removeTemplate(std::shared_ptr<Template> templatee);
+  std::size_t getTemplateIndex(std::shared_ptr<Template> templatee);
 
   std::vector<std::shared_ptr<Field>> &getFields();
   void addField(std::shared_ptr<Field> field);

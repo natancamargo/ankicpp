@@ -10,8 +10,8 @@ enum class ExportError {
   OPENING_ERROR,
   WRITING_ERROR,
   EMPTY_DECK_ERROR,
-  INVALID_NOTE_ERROR,
-  INVALID_NOTE_TYPE_ERROR
+  COMPRESS_ERROR,
+  DATABASE_ERROR,
 };
 extern ExportError exportError;
 
@@ -19,5 +19,5 @@ bool exportDeck(Deck deck, std::string_view filename);
 bool createFiles(std::filesystem::path outPath, std::filesystem::path metaPath,
                  std::filesystem::path mediaPath,
                  std::filesystem::path databasePath);
-  bool populateDatabase(Deck deck);
+bool populateDatabase(Deck deck, std::string filename);
 } // namespace ankicpp

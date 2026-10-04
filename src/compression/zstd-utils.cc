@@ -198,9 +198,8 @@ static void compress_orDie(const char *fname, const char *oname) {
   saveFile_orDie(oname, cBuff, cSize);
 
   /* success */
-  // printf("%25s : %6u -> %7u - %s \n", fname, (unsigned)fSize,
-  // (unsigned)cSize,
-  //        oname);
+  printf("zstd: Success: %25s : %6u -> %7u - %s \n", fname, (unsigned)fSize,
+         (unsigned)cSize, oname);
 
   free(fBuff);
   free(cBuff);
@@ -213,9 +212,10 @@ bool compress(std::string input, std::string output) {
   try {
     compress_orDie(input.data(), output.data());
     if (errno) {
+      perror("zstd compress: Original error:");
       throw std::runtime_error(
-          std::format("zstd compress: Compress {} into {} failed.\n", input.data(),
-                      output.data()));
+          std::format("zstd compress: Compress {} into {} failed.\n",
+                      input.data(), output.data()));
     }
   } catch (const std::exception &e) {
     std::cerr << e.what() << std::endl;

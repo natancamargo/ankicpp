@@ -33,6 +33,7 @@ endif()
 set(CATCH2_VERSION v3.5.3)
 set(ZLIB_VERSION v1.3.2)
 set(ZSTD_VERSION v1.5.7)
+set(SOCI_VERSION v4.1.4)
 
 # dependency: catch2
 if(ENABLE_TEST)
@@ -63,6 +64,14 @@ FetchContent_Declare(
     GIT_SHALLOW TRUE)
 FetchContent_MakeAvailable(zstd)
 
+# dependency: soci
+FetchContent_Declare(
+    soci
+    GIT_REPOSITORY https://github.com/SOCI/soci
+    GIT_TAG ${SOCI_VERSION}
+    GIT_SHALLOW TRUE)
+FetchContent_MakeAvailable(soci)
+
 # target library
 # ----------------------------------------------------------------------------------------
 set(LIBRARY_NAME ankicpp)
@@ -74,7 +83,7 @@ add_library(${LIBRARY_NAME} STATIC
   "${CMAKE_SOURCE_DIR}/src/compression/zip-utils.cc"
   "${CMAKE_SOURCE_DIR}/src/compression/zstd-utils.cc"
 
-  "${CMAKE_SOURCE_DIR}/src/database/sql.cc"
+  "${CMAKE_SOURCE_DIR}/src/database/database.cc"
 
   "${CMAKE_SOURCE_DIR}/src/deck/deck.cc"
 
@@ -94,6 +103,8 @@ add_library(${LIBRARY_NAME} STATIC
 target_link_libraries(${LIBRARY_NAME} PUBLIC
   MINIZIP::minizipstatic
   zstd
+  SOCI::SOCI
+  SOCI::SQLite3
 )
 target_include_directories(${LIBRARY_NAME} PUBLIC "${CMAKE_SOURCE_DIR}/src")
 
@@ -116,6 +127,9 @@ add_executable(${TEST_NAME}
   "${CMAKE_SOURCE_DIR}/tests/main.cc"
 )
 target_link_libraries(${TEST_NAME} PUBLIC ${LIBRARY_NAME} Catch2::Catch2WithMain)
+set_target_properties(${TEST_NAME} PROPERTIES
+RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
+set_property(TARGET ${TEST_NAME} PROPERTY VS_DEBUGGER_WORKING_DIRECTORY $<TARGET_FILE_DIR:${PROJECT_NAME}>)
 
 # config file
 # ----------------------------------------------------------------------------------------
@@ -131,4 +145,11 @@ add_custom_target(docs
     COMMAND doxygen doxygen
     WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
     COMMENT "Generating HTML documentation with Doxygen"
+)
+
+# copy resources
+# ----------------------------------------------------------------------------------------
+add_custom_command(
+  TARGET ${EXECUTABLE_NAME} POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/src/database/schema11.sql $<TARGET_FILE_DIR:${EXECUTABLE_NAME}>/database/schema11.sql
 )

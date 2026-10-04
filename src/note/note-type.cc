@@ -1,6 +1,7 @@
 #include "note/note-type.h"
 #include "util/nameable.h"
 #include <algorithm>
+#include <cstddef>
 #include <memory>
 #include <string>
 
@@ -14,14 +15,19 @@ std::vector<std::shared_ptr<Template>> &NoteType::getTemplates() {
   return _templates;
 }
 void NoteType::addTemplate(std::shared_ptr<Template> templatee) {
-  auto it = std::find_if(_templates.begin(), _templates.end(),
-                         [templatee](std::shared_ptr<Template> _templatee) {
-                           return templatee == _templatee;
-                         });
+  auto it = std::find(_templates.begin(), _templates.end(), templatee);
   if (it == _templates.end()) {
     _templates.push_back(templatee);
     templatee->setNoteType(std::make_shared<NoteType>(*this));
   }
+}
+std::size_t NoteType::getTemplateIndex(std::shared_ptr<Template> templatee) {
+  auto it = std::find(_templates.begin(), _templates.end(), templatee);
+  std::size_t index = (it - _templates.begin());
+  if (index < _templates.size()) {
+    return index;
+  }
+  return -1;  
 }
 
 void NoteType::removeTemplate(std::shared_ptr<Template> templatee) {
@@ -32,9 +38,7 @@ void NoteType::removeTemplate(std::shared_ptr<Template> templatee) {
 
 std::vector<std::shared_ptr<Field>> &NoteType::getFields() { return _fields; }
 void NoteType::addField(std::shared_ptr<Field> field) {
-  auto it = std::find_if(
-      _fields.begin(), _fields.end(),
-      [field](std::shared_ptr<Field> _field) { return field == _field; });
+  auto it = std::find(_fields.begin(), _fields.end(), field);
   if (it == _fields.end()) {
     _fields.push_back(field);
     field->setNoteType(std::make_shared<NoteType>(*this));
