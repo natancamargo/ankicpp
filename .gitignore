@@ -3,3 +3,4 @@ build
 collection.anki21b-shm
 collection.anki21b-wal
 tmp
+vcpkg

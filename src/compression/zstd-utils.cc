@@ -198,8 +198,8 @@ static void compress_orDie(const char *fname, const char *oname) {
   saveFile_orDie(oname, cBuff, cSize);
 
   /* success */
-  printf("zstd: Success: %25s : %6u -> %7u - %s \n", fname, (unsigned)fSize,
-         (unsigned)cSize, oname);
+  // printf("zstd: Success: %25s : %6u -> %7u - %s \n", fname, (unsigned)fSize,
+  //        (unsigned)cSize, oname);
 
   free(fBuff);
   free(cBuff);

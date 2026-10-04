@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.5.0)
 project(ankicpp VERSION 1.0.0)
 
-include(FetchContent)
-
 # enable unit tests
 option(ENABLE_TEST "Enable unit testing" ON)
 
@@ -29,48 +27,14 @@ endif()
 
 # dependencies
 # ----------------------------------------------------------------------------------------
-# versions
-set(CATCH2_VERSION v3.5.3)
-set(ZLIB_VERSION v1.3.2)
-set(ZSTD_VERSION v1.5.7)
-set(SOCI_VERSION v4.1.4)
+set (VCPKG_DIR ${CMAKE_SOURCE_DIR}/external/vcpkg)
+include(${VCPKG_DIR}/scripts/buildsystems/vcpkg.cmake)
 
-# dependency: catch2
-if(ENABLE_TEST)
-    FetchContent_Declare(
-        Catch2
-        GIT_REPOSITORY https://github.com/catchorg/Catch2
-        GIT_TAG ${CATCH2_VERSION}
-        GIT_SHALLOW TRUE)
-    FetchContent_MakeAvailable(Catch2)
-endif()
-
-
-# dependency: zlib
-set(ZLIB_BUILD_MINIZIP true CACHE BOOL "Build minizip")
-set(MINIZIP_BUILD_STATIC true CACHE BOOL "Build minizip staticly")
-FetchContent_Declare(
-    zlib
-    GIT_REPOSITORY https://github.com/madler/zlib
-    GIT_TAG ${ZLIB_VERSION}
-    GIT_SHALLOW TRUE)
-FetchContent_MakeAvailable(zlib)
-
-# dependency: zstd
-FetchContent_Declare(
-    zstd
-    GIT_REPOSITORY https://github.com/facebook/zstd
-    GIT_TAG ${ZSTD_VERSION}
-    GIT_SHALLOW TRUE)
-FetchContent_MakeAvailable(zstd)
-
-# dependency: soci
-FetchContent_Declare(
-    soci
-    GIT_REPOSITORY https://github.com/SOCI/soci
-    GIT_TAG ${SOCI_VERSION}
-    GIT_SHALLOW TRUE)
-FetchContent_MakeAvailable(soci)
+find_package(minizip CONFIG REQUIRED)
+find_package(Catch2 CONFIG REQUIRED)
+find_package(zstd CONFIG REQUIRED)
+find_package(soci CONFIG REQUIRED)
+find_package(unofficial-sqlite3 REQUIRED)
 
 # target library
 # ----------------------------------------------------------------------------------------
@@ -102,9 +66,9 @@ add_library(${LIBRARY_NAME} STATIC
 )
 target_link_libraries(${LIBRARY_NAME} PUBLIC
   MINIZIP::minizipstatic
-  zstd
+  zstd::libzstd
   SOCI::SOCI
-  SOCI::SQLite3
+  unofficial::sqlite3::sqlite3
 )
 target_include_directories(${LIBRARY_NAME} PUBLIC "${CMAKE_SOURCE_DIR}/src")
 

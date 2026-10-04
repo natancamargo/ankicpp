@@ -1,0 +1,14 @@
+{
+  "dependencies": [
+    "catch2",
+    "minizip",
+    {
+      "name": "soci",
+      "features": [
+        "sqlite3"
+      ]
+    },
+    "sqlite3",
+    "zstd"
+  ]
+}

@@ -39,7 +39,7 @@ bool createDatabase() {
       inStream.close();
       return false;
     }
-    
+
     try {
       sql << buffer.str();
       if (errno) {

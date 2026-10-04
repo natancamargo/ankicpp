@@ -1,7 +1,7 @@
 #include "compression/zip-utils.h"
 
 #include "compression/compression.h"
-#include "contrib/minizip/zip.h"
+#include "minizip/zip.h"
 #include <filesystem>
 #include <format>
 #include <fstream>
