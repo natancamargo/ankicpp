@@ -6,10 +6,10 @@
 namespace ankicpp {
 class NoteTypeDTO {
 public:
-  uint32_t id;
+ std::int64_t id;
   std::string name;
-  uint32_t mtime_secs;
-  uint32_t usn;
+ std::int64_t mtime_secs;
+ std::int64_t usn;
   std::vector<unsigned char> config;
 };
 } // namespace ankicpp

@@ -12,15 +12,15 @@
 #include <string_view>
 
 namespace ankicpp {
-ExportError exportError = ExportError::NO_ERROR;
+Error error = Error::EXPORT_NO_ERROR;
 
 bool exportDeck(Deck deck, std::string_view filename) {
   std::cout << std::format("export: Starting...\n");
 
-  exportError = ExportError::NO_ERROR;
+  error = Error::EXPORT_NO_ERROR;
 
   if (deck.getNotes().size() == 0) {
-    exportError = ExportError::EMPTY_DECK_ERROR;
+    error = Error::EXPORT_DECK_EMPTY_ERROR;
     std::cout << std::format("export: deck without notes. Failed.\n");
     return false;
   }
@@ -49,7 +49,6 @@ bool exportDeck(Deck deck, std::string_view filename) {
   const std::vector<std::string> zipInputs = {
       metaPath.string(), mediaPath.string(), zstdDatabasePath.string()};
   if (!compress(zstdInputs, zstdOutputs, zipInputs, outPath.string())) {
-    exportError = ExportError::COMPRESS_ERROR;
     std::cout << std::format("export: Failed.\n");
     return false;
   }
@@ -73,7 +72,7 @@ bool createFiles(std::filesystem::path outPath, std::filesystem::path metaPath,
                "export: Error while opening the files. Directory {} exists?.\n",
                metaPath.parent_path().string())
                .c_str());
-    exportError = ExportError::OPENING_ERROR;
+    error = Error::EXPORT_FILE_READING_ERROR;
     return false;
   }
 
@@ -92,7 +91,7 @@ bool createFiles(std::filesystem::path outPath, std::filesystem::path metaPath,
                          sizeof(mediaContent));
 
   } catch (const std::ifstream::failure &e) {
-    exportError = ExportError::WRITING_ERROR;
+    error = Error::EXPORT_FILE_WRITING_ERROR;
     std::cout << std::format("Error:\n{}\nError code: {}\n", e.what(),
                              e.code().value());
     std::cout << std::format("export: Failed.\n");
@@ -107,15 +106,22 @@ bool createFiles(std::filesystem::path outPath, std::filesystem::path metaPath,
 }
 bool populateDatabase(Deck deck, std::string filename) {
   deck.generateCards();
-  
-  if (!database::connect(filename)) {
-    exportError = ExportError::DATABASE_ERROR;
+
+  if (!database::connect(filename)) {    
     std::cout << std::format("export: Failed.\n");
     return false;
   }
   if (!database::createDatabase()) {
-    exportError = ExportError::DATABASE_ERROR;
+    database::disconnect();
     std::cout << std::format("export: Failed.\n");
+    return false;
+  }
+  if (!database::populateDatabase(deck)) {
+    database::disconnect();    
+    std::cout << std::format("export: Failed.\n");
+    return false;
+  }
+  if (!database::disconnect()) {
     return false;
   }
 

@@ -2,6 +2,7 @@
 
 #include "database/repository.h"
 #include "deck/deck.h"
+#include <functional>
 #include <soci/soci.h>
 namespace ankicpp {
 namespace database {
@@ -10,5 +11,6 @@ bool connect(std::string filename);
 bool createDatabase();
 bool populateDatabase(Deck deck);
 bool disconnect();
-} // namespace sql
+bool safeSql(std::function<void(void)> function);
+} // namespace database
 } // namespace ankicpp

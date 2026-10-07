@@ -1,6 +1,7 @@
 #pragma once
 
 #include "template/template-dto.h"
+#include "template/template-repository.h"
 #include "util/identifyable.h"
 #include "util/nameable.h"
 #include <cstdint>

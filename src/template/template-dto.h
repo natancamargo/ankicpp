@@ -1,16 +1,17 @@
 #pragma once
 
 #include <cstdint>
+#include <soci/soci.h>
 #include <string>
 #include <vector>
 namespace ankicpp {
 class TemplateDTO {
 public:
-  uint32_t ntid;
-  uint32_t ord;
+ std::int64_t ntid;
+ std::int64_t ord;
   std::string name;
-  uint32_t mtime_secs;
-  uint32_t usn;
+ std::int64_t mtime_secs;
+ std::int64_t usn;
   std::vector<unsigned char> config;
 };
 } // namespace ankicpp

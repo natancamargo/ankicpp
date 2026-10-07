@@ -6,8 +6,8 @@
 namespace ankicpp {
 class FieldDTO {
 public:
-  uint32_t ntid;
-  uint32_t ord;
+ std::int64_t ntid;
+ std::int64_t ord;
   std::string name;
   std::vector<unsigned char> config;
 };

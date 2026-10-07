@@ -166,15 +166,15 @@ keys:
 | config     |         | blob   | internal use  |
 **** Deck
 Deck "default":
-| field      | value                | type   | description        |
-|------------+----------------------+--------+--------------------|
-| id         | 1                    | int    | id                 |
-| name       | Default              | string | name               |
-| mtime_secs | 0                    | int    | time - keep 0      |
+| field      | value                | type   | description       |
+|------------+----------------------+--------+-------------------|
+| id         | 1                    | int    | id                |
+| name       | Default              | string | name              |
+| mtime_secs | 0                    | int    | time - keep 0     |
 | usn        | 0                    | int    | syncing - keep -1 |
-| common     | \b\u0001\u0010\u0001 | blob   | internal use       |
-| kind       | \n\u0002\b\u0001     | blob   | internal use       |
-|            |                      |        |                    |
+| common     | \b\u0001\u0010\u0001 | blob   | internal use      |
+| kind       | \n\u0002\b\u0001     | blob   | internal use      |
+|            |                      |        |                   |
 
 Deck "test":
 | field      | value         |
@@ -192,7 +192,7 @@ Deck "test":
 | field.ntid   | 1769560450236                   | int    | note type id      |
 | field.ord    | 0                               | int    | internal use      |
 | field.name   | Front                           | string | name              |
-| field.config | \u001a\u0005Arial \u0014H��ו���w |blob    | field text config |
+| field.config | \u001a\u0005Arial \u0014H��ו���w | blob   | field text config |
 **** Grave
 | field      | value | type | description  |
 |------------+-------+------+--------------|

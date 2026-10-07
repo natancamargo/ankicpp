@@ -1,16 +1,14 @@
 #pragma once
 
+#include <tuple>
 #include <vector>
 namespace ankicpp {
-template <typename T, typename K, typename M> class Repository {
- public:  
-  std::vector<T> read();
-  T readById(K id);
-  T create(T dto);
-  T update(T dto);
-  T del(T dto);
-
-  T modelToDTO(M model);
-  M modelFromDTO(T dto);
+template <typename D, typename K> class Repository {
+public:
+  std::tuple<std::vector<D>, bool> read() const;
+  std::tuple<std::vector<D>, bool> readById(K key) const;
+  bool create(D dto) const;
+  bool update(D dto) const;
+  bool del(D dto) const;
 };
 } // namespace ankicpp

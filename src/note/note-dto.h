@@ -5,16 +5,16 @@
 namespace ankicpp {
 class NoteDTO {
 public:
-  uint32_t id;
+ std::int64_t id;
   std::string guid;
-  uint32_t mid;
-  uint32_t mod;
-  uint32_t usn;
+ std::int64_t mid;
+ std::int64_t mod;
+ std::int64_t usn;
   std::string tags;
   std::string flds;
-  uint32_t sfld;
-  uint32_t csum;
-  uint32_t flags;
-  std::string datai;
+  std::string sfld;
+ std::int64_t csum;
+ std::int64_t flags;
+  std::string data;
 };
 } // namespace ankicpp

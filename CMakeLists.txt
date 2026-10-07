@@ -18,8 +18,9 @@ set(CMAKE_CXX_EXTENSIONS        OFF)
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU") 
   add_compile_options(
     -Wall
-    -Wno-enum-compare
-    -Wno-error=maybe-uninitialized
+    -Wpedantic
+    -Wextra
+    -Werror
   )
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
   add_compile_options(/W4)
@@ -34,31 +35,48 @@ find_package(minizip CONFIG REQUIRED)
 find_package(Catch2 CONFIG REQUIRED)
 find_package(zstd CONFIG REQUIRED)
 find_package(soci CONFIG REQUIRED)
-find_package(unofficial-sqlite3 REQUIRED)
+find_package(unofficial-sqlite3 REQUIRED
+find_package(uuid CONFIG REQUIRED))
 
 # target library
 # ----------------------------------------------------------------------------------------
 set(LIBRARY_NAME ankicpp)
 add_library(${LIBRARY_NAME} STATIC
+  "${CMAKE_SOURCE_DIR}/src/card/card-mapper.cc"
   "${CMAKE_SOURCE_DIR}/src/card/card-repository.cc"
   "${CMAKE_SOURCE_DIR}/src/card/card.cc"
+
+  "${CMAKE_SOURCE_DIR}/src/col/col-repository.cc"
 
   "${CMAKE_SOURCE_DIR}/src/compression/compression.cc"
   "${CMAKE_SOURCE_DIR}/src/compression/zip-utils.cc"
   "${CMAKE_SOURCE_DIR}/src/compression/zstd-utils.cc"
 
+  "${CMAKE_SOURCE_DIR}/src/config/config-repository.cc"
+
   "${CMAKE_SOURCE_DIR}/src/database/database.cc"
 
   "${CMAKE_SOURCE_DIR}/src/deck/deck.cc"
+  "${CMAKE_SOURCE_DIR}/src/deck/deck-mapper.cc"
+  "${CMAKE_SOURCE_DIR}/src/deck/deck-repository.cc"
+  "${CMAKE_SOURCE_DIR}/src/deck/deck-config-repository.cc"
 
   "${CMAKE_SOURCE_DIR}/src/field/field.cc"
+  "${CMAKE_SOURCE_DIR}/src/field/field-mapper.cc"
+  "${CMAKE_SOURCE_DIR}/src/field/field-repository.cc"
 
   "${CMAKE_SOURCE_DIR}/src/ankicpp/export.cc"
 
   "${CMAKE_SOURCE_DIR}/src/note/note-type.cc"
+  "${CMAKE_SOURCE_DIR}/src/note/note-type-mapper.cc"
+  "${CMAKE_SOURCE_DIR}/src/note/note-type-repository.cc"
   "${CMAKE_SOURCE_DIR}/src/note/note.cc"
+  "${CMAKE_SOURCE_DIR}/src/note/note-mapper.cc"
+  "${CMAKE_SOURCE_DIR}/src/note/note-repository.cc"
 
   "${CMAKE_SOURCE_DIR}/src/template/template.cc"
+  "${CMAKE_SOURCE_DIR}/src/template/template-mapper.cc"
+  "${CMAKE_SOURCE_DIR}/src/template/template-repository.cc"
 
   "${CMAKE_SOURCE_DIR}/src/util/nameable.cc"
   "${CMAKE_SOURCE_DIR}/src/util/identifyable.cc"
@@ -69,19 +87,9 @@ target_link_libraries(${LIBRARY_NAME} PUBLIC
   zstd::libzstd
   SOCI::SOCI
   unofficial::sqlite3::sqlite3
+  uuid
 )
 target_include_directories(${LIBRARY_NAME} PUBLIC "${CMAKE_SOURCE_DIR}/src")
-
-# target executable
-# ----------------------------------------------------------------------------------------
-set(EXECUTABLE_NAME exe)
-add_executable(${EXECUTABLE_NAME}
-  "${CMAKE_SOURCE_DIR}/src/main.cc"
-)
-target_link_libraries(${EXECUTABLE_NAME} PUBLIC ${LIBRARY_NAME})
-set_target_properties(${EXECUTABLE_NAME} PROPERTIES
-RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
-set_property(TARGET ${EXECUTABLE_NAME} PROPERTY VS_DEBUGGER_WORKING_DIRECTORY $<TARGET_FILE_DIR:${PROJECT_NAME}>)
 
 # target tests
 # ----------------------------------------------------------------------------------------
@@ -114,6 +122,6 @@ add_custom_target(docs
 # copy resources
 # ----------------------------------------------------------------------------------------
 add_custom_command(
-  TARGET ${EXECUTABLE_NAME} POST_BUILD
-  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/src/database/schema11.sql $<TARGET_FILE_DIR:${EXECUTABLE_NAME}>/database/schema11.sql
+  TARGET ${LIBRARY_NAME} POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/src/database/schema.sql ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/database/schema.sql
 )

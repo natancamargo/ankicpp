@@ -2,8 +2,9 @@
 
 #include <cstdint>
 
-#include "template/template.h"
 #include "card/card-dto.h"
+#include "template/template.h"
+#include "template/template-repository.h"
 #include "note/note.h"
 #include "util/identifyable.h"
 

@@ -3,8 +3,8 @@
 #include <memory>
 #include <string>
 
-#include "field/field.h"
 #include "template/template.h"
+#include "field/field.h"
 #include "util/identifyable.h"
 #include "util/nameable.h"
 
@@ -21,6 +21,7 @@ public:
   std::vector<std::shared_ptr<Field>> &getFields();
   void addField(std::shared_ptr<Field> field);
   void removeField(std::shared_ptr<Field> field);
+  std::size_t getFieldIndex(std::shared_ptr<Field> field);  
 
   std::string getHeader() const;
   void setHeader(std::string header);
@@ -39,9 +40,9 @@ private:
   std::string _style;
 };
 
-extern std::shared_ptr<NoteType> basicNoteType;
-extern std::shared_ptr<Template> basicTemplate;
+extern const std::shared_ptr<NoteType> basicNoteType;
+extern const std::shared_ptr<Template> basicTemplate;
 
-extern std::shared_ptr<NoteType> clozeNoteType;
-extern std::shared_ptr<Template> clozeTemplate;
+extern const std::shared_ptr<NoteType> clozeNoteType;
+extern const std::shared_ptr<Template> clozeTemplate;
 } // namespace ankicpp

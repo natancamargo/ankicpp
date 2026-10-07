@@ -2,10 +2,7 @@
 #include "util/nameable.h"
 
 namespace ankicpp {
-Field::Field(std::string name) : Nameable(name) {
-  static std::uint32_t ids = 0;
-  _id = ids++;
-}
+Field::Field(std::string name) : Nameable(name) {}
 
 std::shared_ptr<NoteType> Field::getNoteType() const { return _noteType; }
 void Field::setNoteType(std::shared_ptr<NoteType> noteType) {

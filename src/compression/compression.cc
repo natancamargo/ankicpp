@@ -5,8 +5,7 @@
 #include <string>
 
 namespace ankicpp {
-CompressError compressError = CompressError::NONE;
-  bool compress(const std::vector<std::string> &zstdInputs,
+bool compress(const std::vector<std::string> &zstdInputs,
               const std::vector<std::string> &zstdOutputs,
               const std::vector<std::string> &zipInputs,
               const std::string &zipOutput) {

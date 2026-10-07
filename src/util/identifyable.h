@@ -6,14 +6,16 @@ class Identifyable {
 public:
   Identifyable();
 
-  std::uint32_t getId();
-  void setId(std::uint32_t id);
+  std::int64_t getId();
+  void setId(std::int64_t id);
 
+  static std::int64_t generateRandomId();
+  
   bool operator==(Identifyable &rhs);
   bool operator!=(Identifyable &rhs);
   bool operator<(Identifyable &rhs);
 
 protected:
-  std::uint32_t _id;
+  std::int64_t _id;
 };
 } // namespace ankicpp

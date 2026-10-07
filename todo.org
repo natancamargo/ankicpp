@@ -273,8 +273,13 @@ In each step of the below tasks, collect database columns and jsons to make diff
 - sql to create tables and to write cards
 **** DONE Add NoteType config 
 **** DONE Add Fields to basicNoteTye and clozeTemplate
-**** CANCELED Add tests to the default usage
+**** DONE Add tests to the default usage
+**** TODO Add tests with multiple templates
 *** DONE Upgrade the code to use note type
 *** DONE Write initial docs
 *** DONE Upgrades
 **** Add all Field properties 
+*** Add reverse card
+*** Add images to package
+*** Check font size of field-mapper.cc
+- Check if 0x14 affects the font size

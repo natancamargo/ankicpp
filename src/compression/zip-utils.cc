@@ -1,5 +1,6 @@
 #include "compression/zip-utils.h"
 
+#include "ankicpp/export.h"
 #include "compression/compression.h"
 #include "minizip/zip.h"
 #include <filesystem>
@@ -10,14 +11,12 @@
 namespace ankicpp {
 namespace zip {
 bool compress(std::vector<std::string> inputs, std::string output) {
-  compressError = CompressError::NONE;
-
   std::filesystem ::path outPath = std::filesystem::path(output);
 
   zipFile myZipFile = zipOpen(outPath.c_str(), APPEND_STATUS_CREATE);
 
   if (myZipFile == NULL) {
-    compressError = CompressError::MINIZIP_ERROR;
+    error = Error::EXPORT_COMPRESS_MINIZIP_ERROR;
     return false;
   }
 
@@ -26,9 +25,10 @@ bool compress(std::vector<std::string> inputs, std::string output) {
       std::fstream inStream(inputs[i].data(), std::ios::binary | std::ios::in);
       const std::string filename = std::filesystem::path(inputs[i]).filename();
       if (!inStream.is_open()) {
-        compressError = CompressError::FILE_NOT_FOUND_ERROR;
-        std::cout << std::format("zip compress: Error opening the file {} for compression.\n",
-                                 filename);
+        error = Error::EXPORT_COMPRESS_FILE_NOT_FOUND_ERROR;
+        std::cout << std::format(
+            "zip compress: Error opening the file {} for compression.\n",
+            filename);
         return false;
       }
 
@@ -49,31 +49,35 @@ bool compress(std::vector<std::string> inputs, std::string output) {
                                         Z_DEFAULT_COMPRESSION)) {
         if (ZIP_OK !=
             zipWriteInFileInZip(myZipFile, size == 0 ? "" : &buffer[0], size)) {
-          compressError = CompressError::MINIZIP_ERROR;
-          std::cout << std::format(
-              "zip compress: Error building the zipping of file {} in the apkg.\n", filename);
+          error = Error::EXPORT_COMPRESS_MINIZIP_ERROR;
+          std::cout << std::format("zip compress: Error building the zipping "
+                                   "of file {} in the apkg.\n",
+                                   filename);
           return false;
         }
 
         if (ZIP_OK != zipCloseFileInZip(myZipFile)) {
-          compressError = CompressError::MINIZIP_ERROR;
-          std::cout << std::format(
-              "zip compress: Error ending the zipping of file {} in the apkg.\n", filename);
+          error = Error::EXPORT_COMPRESS_MINIZIP_ERROR;
+          std::cout << std::format("zip compress: Error ending the zipping of "
+                                   "file {} in the apkg.\n",
+                                   filename);
           return false;
         }
       }
     } catch (const std::ifstream::failure &e) {
-      std::cerr << std::format("zip compress: Error in compression:\n{}\nError code: {}\n",
-                               e.what(), e.code().value());
-      compressError = CompressError::FILE_READING_ERROR;
-      std::cerr << std::format("zip compress: Error reading one file (collection.anki21b, "
-                               "meta, media,..) of the apkg.\n");
+      std::cerr << std::format(
+          "zip compress: Error in compression:\n{}\nError code: {}\n", e.what(),
+          e.code().value());
+      error = Error::EXPORT_COMPRESS_FILE_READING_ERROR;
+      std::cerr << std::format(
+          "zip compress: Error reading one file (collection.anki21b, "
+          "meta, media,..) of the apkg.\n");
       return false;
     }
   }
 
   if (ZIP_OK != zipClose(myZipFile, "anki zipped")) {
-    compressError = CompressError::MINIZIP_ERROR;
+    error = Error::EXPORT_COMPRESS_MINIZIP_ERROR;
     std::cout << std::format("zip compress: Error while closing the apkg.\n");
     return false;
   }

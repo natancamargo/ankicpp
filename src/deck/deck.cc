@@ -3,10 +3,7 @@
 #include <memory>
 
 namespace ankicpp {
-Deck::Deck(std::string name) : Nameable(name) {
-  static std::uint32_t ids = 0;
-  _id = ids++;
-}
+Deck::Deck(std::string name) : Nameable(name) {}
 
 std::set<std::shared_ptr<Note>> &Deck::getNotes() { return _notes; }
 void Deck::addNote(std::shared_ptr<Note> note) { _notes.insert(note); }

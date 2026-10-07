@@ -1,6 +1,7 @@
 // Most code came from: https://github.com/facebook/zstd/blob/dev/examples/
 
 #include "compression/zstd-utils.h"
+#include "ankicpp/export.h"
 #include "compression/compression.h"
 
 #include <errno.h> // errno
@@ -210,6 +211,9 @@ namespace zstd {
 bool compress(std::string input, std::string output) {
 
   try {
+    if (errno) {
+      errno = 0;      
+    }
     compress_orDie(input.data(), output.data());
     if (errno) {
       perror("zstd compress: Original error:");
@@ -219,7 +223,7 @@ bool compress(std::string input, std::string output) {
     }
   } catch (const std::exception &e) {
     std::cerr << e.what() << std::endl;
-    compressError = CompressError::ZSTD_ERROR;
+    error = Error::EXPORT_COMPRESS_ZSTD_ERROR;
     return false;
   }
 

@@ -4,14 +4,14 @@
 namespace ankicpp {
 class NoteTypeDTO {
 public:
-  std::uint32_t id;
-  std::uint32_t cid;
-  std::uint32_t usn;
-  std::uint32_t ease;
-  std::uint32_t ivl;
-  std::uint32_t lastIvl;
-  std::uint32_t factor;
-  std::uint32_t time;
-  std::uint32_t type;
+  std::int64_t id;
+  std::int64_t cid;
+  std::int64_t usn;
+  std::int64_t ease;
+  std::int64_t ivl;
+  std::int64_t lastIvl;
+  std::int64_t factor;
+  std::int64_t time;
+  std::int64_t type;
 };
 } // namespace ankicpp

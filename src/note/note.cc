@@ -1,21 +1,45 @@
 #include "note/note.h"
-#include "util/time.h"
+#include <algorithm>
+#include <string>
+#include <tuple>
 
 namespace ankicpp {
-Note::Note() {
-  static std::uint32_t ids = 0;  
-  _id = ids++;  
-}
-
 std::shared_ptr<NoteType> Note::getType() const { return _noteType; }
 void Note::setType(std::shared_ptr<NoteType> noteType) { _noteType = noteType; }
 
-std::map<std::string, std::string> &Note::getFields() { return _fields; }
-std::string Note::getField(std::string name) { return _fields[name]; }
-void Note::setField(std::string name, std::string value) {
-  _fields[name] = value;
+std::vector<std::tuple<std::string, std::string>> &Note::getFields() {
+  return _fields;
 }
-void Note::unsetField(std::string name) { _fields.erase(name); }
+std::string Note::getField(std::string name) {
+  auto it = std::find_if(_fields.begin(), _fields.end(),
+                         [name](const std::tuple<std::string, std::string> &e) {
+                           return std::get<0>(e) == name;
+                         });
+  if (it != _fields.end()) {
+    return std::get<0>(*it);
+  }
+  return "";
+}
+void Note::setField(std::string name, std::string value) {
+  auto it = std::find_if(_fields.begin(), _fields.end(),
+                         [name](const std::tuple<std::string, std::string> &e) {
+                           return std::get<0>(e) == name;
+                         });
+  if (it != _fields.end()) {
+    std::get<1>(*it) = value;
+  } else {
+    _fields.push_back(std::make_tuple(name, value));
+  }
+}
+void Note::unsetField(std::string name) {
+  auto it = std::find_if(_fields.begin(), _fields.end(),
+                         [name](const std::tuple<std::string, std::string> &e) {
+                           return std::get<0>(e) == name;
+                         });
+  if (it != _fields.end()) {
+    _fields.erase(it);
+  }
+}
 
 std::set<std::string> &Note::getTags() { return _tags; }
 void Note::addTag(std::string name) { _tags.insert(name); }

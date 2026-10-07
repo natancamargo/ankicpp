@@ -1,25 +1,18 @@
 #pragma once
 
-#include <cstdint>
-#include <map>
 #include <set>
 #include <string>
 
-#include "note/note-dto.h"
-#include "note/note-type-dto.h"
 #include "note/note-type.h"
 #include "util/identifyable.h"
-#include "util/time.h"
 
 namespace ankicpp {
-  class Note: public Identifyable {
+class Note : public Identifyable {
 public:
-  Note();
-
   std::shared_ptr<NoteType> getType() const;
-    void setType(std::shared_ptr<NoteType> noteType);
+  void setType(std::shared_ptr<NoteType> noteType);
 
-  std::map<std::string, std::string> &getFields();
+  std::vector<std::tuple<std::string, std::string>> &getFields();
   std::string getField(std::string name);
   void setField(std::string name, std::string value);
   void unsetField(std::string name);
@@ -30,9 +23,10 @@ public:
 
   int getFlags() const;
   void setFlags(int flags);
+
 private:
   std::shared_ptr<NoteType> _noteType;
-  std::map<std::string, std::string> _fields;
+  std::vector<std::tuple<std::string, std::string>> _fields;
   std::set<std::string> _tags;
   int _flags = 0;
 };

@@ -5,7 +5,6 @@
 
 TEST_CASE("Note should work properly", "[note]") {
   ankicpp::Note note;
-  SECTION("when created", "[note]") { REQUIRE(note.getId() == 0); }
   SECTION("when setting fields", "[note]") {
     note.setField("Front", "some front text");
     note.setField("Back", "some back text");
@@ -32,7 +31,6 @@ TEST_CASE("Note should work properly", "[note]") {
 
 TEST_CASE("NoteType should work properly", "[note-type]") {
   ankicpp::NoteType noteType{"note-type name"};
-  SECTION("when created", "[note-type]") { REQUIRE(noteType.getId() >= 0); }
   SECTION("when setting fields", "[note-type][field]") {
     std::shared_ptr<ankicpp::Field> fieldFront =
         std::make_shared<ankicpp::Field>("Front");
@@ -67,7 +65,6 @@ TEST_CASE("NoteType should work properly", "[note-type]") {
 
 TEST_CASE("Deck should work properly", "[deck]") {
   ankicpp::Deck deck{"deck-name"};
-  SECTION("when created", "[deck]") { REQUIRE(deck.getId() == 0); }
   SECTION("when setting notes", "[deck][note]") {
     std::shared_ptr<ankicpp::Note> note1 = std::make_shared<ankicpp::Note>();
     std::shared_ptr<ankicpp::Note> note2 = std::make_shared<ankicpp::Note>();
@@ -114,6 +111,7 @@ TEST_CASE("Export should work properly", "[export]") {
   }
 
   SECTION("when trying to export a basic deck", "[deck][export]") {
+    ankicpp::Deck deck{"deck-name"};    
     std::shared_ptr<ankicpp::Note> note = std::make_shared<ankicpp::Note>();
 
     note->setType(ankicpp::basicNoteType);

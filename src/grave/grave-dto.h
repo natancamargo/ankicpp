@@ -4,8 +4,8 @@
 namespace ankicpp {
 class GraveDTO {
 public:
-  std::uint32_t id;
-  std::uint32_t type;
-  std::uint32_t usn;
+  std::int64_t id;
+  std::int64_t type;
+  std::int64_t usn;
 };
 } // namespace ankicpp
