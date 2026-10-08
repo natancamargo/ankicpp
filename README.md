@@ -21,7 +21,7 @@ Small library to create anki notes.
   deck.addNote(note);
   exportDeck(deck, "./ankicpp.apkg");
 ```
-### Cloze usage
+### Cloze usage (not working, it's under development)
 ```c++
   #include "ankicpp"
  
@@ -34,9 +34,9 @@ Small library to create anki notes.
   note.addField("Text", "{{c1::text1}} {{c2::text2}}");
 
   deck.addNote(&note);
-  deck.export("./path");
+  exportDeck(deck, "./ankicpp.apkg");
 ```
-### With a new template usage
+### With a new template usage (not working, it's under development)
 ```c++
 #include "ankicpp"
 
