@@ -12,9 +12,9 @@ Small library to create anki notes.
   using namespace ankicpp;
 
   ankicpp::Deck deck{"deck-name"};
-  std::shared_ptr<ankicpp::Note> note{};
+  std::shared_ptr<Note> note = std::make_shared<Note>();
 
-  note->setType(ankicpp::basicNoteType);
+  note->setType(basicNoteType);
   note->addField("Front", "...");
   note->addField("Back", "...");
 
@@ -28,12 +28,12 @@ Small library to create anki notes.
   using namespace ankicpp;
 
   Deck deck{"deck-name"};
-  std::shared_ptr<ankicpp::Note> note{};
+  std::shared_ptr<Note> note = std::make_shared<Note>();
 
   note.setType(clozeNoteType);
   note.addField("Text", "{{c1::text1}} {{c2::text2}}");
 
-  deck.addNote(&note);
+  deck.addNote(note);
   exportDeck(deck, "./ankicpp.apkg");
 ```
 ### With a new template usage (not working, it's under development)
