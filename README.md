@@ -15,8 +15,8 @@ Small library to create anki notes.
   std::shared_ptr<ankicpp::Note> note{};
 
   note->setType(ankicpp::basicNoteType);
-  note->setField("Front", "...");
-  note->setField("Back", "...");
+  note->addField("Front", "...");
+  note->addField("Back", "...");
 
   deck.addNote(note);
   exportDeck(deck, "./ankicpp.apkg");
@@ -31,7 +31,7 @@ Small library to create anki notes.
   std::shared_ptr<ankicpp::Note> note{};
 
   note.setType(clozeNoteType);
-  note.setField("Text", "{{c1::text1}} {{c2::text2}}");
+  note.addField("Text", "{{c1::text1}} {{c2::text2}}");
 
   deck.addNote(&note);
   deck.export("./path");
@@ -46,8 +46,8 @@ Small library to create anki notes.
   Note note;
 
   note.setType(basicNoteType);
-  note.setField("Front", "...");
-  note.setField("Back", "...");
+  note.addField("Front", "...");
+  note.addField("Back", "...");
 
   Template templatee{"Card 2"};
   templatee.setFrontTemplate("{{Front}}");
