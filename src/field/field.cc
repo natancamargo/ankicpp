@@ -4,8 +4,8 @@
 namespace ankicpp {
 Field::Field(std::string name) : Nameable(name) {}
 
-std::shared_ptr<NoteType> Field::getNoteType() const { return _noteType; }
-void Field::setNoteType(std::shared_ptr<NoteType> noteType) {
+std::weak_ptr<NoteType> Field::getNoteType() const { return _noteType; }
+void Field::setNoteType(std::weak_ptr<NoteType> noteType) {
   _noteType = noteType;
 }
 

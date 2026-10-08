@@ -14,8 +14,8 @@ public:
 
   std::vector<std::tuple<std::string, std::string>> &getFields();
   std::string getField(std::string name);
-  void setField(std::string name, std::string value);
-  void unsetField(std::string name);
+  void addField(std::string name, std::string value);
+  void removeField(std::string name);
 
   std::set<std::string> &getTags();
   void addTag(std::string name);

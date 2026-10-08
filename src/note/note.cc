@@ -20,7 +20,7 @@ std::string Note::getField(std::string name) {
   }
   return "";
 }
-void Note::setField(std::string name, std::string value) {
+void Note::addField(std::string name, std::string value) {
   auto it = std::find_if(_fields.begin(), _fields.end(),
                          [name](const std::tuple<std::string, std::string> &e) {
                            return std::get<0>(e) == name;
@@ -31,7 +31,7 @@ void Note::setField(std::string name, std::string value) {
     _fields.push_back(std::make_tuple(name, value));
   }
 }
-void Note::unsetField(std::string name) {
+void Note::removeField(std::string name) {
   auto it = std::find_if(_fields.begin(), _fields.end(),
                          [name](const std::tuple<std::string, std::string> &e) {
                            return std::get<0>(e) == name;

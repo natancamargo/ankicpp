@@ -20,12 +20,12 @@ public:
   std::string getBackTemplate() const;
   void setBackTemplate(std::string backTemplate);
 
-  std::shared_ptr<NoteType> getNoteType();
-  void setNoteType(std::shared_ptr<NoteType> noteType);
+  std::weak_ptr<NoteType> getNoteType();
+  void setNoteType(std::weak_ptr<NoteType> noteType);
 
 private:
   std::string _frontTemplate;
   std::string _backTemplate;
-  std::shared_ptr<NoteType> _noteType;
+  std::weak_ptr<NoteType> _noteType;
 };
 } // namespace ankicpp

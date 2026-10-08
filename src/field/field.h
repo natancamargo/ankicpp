@@ -12,8 +12,8 @@ class Field : public Identifyable, public Nameable {
 public:
   Field(std::string name);
 
-  std::shared_ptr<NoteType> getNoteType() const;
-  void setNoteType(std::shared_ptr<NoteType> noteType);
+  std::weak_ptr<NoteType> getNoteType() const;
+  void setNoteType(std::weak_ptr<NoteType> noteType);
 
   std::string getDescription() const;
   void setDescription(std::string description);
@@ -25,7 +25,7 @@ public:
   void setFontSize(uint fontSize);
 
 private:
-  std::shared_ptr<NoteType> _noteType;
+  std::weak_ptr<NoteType> _noteType;
   std::string _description;
   std::string _font;
   uint _fontSize;

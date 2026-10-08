@@ -14,8 +14,8 @@ void Template::setBackTemplate(std::string backTemplate) {
   _backTemplate = backTemplate;
 }
 
-std::shared_ptr<NoteType> Template::getNoteType() { return _noteType; }
-void Template::setNoteType(std::shared_ptr<NoteType> noteType) {
+std::weak_ptr<NoteType> Template::getNoteType() { return _noteType; }
+void Template::setNoteType(std::weak_ptr<NoteType> noteType) {
   _noteType = noteType;
 }
 } // namespace ankicpp

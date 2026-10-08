@@ -134,5 +134,5 @@ cmake --build build --target docs
 
 ### Watch with nodemon
 ```shell
-npx nodemon --exec "cmake -S . -B build && cmake --build build && ./build/ankicpp/exe" --watch src -e cpp,hpp,txt
+npx nodemon --exec "cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -G "Ninja"  && cmake --build build && ./build/ankicpp/unit-tests" --watch src -e cpp,hpp,txt
 ```

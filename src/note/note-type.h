@@ -3,13 +3,15 @@
 #include <memory>
 #include <string>
 
-#include "template/template.h"
 #include "field/field.h"
+#include "template/template.h"
 #include "util/identifyable.h"
 #include "util/nameable.h"
 
 namespace ankicpp {
-class NoteType : public Identifyable, public Nameable {
+class NoteType : public Identifyable,
+                 public Nameable,
+                 public std::enable_shared_from_this<NoteType> {
 public:
   NoteType(std::string name);
 
@@ -21,7 +23,7 @@ public:
   std::vector<std::shared_ptr<Field>> &getFields();
   void addField(std::shared_ptr<Field> field);
   void removeField(std::shared_ptr<Field> field);
-  std::size_t getFieldIndex(std::shared_ptr<Field> field);  
+  std::size_t getFieldIndex(std::shared_ptr<Field> field);
 
   std::string getHeader() const;
   void setHeader(std::string header);

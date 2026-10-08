@@ -6,10 +6,10 @@
 TEST_CASE("Note should work properly", "[note]") {
   ankicpp::Note note;
   SECTION("when setting fields", "[note]") {
-    note.setField("Front", "some front text");
-    note.setField("Back", "some back text");
+    note.addField("Front", "some front text");
+    note.addField("Back", "some back text");
     REQUIRE(note.getFields().size() == 2);
-    note.unsetField("Front");
+    note.removeField("Front");
     REQUIRE(note.getFields().size() == 1);
   }
   SECTION("when setting tags", "[note]") {
@@ -30,30 +30,31 @@ TEST_CASE("Note should work properly", "[note]") {
 }
 
 TEST_CASE("NoteType should work properly", "[note-type]") {
-  ankicpp::NoteType noteType{"note-type name"};
+  std::shared_ptr<ankicpp::NoteType> noteType =
+      std::make_shared<ankicpp::NoteType>("note-type name");
   SECTION("when setting fields", "[note-type][field]") {
     std::shared_ptr<ankicpp::Field> fieldFront =
         std::make_shared<ankicpp::Field>("Front");
     std::shared_ptr<ankicpp::Field> fieldBack =
         std::make_shared<ankicpp::Field>("Back");
-    noteType.addField(fieldFront);
-    noteType.addField(fieldBack);
-    REQUIRE(noteType.getFields().size() == 2);
-    noteType.addField(fieldFront);
-    REQUIRE(noteType.getFields().size() == 2);
-    noteType.removeField(fieldBack);
-    REQUIRE(noteType.getFields().size() == 1);
+    noteType->addField(fieldFront);
+    noteType->addField(fieldBack);
+    REQUIRE(noteType->getFields().size() == 2);
+    noteType->addField(fieldFront);
+    REQUIRE(noteType->getFields().size() == 2);
+    noteType->removeField(fieldBack);
+    REQUIRE(noteType->getFields().size() == 1);
   }
   SECTION("when setting templates", "[note-type][template]") {
     std::shared_ptr<ankicpp::Template> template1 =
         std::make_shared<ankicpp::Template>("Template 1");
     std::shared_ptr<ankicpp::Template> template2 =
         std::make_shared<ankicpp::Template>("Template 1");
-    noteType.addTemplate(template1);
-    noteType.addTemplate(template2);
-    REQUIRE(noteType.getTemplates().size() == 2);
-    noteType.removeTemplate(template2);
-    REQUIRE(noteType.getTemplates().size() == 1);
+    noteType->addTemplate(template1);
+    noteType->addTemplate(template2);
+    REQUIRE(noteType->getTemplates().size() == 2);
+    noteType->removeTemplate(template2);
+    REQUIRE(noteType->getTemplates().size() == 1);
   }
   SECTION("when checking predefined note types", "[note-type][template]") {
     REQUIRE(ankicpp::basicNoteType->getFields().size() == 2);
@@ -90,8 +91,8 @@ TEST_CASE("Deck should work properly", "[deck]") {
     std::shared_ptr<ankicpp::Note> note = std::make_shared<ankicpp::Note>();
 
     note->setType(ankicpp::basicNoteType);
-    note->setField("Front", "...");
-    note->setField("Back", "...");
+    note->addField("Front", "...");
+    note->addField("Back", "...");
 
     deck.addNote(note);
     deck.generateCards();
@@ -111,12 +112,12 @@ TEST_CASE("Export should work properly", "[export]") {
   }
 
   SECTION("when trying to export a basic deck", "[deck][export]") {
-    ankicpp::Deck deck{"deck-name"};    
+    ankicpp::Deck deck{"deck-name"};
     std::shared_ptr<ankicpp::Note> note = std::make_shared<ankicpp::Note>();
 
     note->setType(ankicpp::basicNoteType);
-    note->setField("Front", "...");
-    note->setField("Back", "...");
+    note->addField("Front", "...");
+    note->addField("Back", "...");
 
     deck.addNote(note);
     deck.generateCards();

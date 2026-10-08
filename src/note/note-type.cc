@@ -12,12 +12,6 @@ NoteType::NoteType(std::string name) : Nameable(name) {}
 std::vector<std::shared_ptr<Template>> &NoteType::getTemplates() {
   return _templates;
 }
-void NoteType::addTemplate(std::shared_ptr<Template> templatee) {
-  auto it = std::find(_templates.begin(), _templates.end(), templatee);
-  if (it == _templates.end()) {
-    _templates.push_back(templatee);
-  }
-}
 std::size_t NoteType::getTemplateIndex(std::shared_ptr<Template> templatee) {
   auto it = std::find_if(_templates.begin(), _templates.end(),
                          [templatee](std::shared_ptr<Template> _templatee) {
@@ -29,7 +23,19 @@ std::size_t NoteType::getTemplateIndex(std::shared_ptr<Template> templatee) {
   }
   return 0;
 }
-
+void NoteType::addTemplate(std::shared_ptr<Template> templatee) {
+  auto it = std::find_if(_templates.begin(), _templates.end(),
+                         [templatee](std::shared_ptr<Template> _template) {
+                           return *templatee == *_template;
+                         });
+  if (it == _templates.end()) {
+    Template templateeCopy{*templatee};
+    templateeCopy.setNoteType(shared_from_this());
+    std::shared_ptr<Template> templatePtr =
+        std::make_shared<Template>(std::move(templateeCopy));
+    _templates.push_back(templatePtr);
+  }
+}
 void NoteType::removeTemplate(std::shared_ptr<Template> templatee) {
   _templates.erase(
       std::remove(_templates.begin(), _templates.end(), templatee));
@@ -37,9 +43,15 @@ void NoteType::removeTemplate(std::shared_ptr<Template> templatee) {
 
 std::vector<std::shared_ptr<Field>> &NoteType::getFields() { return _fields; }
 void NoteType::addField(std::shared_ptr<Field> field) {
-  auto it = std::find(_fields.begin(), _fields.end(), field);
+  auto it = std::find_if(
+      _fields.begin(), _fields.end(),
+      [field](std::shared_ptr<Field> _field) { return *field == *_field; });
   if (it == _fields.end()) {
-    _fields.push_back(field);
+    Field fieldCopy{*field};
+    fieldCopy.setNoteType(shared_from_this());
+    std::shared_ptr<Field> fieldPtr =
+        std::make_shared<Field>(std::move(fieldCopy));
+    _fields.push_back(fieldPtr);
   }
 }
 std::size_t NoteType::getFieldIndex(std::shared_ptr<Field> field) {
@@ -76,7 +88,6 @@ const std::shared_ptr<Template> basicTemplate = []() {
 const std::shared_ptr<NoteType> basicNoteType = []() {
   const std::shared_ptr<NoteType> noteType =
       std::make_shared<NoteType>("ankicpp::Basic");
-  basicTemplate->setNoteType(noteType);
   noteType->addTemplate(basicTemplate);
   noteType->setStyle(R"(.card {
     font-family: arial;
@@ -97,12 +108,10 @@ const std::shared_ptr<NoteType> basicNoteType = []() {
   std::shared_ptr<Field> frontField = std::make_shared<Field>("Front");
   frontField->setFont("Arial");
   frontField->setFontSize(20);
-  frontField->setNoteType(noteType);  
-  noteType->addField(frontField);  
+  noteType->addField(frontField);
   std::shared_ptr<Field> backField = std::make_shared<Field>("Back");
   backField->setFont("Arial");
   backField->setFontSize(20);
-  backField->setNoteType(noteType);  
   noteType->addField(backField);
   return noteType;
 }();
@@ -120,7 +129,6 @@ const std::shared_ptr<NoteType> clozeNoteType = []() {
   const std::shared_ptr<NoteType> noteType =
       std::make_shared<NoteType>("ankicpp::Basic");
   noteType->addTemplate(basicTemplate);
-  basicTemplate->setNoteType(noteType);
   noteType->setStyle(R"(.card {
     font-family: arial;
     font-size: 20px;
@@ -149,12 +157,10 @@ const std::shared_ptr<NoteType> clozeNoteType = []() {
   std::shared_ptr<Field> textField = std::make_shared<Field>("Text");
   textField->setFont("Arial");
   textField->setFontSize(20);
-  textField->setNoteType(noteType);
   noteType->addField(textField);
   std::shared_ptr<Field> backField = std::make_shared<Field>("Back Extra");
   backField->setFont("Arial");
   backField->setFontSize(20);
-  backField->setNoteType(noteType);
   noteType->addField(backField);
   return noteType;
 }();

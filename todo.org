@@ -266,15 +266,15 @@ In each step of the below tasks, collect database columns and jsons to make diff
   deck.export("./path");
 #+end_src
 *** DONE Setup the project
-*** Write the base code to write a single anki card
+*** DONE Write the base code to write a single anki card
 **** DONE 1.3.1. Pre-Setup exporter
 - zip and zstd included
-**** DOING Setup sql queries
+**** DONE Setup sql queries
 - sql to create tables and to write cards
 **** DONE Add NoteType config 
 **** DONE Add Fields to basicNoteTye and clozeTemplate
 **** DONE Add tests to the default usage
-**** TODO Add tests with multiple templates
+**** CANCELED Add tests with multiple templates
 *** DONE Upgrade the code to use note type
 *** DONE Write initial docs
 *** DONE Upgrades
