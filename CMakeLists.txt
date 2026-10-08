@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5.0)
-project(ankicpp VERSION 1.0.0)
+project(ankicpp VERSION 0.0.1)
 
 # enable unit tests
 option(ENABLE_TEST "Enable unit testing" ON)
