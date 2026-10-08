@@ -19,12 +19,6 @@ bool exportDeck(Deck deck, std::string_view filename) {
 
   error = Error::EXPORT_NO_ERROR;
 
-  if (deck.getNotes().size() == 0) {
-    error = Error::EXPORT_DECK_EMPTY_ERROR;
-    std::cout << std::format("export: deck without notes. Failed.\n");
-    return false;
-  }
-
   const std::filesystem::path outPath = std::filesystem::path(filename.data());
   const std::filesystem::path parentPath = outPath.parent_path();
   const std::filesystem::path mediaPath =
@@ -36,7 +30,7 @@ bool exportDeck(Deck deck, std::string_view filename) {
   const std::filesystem::path zstdDatabasePath =
       parentPath / std::filesystem::path("collection.anki21b");
 
-  if (!createFiles(outPath, metaPath, mediaPath, databasePath)) {
+  if (!createFiles(outPath, metaPath, mediaPath, databasePath)) {    
     return false;
   }
 
@@ -105,9 +99,12 @@ bool createFiles(std::filesystem::path outPath, std::filesystem::path metaPath,
   return true;
 }
 bool populateDatabase(Deck deck, std::string filename) {
-  deck.generateCards();
+  if (!deck.generateCards()) {
+    std::cout << std::format("export: Failed.\n");
+    return false;
+  }
 
-  if (!database::connect(filename)) {    
+  if (!database::connect(filename)) {
     std::cout << std::format("export: Failed.\n");
     return false;
   }
@@ -117,7 +114,7 @@ bool populateDatabase(Deck deck, std::string filename) {
     return false;
   }
   if (!database::populateDatabase(deck)) {
-    database::disconnect();    
+    database::disconnect();
     std::cout << std::format("export: Failed.\n");
     return false;
   }

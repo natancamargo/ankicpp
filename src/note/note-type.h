@@ -42,9 +42,11 @@ private:
   std::string _style;
 };
 
-extern const std::shared_ptr<NoteType> basicNoteType;
 extern const std::shared_ptr<Template> basicTemplate;
+extern const std::shared_ptr<Template> reversedTemplate;
+extern const std::shared_ptr<NoteType> basicNoteType;
+extern const std::shared_ptr<NoteType> basicAndReversedNoteType;
 
-extern const std::shared_ptr<NoteType> clozeNoteType;
 extern const std::shared_ptr<Template> clozeTemplate;
+extern const std::shared_ptr<NoteType> clozeNoteType;
 } // namespace ankicpp

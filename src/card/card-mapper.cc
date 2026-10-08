@@ -7,7 +7,7 @@ namespace cardMapper {
 CardDTO modelToDTO(Card &model) {
   CardDTO cardDTO;
   
-  cardDTO.id = model.getNote()->getId();
+  cardDTO.id = model.getId();
   cardDTO.nid = model.getNote()->getId();
   cardDTO.did = model.getDeck()->getId();
   cardDTO.ord =

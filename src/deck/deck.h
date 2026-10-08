@@ -25,7 +25,7 @@ public:
   void removeCard(std::shared_ptr<Card> card);
   void clearCards();
 
-  void generateCards();
+  bool generateCards();
 
 private:
   std::set<std::shared_ptr<Note>> _notes;

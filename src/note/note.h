@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <set>
 #include <string>
 
@@ -9,25 +10,30 @@
 namespace ankicpp {
 class Note : public Identifyable {
 public:
-  std::shared_ptr<NoteType> getType() const;
-  void setType(std::shared_ptr<NoteType> noteType);
+  const std::shared_ptr<NoteType> &getType() const;
+  void setType(const std::shared_ptr<NoteType> &noteType);
 
-  std::vector<std::tuple<std::string, std::string>> &getFields();
+  const std::vector<std::tuple<std::string, std::string>> &getFields() const;
+  void setFields(const std::vector<std::tuple<std::string, std::string>> &fields);
   std::string getField(std::string name);
   void addField(std::string name, std::string value);
   void removeField(std::string name);
 
-  std::set<std::string> &getTags();
+  const std::set<std::string> &getTags() const;
+  void setTags(const std::set<std::string> &tags);
   void addTag(std::string name);
   void removeTag(std::string name);
 
   int getFlags() const;
   void setFlags(int flags);
 
+  const std::shared_ptr<Note> &getReversedParent();    
+  void setReversedParent(const std::shared_ptr<Note> &reversedParent);
 private:
   std::shared_ptr<NoteType> _noteType;
   std::vector<std::tuple<std::string, std::string>> _fields;
   std::set<std::string> _tags;
   int _flags = 0;
+  std::shared_ptr<Note> _reversedParent;
 };
 } // namespace ankicpp

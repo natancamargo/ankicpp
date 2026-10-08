@@ -4,11 +4,18 @@
 #include <tuple>
 
 namespace ankicpp {
-std::shared_ptr<NoteType> Note::getType() const { return _noteType; }
-void Note::setType(std::shared_ptr<NoteType> noteType) { _noteType = noteType; }
+const std::shared_ptr<NoteType> &Note::getType() const { return _noteType; }
+void Note::setType(const std::shared_ptr<NoteType> &noteType) {
+  _noteType = noteType;
+}
 
-std::vector<std::tuple<std::string, std::string>> &Note::getFields() {
+const std::vector<std::tuple<std::string, std::string>> &
+Note::getFields() const {
   return _fields;
+}
+void Note::setFields(
+    const std::vector<std::tuple<std::string, std::string>> &fields) {
+  _fields = fields;
 }
 std::string Note::getField(std::string name) {
   auto it = std::find_if(_fields.begin(), _fields.end(),
@@ -41,10 +48,17 @@ void Note::removeField(std::string name) {
   }
 }
 
-std::set<std::string> &Note::getTags() { return _tags; }
+const std::set<std::string> &Note::getTags() const { return _tags; }
+void Note::setTags(const std::set<std::string> &tags) { _tags = tags; }
 void Note::addTag(std::string name) { _tags.insert(name); }
 void Note::removeTag(std::string name) { _tags.erase(name); }
 
 int Note::getFlags() const { return _flags; }
 void Note::setFlags(int flags) { _flags = flags; }
+
+const std::shared_ptr<Note> &Note::getReversedParent() { return _reversedParent; }
+void Note::setReversedParent(const std::shared_ptr<Note> &reversedParent) {
+  _reversedParent = reversedParent;
+}
+
 } // namespace ankicpp

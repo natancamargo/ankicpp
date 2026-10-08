@@ -77,11 +77,38 @@ void NoteType::setFooter(std::string footer) { _footer = footer; }
 std::string NoteType::getStyle() const { return _style; }
 void NoteType::setStyle(std::string style) { _style = style; }
 
+const std::string style = R"(.card {
+    font-family: arial;
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: center;
+    color: black;
+    background-color: white;
+})";
+
+const std::string header = R"(\documentclass[12pt]{article}
+\special{papersize=3in,5in}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb,amsmath}
+\pagestyle{empty}
+\setlength{\parindent}{0in}
+\begin{document})";
+
+const std::string footer = "\\end{document}";
+
 const std::shared_ptr<Template> basicTemplate = []() {
   const std::shared_ptr<Template> templatee =
-      std::make_shared<Template>("ankicpp::Basic::Card1");
-  templatee->setFrontTemplate("{{Front}}");
-  templatee->setBackTemplate("{{FrontSide}}\n\n<hr id=answer>\n\n{{Back}}");
+      std::make_shared<Template>("ankicpp::Basic::Card_1");
+  templatee->setFrontTemplate("\x0a\x09{{Front}}");
+  templatee->setBackTemplate("\x12\x27{{FrontSide}}\n\n<hr id=answer>\n\n{{Back}}\x40\xf4\xcf\xec\xe0\xf8\xdf\xf1\xce\x51");
+  return templatee;
+}();
+
+const std::shared_ptr<Template> reversedTemplate = []() {
+  const std::shared_ptr<Template> templatee =
+      std::make_shared<Template>("ankicpp::Basic::Card_2");
+  templatee->setFrontTemplate("\x0a\x08{{Back}}");
+  templatee->setBackTemplate("\x12\x28{{FrontSide}}\n\n<hr id=answer>\n\n{{Front}}\x40\xf4\xcf\xec\xe0\xf8\xdf\xf1\xce\x51");
   return templatee;
 }();
 
@@ -89,22 +116,28 @@ const std::shared_ptr<NoteType> basicNoteType = []() {
   const std::shared_ptr<NoteType> noteType =
       std::make_shared<NoteType>("ankicpp::Basic");
   noteType->addTemplate(basicTemplate);
-  noteType->setStyle(R"(.card {
-    font-family: arial;
-    font-size: 20px;
-    line-height: 1.5;
-    text-align: center;
-    color: black;
-    background-color: white;
-})");
-  noteType->setHeader(R"(\documentclass[12pt]{article}
-\special{papersize=3in,5in}
-\usepackage[utf8]{inputenc}
-\usepackage{amssymb,amsmath}
-\pagestyle{empty}
-\setlength{\parindent}{0in}
-\begin{document})");
-  noteType->setFooter("\\end{document}");
+  noteType->setStyle(style);
+  noteType->setHeader(header);
+  noteType->setFooter(footer);
+  std::shared_ptr<Field> frontField = std::make_shared<Field>("Front");
+  frontField->setFont("Arial");
+  frontField->setFontSize(20);
+  noteType->addField(frontField);
+  std::shared_ptr<Field> backField = std::make_shared<Field>("Back");
+  backField->setFont("Arial");
+  backField->setFontSize(20);
+  noteType->addField(backField);
+  return noteType;
+}();
+
+const std::shared_ptr<NoteType> basicAndReversedNoteType = []() {
+  const std::shared_ptr<NoteType> noteType =
+      std::make_shared<NoteType>("ankicpp::Basic_and_Reversed");
+  noteType->addTemplate(basicTemplate);
+  noteType->addTemplate(reversedTemplate);
+  noteType->setStyle(style);
+  noteType->setHeader(header);
+  noteType->setFooter(footer);
   std::shared_ptr<Field> frontField = std::make_shared<Field>("Front");
   frontField->setFont("Arial");
   frontField->setFontSize(20);
@@ -118,18 +151,14 @@ const std::shared_ptr<NoteType> basicNoteType = []() {
 
 const std::shared_ptr<Template> clozeTemplate = []() {
   const std::shared_ptr<Template> templatee =
-      std::make_shared<Template>("ankicpp::Basic::Card1");
+      std::make_shared<Template>("ankicpp::Cloze::Card_1");
   templatee->setFrontTemplate("{{cloze:Text}}");
   templatee->setBackTemplate(R"({{cloze:Text}}<br>
 {{Back Extra}})");
   return templatee;
 }();
 
-const std::shared_ptr<NoteType> clozeNoteType = []() {
-  const std::shared_ptr<NoteType> noteType =
-      std::make_shared<NoteType>("ankicpp::Basic");
-  noteType->addTemplate(basicTemplate);
-  noteType->setStyle(R"(.card {
+const std::string clozeStyle = R"(.card {
     font-family: arial;
     font-size: 20px;
     line-height: 1.5;
@@ -144,16 +173,15 @@ const std::shared_ptr<NoteType> clozeNoteType = []() {
 .nightMode .cloze {
     color: lightblue;
 }
-)");
-  noteType->setHeader(R"(\documentclass[12pt]{article}
-\special{papersize=3in,5in}
-\usepackage[utf8]{inputenc}
-\usepackage{amssymb,amsmath}
-\pagestyle{empty}
-\setlength{\parindent}{0in}
-\begin{document}
-)");
-  noteType->setFooter("\\end{document}");
+)";
+
+const std::shared_ptr<NoteType> clozeNoteType = []() {
+  const std::shared_ptr<NoteType> noteType =
+      std::make_shared<NoteType>("ankicpp::Cloze");
+  noteType->addTemplate(clozeTemplate);
+  noteType->setStyle(clozeStyle);
+  noteType->setHeader(header);
+  noteType->setFooter(footer);
   std::shared_ptr<Field> textField = std::make_shared<Field>("Text");
   textField->setFont("Arial");
   textField->setFontSize(20);

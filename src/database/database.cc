@@ -19,6 +19,7 @@
 #include "note/note-type-mapper.h"
 #include "note/note-type-repository.h"
 #include "field/field-repository.h"
+#include "note/note-type.h"
 #include "template/template-dto.h"
 #include "template/template.h"
 #include "template/template-mapper.h"
@@ -118,13 +119,19 @@ bool populateDatabase(Deck deck) {
   deckRepository.create(DeckDTO::createDefaultDTO());
   
   for (const std::shared_ptr<Note> &note : deck.getNotes()) {
+    // Note
     const NoteDTO noteDTO = noteMapper::modelToDTO(*note);
     noteRepository.create(noteDTO);
-    
+
+    const bool isReversedChild = !!note->getReversedParent();    
+    if (isReversedChild) {
+      continue;
+    }
+    // NoteTye
     const std::shared_ptr<NoteType> &noteType = note->getType();
     const NoteTypeDTO noteTypeDTO = noteTypeMapper::modelToDTO(*noteType);
     noteTypeRepository.create(noteTypeDTO);
-    
+
     // Templates
     for (const std::shared_ptr<Template> &templatee :
          noteType->getTemplates()) {

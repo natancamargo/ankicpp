@@ -98,7 +98,7 @@ The card has front as 'front 1' and back as 'back 2'.
 **** Card
 | field       |         value | type   | description                            |
 |-------------+---------------+--------+----------------------------------------|
-| card.id     | 1771561768793 | int    | same as note.id                        |
+| card.id     | 1771561768793 | int    | id                                     |
 | card.nid    | 1771561768793 | int    | same as note.id                        |
 | card.did    | 1771561732354 | int    | deck id                                |
 | card.ord    |             0 | int    | which card template or cloze deletions |

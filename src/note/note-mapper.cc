@@ -27,7 +27,7 @@ NoteDTO modelToDTO(Note &model) {
     }
   }
 
-  for (std::vector<std::tuple<std::string, std::string>>::iterator it =
+  for (std::vector<std::tuple<std::string, std::string>>::const_iterator it =
            model.getFields().begin();
        it != model.getFields().end(); ++it) {
     std::string field = std::get<0>(*it);

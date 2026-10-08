@@ -15,11 +15,29 @@ Small library to create anki notes.
   std::shared_ptr<Note> note = std::make_shared<Note>();
 
   note->setType(basicNoteType);
-  note->addField("Front", "...");
-  note->addField("Back", "...");
+  note->addField("Front", "<Front Content>");
+  note->addField("Back", "<Bakc Content>");
 
   deck.addNote(note);
-  exportDeck(deck, "./ankicpp.apkg");
+
+  exportDeck(deck, "./basic/ankicpp.apkg");
+```
+### Basic and Reversed usage
+```c++
+  #include "ankicpp"
+ 
+  using namespace ankicpp;
+
+  Deck deck{"deck-name"};
+  std::shared_ptr<ankicpp::Note> note{};
+
+  note.setType(basicAndReversedNoteType);
+  note.addField("Front", "<Front Content>");
+  note.addField("Back", "<Back Content>");
+
+  deck.addNote(note);
+
+  exportDeck(deck, "./basic-and-reversed/ankicpp.apkg");
 ```
 ### Cloze usage (not working, it's under development)
 ```c++
@@ -34,45 +52,9 @@ Small library to create anki notes.
   note.addField("Text", "{{c1::text1}} {{c2::text2}}");
 
   deck.addNote(note);
-  exportDeck(deck, "./ankicpp.apkg");
+
+  exportDeck(deck, "./cloze/ankicpp.apkg");
 ```
-### With a new template usage (not working, it's under development)
-```c++
-#include "ankicpp"
-
-  using namespace ankicpp;
-
-  Deck deck{"deck-name"};
-  Note note;
-
-  note.setType(basicNoteType);
-  note.addField("Front", "...");
-  note.addField("Back", "...");
-
-  Template templatee{"Card 2"};
-  templatee.setFrontTemplate("{{Front}}");
-  templatee.setBackTemplate(R"(
-  {{FrontSide}}
-
-  <hr id=answer>
-
-  {{Back}}
-          )");
-  note.setStyle(R"(
-   .card {
-     font-family: arial;
-     font-size: 20px;
-     line-height: 1.5;
-     text-align: center;
-     color: black;
-     background-color: white;
-   }
-  )");
-  note.addTemplate(newType);
-
-  deck.addNote(note);
-  exportDeck(deck, "./ankicpp.apkg");
-  ```
 
 ### Build
 ---
