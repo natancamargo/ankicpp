@@ -119,9 +119,17 @@ add_custom_target(docs
     COMMENT "Generating HTML documentation with Doxygen"
 )
 
-# copy resources
+# create and copy resources
 # ----------------------------------------------------------------------------------------
+# copy schema.sql
 add_custom_command(
-  TARGET ${LIBRARY_NAME} POST_BUILD
+  TARGET ${TEST_NAME} POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/src/database/schema.sql ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/database/schema.sql
+)
+# create testing directories
+add_custom_command(
+  TARGET ${TEST_NAME} POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/empty
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/basic
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/basic-and-reversed
 )
