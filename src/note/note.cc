@@ -23,7 +23,7 @@ std::string Note::getField(std::string name) {
                            return std::get<0>(e) == name;
                          });
   if (it != _fields.end()) {
-    return std::get<0>(*it);
+    return std::get<1>(*it);
   }
   return "";
 }

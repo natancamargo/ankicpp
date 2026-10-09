@@ -7,23 +7,23 @@
 #include "col/col-repository.h"
 #include "config/config-dto.h"
 #include "config/config-repository.h"
+#include "database/repository.h"
 #include "deck/deck-config-dto.h"
 #include "deck/deck-config-repository.h"
-#include "database/repository.h"
 #include "deck/deck-dto.h"
-#include "deck/deck-repository.h"
 #include "deck/deck-mapper.h"
+#include "deck/deck-repository.h"
+#include "field/field-mapper.h"
+#include "field/field-repository.h"
 #include "note/note-mapper.h"
 #include "note/note-repository.h"
 #include "note/note-type-dto.h"
 #include "note/note-type-mapper.h"
 #include "note/note-type-repository.h"
-#include "field/field-repository.h"
 #include "note/note-type.h"
 #include "template/template-dto.h"
-#include "template/template.h"
 #include "template/template-mapper.h"
-#include "field/field-mapper.h"
+#include "template/template.h"
 #include <cerrno>
 #include <cstdint>
 #include <format>
@@ -44,7 +44,7 @@ bool connect(std::string filename) {
   int connectionOpened = safeSql(
       [filename]() { sql = soci::session(soci::sqlite3, filename.data()); });
   if (!connectionOpened) {
-    return false;    
+    return false;
   }
   int connectionError = sqlite3_open(filename.data(), &db);
   if (connectionError) {
@@ -94,20 +94,24 @@ bool createDatabase() {
 bool populateDatabase(const std::shared_ptr<Deck> &deck) {
   const Repository<DeckDTO, std::int64_t> &deckRepository = DeckRepository();
   const Repository<CardDTO, std::int64_t> &cardRepository = CardRepository();
-  const Repository<TemplateDTO, std::int64_t> &templateRepository = TemplateRepository();
+  const Repository<TemplateDTO, std::int64_t> &templateRepository =
+      TemplateRepository();
   const Repository<FieldDTO, std::int64_t> &fieldRepository = FieldRepository();
   const Repository<NoteDTO, std::int64_t> &noteRepository = NoteRepository();
-  const Repository<NoteTypeDTO, std::int64_t> &noteTypeRepository = NoteTypeRepository();
+  const Repository<NoteTypeDTO, std::int64_t> &noteTypeRepository =
+      NoteTypeRepository();
   const Repository<ColDTO, std::int64_t> &colRepository = ColRepository();
-  const Repository<ConfigDTO, std::int64_t> &configRepository = ConfigRepository();
-  const Repository<DeckConfigDTO, std::int64_t> &deckConfigRepository = DeckConfigRepository();
+  const Repository<ConfigDTO, std::int64_t> &configRepository =
+      ConfigRepository();
+  const Repository<DeckConfigDTO, std::int64_t> &deckConfigRepository =
+      DeckConfigRepository();
 
   // deck
   deckRepository.create(deckMapper::modelToDTO(*deck));
 
-  // col  
+  // col
   colRepository.create(ColDTO::createDTO());
-  
+
   // Config
   const std::vector<ConfigDTO> configDTOs = ConfigDTO::createDTOs();
   for (const ConfigDTO &configDTO : configDTOs) {
@@ -117,13 +121,13 @@ bool populateDatabase(const std::shared_ptr<Deck> &deck) {
   // Deck config
   deckConfigRepository.create(DeckConfigDTO::createDefaultDTO());
   deckRepository.create(DeckDTO::createDefaultDTO());
-  
+
   for (const std::shared_ptr<Note> &note : deck->getNotes()) {
     // Note
     const NoteDTO noteDTO = noteMapper::modelToDTO(*note);
     noteRepository.create(noteDTO);
 
-    const bool isReversedChild = !!note->getReversedParent();    
+    const bool isReversedChild = !!note->getReversedParent();
     if (isReversedChild) {
       continue;
     }
@@ -135,13 +139,7 @@ bool populateDatabase(const std::shared_ptr<Deck> &deck) {
     // Templates
     for (const std::shared_ptr<Template> &templatee :
          noteType->getTemplates()) {
-      const std::shared_ptr<Card> &card = std::make_shared<Card>();
-      card->setDeck(deck);
-      card->setNote(note);
-      card->setTemplate(templatee);
-      const CardDTO cardDTO = cardMapper::modelToDTO(*card);
       const TemplateDTO templateDTO = templateMapper::modelToDTO(*templatee);
-      cardRepository.create(cardDTO);
       templateRepository.create(templateDTO);
     }
 
@@ -149,7 +147,12 @@ bool populateDatabase(const std::shared_ptr<Deck> &deck) {
     for (const std::shared_ptr<Field> &field : noteType->getFields()) {
       const FieldDTO fieldDTO = fieldMapper::modelToDTO(*field);
       fieldRepository.create(fieldDTO);
-     }
+    }
+  }
+
+  for (const std::shared_ptr<Card> &card : deck->getCards()) {
+    const CardDTO cardDTO = cardMapper::modelToDTO(*card);
+    cardRepository.create(cardDTO);
   }
 
   return true;

@@ -99,14 +99,14 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>  std::shared_ptr&lt;Deck&gt; getDeck() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>  <span class="keywordtype">void</span> setDeck(std::shared_ptr&lt;Deck&gt; deck);</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>  </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>  std::shared_ptr&lt;Template&gt; getTemplate() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  <span class="keywordtype">void</span> setTemplate(std::shared_ptr&lt;Template&gt; cardType);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>  uint64_t getOrder() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>  <span class="keywordtype">void</span> setOrder(uint64_t order);</div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  std::shared_ptr&lt;Note&gt; getNote() <span class="keyword">const</span>;</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <span class="keywordtype">void</span> setNote(std::shared_ptr&lt;Note&gt; note);</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>  std::shared_ptr&lt;Deck&gt; _deck;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  std::shared_ptr&lt;Template&gt; _template;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  int64_t _order;</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  std::shared_ptr&lt;Note&gt; _note;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
 </div>

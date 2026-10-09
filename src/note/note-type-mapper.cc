@@ -10,7 +10,13 @@ NoteTypeDTO modelToDTO(NoteType &model) {
   noteTypeDTO.mtime_secs = 0;
   noteTypeDTO.usn = 0;
 
-  noteTypeDTO.config.insert(noteTypeDTO.config.end(), {0x1a, 0x94, 0x01});
+  if (model == *clozeNoteType) {
+    noteTypeDTO.config.insert(noteTypeDTO.config.end(),
+                              {0x08, 0x01, 0x1a, 0xf3, 0x01});
+  } else {
+    noteTypeDTO.config.insert(noteTypeDTO.config.end(), {0x1a, 0x94, 0x01});
+  }
+
   const std::string &header = model.getHeader();
   const std::string &footer = model.getFooter();
   const std::string &style = model.getStyle();
@@ -22,11 +28,18 @@ NoteTypeDTO modelToDTO(NoteType &model) {
   noteTypeDTO.config.insert(noteTypeDTO.config.end(), {0x0a, 0x32, 0x0e});
   std::copy(footer.begin(), footer.end(),
             std::back_inserter(noteTypeDTO.config));
-  noteTypeDTO.config.insert(
-      noteTypeDTO.config.end(),
-      {0x42, 0x05, 0x10, 0x01, 0x1a, 0x01, 0x00, 0x48, 0x01});
 
-      return noteTypeDTO;
+  if (model == *clozeNoteType) {
+    noteTypeDTO.config.insert(
+        noteTypeDTO.config.end(),
+        {0x42, 0x05, 0x10, 0x01, 0x1a, 0x01, 0x00, 0x48, 0x05});
+  } else {
+    noteTypeDTO.config.insert(
+        noteTypeDTO.config.end(),
+        {0x42, 0x05, 0x10, 0x01, 0x1a, 0x01, 0x00, 0x48, 0x01});
+  }
+  
+  return noteTypeDTO;
 }
 // NoteType modelFromDTO(NoteTypeDTO dto) {
 //   return {};

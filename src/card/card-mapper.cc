@@ -1,7 +1,6 @@
 #include "card/card-dto.h"
 #include "card/card.h"
 #include "deck/deck.h"
-#include <iostream>
 namespace ankicpp {
 namespace cardMapper {
 CardDTO modelToDTO(Card &model) {
@@ -10,8 +9,7 @@ CardDTO modelToDTO(Card &model) {
   cardDTO.id = model.getId();
   cardDTO.nid = model.getNote()->getId();
   cardDTO.did = model.getDeck()->getId();
-  cardDTO.ord =
-      model.getNote()->getType()->getTemplateIndex(model.getTemplate());
+  cardDTO.ord = model.getOrder();
   cardDTO.mod = 0;
   cardDTO.usn = 0;
   cardDTO.type = 0;

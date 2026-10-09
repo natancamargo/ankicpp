@@ -2,6 +2,7 @@
 #include <memory>
 
 #include "ankicpp/ankicpp.h"
+#include "note/note-type.h"
 
 namespace ankicpp {
 TEST_CASE("Note should work properly", "[note]") {
@@ -87,39 +88,6 @@ TEST_CASE("Deck should work properly", "[deck]") {
     deck->clearCards();
     REQUIRE(deck->getCards().size() == 0);
   }
-  SECTION("when setting a complete basic note", "[deck][card]") {
-    std::shared_ptr<Note> note = std::make_shared<Note>();
-
-    note->setType(basicNoteType);
-    note->addField("Front", "<Front Content>");
-    note->addField("Back", "<Back Content>");
-
-    deck->addNote(note);
-    deck->generateCards();
-
-    REQUIRE(deck->getNotes().size() == 1);
-    REQUIRE(deck->getCards().size() == 1);
-    REQUIRE(note->getFields().size() == 2);
-    REQUIRE(note->getType()->getFields().size() == 2);
-    REQUIRE(note->getType()->getTemplates().size() == 1);
-  }
-
-  SECTION("when setting a complete basic and reversed note", "[deck][card]") {
-    std::shared_ptr<Note> note = std::make_shared<Note>();
-
-    note->setType(basicAndReversedNoteType);
-    note->addField("Front", "<Front Content>");
-    note->addField("Back", "<Back Content>");
-
-    deck->addNote(note);
-    deck->generateCards();
-
-    REQUIRE(deck->getNotes().size() == 2);
-    REQUIRE(deck->getCards().size() == 2);
-    REQUIRE(note->getFields().size() == 2);
-    REQUIRE(note->getType()->getFields().size() == 2);
-    REQUIRE(note->getType()->getTemplates().size() == 2);
-  }
 }
 
 TEST_CASE("Export should work properly", "[export]") {
@@ -138,11 +106,18 @@ TEST_CASE("Export should work properly", "[export]") {
     note->addField("Back", "Back content");
 
     deck->addNote(note);
+    deck->generateCards();
 
+    REQUIRE(deck->getNotes().size() == 1);
+    REQUIRE(deck->getCards().size() == 1);
+    REQUIRE(note->getFields().size() == 2);
+    REQUIRE(note->getType()->getFields().size() == 2);
+    REQUIRE(note->getType()->getTemplates().size() == 1);    
     REQUIRE(exportDeck(deck, "./basic/deck.apkg"));
   }
 
-  SECTION("when trying to export a basic and reversed deck", "[deck][export][reversed]") {
+  SECTION("when trying to export a basic and reversed deck",
+          "[deck][export][reversed]") {
     std::shared_ptr<Deck> deck = std::make_shared<Deck>("reversed-deck");
     std::shared_ptr<Note> note = std::make_shared<Note>();
 
@@ -151,23 +126,52 @@ TEST_CASE("Export should work properly", "[export]") {
     note->addField("Back", "<Back Content>");
 
     deck->addNote(note);
+    deck->generateCards();
 
+    REQUIRE(deck->getNotes().size() == 2);
+    REQUIRE(deck->getCards().size() == 2);
+    REQUIRE(note->getFields().size() == 2);
+    REQUIRE(note->getType()->getFields().size() == 2);
+    REQUIRE(note->getType()->getTemplates().size() == 2);
     REQUIRE(exportDeck(deck, "./basic-and-reversed/deck.apkg"));
   }
 
-  SECTION("when trying to export a basic deck", "[deck][export][tag]") {
+  SECTION("when trying to export a basic deck with tags",
+          "[deck][export][tag]") {
     std::shared_ptr<Deck> deck = std::make_shared<Deck>("tags-deck");
     std::shared_ptr<Note> note = std::make_shared<Note>();
 
     note->setType(basicNoteType);
     note->addField("Front", "Front content");
     note->addField("Back", "Back content");
-    note->addTag("tag1");    
-    note->addTag("tag2");    
+    note->addTag("tag1");
+    note->addTag("tag2");
 
     deck->addNote(note);
+    deck->generateCards();
 
+    REQUIRE(note->getTags().size() == 2);    
     REQUIRE(exportDeck(deck, "./tags/deck.apkg"));
-  }  
+  }
+
+  SECTION("when trying to export a cloze deck", "[deck][export][cloze]") {
+    std::shared_ptr<Deck> deck = std::make_shared<Deck>("cloze-deck");
+    std::shared_ptr<Note> note = std::make_shared<Note>();
+
+    note->setType(clozeNoteType);
+    note->addField("Text",
+                   "Canberra was founded in {{c1::1913}}. {{c2::Test}}.");
+    note->addField("Back Extra", "<Back Extra Content>");
+
+    deck->addNote(note);
+    deck->generateCards();
+
+    REQUIRE(deck->getNotes().size() == 1);
+    REQUIRE(deck->getCards().size() == 2);
+    REQUIRE(note->getFields().size() == 2);
+    REQUIRE(note->getType()->getFields().size() == 2);
+    REQUIRE(note->getType()->getTemplates().size() == 1);        
+    REQUIRE(exportDeck(deck, "./cloze/deck.apkg"));
+  }
 }
 } // namespace ankicpp

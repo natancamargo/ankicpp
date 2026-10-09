@@ -15,14 +15,14 @@ public:
   std::shared_ptr<Deck> getDeck() const;
   void setDeck(std::shared_ptr<Deck> deck);
   
-  std::shared_ptr<Template> getTemplate() const;
-  void setTemplate(std::shared_ptr<Template> cardType);
+  uint64_t getOrder() const;
+  void setOrder(uint64_t order);
 
   std::shared_ptr<Note> getNote() const;
   void setNote(std::shared_ptr<Note> note);
 private:
   std::shared_ptr<Deck> _deck;
-  std::shared_ptr<Template> _template;
+  int64_t _order;
   std::shared_ptr<Note> _note;
 };
 } // namespace ankicpp

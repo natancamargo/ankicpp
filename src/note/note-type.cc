@@ -172,8 +172,7 @@ const std::string clozeStyle = R"(.card {
 }
 .nightMode .cloze {
     color: lightblue;
-}
-)";
+})";
 
 const std::shared_ptr<NoteType> clozeNoteType = []() {
   const std::shared_ptr<NoteType> noteType =

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5.0)
-project(ankicpp VERSION 0.0.6)
+project(ankicpp VERSION 0.1.0)
 
 # enable unit tests
 option(ENABLE_TEST "Enable unit testing" ON)
@@ -133,4 +133,5 @@ add_custom_command(
   COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/basic
   COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/basic-and-reversed
   COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/tags
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/cloze
 )

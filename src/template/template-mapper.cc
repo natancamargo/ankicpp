@@ -19,6 +19,8 @@ TemplateDTO modelToDTO(Template &model) {
     templateDTO.config.insert(templateDTO.config.end(), {0x0a, 0x09});
   } else if (model.getId() == reversedTemplate->getId()) {
     templateDTO.config.insert(templateDTO.config.end(), {0x0a, 0x08});
+  } else if (model.getId() == clozeTemplate->getId()) {
+    templateDTO.config.insert(templateDTO.config.end(), {0x0a, 0x0e});
   }
   const std::string &frontTemplte = model.getFrontTemplate();
   const std::string &backTemplte = model.getBackTemplate();
@@ -28,6 +30,8 @@ TemplateDTO modelToDTO(Template &model) {
     templateDTO.config.insert(templateDTO.config.end(), {0x12, 0x27});
   } else if (model.getId() == reversedTemplate->getId()) {
     templateDTO.config.insert(templateDTO.config.end(), {0x12, 0x28});
+  } else if (model.getId() == clozeTemplate->getId()) {
+    templateDTO.config.insert(templateDTO.config.end(), {0x12, 0x21});
   }
   std::copy(backTemplte.begin(), backTemplte.end(),
             std::back_inserter(templateDTO.config));
