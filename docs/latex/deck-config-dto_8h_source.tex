@@ -10,12 +10,34 @@
 \DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
 \DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classankicpp_1_1DeckConfigDTO}{DeckConfigDTO}}\ \{}
 \DoxyCodeLine{00008\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00009\ \ \ std::uint32\_t\ id;}
+\DoxyCodeLine{00009\ \ \ std::int64\_t\ id;}
 \DoxyCodeLine{00010\ \ \ std::string\ name;}
-\DoxyCodeLine{00011\ \ \ std::uint32\_t\ mtime\_secs;}
-\DoxyCodeLine{00012\ \ \ std::uint32\_t\ usn;}
+\DoxyCodeLine{00011\ \ \ std::int64\_t\ mtime\_secs;}
+\DoxyCodeLine{00012\ \ \ std::int64\_t\ usn;}
 \DoxyCodeLine{00013\ \ \ std::vector<unsigned\ char>\ config;}
-\DoxyCodeLine{00014\ \};}
-\DoxyCodeLine{00015\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classankicpp_1_1DeckConfigDTO}{DeckConfigDTO}}\ createDefaultDTO()\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{classankicpp_1_1DeckConfigDTO}{DeckConfigDTO}}\ defaultConfigDTO;}
+\DoxyCodeLine{00017\ \ \ \ \ defaultConfigDTO.id\ =\ 1;}
+\DoxyCodeLine{00018\ \ \ \ \ defaultConfigDTO.name\ =\ \textcolor{stringliteral}{"{}Default"{}};}
+\DoxyCodeLine{00019\ \ \ \ \ defaultConfigDTO.mtime\_secs\ =\ 0;}
+\DoxyCodeLine{00020\ \ \ \ \ defaultConfigDTO.usn\ =\ 0;}
+\DoxyCodeLine{00021\ \ \ \ \ defaultConfigDTO.config.insert(}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ defaultConfigDTO.config.end(),}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \{0x0a,\ 0x08,\ 0x00,\ 0x00,\ 0x80,\ 0x3f,\ 0x00,\ 0x00,\ 0x20,\ 0x41,\ 0x12,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ 0x04,\ 0x00,\ 0x00,\ 0x20,\ 0x41,\ 0x22,\ 0x1c,\ 0x00,\ 0x00,\ 0x80,\ 0x3f,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ 0x00,\ 0x00,\ 0x80,\ 0x3f,\ 0x00,\ 0x00,\ 0x80,\ 0x3f,\ 0x00,\ 0x00,\ 0x80,}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ 0x3f,\ 0x00,\ 0x00,\ 0x80,\ 0x3f,\ 0x00,\ 0x00,\ 0x80,\ 0x3f,\ 0x00,\ 0x00,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ 0x80,\ 0x3f,\ 0x48,\ 0x14,\ 0x50,\ 0xc8,\ 0x01,\ 0x5d,\ 0x00,\ 0x00,\ 0x20,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ 0x40,\ 0x65,\ 0x66,\ 0x66,\ 0xa6,\ 0x3f,\ 0x6d,\ 0x9a,\ 0x99,\ 0x99,\ 0x3f,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ 0x7d,\ 0x00,\ 0x00,\ 0x80,\ 0x3f,\ 0x80,\ 0x01,\ 0x94,\ 0x9d,\ 0x02,\ 0x88,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ 0x01,\ 0x01,\ 0x90,\ 0x01,\ 0x01,\ 0x98,\ 0x01,\ 0x04,\ 0xa8,\ 0x01,\ 0x01,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ 0xb0,\ 0x01,\ 0x08,\ 0xc0,\ 0x01,\ 0x3c,\ 0xad,\ 0x02,\ 0x66,\ 0x66,\ 0x66,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ 0x3f,\ 0xc5,\ 0x02,\ 0x66,\ 0x66,\ 0x66,\ 0x3f,\ 0xe0,\ 0x02,\ 0x01\});}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordflow}{return}\ defaultConfigDTO;}
+\DoxyCodeLine{00035\ \ \ \}}
+\DoxyCodeLine{00036\ \};}
+\DoxyCodeLine{00037\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
 
 \end{DoxyCode}

@@ -90,14 +90,36 @@ $(document).ready(function() { init_codefold(0); });
 <div class="foldopen" id="foldopen00007" data-start="{" data-end="};">
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="classankicpp_1_1DeckConfigDTO.html">    7</a></span><span class="keyword">class </span><a class="code hl_class" href="classankicpp_1_1DeckConfigDTO.html">DeckConfigDTO</a> {</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>  std::uint32_t id;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>  std::int64_t id;</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>  std::string name;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  std::uint32_t mtime_secs;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>  std::uint32_t usn;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  std::int64_t mtime_secs;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>  std::int64_t usn;</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>  std::vector&lt;unsigned char&gt; config;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>};</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>  <span class="keyword">static</span> <a class="code hl_class" href="classankicpp_1_1DeckConfigDTO.html">DeckConfigDTO</a> createDefaultDTO() {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_class" href="classankicpp_1_1DeckConfigDTO.html">DeckConfigDTO</a> defaultConfigDTO;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    defaultConfigDTO.id = 1;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    defaultConfigDTO.name = <span class="stringliteral">&quot;Default&quot;</span>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    defaultConfigDTO.mtime_secs = 0;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    defaultConfigDTO.usn = 0;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    defaultConfigDTO.config.insert(</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        defaultConfigDTO.config.end(),</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        {0x0a, 0x08, 0x00, 0x00, 0x80, 0x3f, 0x00, 0x00, 0x20, 0x41, 0x12,</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>         0x04, 0x00, 0x00, 0x20, 0x41, 0x22, 0x1c, 0x00, 0x00, 0x80, 0x3f,</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>         0x00, 0x00, 0x80, 0x3f, 0x00, 0x00, 0x80, 0x3f, 0x00, 0x00, 0x80,</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>         0x3f, 0x00, 0x00, 0x80, 0x3f, 0x00, 0x00, 0x80, 0x3f, 0x00, 0x00,</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>         0x80, 0x3f, 0x48, 0x14, 0x50, 0xc8, 0x01, 0x5d, 0x00, 0x00, 0x20,</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>         0x40, 0x65, 0x66, 0x66, 0xa6, 0x3f, 0x6d, 0x9a, 0x99, 0x99, 0x3f,</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>         0x7d, 0x00, 0x00, 0x80, 0x3f, 0x80, 0x01, 0x94, 0x9d, 0x02, 0x88,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>         0x01, 0x01, 0x90, 0x01, 0x01, 0x98, 0x01, 0x04, 0xa8, 0x01, 0x01,</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>         0xb0, 0x01, 0x08, 0xc0, 0x01, 0x3c, 0xad, 0x02, 0x66, 0x66, 0x66,</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>         0x3f, 0xc5, 0x02, 0x66, 0x66, 0x66, 0x3f, 0xe0, 0x02, 0x01});</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordflow">return</span> defaultConfigDTO;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  }</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>};</div>
 </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>} <span class="comment">// namespace ankicpp</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>} <span class="comment">// namespace ankicpp</span></div>
 <div class="ttc" id="aclassankicpp_1_1DeckConfigDTO_html"><div class="ttname"><a href="classankicpp_1_1DeckConfigDTO.html">ankicpp::DeckConfigDTO</a></div><div class="ttdef"><b>Definition</b> deck-config-dto.h:7</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

@@ -1,34 +1,69 @@
 \doxysection{ankicpp\+::Card Class Reference}
 \hypertarget{classankicpp_1_1Card}{}\label{classankicpp_1_1Card}\index{ankicpp::Card@{ankicpp::Card}}
+
+
+Inheritance diagram for ankicpp\+::Card\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classankicpp_1_1Card__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ankicpp\+::Card\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classankicpp_1_1Card__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classankicpp_1_1Card_ab0b9fd27afab6b01d8f8a2bc74202063}\label{classankicpp_1_1Card_ab0b9fd27afab6b01d8f8a2bc74202063} 
-std\+::int64\+\_\+t {\bfseries get\+Id} () const
+\Hypertarget{classankicpp_1_1Card_ae5fa8b3ddad86b9501465bd0da4e21e7}\label{classankicpp_1_1Card_ae5fa8b3ddad86b9501465bd0da4e21e7} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classankicpp_1_1Deck}{Deck}} $>$ {\bfseries get\+Deck} () const
 \item 
-\Hypertarget{classankicpp_1_1Card_acd992649f666c6cd9dbc5f5672067672}\label{classankicpp_1_1Card_acd992649f666c6cd9dbc5f5672067672} 
+\Hypertarget{classankicpp_1_1Card_a3c4f01f6d54e6e32cfb285623a52e566}\label{classankicpp_1_1Card_a3c4f01f6d54e6e32cfb285623a52e566} 
+void {\bfseries set\+Deck} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classankicpp_1_1Deck}{Deck}} $>$ deck)
+\item 
+\Hypertarget{classankicpp_1_1Card_ac7c3ba3178d3444d806e810b165628a3}\label{classankicpp_1_1Card_ac7c3ba3178d3444d806e810b165628a3} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classankicpp_1_1Template}{Template}} $>$ {\bfseries get\+Template} () const
+\item 
+\Hypertarget{classankicpp_1_1Card_a5e85e07436058d1c0f38066fbe3c6387}\label{classankicpp_1_1Card_a5e85e07436058d1c0f38066fbe3c6387} 
+void {\bfseries set\+Template} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classankicpp_1_1Template}{Template}} $>$ card\+Type)
+\item 
+\Hypertarget{classankicpp_1_1Card_aff20aea04d8e569a6d7cfcf2ebfb640d}\label{classankicpp_1_1Card_aff20aea04d8e569a6d7cfcf2ebfb640d} 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classankicpp_1_1Note}{Note}} $>$ {\bfseries get\+Note} () const
+\item 
+\Hypertarget{classankicpp_1_1Card_a900ae10d4e00c55c516ae5a85b0cc87d}\label{classankicpp_1_1Card_a900ae10d4e00c55c516ae5a85b0cc87d} 
+void {\bfseries set\+Note} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classankicpp_1_1Note}{Note}} $>$ note)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classankicpp_1_1Identifyable}{ankicpp\+::\+Identifyable}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::int64\+\_\+t {\bfseries get\+Id} ()
+\item 
 void {\bfseries set\+Id} (std\+::int64\+\_\+t id)
 \item 
-\Hypertarget{classankicpp_1_1Card_a7cee1cd66d34fbc730720abde08ef4bf}\label{classankicpp_1_1Card_a7cee1cd66d34fbc730720abde08ef4bf} 
-\mbox{\hyperlink{classankicpp_1_1CardType}{Card\+Type}} \texorpdfstring{$\ast$}{*} {\bfseries get\+Card\+Type} () const
+bool {\bfseries operator==} (\mbox{\hyperlink{classankicpp_1_1Identifyable}{Identifyable}} \&rhs)
 \item 
-\Hypertarget{classankicpp_1_1Card_a8e1fd17e318f54947acaaea2302e0819}\label{classankicpp_1_1Card_a8e1fd17e318f54947acaaea2302e0819} 
-void {\bfseries set\+Card\+Type} (\mbox{\hyperlink{classankicpp_1_1CardType}{Card\+Type}} \texorpdfstring{$\ast$}{*}card\+Type)
+bool {\bfseries operator!=} (\mbox{\hyperlink{classankicpp_1_1Identifyable}{Identifyable}} \&rhs)
 \item 
-\Hypertarget{classankicpp_1_1Card_a1d4741cdfbd93ce8486a7f3893c73092}\label{classankicpp_1_1Card_a1d4741cdfbd93ce8486a7f3893c73092} 
-\mbox{\hyperlink{classankicpp_1_1Note}{Note}} \texorpdfstring{$\ast$}{*} {\bfseries get\+Note} () const
+bool {\bfseries operator$<$} (\mbox{\hyperlink{classankicpp_1_1Identifyable}{Identifyable}} \&rhs)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classankicpp_1_1Identifyable}{ankicpp\+::\+Identifyable}}}
+\begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classankicpp_1_1Card_a0ae7debc4a1db8f00ea4debb59bafc8f}\label{classankicpp_1_1Card_a0ae7debc4a1db8f00ea4debb59bafc8f} 
-void {\bfseries set\+Note} (\mbox{\hyperlink{classankicpp_1_1Note}{Note}} \texorpdfstring{$\ast$}{*}note)
+static std\+::int64\+\_\+t {\bfseries generate\+Random\+Id} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classankicpp_1_1Identifyable}{ankicpp\+::\+Identifyable}}}
+\begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classankicpp_1_1Card_a21451be4c1f491df25c63a3fa4eb6d19}\label{classankicpp_1_1Card_a21451be4c1f491df25c63a3fa4eb6d19} 
-bool {\bfseries operator==} (const \mbox{\hyperlink{classankicpp_1_1Card}{Card}} \&rhs)
-\item 
-\Hypertarget{classankicpp_1_1Card_a586bb018e3cbcbe0a1564399bff24caa}\label{classankicpp_1_1Card_a586bb018e3cbcbe0a1564399bff24caa} 
-bool {\bfseries operator!=} (const \mbox{\hyperlink{classankicpp_1_1Card}{Card}} \&rhs)
-\item 
-\Hypertarget{classankicpp_1_1Card_aa03feafd837d77901a7d441a049adf31}\label{classankicpp_1_1Card_aa03feafd837d77901a7d441a049adf31} 
-bool {\bfseries operator$<$} (const \mbox{\hyperlink{classankicpp_1_1Card}{Card}} \&rhs)
+std\+::int64\+\_\+t {\bfseries \+\_\+id}
 \end{DoxyCompactItemize}
 
 

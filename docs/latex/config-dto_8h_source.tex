@@ -11,10 +11,130 @@
 \DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classankicpp_1_1ConfigDTO}{ConfigDTO}}\ \{}
 \DoxyCodeLine{00008\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00009\ \ \ std::string\ KEY;}
-\DoxyCodeLine{00010\ \ \ std::uint32\_t\ usn;}
-\DoxyCodeLine{00011\ \ \ std::uint32\_t\ mtime\_secs;}
+\DoxyCodeLine{00010\ \ \ std::int64\_t\ usn;}
+\DoxyCodeLine{00011\ \ \ std::int64\_t\ mtime\_secs;}
 \DoxyCodeLine{00012\ \ \ std::vector<unsigned\ char>\ val;}
-\DoxyCodeLine{00013\ \};}
-\DoxyCodeLine{00014\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \textcolor{keyword}{static}\ std::vector<ConfigDTO>\ createDTOs()\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ std::vector<ConfigDTO>\ configDTOs;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classankicpp_1_1ConfigDTO}{ConfigDTO}}\ configDTO;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ configDTO.KEY\ =\ \textcolor{stringliteral}{"{}activeDecks"{}};}
+\DoxyCodeLine{00020\ \ \ \ \ configDTO.usn\ =\ 0;}
+\DoxyCodeLine{00021\ \ \ \ \ configDTO.mtime\_secs\ =\ 0;}
+\DoxyCodeLine{00022\ \ \ \ \ configDTO.val.insert(configDTO.val.end(),\ \{\textcolor{stringliteral}{'['},\ \textcolor{stringliteral}{'1'},\ \textcolor{stringliteral}{']'}\});}
+\DoxyCodeLine{00023\ \ \ \ \ configDTOs.push\_back(configDTO);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ configDTO.KEY\ =\ \textcolor{stringliteral}{"{}addToCur"{}};}
+\DoxyCodeLine{00026\ \ \ \ \ configDTO.usn\ =\ 0;}
+\DoxyCodeLine{00027\ \ \ \ \ configDTO.mtime\_secs\ =\ 0;}
+\DoxyCodeLine{00028\ \ \ \ \ configDTO.val.clear();}
+\DoxyCodeLine{00029\ \ \ \ \ configDTO.val.insert(configDTO.val.end(),\ \{\textcolor{stringliteral}{'t'},\ \textcolor{stringliteral}{'r'},\ \textcolor{stringliteral}{'u'},\ \textcolor{stringliteral}{'e'}\});}
+\DoxyCodeLine{00030\ \ \ \ \ configDTOs.push\_back(configDTO);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ configDTO.KEY\ =\ \textcolor{stringliteral}{"{}collapseTime"{}};}
+\DoxyCodeLine{00033\ \ \ \ \ configDTO.usn\ =\ 0;}
+\DoxyCodeLine{00034\ \ \ \ \ configDTO.mtime\_secs\ =\ 0;}
+\DoxyCodeLine{00035\ \ \ \ \ configDTO.val.clear();}
+\DoxyCodeLine{00036\ \ \ \ \ configDTO.val.insert(configDTO.val.end(),\ \{\textcolor{stringliteral}{'1'},\ \textcolor{stringliteral}{'2'},\ \textcolor{stringliteral}{'0'},\ \textcolor{stringliteral}{'0'}\});}
+\DoxyCodeLine{00037\ \ \ \ \ configDTOs.push\_back(configDTO);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ configDTO.KEY\ =\ \textcolor{stringliteral}{"{}creationOffset"{}};}
+\DoxyCodeLine{00040\ \ \ \ \ configDTO.usn\ =\ 0;}
+\DoxyCodeLine{00041\ \ \ \ \ configDTO.mtime\_secs\ =\ 0;}
+\DoxyCodeLine{00042\ \ \ \ \ configDTO.val.clear();}
+\DoxyCodeLine{00043\ \ \ \ \ configDTO.val.insert(configDTO.val.end(),\ \{\textcolor{stringliteral}{'1'},\ \textcolor{stringliteral}{'8'},\ \textcolor{stringliteral}{'0'}\});}
+\DoxyCodeLine{00044\ \ \ \ \ configDTOs.push\_back(configDTO);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ configDTO.KEY\ =\ \textcolor{stringliteral}{"{}curDeck"{}};}
+\DoxyCodeLine{00047\ \ \ \ \ configDTO.usn\ =\ 0;}
+\DoxyCodeLine{00048\ \ \ \ \ configDTO.mtime\_secs\ =\ 0;}
+\DoxyCodeLine{00049\ \ \ \ \ configDTO.val.clear();}
+\DoxyCodeLine{00050\ \ \ \ \ configDTO.val.insert(configDTO.val.end(),\ \{\textcolor{stringliteral}{'1'}\});}
+\DoxyCodeLine{00051\ \ \ \ \ configDTOs.push\_back(configDTO);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ configDTO.KEY\ =\ \textcolor{stringliteral}{"{}curModel"{}};}
+\DoxyCodeLine{00054\ \ \ \ \ configDTO.usn\ =\ -\/1;}
+\DoxyCodeLine{00055\ \ \ \ \ configDTO.mtime\_secs\ =\ 0;}
+\DoxyCodeLine{00056\ \ \ \ \ configDTO.val.clear();}
+\DoxyCodeLine{00057\ \ \ \ \ configDTO.val.insert(configDTO.val.end(),\ \{\textcolor{stringliteral}{'0'}\});}
+\DoxyCodeLine{00058\ \ \ \ \ configDTOs.push\_back(configDTO);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ configDTO.KEY\ =\ \textcolor{stringliteral}{"{}dayLearnFirst"{}};}
+\DoxyCodeLine{00061\ \ \ \ \ configDTO.usn\ =\ 0;}
+\DoxyCodeLine{00062\ \ \ \ \ configDTO.mtime\_secs\ =\ 0;}
+\DoxyCodeLine{00063\ \ \ \ \ configDTO.val.clear();}
+\DoxyCodeLine{00064\ \ \ \ \ configDTO.val.insert(configDTO.val.end(),\ \{\textcolor{stringliteral}{'f'},\ \textcolor{stringliteral}{'a'},\ \textcolor{stringliteral}{'l'},\ \textcolor{stringliteral}{'s'},\ \textcolor{stringliteral}{'e'}\});}
+\DoxyCodeLine{00065\ \ \ \ \ configDTOs.push\_back(configDTO);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ configDTO.KEY\ =\ \textcolor{stringliteral}{"{}dueCounts"{}};}
+\DoxyCodeLine{00068\ \ \ \ \ configDTO.usn\ =\ 0;}
+\DoxyCodeLine{00069\ \ \ \ \ configDTO.mtime\_secs\ =\ 0;}
+\DoxyCodeLine{00070\ \ \ \ \ configDTO.val.clear();}
+\DoxyCodeLine{00071\ \ \ \ \ configDTO.val.insert(configDTO.val.end(),\ \{\textcolor{stringliteral}{'t'},\ \textcolor{stringliteral}{'r'},\ \textcolor{stringliteral}{'u'},\ \textcolor{stringliteral}{'e'}\});}
+\DoxyCodeLine{00072\ \ \ \ \ configDTOs.push\_back(configDTO);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ configDTO.KEY\ =\ \textcolor{stringliteral}{"{}estTimes"{}};}
+\DoxyCodeLine{00075\ \ \ \ \ configDTO.usn\ =\ 0;}
+\DoxyCodeLine{00076\ \ \ \ \ configDTO.mtime\_secs\ =\ 0;}
+\DoxyCodeLine{00077\ \ \ \ \ configDTO.val.clear();}
+\DoxyCodeLine{00078\ \ \ \ \ configDTO.val.insert(configDTO.val.end(),\ \{\textcolor{stringliteral}{'t'},\ \textcolor{stringliteral}{'r'},\ \textcolor{stringliteral}{'u'},\ \textcolor{stringliteral}{'e'}\});}
+\DoxyCodeLine{00079\ \ \ \ \ configDTOs.push\_back(configDTO);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ configDTO.KEY\ =\ \textcolor{stringliteral}{"{}newSpread"{}};}
+\DoxyCodeLine{00082\ \ \ \ \ configDTO.usn\ =\ 0;}
+\DoxyCodeLine{00083\ \ \ \ \ configDTO.mtime\_secs\ =\ 0;}
+\DoxyCodeLine{00084\ \ \ \ \ configDTO.val.clear();}
+\DoxyCodeLine{00085\ \ \ \ \ configDTO.val.insert(configDTO.val.end(),\ \{\textcolor{stringliteral}{'0'}\});}
+\DoxyCodeLine{00086\ \ \ \ \ configDTOs.push\_back(configDTO);}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ configDTO.KEY\ =\ \textcolor{stringliteral}{"{}nextPos"{}};}
+\DoxyCodeLine{00089\ \ \ \ \ configDTO.usn\ =\ 0;}
+\DoxyCodeLine{00090\ \ \ \ \ configDTO.mtime\_secs\ =\ 0;}
+\DoxyCodeLine{00091\ \ \ \ \ configDTO.val.clear();}
+\DoxyCodeLine{00092\ \ \ \ \ configDTO.val.insert(configDTO.val.end(),\ \{\textcolor{stringliteral}{'1'}\});}
+\DoxyCodeLine{00093\ \ \ \ \ configDTOs.push\_back(configDTO);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ configDTO.KEY\ =\ \textcolor{stringliteral}{"{}sched2021"{}};}
+\DoxyCodeLine{00096\ \ \ \ \ configDTO.usn\ =\ 0;}
+\DoxyCodeLine{00097\ \ \ \ \ configDTO.mtime\_secs\ =\ 0;}
+\DoxyCodeLine{00098\ \ \ \ \ configDTO.val.clear();}
+\DoxyCodeLine{00099\ \ \ \ \ configDTO.val.insert(configDTO.val.end(),\ \{\textcolor{stringliteral}{'t'},\ \textcolor{stringliteral}{'r'},\ \textcolor{stringliteral}{'u'},\ \textcolor{stringliteral}{'e'}\});}
+\DoxyCodeLine{00100\ \ \ \ \ configDTOs.push\_back(configDTO);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ configDTO.KEY\ =\ \textcolor{stringliteral}{"{}schedVer"{}};}
+\DoxyCodeLine{00103\ \ \ \ \ configDTO.usn\ =\ 0;}
+\DoxyCodeLine{00104\ \ \ \ \ configDTO.mtime\_secs\ =\ 0;}
+\DoxyCodeLine{00105\ \ \ \ \ configDTO.val.clear();}
+\DoxyCodeLine{00106\ \ \ \ \ configDTO.val.insert(configDTO.val.end(),\ \{\textcolor{stringliteral}{'2'}\});}
+\DoxyCodeLine{00107\ \ \ \ \ configDTOs.push\_back(configDTO);}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ configDTO.KEY\ =\ \textcolor{stringliteral}{"{}sortBackwards"{}};}
+\DoxyCodeLine{00110\ \ \ \ \ configDTO.usn\ =\ 0;}
+\DoxyCodeLine{00111\ \ \ \ \ configDTO.mtime\_secs\ =\ 0;}
+\DoxyCodeLine{00112\ \ \ \ \ configDTO.val.clear();}
+\DoxyCodeLine{00113\ \ \ \ \ configDTO.val.insert(configDTO.val.end(),\ \{\textcolor{stringliteral}{'f'},\ \textcolor{stringliteral}{'a'},\ \textcolor{stringliteral}{'l'},\ \textcolor{stringliteral}{'s'},\ \textcolor{stringliteral}{'e'}\});}
+\DoxyCodeLine{00114\ \ \ \ \ configDTOs.push\_back(configDTO);}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ configDTO.KEY\ =\ \textcolor{stringliteral}{"{}sortType"{}};}
+\DoxyCodeLine{00117\ \ \ \ \ configDTO.usn\ =\ 0;}
+\DoxyCodeLine{00118\ \ \ \ \ configDTO.mtime\_secs\ =\ 0;}
+\DoxyCodeLine{00119\ \ \ \ \ configDTO.val.clear();}
+\DoxyCodeLine{00120\ \ \ \ \ configDTO.val.insert(configDTO.val.end(),}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{'"{}'},\ \textcolor{stringliteral}{'n'},\ \textcolor{stringliteral}{'o'},\ \textcolor{stringliteral}{'t'},\ \textcolor{stringliteral}{'e'},\ \textcolor{stringliteral}{'F'},\ \textcolor{stringliteral}{'l'},\ \textcolor{stringliteral}{'d'},\ \textcolor{stringliteral}{'"{}'}\});}
+\DoxyCodeLine{00122\ \ \ \ \ configDTOs.push\_back(configDTO);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ configDTO.KEY\ =\ \textcolor{stringliteral}{"{}timeLim"{}};}
+\DoxyCodeLine{00125\ \ \ \ \ configDTO.usn\ =\ 0;}
+\DoxyCodeLine{00126\ \ \ \ \ configDTO.mtime\_secs\ =\ 0;}
+\DoxyCodeLine{00127\ \ \ \ \ configDTO.val.clear();}
+\DoxyCodeLine{00128\ \ \ \ \ configDTO.val.insert(configDTO.val.end(),\ \{\textcolor{stringliteral}{'0'}\});}
+\DoxyCodeLine{00129\ \ \ \ \ configDTOs.push\_back(configDTO);}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordflow}{return}\ configDTOs;}
+\DoxyCodeLine{00132\ \ \ \}}
+\DoxyCodeLine{00133\ \};}
+\DoxyCodeLine{00134\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
 
 \end{DoxyCode}

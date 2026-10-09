@@ -7,7 +7,7 @@ Small library to create anki notes.
 ---
 #### Basic usage
 ```c++
-  #include "ankicpp"
+  #include "ankicpp/ankicpp.h"
 
   using namespace ankicpp;
 
@@ -24,7 +24,7 @@ Small library to create anki notes.
 ```
 ### Basic and Reversed usage
 ```c++
-  #include "ankicpp"
+  #include "ankicpp/ankicpp.h"
  
   using namespace ankicpp;
 
@@ -41,7 +41,7 @@ Small library to create anki notes.
 ```
 ### Cloze usage (not working, it's under development)
 ```c++
-  #include "ankicpp"
+  #include "ankicpp/ankicpp.h"
  
   using namespace ankicpp;
 

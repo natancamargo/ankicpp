@@ -1,0 +1,26 @@
+\doxysection{field-\/repository.h}
+\hypertarget{field-repository_8h_source}{}\label{field-repository_8h_source}\index{src/field/field-\/repository.h@{src/field/field-\/repository.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}field/field-\/dto.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}field/field.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}database/repository.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{template}\ <>\ \textcolor{keyword}{class\ }Repository<FieldDTO,\ std::int64\_t>;}
+\DoxyCodeLine{00011\ template\ <>\ class\ \mbox{\hyperlink{classankicpp_1_1Repository}{Repository}}<FieldDTO,\ std::int64\_t>\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ std::tuple<std::vector<FieldDTO>,\ \textcolor{keywordtype}{bool}>\ read()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00014\ \ \ std::tuple<FieldDTO,\ bool>\ readById(std::int64\_t\ key)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00015\ \ \ \textcolor{keywordtype}{bool}\ create(\mbox{\hyperlink{classankicpp_1_1FieldDTO}{FieldDTO}}\ fieldDTO)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00016\ \ \ \textcolor{keywordtype}{bool}\ update(\mbox{\hyperlink{classankicpp_1_1FieldDTO}{FieldDTO}}\ fieldDTO)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00017\ \ \ \textcolor{keywordtype}{bool}\ del(\mbox{\hyperlink{classankicpp_1_1FieldDTO}{FieldDTO}}\ fieldDTO)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00018\ \};}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classankicpp_1_1FieldRepository}{FieldRepository}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classankicpp_1_1Repository}{Repository}}<FieldDTO,std::int64\_t>\ \{\};}
+\DoxyCodeLine{00020\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
+
+\end{DoxyCode}

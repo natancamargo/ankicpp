@@ -1,22 +1,39 @@
 \doxysection{ankicpp\+::Note Class Reference}
 \hypertarget{classankicpp_1_1Note}{}\label{classankicpp_1_1Note}\index{ankicpp::Note@{ankicpp::Note}}
+
+
+Inheritance diagram for ankicpp\+::Note\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classankicpp_1_1Note__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for ankicpp\+::Note\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classankicpp_1_1Note__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classankicpp_1_1Note_a13867d69ac21ce8cf0dd5ed8fd1b96e6}\label{classankicpp_1_1Note_a13867d69ac21ce8cf0dd5ed8fd1b96e6} 
-std\+::int64\+\_\+t {\bfseries get\+Id} () const
+\Hypertarget{classankicpp_1_1Note_a42f09e9c94d755b2c94d0b7ec9e0788f}\label{classankicpp_1_1Note_a42f09e9c94d755b2c94d0b7ec9e0788f} 
+const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classankicpp_1_1NoteType}{Note\+Type}} $>$ \& {\bfseries get\+Type} () const
 \item 
-\Hypertarget{classankicpp_1_1Note_a8f2874710fc79af3403431d4503b656d}\label{classankicpp_1_1Note_a8f2874710fc79af3403431d4503b656d} 
-void {\bfseries set\+Id} (std\+::int64\+\_\+t id)
+\Hypertarget{classankicpp_1_1Note_a3670d594686349646e3f15ee2344e5b7}\label{classankicpp_1_1Note_a3670d594686349646e3f15ee2344e5b7} 
+void {\bfseries set\+Type} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classankicpp_1_1NoteType}{Note\+Type}} $>$ \&note\+Type)
 \item 
-\Hypertarget{classankicpp_1_1Note_acea5129ccc6afff22d007f32fe8af539}\label{classankicpp_1_1Note_acea5129ccc6afff22d007f32fe8af539} 
-\mbox{\hyperlink{classankicpp_1_1NoteType}{Note\+Type}} \texorpdfstring{$\ast$}{*} {\bfseries get\+Type} () const
+\Hypertarget{classankicpp_1_1Note_a100f0a528b7012d38bcf43f901bb59d5}\label{classankicpp_1_1Note_a100f0a528b7012d38bcf43f901bb59d5} 
+const std\+::vector$<$ std\+::tuple$<$ std\+::string, std\+::string $>$ $>$ \& {\bfseries get\+Fields} () const
 \item 
-\Hypertarget{classankicpp_1_1Note_abd0a833b189335bfc1edc77b162e092c}\label{classankicpp_1_1Note_abd0a833b189335bfc1edc77b162e092c} 
-void {\bfseries set\+Type} (\mbox{\hyperlink{classankicpp_1_1NoteType}{Note\+Type}} \texorpdfstring{$\ast$}{*}type)
-\item 
-\Hypertarget{classankicpp_1_1Note_abee7e07796eeac18ab5090f211cf8e8f}\label{classankicpp_1_1Note_abee7e07796eeac18ab5090f211cf8e8f} 
-std\+::map$<$ std\+::string, std\+::string $>$ \& {\bfseries get\+Fields} ()
+\Hypertarget{classankicpp_1_1Note_aff291fc2b8c06c9e8a2de4ce431db924}\label{classankicpp_1_1Note_aff291fc2b8c06c9e8a2de4ce431db924} 
+void {\bfseries set\+Fields} (const std\+::vector$<$ std\+::tuple$<$ std\+::string, std\+::string $>$ $>$ \&fields)
 \item 
 \Hypertarget{classankicpp_1_1Note_aa0d97eb5596abb5f57311d7ecbc2d5db}\label{classankicpp_1_1Note_aa0d97eb5596abb5f57311d7ecbc2d5db} 
 std\+::string {\bfseries get\+Field} (std\+::string name)
@@ -27,8 +44,11 @@ void {\bfseries add\+Field} (std\+::string name, std\+::string value)
 \Hypertarget{classankicpp_1_1Note_a26eb4564a2dfe371fb1ae7a502ec3ba4}\label{classankicpp_1_1Note_a26eb4564a2dfe371fb1ae7a502ec3ba4} 
 void {\bfseries remove\+Field} (std\+::string name)
 \item 
-\Hypertarget{classankicpp_1_1Note_a611129d0b0380bcb998fd427f1d0927f}\label{classankicpp_1_1Note_a611129d0b0380bcb998fd427f1d0927f} 
-std\+::set$<$ std\+::string $>$ \& {\bfseries get\+Tags} ()
+\Hypertarget{classankicpp_1_1Note_a186339ac4fc6729afa928ff322bc9c37}\label{classankicpp_1_1Note_a186339ac4fc6729afa928ff322bc9c37} 
+const std\+::set$<$ std\+::string $>$ \& {\bfseries get\+Tags} () const
+\item 
+\Hypertarget{classankicpp_1_1Note_a266472e200b2353c90de4a2e27469d0b}\label{classankicpp_1_1Note_a266472e200b2353c90de4a2e27469d0b} 
+void {\bfseries set\+Tags} (const std\+::set$<$ std\+::string $>$ \&tags)
 \item 
 \Hypertarget{classankicpp_1_1Note_aa7e3953917b9214996c30d042fae073f}\label{classankicpp_1_1Note_aa7e3953917b9214996c30d042fae073f} 
 void {\bfseries add\+Tag} (std\+::string name)
@@ -42,14 +62,35 @@ int {\bfseries get\+Flags} () const
 \Hypertarget{classankicpp_1_1Note_a4794d4b01ab22119d53d60dd9bacf993}\label{classankicpp_1_1Note_a4794d4b01ab22119d53d60dd9bacf993} 
 void {\bfseries set\+Flags} (int flags)
 \item 
-\Hypertarget{classankicpp_1_1Note_adbbea32bb545e8feef812bf058b1b5e6}\label{classankicpp_1_1Note_adbbea32bb545e8feef812bf058b1b5e6} 
-bool {\bfseries operator==} (const \mbox{\hyperlink{classankicpp_1_1Note}{Note}} \&rhs)
+\Hypertarget{classankicpp_1_1Note_a675fe42056ddd6a9caa1c4192d54f78a}\label{classankicpp_1_1Note_a675fe42056ddd6a9caa1c4192d54f78a} 
+const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classankicpp_1_1Note}{Note}} $>$ \& {\bfseries get\+Reversed\+Parent} ()
 \item 
-\Hypertarget{classankicpp_1_1Note_a831737be05ed5b1acff4cb58dc08ccc7}\label{classankicpp_1_1Note_a831737be05ed5b1acff4cb58dc08ccc7} 
-bool {\bfseries operator!=} (const \mbox{\hyperlink{classankicpp_1_1Note}{Note}} \&rhs)
+\Hypertarget{classankicpp_1_1Note_af031f8860b97667eb48e774d302df273}\label{classankicpp_1_1Note_af031f8860b97667eb48e774d302df273} 
+void {\bfseries set\+Reversed\+Parent} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classankicpp_1_1Note}{Note}} $>$ \&reversed\+Parent)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classankicpp_1_1Identifyable}{ankicpp\+::\+Identifyable}}}
+\begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classankicpp_1_1Note_a978f23056f46bb90edd86ab432d11b8e}\label{classankicpp_1_1Note_a978f23056f46bb90edd86ab432d11b8e} 
-bool {\bfseries operator$<$} (const \mbox{\hyperlink{classankicpp_1_1Note}{Note}} \&rhs)
+std\+::int64\+\_\+t {\bfseries get\+Id} ()
+\item 
+void {\bfseries set\+Id} (std\+::int64\+\_\+t id)
+\item 
+bool {\bfseries operator==} (\mbox{\hyperlink{classankicpp_1_1Identifyable}{Identifyable}} \&rhs)
+\item 
+bool {\bfseries operator!=} (\mbox{\hyperlink{classankicpp_1_1Identifyable}{Identifyable}} \&rhs)
+\item 
+bool {\bfseries operator$<$} (\mbox{\hyperlink{classankicpp_1_1Identifyable}{Identifyable}} \&rhs)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{classankicpp_1_1Identifyable}{ankicpp\+::\+Identifyable}}}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::int64\+\_\+t {\bfseries generate\+Random\+Id} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classankicpp_1_1Identifyable}{ankicpp\+::\+Identifyable}}}
+\begin{DoxyCompactItemize}
+\item 
+std\+::int64\+\_\+t {\bfseries \+\_\+id}
 \end{DoxyCompactItemize}
 
 

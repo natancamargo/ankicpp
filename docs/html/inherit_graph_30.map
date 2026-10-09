@@ -1,0 +1,22 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="12,5,157,45"/>
+<area shape="rect" id="Node000001" href="$classankicpp_1_1NoteType.html" title=" " alt="" coords="212,13,355,38"/>
+<area shape="poly" id="edge10_Node000000_Node000001" title=" " alt="" coords="172,23,211,23,211,28,172,28"/>
+<area shape="rect" id="Node000002" href="$classankicpp_1_1Identifyable.html" title=" " alt="" coords="5,141,164,166"/>
+<area shape="poly" id="edge15_Node000002_Node000001" title=" " alt="" coords="153,132,162,126,178,107,186,88,193,68,210,47,229,36,232,40,214,51,198,70,191,90,183,110,166,130,156,137"/>
+<area shape="rect" id="Node000003" href="$classankicpp_1_1Card.html" title=" " alt="" coords="228,210,339,235"/>
+<area shape="poly" id="edge11_Node000002_Node000003" title=" " alt="" coords="135,168,213,196,245,207,244,212,211,201,133,173"/>
+<area shape="rect" id="Node000004" href="$classankicpp_1_1Deck.html" title=" " alt="" coords="226,62,341,87"/>
+<area shape="poly" id="edge12_Node000002_Node000004" title=" " alt="" coords="143,134,163,126,187,111,211,96,239,85,241,90,213,101,189,116,165,130,145,139"/>
+<area shape="rect" id="Node000006" href="$classankicpp_1_1Field.html" title=" " alt="" coords="227,111,339,137"/>
+<area shape="poly" id="edge13_Node000002_Node000006" title=" " alt="" coords="177,137,227,130,228,135,178,142"/>
+<area shape="rect" id="Node000008" href="$classankicpp_1_1Note.html" title=" " alt="" coords="227,259,339,285"/>
+<area shape="poly" id="edge14_Node000002_Node000008" title=" " alt="" coords="112,173,157,210,213,246,239,257,237,262,211,250,154,214,108,177"/>
+<area shape="rect" id="Node000007" href="$classankicpp_1_1Template.html" title=" " alt="" coords="213,161,354,186"/>
+<area shape="poly" id="edge16_Node000002_Node000007" title=" " alt="" coords="178,160,213,164,212,169,177,165"/>
+<area shape="rect" id="Node000005" href="$classankicpp_1_1Nameable.html" title=" " alt="" coords="11,91,159,117"/>
+<area shape="poly" id="edge19_Node000005_Node000001" title=" " alt="" coords="125,83,211,47,242,36,244,41,213,52,127,88"/>
+<area shape="poly" id="edge17_Node000005_Node000004" title=" " alt="" coords="172,88,225,80,226,86,173,94"/>
+<area shape="poly" id="edge18_Node000005_Node000006" title=" " alt="" coords="173,110,227,116,226,121,172,115"/>
+<area shape="poly" id="edge20_Node000005_Node000007" title=" " alt="" coords="144,118,165,126,213,146,247,158,245,163,211,150,163,130,142,123"/>
+</map>

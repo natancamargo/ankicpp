@@ -1,0 +1,15 @@
+<map id="ankicpp::Identifyable" name="ankicpp::Identifyable">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,129,164,155"/>
+<area shape="rect" id="Node000002" href="$classankicpp_1_1Card.html" title=" " alt="" coords="228,5,339,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,118,153,79,211,40,236,28,238,33,213,44,156,83,110,122"/>
+<area shape="rect" id="Node000003" href="$classankicpp_1_1Deck.html" title=" " alt="" coords="226,55,341,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="128,122,211,89,243,78,245,83,213,94,130,127"/>
+<area shape="rect" id="Node000004" href="$classankicpp_1_1Field.html" title=" " alt="" coords="227,104,339,129"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="177,128,227,121,228,126,178,133"/>
+<area shape="rect" id="Node000005" href="$classankicpp_1_1Note.html" title=" " alt="" coords="227,153,339,179"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="178,151,227,157,227,162,177,156"/>
+<area shape="rect" id="Node000006" href="$classankicpp_1_1NoteType.html" title=" " alt="" coords="212,203,355,228"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="133,157,213,188,247,200,245,205,211,192,131,162"/>
+<area shape="rect" id="Node000007" href="$classankicpp_1_1Template.html" title=" " alt="" coords="213,252,354,277"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="111,162,157,200,213,237,241,250,239,254,211,242,154,204,108,166"/>
+</map>

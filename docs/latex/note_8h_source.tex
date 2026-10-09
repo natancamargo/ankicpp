@@ -4,48 +4,42 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00002\ }
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <cstdint>}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <map>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <set>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}note/note-\/dto.h"{}}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}note/note-\/type-\/dto.h"{}}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}note/note-\/type.h"{}}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}util/time.h"{}}}
-\DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
-\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classankicpp_1_1Note}{Note}}\ \{}
-\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00016\ \ \ std::int64\_t\ getId()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00017\ \ \ \textcolor{keywordtype}{void}\ setId(std::int64\_t\ \textcolor{keywordtype}{id});}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \ \ \mbox{\hyperlink{classankicpp_1_1NoteType}{NoteType}}\ *getType()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00020\ \ \ \textcolor{keywordtype}{void}\ setType(\mbox{\hyperlink{classankicpp_1_1NoteType}{NoteType}}\ *type);}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <set>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}note/note-\/type.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}util/identifyable.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classankicpp_1_1Note}{Note}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classankicpp_1_1Identifyable}{Identifyable}}\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ \textcolor{keyword}{const}\ std::shared\_ptr<NoteType>\ \&getType()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00014\ \ \ \textcolor{keywordtype}{void}\ setType(\textcolor{keyword}{const}\ std::shared\_ptr<NoteType>\ \&noteType);}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \textcolor{keyword}{const}\ std::vector<std::tuple<std::string,\ std::string>>\ \&getFields()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00017\ \ \ \textcolor{keywordtype}{void}\ setFields(\textcolor{keyword}{const}\ std::vector<std::tuple<std::string,\ std::string>>\ \&fields);}
+\DoxyCodeLine{00018\ \ \ std::string\ getField(std::string\ name);}
+\DoxyCodeLine{00019\ \ \ \textcolor{keywordtype}{void}\ addField(std::string\ name,\ std::string\ value);}
+\DoxyCodeLine{00020\ \ \ \textcolor{keywordtype}{void}\ removeField(std::string\ name);}
 \DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \ \ std::map<std::string,\ std::string>\ \&getFields();}
-\DoxyCodeLine{00023\ \ \ std::string\ getField(std::string\ name);}
-\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{void}\ addField(std::string\ name,\ std::string\ value);}
-\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{void}\ removeField(std::string\ name);}
+\DoxyCodeLine{00022\ \ \ \textcolor{keyword}{const}\ std::set<std::string>\ \&getTags()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{void}\ setTags(\textcolor{keyword}{const}\ std::set<std::string>\ \&tags);}
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{void}\ addTag(std::string\ name);}
+\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{void}\ removeTag(std::string\ name);}
 \DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \ \ std::set<std::string>\ \&getTags();}
-\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{void}\ addTag(std::string\ name);}
-\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{void}\ removeTag(std::string\ name);}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{int}\ getFlags()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{void}\ setFlags(\textcolor{keywordtype}{int}\ flags);}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ \mbox{\hyperlink{classankicpp_1_1Note}{Note}}\ \&rhs);}
-\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{bool}\ operator!=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classankicpp_1_1Note}{Note}}\ \&rhs);}
-\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{bool}\ operator<(\textcolor{keyword}{const}\ \mbox{\hyperlink{classankicpp_1_1Note}{Note}}\ \&rhs);}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00039\ \ \ std::int64\_t\ \_id\ =\ getNow();}
-\DoxyCodeLine{00040\ \ \ \mbox{\hyperlink{classankicpp_1_1NoteType}{NoteType}}\ *\_type;}
-\DoxyCodeLine{00041\ \ \ std::map<std::string,\ std::string>\ \_fields;}
-\DoxyCodeLine{00042\ \ \ std::set<std::string>\ \_tags;}
-\DoxyCodeLine{00043\ \ \ \textcolor{keywordtype}{int}\ \_flags\ =\ 0;}
-\DoxyCodeLine{00044\ \};}
-\DoxyCodeLine{00045\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
+\DoxyCodeLine{00027\ \ \ \textcolor{keywordtype}{int}\ getFlags()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{void}\ setFlags(\textcolor{keywordtype}{int}\ flags);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \textcolor{keyword}{const}\ std::shared\_ptr<Note>\ \&getReversedParent();\ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{void}\ setReversedParent(\textcolor{keyword}{const}\ std::shared\_ptr<Note>\ \&reversedParent);}
+\DoxyCodeLine{00032\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00033\ \ \ std::shared\_ptr<NoteType>\ \_noteType;}
+\DoxyCodeLine{00034\ \ \ std::vector<std::tuple<std::string,\ std::string>>\ \_fields;}
+\DoxyCodeLine{00035\ \ \ std::set<std::string>\ \_tags;}
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{int}\ \_flags\ =\ 0;}
+\DoxyCodeLine{00037\ \ \ std::shared\_ptr<Note>\ \_reversedParent;}
+\DoxyCodeLine{00038\ \};}
+\DoxyCodeLine{00039\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
 
 \end{DoxyCode}

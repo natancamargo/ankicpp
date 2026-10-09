@@ -4,44 +4,37 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00002\ }
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <memory>}}
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <set>}}
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
 \DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}deck/deck-\/config-\/dto.h"{}}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}deck/deck-\/dto.h"{}}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}card/card.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}card/card.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}deck/deck-\/config-\/dto.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}deck/deck-\/dto.h"{}}}
 \DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}note/note.h"{}}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}util/time.h"{}}}
-\DoxyCodeLine{00012\ }
-\DoxyCodeLine{00013\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
-\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classankicpp_1_1Deck}{Deck}}\ \{}
-\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00016\ \ \ \mbox{\hyperlink{classankicpp_1_1Deck}{Deck}}(std::string\ name);}
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \ \ std::int64\_t\ getId()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00019\ \ \ \textcolor{keywordtype}{void}\ setId(std::int64\_t\ \textcolor{keywordtype}{id});}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \ \ std::string\ getName()\ \textcolor{keyword}{const};}
-\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{void}\ setName(std::string\ name);}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \ \ std::set<Note\ *>\ \&getNotes();}
-\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{void}\ addNote(\mbox{\hyperlink{classankicpp_1_1Note}{Note}}\ *note);}
-\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{void}\ removeNote(\mbox{\hyperlink{classankicpp_1_1Note}{Note}}\ *note);}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}util/identifyable.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}util/nameable.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
+\DoxyCodeLine{00015\ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classankicpp_1_1Deck}{Deck}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classankicpp_1_1Identifyable}{Identifyable}},\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classankicpp_1_1Nameable}{Nameable}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \mbox{\hyperlink{classankicpp_1_1Deck}{Deck}}(std::string\ name);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ std::set<std::shared\_ptr<Note>>\ \&getNotes();}
+\DoxyCodeLine{00020\ \ \ \textcolor{keywordtype}{void}\ addNote(std::shared\_ptr<Note>\ note);}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{void}\ removeNote(std::shared\_ptr<Note>\ note);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ std::set<std::shared\_ptr<Card>>\ \&getCards();}
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{void}\ addCard(std::shared\_ptr<Card>\ card);}
+\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{void}\ removeCard(std::shared\_ptr<Card>\ card);}
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{void}\ clearCards();}
 \DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ std::set<Card\ *>\ \&getCards();}
-\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{void}\ addCard(\mbox{\hyperlink{classankicpp_1_1Card}{Card}}\ *card);}
-\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{void}\ removeCard(\mbox{\hyperlink{classankicpp_1_1Card}{Card}}\ *card);}
-\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{void}\ clearCards();}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{void}\ generateCards();}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00036\ \ \ std::int64\_t\ \_id\ =\ getNow();}
-\DoxyCodeLine{00037\ \ \ std::string\ \_name;}
-\DoxyCodeLine{00038\ \ \ std::set<Note\ *>\ \_notes;}
-\DoxyCodeLine{00039\ \ \ std::set<Card\ *>\ \_cards;}
-\DoxyCodeLine{00040\ \};}
-\DoxyCodeLine{00041\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{bool}\ generateCards();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00031\ \ \ std::set<std::shared\_ptr<Note>>\ \_notes;}
+\DoxyCodeLine{00032\ \ \ std::set<std::shared\_ptr<Card>>\ \_cards;}
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
 
 \end{DoxyCode}

@@ -1,0 +1,26 @@
+\doxysection{note-\/type-\/repository.h}
+\hypertarget{note-type-repository_8h_source}{}\label{note-type-repository_8h_source}\index{src/note/note-\/type-\/repository.h@{src/note/note-\/type-\/repository.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}note/note-\/type.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}note/note-\/type-\/dto.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}database/repository.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
+\DoxyCodeLine{00010\ \textcolor{keyword}{template}\ <>\ \textcolor{keyword}{class\ }Repository<NoteTypeDTO,\ std::int64\_t>;}
+\DoxyCodeLine{00011\ template\ <>\ class\ \mbox{\hyperlink{classankicpp_1_1Repository}{Repository}}<NoteTypeDTO,\ std::int64\_t>\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ std::tuple<std::vector<NoteTypeDTO>,\ \textcolor{keywordtype}{bool}>\ read()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00014\ \ \ std::tuple<NoteTypeDTO,\ bool>\ readById(std::int64\_t\ key)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00015\ \ \ \textcolor{keywordtype}{bool}\ create(\mbox{\hyperlink{classankicpp_1_1NoteTypeDTO}{NoteTypeDTO}}\ noteTypeDTO)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00016\ \ \ \textcolor{keywordtype}{bool}\ update(\mbox{\hyperlink{classankicpp_1_1NoteTypeDTO}{NoteTypeDTO}}\ noteTypeDTO)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00017\ \ \ \textcolor{keywordtype}{bool}\ del(\mbox{\hyperlink{classankicpp_1_1NoteTypeDTO}{NoteTypeDTO}}\ noteTypeDTO)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00018\ \};}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classankicpp_1_1NoteTypeRepository}{NoteTypeRepository}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classankicpp_1_1Repository}{Repository}}<NoteTypeDTO,std::int64\_t>\ \{\};}
+\DoxyCodeLine{00020\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
+
+\end{DoxyCode}

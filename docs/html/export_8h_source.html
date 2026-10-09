@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ankicpp: src/lib/export.h Source File</title>
+<title>ankicpp: src/ankicpp/export.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -74,7 +74,7 @@ $(document).ready(function() { init_codefold(0); });
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_c85d3e3c5052e9ad9ce18c6863244a25.html">lib</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_fa00d73e7881ea9508df16c0e5d91d23.html">ankicpp</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -87,23 +87,30 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;filesystem&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;string_view&gt;</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">namespace </span>ankicpp {</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">enum class</span> ExportError {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>  NO_ERROR,</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>  UNKNOWN_ERROR,</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>  OPENING_ERROR,</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  WRITING_ERROR,</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>  EMPTY_DECK_ERROR,</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>  INVALID_NOTE_ERROR,</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>  INVALID_NOTE_TYPE_ERROR</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>};</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">extern</span> ExportError exportError;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">enum class</span> Error {</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>  EXPORT_NO_ERROR,</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>  EXPORT_UNKNOWN_ERROR,</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>  EXPORT_FILE_READING_ERROR,</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>  EXPORT_FILE_WRITING_ERROR,</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>  EXPORT_COMPRESS_FILE_NOT_FOUND_ERROR,</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>  EXPORT_COMPRESS_FILE_READING_ERROR,</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>  EXPORT_COMPRESS_MINIZIP_ERROR,</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>  EXPORT_COMPRESS_ZSTD_ERROR,</div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keywordtype">bool</span> exportDeck(Deck deck, std::string_view filename);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keywordtype">bool</span> createFiles(std::filesystem::path outPath, std::filesystem::path metaPath,</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>                 std::filesystem::path mediaPath,</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>                 std::filesystem::path databasePath);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>  <span class="keywordtype">bool</span> populateDatabase(Deck deck);</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>} <span class="comment">// namespace ankicpp</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>  EXPORT_DATABASE_ERROR,</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>  DATA_DECK_EMPTY_ERROR,</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>  DATA_NOTE_WITHOUT_TYPE_ERROR,</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>};</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">extern</span> Error error;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keywordtype">bool</span> exportDeck(Deck deck, std::string_view filename);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keywordtype">bool</span> createFiles(std::filesystem::path outPath, std::filesystem::path metaPath,</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>                 std::filesystem::path mediaPath,</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                 std::filesystem::path databasePath);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keywordtype">bool</span> populateDatabase(Deck deck, std::string filename);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>} <span class="comment">// namespace ankicpp</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

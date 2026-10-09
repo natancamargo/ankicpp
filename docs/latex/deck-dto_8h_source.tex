@@ -10,13 +10,25 @@
 \DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
 \DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classankicpp_1_1DeckDTO}{DeckDTO}}\ \{}
 \DoxyCodeLine{00008\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00009\ \ \ uint32\_t\ id;}
+\DoxyCodeLine{00009\ \ \ std::int64\_t\ id;}
 \DoxyCodeLine{00010\ \ \ std::string\ name;}
-\DoxyCodeLine{00011\ \ \ uint32\_t\ mtime\_secs;}
-\DoxyCodeLine{00012\ \ \ uint32\_t\ usn;}
+\DoxyCodeLine{00011\ \ \ std::int64\_t\ mtime\_secs;}
+\DoxyCodeLine{00012\ \ \ std::int64\_t\ usn;}
 \DoxyCodeLine{00013\ \ \ std::vector<unsigned\ char>\ common;}
 \DoxyCodeLine{00014\ \ \ std::vector<unsigned\ char>\ kind;}
-\DoxyCodeLine{00015\ \};}
-\DoxyCodeLine{00016\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classankicpp_1_1DeckDTO}{DeckDTO}}\ createDefaultDTO()\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classankicpp_1_1DeckDTO}{DeckDTO}}\ deckDTO;}
+\DoxyCodeLine{00018\ \ \ \ \ deckDTO.id\ =\ 1;}
+\DoxyCodeLine{00019\ \ \ \ \ deckDTO.name\ =\ \textcolor{stringliteral}{"{}Default"{}};}
+\DoxyCodeLine{00020\ \ \ \ \ deckDTO.mtime\_secs\ =\ 0;}
+\DoxyCodeLine{00021\ \ \ \ \ deckDTO.usn\ =\ 0;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ deckDTO.common.insert(deckDTO.common.end(),\ \{0x08,\ 0x01,\ 0x10,\ 0x01\});}
+\DoxyCodeLine{00024\ \ \ \ \ deckDTO.kind.insert(deckDTO.kind.end(),\ \{0x0a,\ 0x02,\ 0x08,\ 0x01\});}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordflow}{return}\ deckDTO;}
+\DoxyCodeLine{00026\ \ \ \}}
+\DoxyCodeLine{00027\ \};}
+\DoxyCodeLine{00028\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
 
 \end{DoxyCode}

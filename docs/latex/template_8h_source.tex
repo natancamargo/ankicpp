@@ -5,5 +5,33 @@
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00002\ }
 \DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}template/template-\/dto.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}template/template-\/repository.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}util/identifyable.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}util/nameable.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }NoteType;}
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classankicpp_1_1Template}{Template}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classankicpp_1_1Identifyable}{Identifyable}},\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classankicpp_1_1Nameable}{Nameable}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \mbox{\hyperlink{classankicpp_1_1Template}{Template}}(std::string\ name);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ std::string\ getFrontTemplate()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00018\ \ \ \textcolor{keywordtype}{void}\ setFrontTemplate(std::string\ frontTemplate);}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ std::string\ getBackTemplate()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordtype}{void}\ setBackTemplate(std::string\ backTemplate);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ std::weak\_ptr<NoteType>\ getNoteType();}
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{void}\ setNoteType(std::weak\_ptr<NoteType>\ noteType);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00027\ \ \ std::string\ \_frontTemplate;}
+\DoxyCodeLine{00028\ \ \ std::string\ \_backTemplate;}
+\DoxyCodeLine{00029\ \ \ std::weak\_ptr<NoteType>\ \_noteType;}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
 
 \end{DoxyCode}

@@ -4,16 +4,17 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00002\ }
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
-\DoxyCodeLine{00004\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
-\DoxyCodeLine{00005\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T,\ \textcolor{keyword}{typename}\ K,\ \textcolor{keyword}{typename}\ D>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classankicpp_1_1Repository}{Repository}}\ \{}
-\DoxyCodeLine{00006\ \ \ std::vector<T>\ read();}
-\DoxyCodeLine{00007\ }
-\DoxyCodeLine{00008\ \ \ T\ readById(K\ \textcolor{keywordtype}{id});}
-\DoxyCodeLine{00009\ \ \ T\ create(T\ entity);}
-\DoxyCodeLine{00010\ \ \ T\ update(T\ entity);}
-\DoxyCodeLine{00011\ \ \ T\ del(T\ entity);}
-\DoxyCodeLine{00012\ \};}
-\DoxyCodeLine{00013\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
+\DoxyCodeLine{00006\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ D,\ \textcolor{keyword}{typename}\ K>\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classankicpp_1_1Repository}{Repository}}\ \{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00008\ \ \ std::tuple<std::vector<D>,\ \textcolor{keywordtype}{bool}>\ read()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00009\ \ \ std::tuple<std::vector<D>,\ \textcolor{keywordtype}{bool}>\ readById(K\ key)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00010\ \ \ \textcolor{keywordtype}{bool}\ create(D\ dto)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00011\ \ \ \textcolor{keywordtype}{bool}\ update(D\ dto)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00012\ \ \ \textcolor{keywordtype}{bool}\ del(D\ dto)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00013\ \};}
+\DoxyCodeLine{00014\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
 
 \end{DoxyCode}

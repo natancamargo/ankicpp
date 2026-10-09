@@ -1,0 +1,28 @@
+\doxysection{template-\/repository.h}
+\hypertarget{template-repository_8h_source}{}\label{template-repository_8h_source}\index{src/template/template-\/repository.h@{src/template/template-\/repository.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}database/repository.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}template/template-\/dto.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <tuple>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{template}\ <>\ \textcolor{keyword}{class\ }Repository<TemplateDTO,\ std::int64\_t>;}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ template\ <>\ class\ \mbox{\hyperlink{classankicpp_1_1Repository}{Repository}}<TemplateDTO,\ std::int64\_t>\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00013\ \ \ std::tuple<std::vector<TemplateDTO>,\ \textcolor{keywordtype}{bool}>\ read()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00014\ \ \ std::tuple<TemplateDTO,\ bool>\ readById(std::int64\_t\ key)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00015\ \ \ \textcolor{keywordtype}{bool}\ create(\mbox{\hyperlink{classankicpp_1_1TemplateDTO}{TemplateDTO}}\ templateDTO)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00016\ \ \ \textcolor{keywordtype}{bool}\ update(\mbox{\hyperlink{classankicpp_1_1TemplateDTO}{TemplateDTO}}\ templateDTO)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00017\ \ \ \textcolor{keywordtype}{bool}\ del(\mbox{\hyperlink{classankicpp_1_1TemplateDTO}{TemplateDTO}}\ templateDTO)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00018\ \};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classankicpp_1_1TemplateRepository}{TemplateRepository}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classankicpp_1_1Repository}{Repository}}<TemplateDTO,\ std::int64\_t>\ \{\};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
+
+\end{DoxyCode}

@@ -1,5 +1,5 @@
 \doxysection{export.\+h}
-\hypertarget{export_8h_source}{}\label{export_8h_source}\index{src/lib/export.h@{src/lib/export.h}}
+\hypertarget{export_8h_source}{}\label{export_8h_source}\index{src/ankicpp/export.h@{src/ankicpp/export.h}}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
@@ -8,22 +8,29 @@
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <filesystem>}}
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string\_view>}}
 \DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
-\DoxyCodeLine{00007\ \textcolor{keyword}{enum\ class}\ ExportError\ \{}
-\DoxyCodeLine{00008\ \ \ NO\_ERROR,}
-\DoxyCodeLine{00009\ \ \ UNKNOWN\_ERROR,}
-\DoxyCodeLine{00010\ \ \ OPENING\_ERROR,}
-\DoxyCodeLine{00011\ \ \ WRITING\_ERROR,}
-\DoxyCodeLine{00012\ \ \ EMPTY\_DECK\_ERROR,}
-\DoxyCodeLine{00013\ \ \ INVALID\_NOTE\_ERROR,}
-\DoxyCodeLine{00014\ \ \ INVALID\_NOTE\_TYPE\_ERROR}
-\DoxyCodeLine{00015\ \};}
-\DoxyCodeLine{00016\ \textcolor{keyword}{extern}\ ExportError\ exportError;}
+\DoxyCodeLine{00007\ \textcolor{keyword}{enum\ class}\ Error\ \{}
+\DoxyCodeLine{00008\ \ \ EXPORT\_NO\_ERROR,}
+\DoxyCodeLine{00009\ \ \ EXPORT\_UNKNOWN\_ERROR,}
+\DoxyCodeLine{00010\ \ \ EXPORT\_FILE\_READING\_ERROR,}
+\DoxyCodeLine{00011\ \ \ EXPORT\_FILE\_WRITING\_ERROR,}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ EXPORT\_COMPRESS\_FILE\_NOT\_FOUND\_ERROR,}
+\DoxyCodeLine{00014\ \ \ EXPORT\_COMPRESS\_FILE\_READING\_ERROR,}
+\DoxyCodeLine{00015\ \ \ EXPORT\_COMPRESS\_MINIZIP\_ERROR,}
+\DoxyCodeLine{00016\ \ \ EXPORT\_COMPRESS\_ZSTD\_ERROR,}
 \DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \textcolor{keywordtype}{bool}\ exportDeck(Deck\ deck,\ std::string\_view\ filename);}
-\DoxyCodeLine{00019\ \textcolor{keywordtype}{bool}\ createFiles(std::filesystem::path\ outPath,\ std::filesystem::path\ metaPath,}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::filesystem::path\ mediaPath,}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::filesystem::path\ databasePath);}
-\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{bool}\ populateDatabase(Deck\ deck);}
-\DoxyCodeLine{00023\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
+\DoxyCodeLine{00018\ \ \ EXPORT\_DATABASE\_ERROR,}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ DATA\_DECK\_EMPTY\_ERROR,}
+\DoxyCodeLine{00021\ \ \ DATA\_NOTE\_WITHOUT\_TYPE\_ERROR,}
+\DoxyCodeLine{00022\ \};}
+\DoxyCodeLine{00023\ \textcolor{keyword}{extern}\ Error\ error;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{bool}\ exportDeck(Deck\ deck,\ std::string\_view\ filename);}
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{bool}\ createFiles(std::filesystem::path\ outPath,\ std::filesystem::path\ metaPath,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::filesystem::path\ mediaPath,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::filesystem::path\ databasePath);}
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{bool}\ populateDatabase(Deck\ deck,\ std::string\ filename);}
+\DoxyCodeLine{00030\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
 
 \end{DoxyCode}

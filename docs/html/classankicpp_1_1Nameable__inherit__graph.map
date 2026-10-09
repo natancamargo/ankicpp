@@ -1,0 +1,11 @@
+<map id="ankicpp::Nameable" name="ankicpp::Nameable">
+<area shape="rect" id="Node000001" title=" " alt="" coords="201,5,349,31"/>
+<area shape="rect" id="Node000002" href="$classankicpp_1_1Deck.html" title=" " alt="" coords="5,79,120,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="229,37,98,81,96,76,227,32"/>
+<area shape="rect" id="Node000003" href="$classankicpp_1_1Field.html" title=" " alt="" coords="144,79,256,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="255,42,214,80,210,77,251,38"/>
+<area shape="rect" id="Node000004" href="$classankicpp_1_1NoteType.html" title=" " alt="" coords="279,79,422,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="299,38,340,76,336,80,295,42"/>
+<area shape="rect" id="Node000005" href="$classankicpp_1_1Template.html" title=" " alt="" coords="447,79,588,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="327,32,479,76,477,81,326,37"/>
+</map>

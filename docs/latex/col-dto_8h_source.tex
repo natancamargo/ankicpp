@@ -4,25 +4,45 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00002\ }
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <cstdint>}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
-\DoxyCodeLine{00005\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
-\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classankicpp_1_1ColDTO}{ColDTO}}\ \{}
-\DoxyCodeLine{00007\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00008\ \ \ std::uint32\_t\ id;}
-\DoxyCodeLine{00009\ \ \ std::uint32\_t\ crt;}
-\DoxyCodeLine{00010\ \ \ std::uint32\_t\ mod;}
-\DoxyCodeLine{00011\ \ \ std::uint32\_t\ scm;}
-\DoxyCodeLine{00012\ \ \ std::uint32\_t\ ver;}
-\DoxyCodeLine{00013\ \ \ std::uint32\_t\ dty;}
-\DoxyCodeLine{00014\ \ \ std::uint32\_t\ usn;}
-\DoxyCodeLine{00015\ \ \ std::uint32\_t\ ls;}
-\DoxyCodeLine{00016\ \ \ std::string\ conf;}
-\DoxyCodeLine{00017\ \ \ std::string\ models;}
-\DoxyCodeLine{00018\ \ \ std::string\ decks;}
-\DoxyCodeLine{00019\ \ \ std::string\ dconf;}
-\DoxyCodeLine{00020\ \ \ std::string\ tags;}
-\DoxyCodeLine{00021\ \};}
-\DoxyCodeLine{00022\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}util/identifyable.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classankicpp_1_1ColDTO}{ColDTO}}\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00009\ \ \ std::int64\_t\ id;}
+\DoxyCodeLine{00010\ \ \ std::int64\_t\ crt;}
+\DoxyCodeLine{00011\ \ \ std::int64\_t\ mod;}
+\DoxyCodeLine{00012\ \ \ std::int64\_t\ scm;}
+\DoxyCodeLine{00013\ \ \ std::int64\_t\ ver;}
+\DoxyCodeLine{00014\ \ \ std::int64\_t\ dty;}
+\DoxyCodeLine{00015\ \ \ std::int64\_t\ usn;}
+\DoxyCodeLine{00016\ \ \ std::int64\_t\ ls;}
+\DoxyCodeLine{00017\ \ \ std::string\ conf;}
+\DoxyCodeLine{00018\ \ \ std::string\ models;}
+\DoxyCodeLine{00019\ \ \ std::string\ decks;}
+\DoxyCodeLine{00020\ \ \ std::string\ dconf;}
+\DoxyCodeLine{00021\ \ \ std::string\ tags;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classankicpp_1_1ColDTO}{ColDTO}}\ createDTO()\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classankicpp_1_1ColDTO}{ColDTO}}\ colDTO;}
+\DoxyCodeLine{00025\ \ \ \ \ colDTO.id\ =\ Identifyable::generateRandomId();}
+\DoxyCodeLine{00026\ \ \ \ \ colDTO.crt\ =\ 0;}
+\DoxyCodeLine{00027\ \ \ \ \ colDTO.mod\ =\ 0;}
+\DoxyCodeLine{00028\ \ \ \ \ colDTO.scm\ =\ 0;}
+\DoxyCodeLine{00029\ \ \ \ \ colDTO.ver\ =\ 18;}
+\DoxyCodeLine{00030\ \ \ \ \ colDTO.dty\ =\ 0;}
+\DoxyCodeLine{00031\ \ \ \ \ colDTO.usn\ =\ 0;}
+\DoxyCodeLine{00032\ \ \ \ \ colDTO.ls\ =\ 0;}
+\DoxyCodeLine{00033\ \ \ \ \ colDTO.conf\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00034\ \ \ \ \ colDTO.models\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00035\ \ \ \ \ colDTO.decks\ \ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00036\ \ \ \ \ colDTO.dconf\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00037\ \ \ \ \ colDTO.tags\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordflow}{return}\ colDTO;}
+\DoxyCodeLine{00040\ \ \ \}}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
 
 \end{DoxyCode}
