@@ -2,10 +2,10 @@
 #include <memory>
 
 #include "ankicpp/ankicpp.h"
-#include "note/note-type.h"
 
+namespace ankicpp {
 TEST_CASE("Note should work properly", "[note]") {
-  ankicpp::Note note;
+  Note note;
   SECTION("when setting fields", "[note]") {
     note.addField("Front", "some front text");
     note.addField("Back", "some back text");
@@ -25,19 +25,17 @@ TEST_CASE("Note should work properly", "[note]") {
     REQUIRE(note.getFlags() == 3);
   }
   SECTION("when setting note-type", "[note][note-type]") {
-    note.setType(ankicpp::basicNoteType);
-    REQUIRE(note.getType() == ankicpp::basicNoteType);
+    note.setType(basicNoteType);
+    REQUIRE(note.getType() == basicNoteType);
   }
 }
 
 TEST_CASE("NoteType should work properly", "[note-type]") {
-  std::shared_ptr<ankicpp::NoteType> noteType =
-      std::make_shared<ankicpp::NoteType>("note-type name");
+  std::shared_ptr<NoteType> noteType =
+      std::make_shared<NoteType>("note-type name");
   SECTION("when setting fields", "[note-type][field]") {
-    std::shared_ptr<ankicpp::Field> fieldFront =
-        std::make_shared<ankicpp::Field>("Front");
-    std::shared_ptr<ankicpp::Field> fieldBack =
-        std::make_shared<ankicpp::Field>("Back");
+    std::shared_ptr<Field> fieldFront = std::make_shared<Field>("Front");
+    std::shared_ptr<Field> fieldBack = std::make_shared<Field>("Back");
     noteType->addField(fieldFront);
     noteType->addField(fieldBack);
     REQUIRE(noteType->getFields().size() == 2);
@@ -47,10 +45,10 @@ TEST_CASE("NoteType should work properly", "[note-type]") {
     REQUIRE(noteType->getFields().size() == 1);
   }
   SECTION("when setting templates", "[note-type][template]") {
-    std::shared_ptr<ankicpp::Template> template1 =
-        std::make_shared<ankicpp::Template>("Template 1");
-    std::shared_ptr<ankicpp::Template> template2 =
-        std::make_shared<ankicpp::Template>("Template 1");
+    std::shared_ptr<Template> template1 =
+        std::make_shared<Template>("Template 1");
+    std::shared_ptr<Template> template2 =
+        std::make_shared<Template>("Template 1");
     noteType->addTemplate(template1);
     noteType->addTemplate(template2);
     REQUIRE(noteType->getTemplates().size() == 2);
@@ -58,66 +56,66 @@ TEST_CASE("NoteType should work properly", "[note-type]") {
     REQUIRE(noteType->getTemplates().size() == 1);
   }
   SECTION("when checking predefined note types", "[note-type][template]") {
-    REQUIRE(ankicpp::basicNoteType->getFields().size() == 2);
-    REQUIRE(ankicpp::basicNoteType->getTemplates().size() == 1);
-    REQUIRE(ankicpp::clozeNoteType->getFields().size() == 2);
-    REQUIRE(ankicpp::clozeNoteType->getTemplates().size() == 1);
+    REQUIRE(basicNoteType->getFields().size() == 2);
+    REQUIRE(basicNoteType->getTemplates().size() == 1);
+    REQUIRE(clozeNoteType->getFields().size() == 2);
+    REQUIRE(clozeNoteType->getTemplates().size() == 1);
   }
 }
 
 TEST_CASE("Deck should work properly", "[deck]") {
-  ankicpp::Deck deck{"deck-name"};
+  std::shared_ptr<Deck> deck = std::make_shared<Deck>("test-deck");
   SECTION("when setting notes", "[deck][note]") {
-    std::shared_ptr<ankicpp::Note> note1 = std::make_shared<ankicpp::Note>();
-    std::shared_ptr<ankicpp::Note> note2 = std::make_shared<ankicpp::Note>();
-    note1->setType(ankicpp::basicNoteType);    
-    note2->setType(ankicpp::basicNoteType);    
-    deck.addNote(note1);
-    deck.addNote(note2);
-    REQUIRE(deck.getNotes().size() == 2);
-    deck.removeNote(note2);
-    REQUIRE(deck.getNotes().size() == 1);
+    std::shared_ptr<Note> note1 = std::make_shared<Note>();
+    std::shared_ptr<Note> note2 = std::make_shared<Note>();
+    note1->setType(basicNoteType);
+    note2->setType(basicNoteType);
+    deck->addNote(note1);
+    deck->addNote(note2);
+    REQUIRE(deck->getNotes().size() == 2);
+    deck->removeNote(note2);
+    REQUIRE(deck->getNotes().size() == 1);
   }
   SECTION("when setting cards", "[deck][card]") {
-    std::shared_ptr<ankicpp::Card> card1 = std::make_shared<ankicpp::Card>();
-    std::shared_ptr<ankicpp::Card> card2 = std::make_shared<ankicpp::Card>();
-    deck.addCard(card1);
-    deck.addCard(card2);
-    REQUIRE(deck.getCards().size() == 2);
-    deck.removeCard(card2);
-    REQUIRE(deck.getCards().size() == 1);
-    deck.clearCards();
-    REQUIRE(deck.getCards().size() == 0);
+    std::shared_ptr<Card> card1 = std::make_shared<Card>();
+    std::shared_ptr<Card> card2 = std::make_shared<Card>();
+    deck->addCard(card1);
+    deck->addCard(card2);
+    REQUIRE(deck->getCards().size() == 2);
+    deck->removeCard(card2);
+    REQUIRE(deck->getCards().size() == 1);
+    deck->clearCards();
+    REQUIRE(deck->getCards().size() == 0);
   }
   SECTION("when setting a complete basic note", "[deck][card]") {
-    std::shared_ptr<ankicpp::Note> note = std::make_shared<ankicpp::Note>();
+    std::shared_ptr<Note> note = std::make_shared<Note>();
 
-    note->setType(ankicpp::basicNoteType);
+    note->setType(basicNoteType);
     note->addField("Front", "<Front Content>");
     note->addField("Back", "<Back Content>");
 
-    deck.addNote(note);
-    deck.generateCards();
+    deck->addNote(note);
+    deck->generateCards();
 
-    REQUIRE(deck.getNotes().size() == 1);
-    REQUIRE(deck.getCards().size() == 1);
+    REQUIRE(deck->getNotes().size() == 1);
+    REQUIRE(deck->getCards().size() == 1);
     REQUIRE(note->getFields().size() == 2);
     REQUIRE(note->getType()->getFields().size() == 2);
     REQUIRE(note->getType()->getTemplates().size() == 1);
   }
 
   SECTION("when setting a complete basic and reversed note", "[deck][card]") {
-    std::shared_ptr<ankicpp::Note> note = std::make_shared<ankicpp::Note>();
+    std::shared_ptr<Note> note = std::make_shared<Note>();
 
-    note->setType(ankicpp::basicAndReversedNoteType);
+    note->setType(basicAndReversedNoteType);
     note->addField("Front", "<Front Content>");
     note->addField("Back", "<Back Content>");
 
-    deck.addNote(note);
-    deck.generateCards();
+    deck->addNote(note);
+    deck->generateCards();
 
-    REQUIRE(deck.getNotes().size() == 2);
-    REQUIRE(deck.getCards().size() == 2);
+    REQUIRE(deck->getNotes().size() == 2);
+    REQUIRE(deck->getCards().size() == 2);
     REQUIRE(note->getFields().size() == 2);
     REQUIRE(note->getType()->getFields().size() == 2);
     REQUIRE(note->getType()->getTemplates().size() == 2);
@@ -125,35 +123,36 @@ TEST_CASE("Deck should work properly", "[deck]") {
 }
 
 TEST_CASE("Export should work properly", "[export]") {
-  ankicpp::Deck deck{"deck-name"};
   SECTION("when trying to export an empty deck it should fail",
           "[deck][export]") {
-    REQUIRE(ankicpp::exportDeck(deck, "./empty/empty-deck.apkg") == false);
+    std::shared_ptr<Deck> deck = std::make_shared<Deck>("empty-deck");
+    REQUIRE(exportDeck(deck, "./empty/empty-deck.apkg") == false);
   }
 
   SECTION("when trying to export a basic deck", "[deck][export]") {
-    ankicpp::Deck deck{"basic-deck"};    
-    std::shared_ptr<ankicpp::Note> note = std::make_shared<ankicpp::Note>();
+    std::shared_ptr<Deck> deck = std::make_shared<Deck>("basic-deck");
+    std::shared_ptr<Note> note = std::make_shared<Note>();
 
-    note->setType(ankicpp::basicNoteType);
+    note->setType(basicNoteType);
     note->addField("Front", "Front content");
     note->addField("Back", "Back content");
 
-    deck.addNote(note);
+    deck->addNote(note);
 
-    REQUIRE(ankicpp::exportDeck(deck, "./basic/deck.apkg"));
+    REQUIRE(exportDeck(deck, "./basic/deck.apkg"));
   }
 
   SECTION("when trying to export a basic and reversed deck", "[deck][export]") {
-    ankicpp::Deck deck{"reversed-deck"};
-    std::shared_ptr<ankicpp::Note> note = std::make_shared<ankicpp::Note>();
+    std::shared_ptr<Deck> deck = std::make_shared<Deck>("reversed-deck");
+    std::shared_ptr<Note> note = std::make_shared<Note>();
 
-    note->setType(ankicpp::basicAndReversedNoteType);
+    note->setType(basicAndReversedNoteType);
     note->addField("Front", "<Front Content>");
     note->addField("Back", "<Back Content>");
 
-    deck.addNote(note);
+    deck->addNote(note);
 
-    REQUIRE(ankicpp::exportDeck(deck, "./basic-and-reversed/deck.apkg"));
+    REQUIRE(exportDeck(deck, "./basic-and-reversed/deck.apkg"));
   }
 }
+} // namespace ankicpp

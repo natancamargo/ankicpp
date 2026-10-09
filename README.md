@@ -11,14 +11,14 @@ Small library to create anki notes.
 
   using namespace ankicpp;
 
-  ankicpp::Deck deck{"deck-name"};
+  std::shared_ptr<Deck> deck = std::make_shared<Deck>("deck-name");
   std::shared_ptr<Note> note = std::make_shared<Note>();
 
   note->setType(basicNoteType);
   note->addField("Front", "<Front Content>");
   note->addField("Back", "<Bakc Content>");
 
-  deck.addNote(note);
+  deck->addNote(note);
 
   exportDeck(deck, "./basic/ankicpp.apkg");
 ```
@@ -28,14 +28,14 @@ Small library to create anki notes.
  
   using namespace ankicpp;
 
-  Deck deck{"deck-name"};
-  std::shared_ptr<ankicpp::Note> note{};
+  std::shared_ptr<Deck> deck = std::make_shared<Deck>("deck-namme");
+  std::shared_ptr<Note> note = std::make_shared<Note>();
 
-  note.setType(basicAndReversedNoteType);
-  note.addField("Front", "<Front Content>");
-  note.addField("Back", "<Back Content>");
+  note->setType(basicAndReversedNoteType);
+  note->addField("Front", "<Front Content>");
+  note->addField("Back", "<Back Content>");
 
-  deck.addNote(note);
+  deck->addNote(note);
 
   exportDeck(deck, "./basic-and-reversed/ankicpp.apkg");
 ```
@@ -45,13 +45,13 @@ Small library to create anki notes.
  
   using namespace ankicpp;
 
-  Deck deck{"deck-name"};
+  std::shared_ptr<Deck> deck = std::make_shared<Deck>("deck-name");
   std::shared_ptr<Note> note = std::make_shared<Note>();
 
-  note.setType(clozeNoteType);
-  note.addField("Text", "{{c1::text1}} {{c2::text2}}");
+  note->setType(clozeNoteType);
+  note->addField("Text", "Canberra was founded in {{c1::1913}}.");
 
-  deck.addNote(note);
+  deck->addNote(note);
 
   exportDeck(deck, "./cloze/ankicpp.apkg");
 ```

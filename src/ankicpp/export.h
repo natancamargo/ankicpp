@@ -2,6 +2,7 @@
 
 #include "deck/deck.h"
 #include <filesystem>
+#include <memory>
 #include <string_view>
 namespace ankicpp {
 enum class Error {
@@ -22,9 +23,9 @@ enum class Error {
 };
 extern Error error;
 
-bool exportDeck(Deck deck, std::string_view filename);
+bool exportDeck(const std::shared_ptr<Deck> &deck, std::string_view filename);
 bool createFiles(std::filesystem::path outPath, std::filesystem::path metaPath,
                  std::filesystem::path mediaPath,
                  std::filesystem::path databasePath);
-bool populateDatabase(Deck deck, std::string filename);
+bool populateDatabase(const std::shared_ptr<Deck> &, std::string filename);
 } // namespace ankicpp

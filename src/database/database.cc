@@ -91,7 +91,7 @@ bool createDatabase() {
 
   return true;
 }
-bool populateDatabase(Deck deck) {
+bool populateDatabase(const std::shared_ptr<Deck> &deck) {
   const Repository<DeckDTO, std::int64_t> &deckRepository = DeckRepository();
   const Repository<CardDTO, std::int64_t> &cardRepository = CardRepository();
   const Repository<TemplateDTO, std::int64_t> &templateRepository = TemplateRepository();
@@ -103,7 +103,7 @@ bool populateDatabase(Deck deck) {
   const Repository<DeckConfigDTO, std::int64_t> &deckConfigRepository = DeckConfigRepository();
 
   // deck
-  deckRepository.create(deckMapper::modelToDTO(deck));
+  deckRepository.create(deckMapper::modelToDTO(*deck));
 
   // col  
   colRepository.create(ColDTO::createDTO());
@@ -118,7 +118,7 @@ bool populateDatabase(Deck deck) {
   deckConfigRepository.create(DeckConfigDTO::createDefaultDTO());
   deckRepository.create(DeckDTO::createDefaultDTO());
   
-  for (const std::shared_ptr<Note> &note : deck.getNotes()) {
+  for (const std::shared_ptr<Note> &note : deck->getNotes()) {
     // Note
     const NoteDTO noteDTO = noteMapper::modelToDTO(*note);
     noteRepository.create(noteDTO);
@@ -136,7 +136,7 @@ bool populateDatabase(Deck deck) {
     for (const std::shared_ptr<Template> &templatee :
          noteType->getTemplates()) {
       const std::shared_ptr<Card> &card = std::make_shared<Card>();
-      card->setDeck(std::make_shared<Deck>(deck));
+      card->setDeck(deck);
       card->setNote(note);
       card->setTemplate(templatee);
       const CardDTO cardDTO = cardMapper::modelToDTO(*card);
