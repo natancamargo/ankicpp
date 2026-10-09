@@ -1,9 +1,7 @@
 #include "ankicpp/export.h"
-#include "ankicpp/config-lib.h"
 #include "compression/compression.h"
 #include "database/database.h"
 #include "deck/deck.h"
-#include "note/note.h"
 #include <cstdio>
 #include <filesystem>
 #include <format>
@@ -14,7 +12,7 @@
 namespace ankicpp {
 Error error = Error::EXPORT_NO_ERROR;
 
-bool exportDeck(Deck deck, std::string_view filename) {
+bool exportDeck(const std::shared_ptr<Deck> &deck, std::string_view filename) {
   std::cout << std::format("export: Starting...\n");
 
   error = Error::EXPORT_NO_ERROR;
@@ -98,8 +96,8 @@ bool createFiles(std::filesystem::path outPath, std::filesystem::path metaPath,
 
   return true;
 }
-bool populateDatabase(Deck deck, std::string filename) {
-  if (!deck.generateCards()) {
+bool populateDatabase(const std::shared_ptr<Deck> &deck, std::string filename) {
+  if (!deck->generateCards()) {
     std::cout << std::format("export: Failed.\n");
     return false;
   }
