@@ -1,0 +1,106 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\contentsline {chapter}{\numberline {1}Hierarchical Index}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Class Hierarchy}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Class Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Class List}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}File Index}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}File List}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Class Documentation}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Card Class Reference}{7}{section.4.1}%
+\contentsline {section}{\numberline {4.2}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Card\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO Class Reference}{8}{section.4.2}%
+\contentsline {section}{\numberline {4.3}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Card\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository Class Reference}{9}{section.4.3}%
+\contentsline {section}{\numberline {4.4}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Col\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO Class Reference}{10}{section.4.4}%
+\contentsline {section}{\numberline {4.5}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Col\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository Class Reference}{10}{section.4.5}%
+\contentsline {section}{\numberline {4.6}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Config\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO Class Reference}{11}{section.4.6}%
+\contentsline {section}{\numberline {4.7}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Config\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository Class Reference}{12}{section.4.7}%
+\contentsline {section}{\numberline {4.8}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Deck Class Reference}{13}{section.4.8}%
+\contentsline {section}{\numberline {4.9}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Deck\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Config\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO Class Reference}{14}{section.4.9}%
+\contentsline {section}{\numberline {4.10}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Deck\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Config\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository Class Reference}{15}{section.4.10}%
+\contentsline {section}{\numberline {4.11}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Deck\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO Class Reference}{16}{section.4.11}%
+\contentsline {section}{\numberline {4.12}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Deck\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository Class Reference}{16}{section.4.12}%
+\contentsline {section}{\numberline {4.13}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Field Class Reference}{17}{section.4.13}%
+\contentsline {section}{\numberline {4.14}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Field\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO Class Reference}{19}{section.4.14}%
+\contentsline {section}{\numberline {4.15}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Field\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository Class Reference}{19}{section.4.15}%
+\contentsline {section}{\numberline {4.16}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Grave\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO Class Reference}{20}{section.4.16}%
+\contentsline {section}{\numberline {4.17}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Identifyable Class Reference}{20}{section.4.17}%
+\contentsline {section}{\numberline {4.18}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Nameable Class Reference}{21}{section.4.18}%
+\contentsline {section}{\numberline {4.19}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Note Class Reference}{22}{section.4.19}%
+\contentsline {section}{\numberline {4.20}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Note\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO Class Reference}{23}{section.4.20}%
+\contentsline {section}{\numberline {4.21}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Note\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository Class Reference}{24}{section.4.21}%
+\contentsline {section}{\numberline {4.22}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Note\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type Class Reference}{25}{section.4.22}%
+\contentsline {section}{\numberline {4.23}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Note\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO Class Reference}{26}{section.4.23}%
+\contentsline {section}{\numberline {4.24}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Note\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository Class Reference}{27}{section.4.24}%
+\contentsline {section}{\numberline {4.25}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Repository$<$ D, K $>$ Class Template Reference}{28}{section.4.25}%
+\contentsline {section}{\numberline {4.26}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Repository$<$ Card\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO, std\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::int64\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}t $>$ Class Reference}{28}{section.4.26}%
+\contentsline {section}{\numberline {4.27}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Repository$<$ Col\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO, std\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::int64\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}t $>$ Class Reference}{29}{section.4.27}%
+\contentsline {section}{\numberline {4.28}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Repository$<$ Config\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO, std\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::int64\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}t $>$ Class Reference}{29}{section.4.28}%
+\contentsline {section}{\numberline {4.29}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Repository$<$ Deck\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Config\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO, std\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::int64\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}t $>$ Class Reference}{30}{section.4.29}%
+\contentsline {section}{\numberline {4.30}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Repository$<$ Deck\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO, std\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::int64\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}t $>$ Class Reference}{31}{section.4.30}%
+\contentsline {section}{\numberline {4.31}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Repository$<$ Field\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO, std\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::int64\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}t $>$ Class Reference}{31}{section.4.31}%
+\contentsline {section}{\numberline {4.32}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Repository$<$ Note\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO, std\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::int64\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}t $>$ Class Reference}{32}{section.4.32}%
+\contentsline {section}{\numberline {4.33}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Repository$<$ Note\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO, std\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::int64\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}t $>$ Class Reference}{33}{section.4.33}%
+\contentsline {section}{\numberline {4.34}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Repository$<$ Template\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO, std\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::int64\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}t $>$ Class Reference}{33}{section.4.34}%
+\contentsline {section}{\numberline {4.35}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Tag\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO Class Reference}{34}{section.4.35}%
+\contentsline {section}{\numberline {4.36}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Template Class Reference}{34}{section.4.36}%
+\contentsline {section}{\numberline {4.37}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Template\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO Class Reference}{36}{section.4.37}%
+\contentsline {section}{\numberline {4.38}ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Template\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Repository Class Reference}{36}{section.4.38}%
+\contentsline {section}{\numberline {4.39}soci\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}conversion$<$ ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Card\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO $>$ Struct Reference}{37}{section.4.39}%
+\contentsline {section}{\numberline {4.40}soci\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}conversion$<$ ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Col\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO $>$ Struct Reference}{38}{section.4.40}%
+\contentsline {section}{\numberline {4.41}soci\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}conversion$<$ ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Config\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO $>$ Struct Reference}{38}{section.4.41}%
+\contentsline {section}{\numberline {4.42}soci\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}conversion$<$ ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Deck\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Config\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO $>$ Struct Reference}{38}{section.4.42}%
+\contentsline {section}{\numberline {4.43}soci\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}conversion$<$ ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Deck\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO $>$ Struct Reference}{39}{section.4.43}%
+\contentsline {section}{\numberline {4.44}soci\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}conversion$<$ ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Field\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO $>$ Struct Reference}{39}{section.4.44}%
+\contentsline {section}{\numberline {4.45}soci\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}conversion$<$ ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Note\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO $>$ Struct Reference}{39}{section.4.45}%
+\contentsline {section}{\numberline {4.46}soci\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}conversion$<$ ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Note\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO $>$ Struct Reference}{40}{section.4.46}%
+\contentsline {section}{\numberline {4.47}soci\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::type\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}conversion$<$ ankicpp\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}::Template\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}DTO $>$ Struct Reference}{40}{section.4.47}%
+\contentsline {chapter}{\numberline {5}File Documentation}{41}{chapter.5}%
+\contentsline {section}{\numberline {5.1}ankicpp.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{41}{section.5.1}%
+\contentsline {section}{\numberline {5.2}export.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{41}{section.5.2}%
+\contentsline {section}{\numberline {5.3}card-\/dto.h}{42}{section.5.3}%
+\contentsline {section}{\numberline {5.4}card-\/mapper.h}{42}{section.5.4}%
+\contentsline {section}{\numberline {5.5}card-\/repository.h}{42}{section.5.5}%
+\contentsline {section}{\numberline {5.6}card.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{42}{section.5.6}%
+\contentsline {section}{\numberline {5.7}col-\/dto.h}{43}{section.5.7}%
+\contentsline {section}{\numberline {5.8}col-\/repository.h}{43}{section.5.8}%
+\contentsline {section}{\numberline {5.9}col.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{44}{section.5.9}%
+\contentsline {section}{\numberline {5.10}compression.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{44}{section.5.10}%
+\contentsline {section}{\numberline {5.11}zip-\/utils.h}{44}{section.5.11}%
+\contentsline {section}{\numberline {5.12}zstd-\/utils.h}{44}{section.5.12}%
+\contentsline {section}{\numberline {5.13}config-\/dto.h}{44}{section.5.13}%
+\contentsline {section}{\numberline {5.14}config-\/repository.h}{46}{section.5.14}%
+\contentsline {section}{\numberline {5.15}config.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{46}{section.5.15}%
+\contentsline {section}{\numberline {5.16}database.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{46}{section.5.16}%
+\contentsline {section}{\numberline {5.17}repository.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{47}{section.5.17}%
+\contentsline {section}{\numberline {5.18}deck-\/config-\/dto.h}{47}{section.5.18}%
+\contentsline {section}{\numberline {5.19}deck-\/config-\/repository.h}{47}{section.5.19}%
+\contentsline {section}{\numberline {5.20}deck-\/dto.h}{48}{section.5.20}%
+\contentsline {section}{\numberline {5.21}deck-\/mapper.h}{48}{section.5.21}%
+\contentsline {section}{\numberline {5.22}deck-\/repository.h}{48}{section.5.22}%
+\contentsline {section}{\numberline {5.23}deck.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{49}{section.5.23}%
+\contentsline {section}{\numberline {5.24}field-\/dto.h}{49}{section.5.24}%
+\contentsline {section}{\numberline {5.25}field-\/mapper.h}{49}{section.5.25}%
+\contentsline {section}{\numberline {5.26}field-\/repository.h}{50}{section.5.26}%
+\contentsline {section}{\numberline {5.27}field.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{50}{section.5.27}%
+\contentsline {section}{\numberline {5.28}grave-\/dto.h}{50}{section.5.28}%
+\contentsline {section}{\numberline {5.29}grave.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{50}{section.5.29}%
+\contentsline {section}{\numberline {5.30}note-\/dto.h}{51}{section.5.30}%
+\contentsline {section}{\numberline {5.31}note-\/mapper.h}{51}{section.5.31}%
+\contentsline {section}{\numberline {5.32}note-\/repository.h}{51}{section.5.32}%
+\contentsline {section}{\numberline {5.33}note-\/type-\/dto.h}{51}{section.5.33}%
+\contentsline {section}{\numberline {5.34}note-\/type-\/mapper.h}{52}{section.5.34}%
+\contentsline {section}{\numberline {5.35}note-\/type-\/repository.h}{52}{section.5.35}%
+\contentsline {section}{\numberline {5.36}note-\/type.h}{52}{section.5.36}%
+\contentsline {section}{\numberline {5.37}note.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{53}{section.5.37}%
+\contentsline {section}{\numberline {5.38}reflog-\/dto.h}{53}{section.5.38}%
+\contentsline {section}{\numberline {5.39}reflog.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{54}{section.5.39}%
+\contentsline {section}{\numberline {5.40}tag-\/dto.h}{54}{section.5.40}%
+\contentsline {section}{\numberline {5.41}tag.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{54}{section.5.41}%
+\contentsline {section}{\numberline {5.42}template-\/dto.h}{54}{section.5.42}%
+\contentsline {section}{\numberline {5.43}template-\/mapper.h}{54}{section.5.43}%
+\contentsline {section}{\numberline {5.44}template-\/repository.h}{55}{section.5.44}%
+\contentsline {section}{\numberline {5.45}template.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{55}{section.5.45}%
+\contentsline {section}{\numberline {5.46}identifyable.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{55}{section.5.46}%
+\contentsline {section}{\numberline {5.47}nameable.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{56}{section.5.47}%
+\contentsline {section}{\numberline {5.48}time.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{56}{section.5.48}%
+\contentsline {section}{\numberline {5.49}util.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{56}{section.5.49}%
+\contentsline {chapter}{Index}{57}{section*.146}%

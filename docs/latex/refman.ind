@@ -1,0 +1,120 @@
+\begin{theindex}
+
+  \item {ankicpp::Card}, \hyperpage{7}
+  \item {ankicpp::CardDTO}, \hyperpage{8}
+  \item {ankicpp::CardRepository}, \hyperpage{9}
+  \item {ankicpp::ColDTO}, \hyperpage{10}
+  \item {ankicpp::ColRepository}, \hyperpage{10}
+  \item {ankicpp::ConfigDTO}, \hyperpage{11}
+  \item {ankicpp::ConfigRepository}, \hyperpage{12}
+  \item {ankicpp::Deck}, \hyperpage{13}
+  \item {ankicpp::DeckConfigDTO}, \hyperpage{14}
+  \item {ankicpp::DeckConfigRepository}, \hyperpage{15}
+  \item {ankicpp::DeckDTO}, \hyperpage{16}
+  \item {ankicpp::DeckRepository}, \hyperpage{16}
+  \item {ankicpp::Field}, \hyperpage{17}
+  \item {ankicpp::FieldDTO}, \hyperpage{19}
+  \item {ankicpp::FieldRepository}, \hyperpage{19}
+  \item {ankicpp::GraveDTO}, \hyperpage{20}
+  \item {ankicpp::Identifyable}, \hyperpage{20}
+  \item {ankicpp::Nameable}, \hyperpage{21}
+  \item {ankicpp::Note}, \hyperpage{22}
+  \item {ankicpp::NoteDTO}, \hyperpage{23}
+  \item {ankicpp::NoteRepository}, \hyperpage{24}
+  \item {ankicpp::NoteType}, \hyperpage{25}
+  \item {ankicpp::NoteTypeDTO}, \hyperpage{26}
+  \item {ankicpp::NoteTypeRepository}, \hyperpage{27}
+  \item {ankicpp::Repository$<$ CardDTO, std::int64\_t $>$}, 
+		\hyperpage{28}
+  \item {ankicpp::Repository$<$ ColDTO, std::int64\_t $>$}, 
+		\hyperpage{29}
+  \item {ankicpp::Repository$<$ ConfigDTO, std::int64\_t $>$}, 
+		\hyperpage{29}
+  \item {ankicpp::Repository$<$ D, K $>$}, \hyperpage{28}
+  \item {ankicpp::Repository$<$ DeckConfigDTO, std::int64\_t $>$}, 
+		\hyperpage{30}
+  \item {ankicpp::Repository$<$ DeckDTO, std::int64\_t $>$}, 
+		\hyperpage{31}
+  \item {ankicpp::Repository$<$ FieldDTO, std::int64\_t $>$}, 
+		\hyperpage{31}
+  \item {ankicpp::Repository$<$ NoteDTO, std::int64\_t $>$}, 
+		\hyperpage{32}
+  \item {ankicpp::Repository$<$ NoteTypeDTO, std::int64\_t $>$}, 
+		\hyperpage{33}
+  \item {ankicpp::Repository$<$ TemplateDTO, std::int64\_t $>$}, 
+		\hyperpage{33}
+  \item {ankicpp::TagDTO}, \hyperpage{34}
+  \item {ankicpp::Template}, \hyperpage{34}
+  \item {ankicpp::TemplateDTO}, \hyperpage{36}
+  \item {ankicpp::TemplateRepository}, \hyperpage{36}
+
+  \indexspace
+
+  \item {soci::type\_conversion$<$ ankicpp::CardDTO $>$}, 
+		\hyperpage{37}
+  \item {soci::type\_conversion$<$ ankicpp::ColDTO $>$}, \hyperpage{38}
+  \item {soci::type\_conversion$<$ ankicpp::ConfigDTO $>$}, 
+		\hyperpage{38}
+  \item {soci::type\_conversion$<$ ankicpp::DeckConfigDTO $>$}, 
+		\hyperpage{38}
+  \item {soci::type\_conversion$<$ ankicpp::DeckDTO $>$}, 
+		\hyperpage{39}
+  \item {soci::type\_conversion$<$ ankicpp::FieldDTO $>$}, 
+		\hyperpage{39}
+  \item {soci::type\_conversion$<$ ankicpp::NoteDTO $>$}, 
+		\hyperpage{39}
+  \item {soci::type\_conversion$<$ ankicpp::NoteTypeDTO $>$}, 
+		\hyperpage{40}
+  \item {soci::type\_conversion$<$ ankicpp::TemplateDTO $>$}, 
+		\hyperpage{40}
+  \item {src/ankicpp/ankicpp.h}, \hyperpage{41}
+  \item {src/ankicpp/export.h}, \hyperpage{41}
+  \item {src/card/card-\/dto.h}, \hyperpage{42}
+  \item {src/card/card-\/mapper.h}, \hyperpage{42}
+  \item {src/card/card-\/repository.h}, \hyperpage{42}
+  \item {src/card/card.h}, \hyperpage{42}
+  \item {src/col/col-\/dto.h}, \hyperpage{43}
+  \item {src/col/col-\/repository.h}, \hyperpage{43}
+  \item {src/col/col.h}, \hyperpage{44}
+  \item {src/compression/compression.h}, \hyperpage{44}
+  \item {src/compression/zip-\/utils.h}, \hyperpage{44}
+  \item {src/compression/zstd-\/utils.h}, \hyperpage{44}
+  \item {src/config/config-\/dto.h}, \hyperpage{44}
+  \item {src/config/config-\/repository.h}, \hyperpage{46}
+  \item {src/config/config.h}, \hyperpage{46}
+  \item {src/database/database.h}, \hyperpage{46}
+  \item {src/database/repository.h}, \hyperpage{47}
+  \item {src/deck/deck-\/config-\/dto.h}, \hyperpage{47}
+  \item {src/deck/deck-\/config-\/repository.h}, \hyperpage{47}
+  \item {src/deck/deck-\/dto.h}, \hyperpage{48}
+  \item {src/deck/deck-\/mapper.h}, \hyperpage{48}
+  \item {src/deck/deck-\/repository.h}, \hyperpage{48}
+  \item {src/deck/deck.h}, \hyperpage{49}
+  \item {src/field/field-\/dto.h}, \hyperpage{49}
+  \item {src/field/field-\/mapper.h}, \hyperpage{49}
+  \item {src/field/field-\/repository.h}, \hyperpage{50}
+  \item {src/field/field.h}, \hyperpage{50}
+  \item {src/grave/grave-\/dto.h}, \hyperpage{50}
+  \item {src/grave/grave.h}, \hyperpage{50}
+  \item {src/note/note-\/dto.h}, \hyperpage{51}
+  \item {src/note/note-\/mapper.h}, \hyperpage{51}
+  \item {src/note/note-\/repository.h}, \hyperpage{51}
+  \item {src/note/note-\/type-\/dto.h}, \hyperpage{51}
+  \item {src/note/note-\/type-\/mapper.h}, \hyperpage{52}
+  \item {src/note/note-\/type-\/repository.h}, \hyperpage{52}
+  \item {src/note/note-\/type.h}, \hyperpage{52}
+  \item {src/note/note.h}, \hyperpage{53}
+  \item {src/reflog/reflog-\/dto.h}, \hyperpage{53}
+  \item {src/reflog/reflog.h}, \hyperpage{54}
+  \item {src/tag/tag-\/dto.h}, \hyperpage{54}
+  \item {src/tag/tag.h}, \hyperpage{54}
+  \item {src/template/template-\/dto.h}, \hyperpage{54}
+  \item {src/template/template-\/mapper.h}, \hyperpage{54}
+  \item {src/template/template-\/repository.h}, \hyperpage{55}
+  \item {src/template/template.h}, \hyperpage{55}
+  \item {src/util/identifyable.h}, \hyperpage{55}
+  \item {src/util/nameable.h}, \hyperpage{56}
+  \item {src/util/time.h}, \hyperpage{56}
+  \item {src/util/util.h}, \hyperpage{56}
+
+\end{theindex}

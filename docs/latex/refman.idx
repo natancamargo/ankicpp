@@ -1,0 +1,96 @@
+\indexentry{ankicpp::Card@{ankicpp::Card}|hyperpage}{7}
+\indexentry{ankicpp::CardDTO@{ankicpp::CardDTO}|hyperpage}{8}
+\indexentry{ankicpp::CardRepository@{ankicpp::CardRepository}|hyperpage}{9}
+\indexentry{ankicpp::ColDTO@{ankicpp::ColDTO}|hyperpage}{10}
+\indexentry{ankicpp::ColRepository@{ankicpp::ColRepository}|hyperpage}{10}
+\indexentry{ankicpp::ConfigDTO@{ankicpp::ConfigDTO}|hyperpage}{11}
+\indexentry{ankicpp::ConfigRepository@{ankicpp::ConfigRepository}|hyperpage}{12}
+\indexentry{ankicpp::Deck@{ankicpp::Deck}|hyperpage}{13}
+\indexentry{ankicpp::DeckConfigDTO@{ankicpp::DeckConfigDTO}|hyperpage}{14}
+\indexentry{ankicpp::DeckConfigRepository@{ankicpp::DeckConfigRepository}|hyperpage}{15}
+\indexentry{ankicpp::DeckDTO@{ankicpp::DeckDTO}|hyperpage}{16}
+\indexentry{ankicpp::DeckRepository@{ankicpp::DeckRepository}|hyperpage}{16}
+\indexentry{ankicpp::Field@{ankicpp::Field}|hyperpage}{17}
+\indexentry{ankicpp::FieldDTO@{ankicpp::FieldDTO}|hyperpage}{19}
+\indexentry{ankicpp::FieldRepository@{ankicpp::FieldRepository}|hyperpage}{19}
+\indexentry{ankicpp::GraveDTO@{ankicpp::GraveDTO}|hyperpage}{20}
+\indexentry{ankicpp::Identifyable@{ankicpp::Identifyable}|hyperpage}{20}
+\indexentry{ankicpp::Nameable@{ankicpp::Nameable}|hyperpage}{21}
+\indexentry{ankicpp::Note@{ankicpp::Note}|hyperpage}{22}
+\indexentry{ankicpp::NoteDTO@{ankicpp::NoteDTO}|hyperpage}{23}
+\indexentry{ankicpp::NoteRepository@{ankicpp::NoteRepository}|hyperpage}{24}
+\indexentry{ankicpp::NoteType@{ankicpp::NoteType}|hyperpage}{25}
+\indexentry{ankicpp::NoteTypeDTO@{ankicpp::NoteTypeDTO}|hyperpage}{26}
+\indexentry{ankicpp::NoteTypeRepository@{ankicpp::NoteTypeRepository}|hyperpage}{27}
+\indexentry{ankicpp::Repository$<$ D, K $>$@{ankicpp::Repository$<$ D, K $>$}|hyperpage}{28}
+\indexentry{ankicpp::Repository$<$ CardDTO, std::int64\_t $>$@{ankicpp::Repository$<$ CardDTO, std::int64\_t $>$}|hyperpage}{28}
+\indexentry{ankicpp::Repository$<$ ColDTO, std::int64\_t $>$@{ankicpp::Repository$<$ ColDTO, std::int64\_t $>$}|hyperpage}{29}
+\indexentry{ankicpp::Repository$<$ ConfigDTO, std::int64\_t $>$@{ankicpp::Repository$<$ ConfigDTO, std::int64\_t $>$}|hyperpage}{29}
+\indexentry{ankicpp::Repository$<$ DeckConfigDTO, std::int64\_t $>$@{ankicpp::Repository$<$ DeckConfigDTO, std::int64\_t $>$}|hyperpage}{30}
+\indexentry{ankicpp::Repository$<$ DeckDTO, std::int64\_t $>$@{ankicpp::Repository$<$ DeckDTO, std::int64\_t $>$}|hyperpage}{31}
+\indexentry{ankicpp::Repository$<$ FieldDTO, std::int64\_t $>$@{ankicpp::Repository$<$ FieldDTO, std::int64\_t $>$}|hyperpage}{31}
+\indexentry{ankicpp::Repository$<$ NoteDTO, std::int64\_t $>$@{ankicpp::Repository$<$ NoteDTO, std::int64\_t $>$}|hyperpage}{32}
+\indexentry{ankicpp::Repository$<$ NoteTypeDTO, std::int64\_t $>$@{ankicpp::Repository$<$ NoteTypeDTO, std::int64\_t $>$}|hyperpage}{33}
+\indexentry{ankicpp::Repository$<$ TemplateDTO, std::int64\_t $>$@{ankicpp::Repository$<$ TemplateDTO, std::int64\_t $>$}|hyperpage}{33}
+\indexentry{ankicpp::TagDTO@{ankicpp::TagDTO}|hyperpage}{34}
+\indexentry{ankicpp::Template@{ankicpp::Template}|hyperpage}{34}
+\indexentry{ankicpp::TemplateDTO@{ankicpp::TemplateDTO}|hyperpage}{36}
+\indexentry{ankicpp::TemplateRepository@{ankicpp::TemplateRepository}|hyperpage}{36}
+\indexentry{soci::type\_conversion$<$ ankicpp::CardDTO $>$@{soci::type\_conversion$<$ ankicpp::CardDTO $>$}|hyperpage}{37}
+\indexentry{soci::type\_conversion$<$ ankicpp::ColDTO $>$@{soci::type\_conversion$<$ ankicpp::ColDTO $>$}|hyperpage}{38}
+\indexentry{soci::type\_conversion$<$ ankicpp::ConfigDTO $>$@{soci::type\_conversion$<$ ankicpp::ConfigDTO $>$}|hyperpage}{38}
+\indexentry{soci::type\_conversion$<$ ankicpp::DeckConfigDTO $>$@{soci::type\_conversion$<$ ankicpp::DeckConfigDTO $>$}|hyperpage}{38}
+\indexentry{soci::type\_conversion$<$ ankicpp::DeckDTO $>$@{soci::type\_conversion$<$ ankicpp::DeckDTO $>$}|hyperpage}{39}
+\indexentry{soci::type\_conversion$<$ ankicpp::FieldDTO $>$@{soci::type\_conversion$<$ ankicpp::FieldDTO $>$}|hyperpage}{39}
+\indexentry{soci::type\_conversion$<$ ankicpp::NoteDTO $>$@{soci::type\_conversion$<$ ankicpp::NoteDTO $>$}|hyperpage}{39}
+\indexentry{soci::type\_conversion$<$ ankicpp::NoteTypeDTO $>$@{soci::type\_conversion$<$ ankicpp::NoteTypeDTO $>$}|hyperpage}{40}
+\indexentry{soci::type\_conversion$<$ ankicpp::TemplateDTO $>$@{soci::type\_conversion$<$ ankicpp::TemplateDTO $>$}|hyperpage}{40}
+\indexentry{src/ankicpp/ankicpp.h@{src/ankicpp/ankicpp.h}|hyperpage}{41}
+\indexentry{src/ankicpp/export.h@{src/ankicpp/export.h}|hyperpage}{41}
+\indexentry{src/card/card-\/dto.h@{src/card/card-\/dto.h}|hyperpage}{42}
+\indexentry{src/card/card-\/mapper.h@{src/card/card-\/mapper.h}|hyperpage}{42}
+\indexentry{src/card/card-\/repository.h@{src/card/card-\/repository.h}|hyperpage}{42}
+\indexentry{src/card/card.h@{src/card/card.h}|hyperpage}{42}
+\indexentry{src/col/col-\/dto.h@{src/col/col-\/dto.h}|hyperpage}{43}
+\indexentry{src/col/col-\/repository.h@{src/col/col-\/repository.h}|hyperpage}{43}
+\indexentry{src/col/col.h@{src/col/col.h}|hyperpage}{44}
+\indexentry{src/compression/compression.h@{src/compression/compression.h}|hyperpage}{44}
+\indexentry{src/compression/zip-\/utils.h@{src/compression/zip-\/utils.h}|hyperpage}{44}
+\indexentry{src/compression/zstd-\/utils.h@{src/compression/zstd-\/utils.h}|hyperpage}{44}
+\indexentry{src/config/config-\/dto.h@{src/config/config-\/dto.h}|hyperpage}{44}
+\indexentry{src/config/config-\/repository.h@{src/config/config-\/repository.h}|hyperpage}{46}
+\indexentry{src/config/config.h@{src/config/config.h}|hyperpage}{46}
+\indexentry{src/database/database.h@{src/database/database.h}|hyperpage}{46}
+\indexentry{src/database/repository.h@{src/database/repository.h}|hyperpage}{47}
+\indexentry{src/deck/deck-\/config-\/dto.h@{src/deck/deck-\/config-\/dto.h}|hyperpage}{47}
+\indexentry{src/deck/deck-\/config-\/repository.h@{src/deck/deck-\/config-\/repository.h}|hyperpage}{47}
+\indexentry{src/deck/deck-\/dto.h@{src/deck/deck-\/dto.h}|hyperpage}{48}
+\indexentry{src/deck/deck-\/mapper.h@{src/deck/deck-\/mapper.h}|hyperpage}{48}
+\indexentry{src/deck/deck-\/repository.h@{src/deck/deck-\/repository.h}|hyperpage}{48}
+\indexentry{src/deck/deck.h@{src/deck/deck.h}|hyperpage}{49}
+\indexentry{src/field/field-\/dto.h@{src/field/field-\/dto.h}|hyperpage}{49}
+\indexentry{src/field/field-\/mapper.h@{src/field/field-\/mapper.h}|hyperpage}{49}
+\indexentry{src/field/field-\/repository.h@{src/field/field-\/repository.h}|hyperpage}{50}
+\indexentry{src/field/field.h@{src/field/field.h}|hyperpage}{50}
+\indexentry{src/grave/grave-\/dto.h@{src/grave/grave-\/dto.h}|hyperpage}{50}
+\indexentry{src/grave/grave.h@{src/grave/grave.h}|hyperpage}{50}
+\indexentry{src/note/note-\/dto.h@{src/note/note-\/dto.h}|hyperpage}{51}
+\indexentry{src/note/note-\/mapper.h@{src/note/note-\/mapper.h}|hyperpage}{51}
+\indexentry{src/note/note-\/repository.h@{src/note/note-\/repository.h}|hyperpage}{51}
+\indexentry{src/note/note-\/type-\/dto.h@{src/note/note-\/type-\/dto.h}|hyperpage}{51}
+\indexentry{src/note/note-\/type-\/mapper.h@{src/note/note-\/type-\/mapper.h}|hyperpage}{52}
+\indexentry{src/note/note-\/type-\/repository.h@{src/note/note-\/type-\/repository.h}|hyperpage}{52}
+\indexentry{src/note/note-\/type.h@{src/note/note-\/type.h}|hyperpage}{52}
+\indexentry{src/note/note.h@{src/note/note.h}|hyperpage}{53}
+\indexentry{src/reflog/reflog-\/dto.h@{src/reflog/reflog-\/dto.h}|hyperpage}{53}
+\indexentry{src/reflog/reflog.h@{src/reflog/reflog.h}|hyperpage}{54}
+\indexentry{src/tag/tag-\/dto.h@{src/tag/tag-\/dto.h}|hyperpage}{54}
+\indexentry{src/tag/tag.h@{src/tag/tag.h}|hyperpage}{54}
+\indexentry{src/template/template-\/dto.h@{src/template/template-\/dto.h}|hyperpage}{54}
+\indexentry{src/template/template-\/mapper.h@{src/template/template-\/mapper.h}|hyperpage}{54}
+\indexentry{src/template/template-\/repository.h@{src/template/template-\/repository.h}|hyperpage}{55}
+\indexentry{src/template/template.h@{src/template/template.h}|hyperpage}{55}
+\indexentry{src/util/identifyable.h@{src/util/identifyable.h}|hyperpage}{55}
+\indexentry{src/util/nameable.h@{src/util/nameable.h}|hyperpage}{56}
+\indexentry{src/util/time.h@{src/util/time.h}|hyperpage}{56}
+\indexentry{src/util/util.h@{src/util/util.h}|hyperpage}{56}
