@@ -30,7 +30,7 @@ NoteDTO modelToDTO(Note &model) {
   for (std::vector<std::tuple<std::string, std::string>>::const_iterator it =
            model.getFields().begin();
        it != model.getFields().end(); ++it) {
-    std::string field = std::get<0>(*it);
+    std::string field = std::get<1>(*it);
     noteDTO.flds += field;
     std::size_t index = std::distance(model.getFields().begin(), it);
     if (index < model.getFields().size() - 1) {
