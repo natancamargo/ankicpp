@@ -41,7 +41,7 @@ Small library to create anki notes.
 
   exportDeck(deck, "./basic-and-reversed/ankicpp.apkg");
 ```
-### Cloze usage (not working, it's under development)
+### Cloze usage
 ```c++
   #include "ankicpp/ankicpp.h"
  
@@ -52,6 +52,7 @@ Small library to create anki notes.
 
   note->setType(clozeNoteType);
   note->addField("Text", "Canberra was founded in {{c1::1913}}.");
+  note->addField("Back Extra", "<Some Extra Content>");
 
   deck->addNote(note);
 
