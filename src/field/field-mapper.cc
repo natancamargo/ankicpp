@@ -6,9 +6,11 @@ namespace ankicpp {
 namespace fieldMapper {
 FieldDTO modelToDTO(Field &model) {
   FieldDTO fieldDTO;
-  fieldDTO.ntid = model.getNoteType().lock()->getId();
-  fieldDTO.ord =
-      model.getNoteType().lock()->getFieldIndex(std::make_shared<Field>(model));
+  if (std::shared_ptr<NoteType> noteType = model.getNoteType().lock()) {
+    fieldDTO.ntid = noteType->getId();
+    fieldDTO.ord = noteType->getFieldIndex(
+        std::make_shared<Field>(model));
+  }
   fieldDTO.name = model.getName();
 
   fieldDTO.config.insert(fieldDTO.config.end(), {0x1a, 0x05}); // SUB HTAENQ

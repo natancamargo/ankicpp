@@ -6,9 +6,11 @@ namespace templateMapper {
 TemplateDTO modelToDTO(Template &model) {
   TemplateDTO templateDTO;
 
-  templateDTO.ntid = model.getNoteType().lock()->getId();
-  templateDTO.ord = model.getNoteType().lock()->getTemplateIndex(
-      std::make_shared<Template>(model));
+  if (std::shared_ptr<NoteType> noteType = model.getNoteType().lock()) {
+    templateDTO.ntid = noteType->getId();
+    templateDTO.ord =
+        noteType->getTemplateIndex(std::make_shared<Template>(model));
+  }
   templateDTO.name = model.getName();
   templateDTO.mtime_secs = 0;
   templateDTO.usn = 0;
