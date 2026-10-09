@@ -4,19 +4,18 @@
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00002\ }
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}database/repository.h"{}}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}deck/deck.h"{}}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <functional>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <soci/soci.h>}}
-\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
-\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }database\ \{}
-\DoxyCodeLine{00009\ \textcolor{keyword}{extern}\ soci::session\ sql;}
-\DoxyCodeLine{00010\ \textcolor{keywordtype}{bool}\ connect(std::string\ filename);}
-\DoxyCodeLine{00011\ \textcolor{keywordtype}{bool}\ createDatabase();}
-\DoxyCodeLine{00012\ \textcolor{keywordtype}{bool}\ populateDatabase(Deck\ deck);}
-\DoxyCodeLine{00013\ \textcolor{keywordtype}{bool}\ disconnect();}
-\DoxyCodeLine{00014\ \textcolor{keywordtype}{bool}\ safeSql(std::function<\textcolor{keywordtype}{void}(\textcolor{keywordtype}{void})>\ function);}
-\DoxyCodeLine{00015\ \}\ \textcolor{comment}{//\ namespace\ database}}
-\DoxyCodeLine{00016\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}deck/deck.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <functional>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <soci/soci.h>}}
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }database\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{extern}\ soci::session\ sql;}
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{bool}\ connect(std::string\ filename);}
+\DoxyCodeLine{00010\ \textcolor{keywordtype}{bool}\ createDatabase();}
+\DoxyCodeLine{00011\ \textcolor{keywordtype}{bool}\ populateDatabase(\textcolor{keyword}{const}\ std::shared\_ptr<Deck>\ \&deck);}
+\DoxyCodeLine{00012\ \textcolor{keywordtype}{bool}\ disconnect();}
+\DoxyCodeLine{00013\ \textcolor{keywordtype}{bool}\ safeSql(std::function<\textcolor{keywordtype}{void}(\textcolor{keywordtype}{void})>\ function);}
+\DoxyCodeLine{00014\ \}\ \textcolor{comment}{//\ namespace\ database}}
+\DoxyCodeLine{00015\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
 
 \end{DoxyCode}
