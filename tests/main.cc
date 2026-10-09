@@ -129,7 +129,7 @@ TEST_CASE("Export should work properly", "[export]") {
     REQUIRE(exportDeck(deck, "./empty/empty-deck.apkg") == false);
   }
 
-  SECTION("when trying to export a basic deck", "[deck][export]") {
+  SECTION("when trying to export a basic deck", "[deck][export][basic]") {
     std::shared_ptr<Deck> deck = std::make_shared<Deck>("basic-deck");
     std::shared_ptr<Note> note = std::make_shared<Note>();
 
@@ -142,7 +142,7 @@ TEST_CASE("Export should work properly", "[export]") {
     REQUIRE(exportDeck(deck, "./basic/deck.apkg"));
   }
 
-  SECTION("when trying to export a basic and reversed deck", "[deck][export]") {
+  SECTION("when trying to export a basic and reversed deck", "[deck][export][reversed]") {
     std::shared_ptr<Deck> deck = std::make_shared<Deck>("reversed-deck");
     std::shared_ptr<Note> note = std::make_shared<Note>();
 
@@ -154,5 +154,20 @@ TEST_CASE("Export should work properly", "[export]") {
 
     REQUIRE(exportDeck(deck, "./basic-and-reversed/deck.apkg"));
   }
+
+  SECTION("when trying to export a basic deck", "[deck][export][tag]") {
+    std::shared_ptr<Deck> deck = std::make_shared<Deck>("tags-deck");
+    std::shared_ptr<Note> note = std::make_shared<Note>();
+
+    note->setType(basicNoteType);
+    note->addField("Front", "Front content");
+    note->addField("Back", "Back content");
+    note->addTag("tag1");    
+    note->addTag("tag2");    
+
+    deck->addNote(note);
+
+    REQUIRE(exportDeck(deck, "./tags/deck.apkg"));
+  }  
 }
 } // namespace ankicpp

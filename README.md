@@ -15,8 +15,10 @@ Small library to create anki notes.
   std::shared_ptr<Note> note = std::make_shared<Note>();
 
   note->setType(basicNoteType);
-  note->addField("Front", "<Front Content>");
-  note->addField("Back", "<Bakc Content>");
+  note->addField("Front", "<Front Content>"); // required
+  note->addField("Back", "<Back Content>"); // required
+  note->addTag("tag1"); // optional
+  note->addTag("tag2"); // optional
 
   deck->addNote(note);
 

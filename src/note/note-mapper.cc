@@ -23,7 +23,7 @@ NoteDTO modelToDTO(Note &model) {
     noteDTO.tags += tag;
     std::size_t index = std::distance(model.getTags().begin(), it);
     if (index < model.getTags().size() - 1) {
-      noteDTO.tags.push_back(0x1F);
+      noteDTO.tags.push_back(0x20);
     }
   }
 
