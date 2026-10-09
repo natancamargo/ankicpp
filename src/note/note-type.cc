@@ -99,16 +99,16 @@ const std::string footer = "\\end{document}";
 const std::shared_ptr<Template> basicTemplate = []() {
   const std::shared_ptr<Template> templatee =
       std::make_shared<Template>("ankicpp::Basic::Card_1");
-  templatee->setFrontTemplate("\x0a\x09{{Front}}");
-  templatee->setBackTemplate("\x12\x27{{FrontSide}}\n\n<hr id=answer>\n\n{{Back}}\x40\xf4\xcf\xec\xe0\xf8\xdf\xf1\xce\x51");
+  templatee->setFrontTemplate("{{Front}}");
+  templatee->setBackTemplate("{{FrontSide}}\n\n<hr id=answer>\n\n{{Back}}");
   return templatee;
 }();
 
 const std::shared_ptr<Template> reversedTemplate = []() {
   const std::shared_ptr<Template> templatee =
       std::make_shared<Template>("ankicpp::Basic::Card_2");
-  templatee->setFrontTemplate("\x0a\x08{{Back}}");
-  templatee->setBackTemplate("\x12\x28{{FrontSide}}\n\n<hr id=answer>\n\n{{Front}}\x40\xf4\xcf\xec\xe0\xf8\xdf\xf1\xce\x51");
+  templatee->setFrontTemplate("{{Back}}");
+  templatee->setBackTemplate("{{FrontSide}}\n\n<hr id=answer>\n\n{{Front}}");
   return templatee;
 }();
 

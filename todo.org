@@ -279,9 +279,9 @@ In each step of the below tasks, collect database columns and jsons to make diff
 *** DONE Write initial docs
 *** DONE Upgrades
 **** Add all Field properties 
-*** DOING Create testes directories during build
+*** DONE Create testes directories during build
 *** Add images to package
 *** DONE Add reverse card
 *** Add cloze cards
-*** Check font size of field-mapper.cc
+*** DONE Check font size of field-mapper.cc
 - Check if 0x14 affects the font size
