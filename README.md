@@ -24,7 +24,7 @@ Small library to create anki notes.
 
   exportDeck(deck, "./basic/ankicpp.apkg");
 ```
-### Basic and Reversed usage
+#### Basic and Reversed usage
 ```c++
   #include "ankicpp/ankicpp.h"
  
@@ -41,7 +41,7 @@ Small library to create anki notes.
 
   exportDeck(deck, "./basic-and-reversed/ankicpp.apkg");
 ```
-### Cloze usage
+#### Cloze usage
 ```c++
   #include "ankicpp/ankicpp.h"
  
