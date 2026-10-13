@@ -2,6 +2,7 @@
 #include "ankicpp/export.h"
 #include "note/note-type.h"
 #include "util/nameable.h"
+#include <algorithm>
 #include <cstddef>
 #include <format>
 #include <iostream>
@@ -38,6 +39,22 @@ void Deck::addNote(std::shared_ptr<Note> note) {
 }
 void Deck::removeNote(std::shared_ptr<Note> note) { _notes.erase(note); }
 
+const std::set<std::shared_ptr<Deck>> &Deck::getDecks() { return _decks; }
+void Deck::setDecks(const std::set<std::shared_ptr<Deck>> &decks) {
+  _decks = decks;
+}
+void Deck::addDeck(std::shared_ptr<Deck> &deck) {
+  _decks.insert(deck);
+  deck->setParent(weak_from_this());
+}
+void Deck::removeDeck(std::shared_ptr<Deck> &deck) {
+  _decks.erase(deck);
+    deck->setParent(std::weak_ptr<Deck>{});
+}
+
+const std::weak_ptr<Deck> &Deck::getParent() { return _parent; }
+void Deck::setParent(const std::weak_ptr<Deck> &deck) { _parent = deck; }
+
 std::set<std::shared_ptr<Card>> &Deck::getCards() { return _cards; }
 void Deck::addCard(std::shared_ptr<Card> card) {
   _cards.insert(card);
@@ -52,7 +69,7 @@ void Deck::clearCards() { _cards.clear(); }
 bool Deck::generateCards() {
   clearCards();
   const std::set<std::shared_ptr<Note>> &notes = getNotes();
-  if (getNotes().size() == 0) {
+  if (getNotes().size() == 0 && getDecks().size() == 0) {
     error = Error::DATA_DECK_EMPTY_ERROR;
     std::cout << std::format("data: deck without notes.\n");
     return false;
@@ -90,13 +107,20 @@ bool Deck::generateCards() {
       std::sregex_iterator clozeBegin =
           std::sregex_iterator(fielValue.begin(), fielValue.end(), clozeRegex);
       std::sregex_iterator clozeEnd = std::sregex_iterator();
-      std::size_t clozes = std::distance(clozeBegin, clozeEnd);      
+      std::size_t clozes = std::distance(clozeBegin, clozeEnd);
       for (std::size_t i = 1; i < clozes; i++) {
         const std::shared_ptr<Card> &card = make_shared<Card>();
         card->setNote(note);
         card->setOrder(i);
         addCard(card);
       }
+    }
+  }
+
+  // Child decks
+  for (const std::shared_ptr<Deck> &deck : _decks) {
+    if (!deck->generateCards()) {
+      return false;
     }
   }
   return true;
