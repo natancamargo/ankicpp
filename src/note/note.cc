@@ -56,9 +56,16 @@ void Note::removeTag(std::string name) { _tags.erase(name); }
 int Note::getFlags() const { return _flags; }
 void Note::setFlags(int flags) { _flags = flags; }
 
-const std::shared_ptr<Note> &Note::getReversedParent() { return _reversedParent; }
+const std::shared_ptr<Note> &Note::getReversedParent() {
+  return _reversedParent;
+}
 void Note::setReversedParent(const std::shared_ptr<Note> &reversedParent) {
   _reversedParent = reversedParent;
 }
+
+const std::set<std::string> &Note::getMedias() { return _medias; }
+void Note::setMedias(const std::set<std::string> &medias) { _medias = medias; }
+void Note::addMedia(const std::string &media) { _medias.insert(media); }
+void Note::removeMedia(const std::string &media) { _medias.erase(media); }
 
 } // namespace ankicpp

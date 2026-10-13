@@ -200,10 +200,27 @@ TEST_CASE("Export should work properly", "[export]") {
 
     REQUIRE(deck2->getNotes().size() == 1);
     REQUIRE(deck2->getCards().size() == 1);
+    REQUIRE(exportDeck(deck1, "./nested/deck.apkg"));
+  }
+
+  SECTION("when trying to export a deck with images", "[deck][export][nested]") {
+    std::shared_ptr<Deck> deck1 = std::make_shared<Deck>("nested-deck");
+    std::shared_ptr<Note> note = std::make_shared<Note>();
+
+    note->setType(basicNoteType);
+    note->addField("Front", "<Front Content>");
+    note->addField("Back", "<Back Content>");
+
+    deck1->addNote(note);
+    deck1->addDeck(deck1);    
+    deck1->generateCards();
+
+    REQUIRE(deck2->getNotes().size() == 1);
+    REQUIRE(deck2->getCards().size() == 1);
     REQUIRE(note->getFields().size() == 2);
     REQUIRE(note->getType()->getFields().size() == 2);
     REQUIRE(note->getType()->getTemplates().size() == 1);
     REQUIRE(exportDeck(deck1, "./nested/deck.apkg"));
-  }
+  }  
 }
 } // namespace ankicpp

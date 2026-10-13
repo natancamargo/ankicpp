@@ -29,11 +29,17 @@ public:
 
   const std::shared_ptr<Note> &getReversedParent();    
   void setReversedParent(const std::shared_ptr<Note> &reversedParent);
+
+  const std::set<std::string> &getMedias();
+  void setMedias(const std::set<std::string> &medias);
+  void addMedia(const std::string &media);  
+  void removeMedia(const std::string &media);  
 private:
   std::shared_ptr<NoteType> _noteType;
   std::vector<std::tuple<std::string, std::string>> _fields;
   std::set<std::string> _tags;
   int _flags = 0;
   std::shared_ptr<Note> _reversedParent;
+  std::set<std::string> _medias;
 };
 } // namespace ankicpp
