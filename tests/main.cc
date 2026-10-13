@@ -2,6 +2,7 @@
 #include <memory>
 
 #include "ankicpp/ankicpp.h"
+#include "deck/deck.h"
 #include "note/note-type.h"
 
 namespace ankicpp {
@@ -88,6 +89,16 @@ TEST_CASE("Deck should work properly", "[deck]") {
     deck->clearCards();
     REQUIRE(deck->getCards().size() == 0);
   }
+  SECTION("when nesting decks", "[deck][nested]") {
+    std::shared_ptr<Deck> deck1 = std::make_shared<Deck>("deck1");
+    std::shared_ptr<Deck> deck2 = std::make_shared<Deck>("deck2");
+    deck->addDeck(deck1);
+    deck->addDeck(deck2);
+    deck->addDeck(deck2);
+    REQUIRE(deck->getDecks().size() == 2);
+    deck->removeDeck(deck2);
+    REQUIRE(deck->getDecks().size() == 1);
+  }
 }
 
 TEST_CASE("Export should work properly", "[export]") {
@@ -112,7 +123,7 @@ TEST_CASE("Export should work properly", "[export]") {
     REQUIRE(deck->getCards().size() == 1);
     REQUIRE(note->getFields().size() == 2);
     REQUIRE(note->getType()->getFields().size() == 2);
-    REQUIRE(note->getType()->getTemplates().size() == 1);    
+    REQUIRE(note->getType()->getTemplates().size() == 1);
     REQUIRE(exportDeck(deck, "./basic/deck.apkg"));
   }
 
@@ -142,15 +153,15 @@ TEST_CASE("Export should work properly", "[export]") {
     std::shared_ptr<Note> note = std::make_shared<Note>();
 
     note->setType(basicNoteType);
-    note->addField("Front", "Front content");
-    note->addField("Back", "Back content");
+    note->addField("Front", "<Front content>");
+    note->addField("Back", "<Back content>");
     note->addTag("tag1");
     note->addTag("tag2");
 
     deck->addNote(note);
     deck->generateCards();
 
-    REQUIRE(note->getTags().size() == 2);    
+    REQUIRE(note->getTags().size() == 2);
     REQUIRE(exportDeck(deck, "./tags/deck.apkg"));
   }
 
@@ -170,8 +181,29 @@ TEST_CASE("Export should work properly", "[export]") {
     REQUIRE(deck->getCards().size() == 2);
     REQUIRE(note->getFields().size() == 2);
     REQUIRE(note->getType()->getFields().size() == 2);
-    REQUIRE(note->getType()->getTemplates().size() == 1);        
+    REQUIRE(note->getType()->getTemplates().size() == 1);
     REQUIRE(exportDeck(deck, "./cloze/deck.apkg"));
+  }
+
+  SECTION("when trying to export a nested deck", "[deck][export][nested]") {
+    std::shared_ptr<Deck> deck1 = std::make_shared<Deck>("nested-deck");
+    std::shared_ptr<Deck> deck2 = std::make_shared<Deck>("child-deck");
+    std::shared_ptr<Note> note = std::make_shared<Note>();
+
+    note->setType(basicNoteType);
+    note->addField("Front", "<Front Content>");
+    note->addField("Back", "<Back Content>");
+
+    deck2->addNote(note);
+    deck1->addDeck(deck2);    
+    deck1->generateCards();
+
+    REQUIRE(deck2->getNotes().size() == 1);
+    REQUIRE(deck2->getCards().size() == 1);
+    REQUIRE(note->getFields().size() == 2);
+    REQUIRE(note->getType()->getFields().size() == 2);
+    REQUIRE(note->getType()->getTemplates().size() == 1);
+    REQUIRE(exportDeck(deck1, "./nested/deck.apkg"));
   }
 }
 } // namespace ankicpp

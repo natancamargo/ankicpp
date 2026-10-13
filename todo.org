@@ -280,8 +280,11 @@ In each step of the below tasks, collect database columns and jsons to make diff
 *** DONE Upgrades
 **** Add all Field properties 
 *** DONE Create testes directories during build
-*** Add images to package
 *** DONE Add reverse card
-*** Add cloze cards
+*** DONE Add cloze cards
 *** DONE Check font size of field-mapper.cc
 - Check if 0x14 affects the font size
+*** Add images to package
+*** DOING Add support for nested decks
+- Just append 0x1f in the names of children decks
+  

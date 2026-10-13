@@ -24,10 +24,11 @@ std::size_t NoteType::getTemplateIndex(std::shared_ptr<Template> templatee) {
   return 0;
 }
 void NoteType::addTemplate(std::shared_ptr<Template> templatee) {
-  auto it = std::find_if(_templates.begin(), _templates.end(),
-                         [templatee](std::shared_ptr<Template> _template) {
-                           return *templatee == *_template;
-                         });
+  const std::vector<std::shared_ptr<Template>>::iterator it =
+      std::find_if(_templates.begin(), _templates.end(),
+                   [templatee](std::shared_ptr<Template> _template) {
+                     return *templatee == *_template;
+                   });
   if (it == _templates.end()) {
     Template templateeCopy{*templatee};
     templateeCopy.setNoteType(shared_from_this());

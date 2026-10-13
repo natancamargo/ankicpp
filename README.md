@@ -58,6 +58,26 @@ Small library to create anki notes.
 
   exportDeck(deck, "./cloze/ankicpp.apkg");
 ```
+#### Nested decks usage
+```c++
+  #include "ankicpp/ankicpp.h"
+ 
+  using namespace ankicpp;
+
+  std::shared_ptr<Deck> deck1 = std::make_shared<Deck>("nested-deck");
+  std::shared_ptr<Deck> deck2 = std::make_shared<Deck>("child-deck");
+  std::shared_ptr<Note> note = std::make_shared<Note>();
+
+  note->setType(basicNoteType);
+  note->addField("Front", "<Front Content>");
+  note->addField("Back", "<Back Content>");
+
+  deck2->addNote(note);
+  deck1->addDeck(deck2);
+    
+  exportDeck(deck, "./nested/ankicpp.apkg");
+```
+
 
 ### Build
 ---

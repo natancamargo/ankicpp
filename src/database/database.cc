@@ -109,18 +109,22 @@ bool populateDatabase(const std::shared_ptr<Deck> &deck) {
   // deck
   deckRepository.create(deckMapper::modelToDTO(*deck));
 
-  // col
-  colRepository.create(ColDTO::createDTO());
+  // Run only one time
+  // Entries for configuration only  
+  if (!deck->getParent().lock()) {
+    // col
+    colRepository.create(ColDTO::createDTO());
 
-  // Config
-  const std::vector<ConfigDTO> configDTOs = ConfigDTO::createDTOs();
-  for (const ConfigDTO &configDTO : configDTOs) {
-    configRepository.create(configDTO);
+    // Config
+    const std::vector<ConfigDTO> configDTOs = ConfigDTO::createDTOs();
+    for (const ConfigDTO &configDTO : configDTOs) {
+      configRepository.create(configDTO);
+    }
+
+    // Deck config
+    deckConfigRepository.create(DeckConfigDTO::createDefaultDTO());
+    deckRepository.create(DeckDTO::createDefaultDTO());
   }
-
-  // Deck config
-  deckConfigRepository.create(DeckConfigDTO::createDefaultDTO());
-  deckRepository.create(DeckDTO::createDefaultDTO());
 
   for (const std::shared_ptr<Note> &note : deck->getNotes()) {
     // Note
@@ -150,9 +154,18 @@ bool populateDatabase(const std::shared_ptr<Deck> &deck) {
     }
   }
 
+  // Cards
   for (const std::shared_ptr<Card> &card : deck->getCards()) {
     const CardDTO cardDTO = cardMapper::modelToDTO(*card);
     cardRepository.create(cardDTO);
+  }
+
+  // Decks
+  for (const std::shared_ptr<Deck> &childDeck : deck->getDecks()) {
+    const std::shared_ptr<Deck> childDeckCopied =
+        std::make_shared<Deck>(*childDeck);
+    childDeckCopied->setName(deck->getName() + '\x1f' + childDeckCopied->getName());
+    populateDatabase(childDeckCopied);
   }
 
   return true;
