@@ -2,8 +2,6 @@
 #include <memory>
 
 #include "ankicpp/ankicpp.h"
-#include "deck/deck.h"
-#include "note/note-type.h"
 
 namespace ankicpp {
 TEST_CASE("Note should work properly", "[note]") {
@@ -195,7 +193,7 @@ TEST_CASE("Export should work properly", "[export]") {
     note->addField("Back", "<Back Content>");
 
     deck2->addNote(note);
-    deck1->addDeck(deck2);    
+    deck1->addDeck(deck2);
     deck1->generateCards();
 
     REQUIRE(deck2->getNotes().size() == 1);
@@ -203,24 +201,28 @@ TEST_CASE("Export should work properly", "[export]") {
     REQUIRE(exportDeck(deck1, "./nested/deck.apkg"));
   }
 
-  SECTION("when trying to export a deck with images", "[deck][export][nested]") {
-    std::shared_ptr<Deck> deck1 = std::make_shared<Deck>("nested-deck");
+  SECTION("when trying to export a deck with images",
+          "[deck][export][images]") {
+    std::shared_ptr<Deck> deck = std::make_shared<Deck>("media-deck");
     std::shared_ptr<Note> note = std::make_shared<Note>();
 
     note->setType(basicNoteType);
-    note->addField("Front", "<Front Content>");
+    note->addField("Front", R"(
+&lt;Front Content&gt;
+<img src="flynn.jpeg">
+)");
+    note->addMedia("./images/flynn.jpeg");
     note->addField("Back", "<Back Content>");
 
-    deck1->addNote(note);
-    deck1->addDeck(deck1);    
-    deck1->generateCards();
+    deck->addNote(note);
+    deck->generateCards();
 
-    REQUIRE(deck2->getNotes().size() == 1);
-    REQUIRE(deck2->getCards().size() == 1);
+    REQUIRE(deck->getNotes().size() == 1);
+    REQUIRE(deck->getCards().size() == 1);
     REQUIRE(note->getFields().size() == 2);
     REQUIRE(note->getType()->getFields().size() == 2);
     REQUIRE(note->getType()->getTemplates().size() == 1);
-    REQUIRE(exportDeck(deck1, "./nested/deck.apkg"));
-  }  
+    REQUIRE(exportDeck(deck, "./media/deck.apkg"));
+  }
 }
 } // namespace ankicpp

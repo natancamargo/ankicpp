@@ -1,4 +1,9 @@
 {
+  "name": "ankicpp",
+  "version": "0.1.2",
+  "description": "Small library to create anki cards",
+  "homepage": "https://github.com/natancamargo/ankicpp",
+  "license": "MIT",
   "dependencies": [
     "catch2",
     "minizip",

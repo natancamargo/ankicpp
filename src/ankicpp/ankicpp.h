@@ -8,8 +8,12 @@
 #include "deck/deck.h"
 #include "field/field.h"
 #include "note/note.h"
+#include "note/note-type.h"
+#include "tag/tag.h"
+#include "template/template.h"
 #include "util/util.h"
 
+#include <format>
 #include <iostream>
 
 namespace ankicpp {

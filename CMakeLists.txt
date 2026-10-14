@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5.0)
-project(ankicpp VERSION 0.1.1)
+project(ankicpp VERSION 0.1.2)
 
 # enable unit tests
 option(ENABLE_TEST "Enable unit testing" ON)
@@ -35,8 +35,7 @@ find_package(minizip CONFIG REQUIRED)
 find_package(Catch2 CONFIG REQUIRED)
 find_package(zstd CONFIG REQUIRED)
 find_package(soci CONFIG REQUIRED)
-find_package(unofficial-sqlite3 REQUIRED
-find_package(uuid CONFIG REQUIRED))
+find_package(unofficial-sqlite3 REQUIRED)
 
 # target library
 # ----------------------------------------------------------------------------------------
@@ -87,7 +86,6 @@ target_link_libraries(${LIBRARY_NAME} PUBLIC
   zstd::libzstd
   SOCI::SOCI
   unofficial::sqlite3::sqlite3
-  uuid
 )
 target_include_directories(${LIBRARY_NAME} PUBLIC "${CMAKE_SOURCE_DIR}/src")
 
@@ -124,7 +122,8 @@ add_custom_target(docs
 # copy schema.sql
 add_custom_command(
   TARGET ${TEST_NAME} POST_BUILD
-  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/src/database/schema.sql ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/database/schema.sql
+  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/resources/database/schema.sql ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/database/schema.sql
+  COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/resources/images ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/images
 )
 # create testing directories
 add_custom_command(
@@ -135,4 +134,5 @@ add_custom_command(
   COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/tags
   COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/cloze
   COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/nested
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/media
 )
