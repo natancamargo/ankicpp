@@ -208,7 +208,7 @@ TEST_CASE("Export should work properly", "[export]") {
 
     note->setType(basicNoteType);
     note->addField("Front", R"(
-&lt;Front Content&gt;
+&lt;Front Content&gt;\n
 <img src="flynn.jpeg">
 )");
     note->addMedia("./images/flynn.jpeg");

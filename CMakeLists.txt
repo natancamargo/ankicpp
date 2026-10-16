@@ -36,6 +36,8 @@ find_package(Catch2 CONFIG REQUIRED)
 find_package(zstd CONFIG REQUIRED)
 find_package(soci CONFIG REQUIRED)
 find_package(unofficial-sqlite3 REQUIRED)
+find_package(Protobuf REQUIRED)
+find_package(OpenSSL REQUIRED)
 
 # target library
 # ----------------------------------------------------------------------------------------
@@ -47,7 +49,6 @@ add_library(${LIBRARY_NAME} STATIC
 
   "${CMAKE_SOURCE_DIR}/src/col/col-repository.cc"
 
-  "${CMAKE_SOURCE_DIR}/src/compression/compression.cc"
   "${CMAKE_SOURCE_DIR}/src/compression/zip-utils.cc"
   "${CMAKE_SOURCE_DIR}/src/compression/zstd-utils.cc"
 
@@ -80,12 +81,17 @@ add_library(${LIBRARY_NAME} STATIC
   "${CMAKE_SOURCE_DIR}/src/util/nameable.cc"
   "${CMAKE_SOURCE_DIR}/src/util/identifyable.cc"
   "${CMAKE_SOURCE_DIR}/src/util/time.cc"
+  "${CMAKE_SOURCE_DIR}/src/util/crypto.cc"
+
+  "${CMAKE_SOURCE_DIR}/resources/proto/media.proto"
 )
 target_link_libraries(${LIBRARY_NAME} PUBLIC
   MINIZIP::minizipstatic
   zstd::libzstd
   SOCI::SOCI
   unofficial::sqlite3::sqlite3
+  OpenSSL::SSL
+  protobuf::libprotobuf
 )
 target_include_directories(${LIBRARY_NAME} PUBLIC "${CMAKE_SOURCE_DIR}/src")
 
@@ -107,7 +113,7 @@ configure_file(
   "${CMAKE_SOURCE_DIR}/src/ankicpp/config-lib.h.in"
   "${CMAKE_BINARY_DIR}/ankicpp/config-lib.h" ESCAPE_QUOTES
 )
-target_include_directories(${LIBRARY_NAME} PUBLIC "${CMAKE_BINARY_DIR}")
+target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_BINARY_DIR})
 
 # docs
 # ----------------------------------------------------------------------------------------
@@ -136,3 +142,11 @@ add_custom_command(
   COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/nested
   COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/media
 )
+
+# protobuf
+# ----------------------------------------------------------------------------------------
+if(Protobuf_FOUND)
+  protobuf_generate(TARGET ${LIBRARY_NAME})
+endif()
+
+target_include_directories(${LIBRARY_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})

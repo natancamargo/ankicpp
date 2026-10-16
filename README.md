@@ -77,8 +77,26 @@ Small library to create anki notes.
     
   exportDeck(deck, "./nested/ankicpp.apkg");
 ```
+#### Deck with media usage
+```c++
+  #include "ankicpp/ankicpp.h"
 
+  using namespace ankicpp;
 
+  std::shared_ptr<Deck> deck = std::make_shared<Deck>("media-deck");
+  std::shared_ptr<Note> note = std::make_shared<Note>();
+
+  note->setType(basicNoteType);
+  note->addField("Front", R"(
+&lt;Front Content&gt;\n
+<img src="flynn.jpeg">
+)");
+  note->addMedia("./images/flynn.jpeg");
+  note->addField("Back", "<Back Content>");
+  deck->addNote(note);
+
+  exportDeck(deck, "./media/ankicpp.apkg");
+```
 ### Build
 ---
 #### Install VCPKG

@@ -1,7 +1,6 @@
 #include "compression/zip-utils.h"
 
 #include "ankicpp/export.h"
-#include "compression/compression.h"
 #include "minizip/zip.h"
 #include <filesystem>
 #include <format>

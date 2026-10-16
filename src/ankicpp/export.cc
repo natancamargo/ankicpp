@@ -1,7 +1,10 @@
 #include "ankicpp/export.h"
-#include "compression/compression.h"
+#include "compression/zip-utils.h"
+#include "compression/zstd-utils.h"
 #include "database/database.h"
 #include "deck/deck.h"
+#include "resources/proto/media.pb.h"
+#include "util/crypto.h"
 #include <cstddef>
 #include <cstdio>
 #include <filesystem>
@@ -10,7 +13,6 @@
 #include <iostream>
 #include <memory>
 #include <string_view>
-#include <tuple>
 #include <unistd.h>
 
 namespace ankicpp {
@@ -21,74 +23,75 @@ bool exportDeck(const std::shared_ptr<Deck> &deck, std::string_view filename) {
 
   error = Error::EXPORT_NO_ERROR;
 
-  const std::filesystem::path outPath = std::filesystem::path(filename.data());
-  const std::filesystem::path directoryOutPath = outPath.parent_path();
-  const std::filesystem::path mediaPath =
-      directoryOutPath / std::filesystem::path("media");
-  const std::filesystem::path metaPath =
-      directoryOutPath / std::filesystem::path("meta");
-  const std::filesystem::path databasePath =
-      directoryOutPath / std::filesystem::path("collection.anki21b.db");
-  const std::filesystem::path zstdDatabasePath =
-      directoryOutPath / std::filesystem::path("collection.anki21b");
+  const std::filesystem::path out = std::filesystem::path(filename.data());
+  const std::filesystem::path dirOut = out.parent_path();
+  const std::filesystem::path media =
+      dirOut / std::filesystem::path("media.raw");
+  const std::filesystem::path zstdMedia =
+      dirOut / std::filesystem::path("media");
+  const std::filesystem::path meta = dirOut / std::filesystem::path("meta");
+  const std::filesystem::path database =
+      dirOut / std::filesystem::path("collection.anki21b.db");
+  const std::filesystem::path zstdDatabase =
+      dirOut / std::filesystem::path("collection.anki21b");
 
-  if (!createFiles(outPath, metaPath, mediaPath, databasePath)) {
+  std::set<std::filesystem::path> medias;
+  std::vector<std::filesystem::path> mediaOuts;
+
+  anki::MediaEntries ankiMedias;
+
+  std::vector<std::string> zip;
+
+  ExportContext context = {deck,     out,          meta,   media, zstdMedia,
+                           database, zstdDatabase, medias, zip,   ankiMedias};
+
+  if (!createFiles(context)) {
     std::cout << std::format("export: Failed.\n");
     return false;
   }
 
-  std::set<std::string> medias;
-  std::vector<std::filesystem::path> mediaOutputPaths;
-  const std::tuple<bool, std::vector<std::filesystem::path>> mediaResult =
-      populateMedia(deck, mediaPath, directoryOutPath, medias,
-                    mediaOutputPaths);
-  if (!std::get<0>(mediaResult)) {
+  if (!populateMedia(context)) {
     std::cout << std::format("export: Failed.\n");
     return true;
   }
 
-  if (!populateDatabase(deck, databasePath.string())) {
+  if (!populateDatabase(context)) {
     std::cout << std::format("export: Failed.\n");
     return false;
   }
 
-   // meta, media and collection.anki21b.db  
-  const std::vector<std::string> zstdInputs = {databasePath.string()};
-  const std::vector<std::string> zstdOutputs = {zstdDatabasePath.string()};
-  std::vector<std::string> zipInputs = {
-      metaPath.string(), mediaPath.string(), zstdDatabasePath.string()};
-
-  // media output files (0, 1, 2)
-  for (std::vector<std::filesystem::path>::iterator it =
-           mediaOutputPaths.begin();
-       it != mediaOutputPaths.end(); it++) {
-    zipInputs.push_back(it->string());
+  // zstd compress files
+  if (!zstd::compress(database.string(), zstdDatabase.string()) ||
+      !zstd::compress(media.string(), zstdMedia.string())) {
+    std::cout << std::format("export: Failed.\n");
+    return false;
   }
 
-  // compress all files  
-  if (!compress(zstdInputs, zstdOutputs, zipInputs, outPath.string())) {
+  // zip compress
+  // meta, media and collection.anki21b.db
+  context.zip.insert(context.zip.end(), {meta.string(), zstdMedia.string(),
+                                         zstdDatabase.string()});
+  if (!zip::compress(context.zip, out.string())) {
     std::cout << std::format("export: Failed.\n");
     return false;
   }
 
   std::cout << std::format("export: Done.\n");
   return true;
-}
-bool createFiles(std::filesystem::path outPath, std::filesystem::path metaPath,
-                 std::filesystem::path mediaPath,
-                 std::filesystem::path databasePath) {
+} // namespace ankicpp
+bool createFiles(ExportContext &context) {
   std::cout << std::format("export: Exporting to folder: {}\n",
-                           outPath.parent_path().c_str());
+                           context.out.parent_path().c_str());
 
-  std::ofstream metaOutstream = std::ofstream(metaPath, std::ios::binary);
-  std::ofstream mediaOutstream = std::ofstream(mediaPath, std::ios::binary);
-  std::ofstream databaseOutstream = std::ofstream(databasePath);
+  std::ofstream metaOutstream = std::ofstream(context.meta, std::ios::binary);
+  std::ofstream mediaOutstream = std::ofstream(context.media, std::ios::binary);
+  std::ofstream databaseOutstream = std::ofstream(context.database);
 
   if (!metaOutstream.is_open() || !mediaOutstream.is_open() ||
       !databaseOutstream.is_open()) {
     perror(std::format(
                "export: Error while opening the files. Directory {} exists?.\n",
-               metaPath.parent_path().string())
+               context.meta.parent_path().string())
                .c_str());
     error = Error::EXPORT_FILE_READING_ERROR;
     return false;
@@ -101,13 +104,8 @@ bool createFiles(std::filesystem::path outPath, std::filesystem::path metaPath,
                                  databaseOutstream.badbit);
 
     constexpr const unsigned char metaContent[] = {0x08, 0x03};
-    constexpr const unsigned char mediaContent[] = {
-        0x28, 0xb5, 0x2f, 0xfd, 0x00, 0x58, 0x39, 0x01, 0x00, 0x0a, 0x25};
     metaOutstream.write(reinterpret_cast<const char *>(metaContent),
                         sizeof(metaContent));
-    mediaOutstream.write(reinterpret_cast<const char *>(mediaContent),
-                         sizeof(mediaContent));
-
   } catch (const std::ifstream::failure &e) {
     error = Error::EXPORT_FILE_WRITING_ERROR;
     std::cout << std::format("Error:\n{}\nError code: {}\n", e.what(),
@@ -122,19 +120,19 @@ bool createFiles(std::filesystem::path outPath, std::filesystem::path metaPath,
 
   return true;
 }
-bool populateDatabase(const std::shared_ptr<Deck> &deck, std::string filename) {
-  if (!deck->generateCards()) {
+bool populateDatabase(ExportContext &context) {
+  if (!context.deck->generateCards()) {
     return false;
   }
 
-  if (!database::connect(filename)) {
+  if (!database::connect(context.database.string())) {
     return false;
   }
   if (!database::createDatabase()) {
     database::disconnect();
     return false;
   }
-  if (!database::populateDatabase(deck)) {
+  if (!database::populateDatabase(context.deck)) {
     database::disconnect();
     return false;
   }
@@ -144,53 +142,70 @@ bool populateDatabase(const std::shared_ptr<Deck> &deck, std::string filename) {
 
   return true;
 }
-const std::tuple<bool, std::vector<std::filesystem::path>>
-populateMedia(const std::shared_ptr<Deck> &deck,
-              const std::filesystem::path &mediaPath,
-              const std::filesystem::path &directoryOutPath,
-              std::set<std::string> &medias,
-              std::vector<std::filesystem::path> &mediaOutputPaths) {
+bool populateMedia(ExportContext &context) {
   // 24 bytes of each image
   // size+index+sha1
-  for (const std::shared_ptr<Note> &note : deck->getNotes()) {
-    medias.insert(note->getMedias().begin(), note->getMedias().end());
+  for (const std::shared_ptr<Note> &note : context.deck->getNotes()) {
+    context.medias.insert(note->getMedias().begin(), note->getMedias().end());
   }
-  for (const std::shared_ptr<Deck> &_deck : deck->getDecks()) {
-    const std::tuple<bool, std::vector<std::filesystem::path>> childResult =
-        populateMedia(_deck, mediaPath, directoryOutPath, medias,
-                      mediaOutputPaths);
-    if (!std::get<0>(childResult)) {
+  for (const std::shared_ptr<Deck> &_deck : context.deck->getDecks()) {
+    ExportContext newContext = context;
+    newContext.deck = _deck;
+    if (!populateMedia(newContext)) {
       error = Error::EXPORT_MEDIA_ERROR;
-      return std::make_tuple(false, mediaOutputPaths);
-    } else {
-      const std::vector<std::filesystem::path> &childMediaOutPaths =
-          std::get<1>(childResult);
-      mediaOutputPaths.insert(mediaOutputPaths.end(),
-                              childMediaOutPaths.begin(),
-                              childMediaOutPaths.end());
+      return false;
     }
   }
 
-  if (!deck->getParent().lock() && medias.size() != 0) {
-    for (std::set<std::string>::iterator it = medias.begin();
-         it != medias.end(); it++) {
-      std::size_t index = std::distance(medias.begin(), it);
-      const std::filesystem::path mediaInputPath = std::filesystem::path{*it};
-      std::filesystem::path mediaOutPath =
-          directoryOutPath / std::filesystem::path{std::to_string(index)};
-      mediaOutputPaths.push_back(mediaOutPath);
-      std::filesystem::copy(mediaInputPath, mediaOutPath,
-                            std::filesystem::copy_options::overwrite_existing);
-      writeToMediaRootFile(mediaPath, *it);
+  // Executed only at root deck
+  if (!context.deck->getParent().lock() && context.medias.size() != 0) {
+    for (std::set<std::filesystem::path>::iterator it = context.medias.begin();
+         it != context.medias.end(); it++) {
+      std::size_t index = std::distance(context.medias.begin(), it);
+      const std::filesystem::path mediaInputPath = *it;
+      std::filesystem::path zstdMediaOutPath =
+          context.out.parent_path() /
+          std::filesystem::path{std::to_string(index)};
+
+      zstd::compress(mediaInputPath, zstdMediaOutPath);
+      context.zip.push_back(zstdMediaOutPath);      
+
+      readMedia(context, mediaInputPath);
     }
+
+    writeToMediaRootFile(context);
   }
 
-  return std::make_tuple(true, mediaOutputPaths);
+  return true;
 }
-bool writeToMediaRootFile(const std::filesystem::path &mediaPath,
-                          const std::string &media) {
+bool readMedia(ExportContext &context,
+               const std::filesystem::path &oneMediaPath) {
+  // File size
+  size_t size = std::filesystem::file_size(oneMediaPath);
+
+  // Read media content
+  std::ifstream out = std::ifstream{oneMediaPath.string()};
+
+  if (!out.is_open()) {
+    perror("export: Error while persisting media.");
+    error = Error::EXPORT_MEDIA_ERROR;
+    return false;
+  }
+  char *contents = new char[size];
+  out.read(contents, size);
+  out.close();
+
+  // write to protobuf file "media.raw"
+  anki::MediaEntries_MediaEntry *ankiMedia = context.ankiMedias.add_entries();
+  ankiMedia->set_name(oneMediaPath.filename());
+  ankiMedia->set_size(size);
+  ankiMedia->set_sha1(sha1(contents));
+
+  return true;
+}
+bool writeToMediaRootFile(ExportContext &context) {
   std::ofstream mediaOutstream =
-      std::ofstream(mediaPath, std::ios::app | std::ios::binary);
+      std::ofstream(context.media, std::ios::app | std::ios::binary);
 
   if (!mediaOutstream.is_open()) {
     perror("export: Error while persisting media.");
@@ -200,20 +215,7 @@ bool writeToMediaRootFile(const std::filesystem::path &mediaPath,
 
   try {
     mediaOutstream.exceptions(mediaOutstream.failbit | mediaOutstream.badbit);
-
-    constexpr const unsigned char initOfFile[] = {0x0a, 0x0a};
-    constexpr const unsigned char endOfFile[] = {
-        0x10, 0xfa, 0x69, 0x1a, 0x14, 0x4c, 0x7d, 0x63, 0xdc,
-        0xb0, 0x87, 0xe1, 0xa5, 0xf4, 0x61, 0x67, 0x59, 0x84,
-        0x61, 0xd9, 0xc7, 0x71, 0x7a, 0x09, 0xd6};
-    mediaOutstream.write(reinterpret_cast<const char *>(initOfFile),
-                         sizeof(initOfFile));
-    const std::string mediaFileName =
-        std::filesystem::path{media}.filename().string();
-    mediaOutstream.write(mediaFileName.c_str(), mediaFileName.size());
-
-    mediaOutstream.write(reinterpret_cast<const char *>(endOfFile),
-                         sizeof(endOfFile));
+    context.ankiMedias.SerializeToOstream(&mediaOutstream);
   } catch (const std::ifstream::failure &e) {
     error = Error::EXPORT_MEDIA_ERROR;
     std::cout << std::format("export:\n{}\nError code: {}\n", e.what(),

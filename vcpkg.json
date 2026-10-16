@@ -6,7 +6,9 @@
   "license": "MIT",
   "dependencies": [
     "catch2",
+    "libuuid",
     "minizip",
+    "openssl",
     {
       "name": "soci",
       "features": [
@@ -15,6 +17,6 @@
     },
     "sqlite3",
     "zstd",
-    "libuuid"
+    "protobuf"
   ]
 }

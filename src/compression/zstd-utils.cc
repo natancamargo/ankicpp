@@ -2,8 +2,6 @@
 
 #include "compression/zstd-utils.h"
 #include "ankicpp/export.h"
-#include "compression/compression.h"
-
 #include <errno.h> // errno
 #include <format>
 #include <iostream>

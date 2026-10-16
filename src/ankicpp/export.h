@@ -1,6 +1,7 @@
 #pragma once
 
 #include "deck/deck.h"
+#include "resources/proto/media.pb.h"
 #include <filesystem>
 #include <memory>
 #include <string_view>
@@ -25,17 +26,23 @@ enum class Error {
 };
 extern Error error;
 
+struct ExportContext {
+  std::shared_ptr<Deck> deck;
+  const std::filesystem::path &out;
+  const std::filesystem::path &meta;
+  const std::filesystem::path &media;
+  const std::filesystem::path &zstdMedia;
+  const std::filesystem::path &database;
+  const std::filesystem::path &zstdDatabase;
+  std::set<std::filesystem::path> &medias;
+  std::vector<std::string> &zip;  
+  anki::MediaEntries &ankiMedias;
+};
+
 bool exportDeck(const std::shared_ptr<Deck> &deck, std::string_view filename);
-bool createFiles(std::filesystem::path outPath, std::filesystem::path metaPath,
-                 std::filesystem::path mediaPath,
-                 std::filesystem::path databasePath);
-bool populateDatabase(const std::shared_ptr<Deck> &deck, std::string filename);
-const std::tuple<bool, std::vector<std::filesystem::path>>
-populateMedia(const std::shared_ptr<Deck> &deck,
-              const std::filesystem::path &mediaPath,
-              const std::filesystem::path &directoryOutPath,
-              std::set<std::string> &medias,
-              std::vector<std::filesystem::path> &mediaOutputPaths);
-bool writeToMediaRootFile(const std::filesystem::path &mediaPath,
-                          const std::string &media);
+bool createFiles(ExportContext &context);
+bool populateDatabase(ExportContext &context);
+bool populateMedia(ExportContext &context);
+bool readMedia(ExportContext &context, const std::filesystem::path &singleMediaPath);
+bool writeToMediaRootFile(ExportContext &context);
 } // namespace ankicpp
