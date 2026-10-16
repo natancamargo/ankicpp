@@ -5,33 +5,50 @@
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
 \DoxyCodeLine{00002\ }
 \DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}deck/deck.h"{}}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <filesystem>}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <memory>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string\_view>}}
-\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
-\DoxyCodeLine{00008\ \textcolor{keyword}{enum\ class}\ Error\ \{}
-\DoxyCodeLine{00009\ \ \ EXPORT\_NO\_ERROR,}
-\DoxyCodeLine{00010\ \ \ EXPORT\_UNKNOWN\_ERROR,}
-\DoxyCodeLine{00011\ \ \ EXPORT\_FILE\_READING\_ERROR,}
-\DoxyCodeLine{00012\ \ \ EXPORT\_FILE\_WRITING\_ERROR,}
-\DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ \ \ EXPORT\_COMPRESS\_FILE\_NOT\_FOUND\_ERROR,}
-\DoxyCodeLine{00015\ \ \ EXPORT\_COMPRESS\_FILE\_READING\_ERROR,}
-\DoxyCodeLine{00016\ \ \ EXPORT\_COMPRESS\_MINIZIP\_ERROR,}
-\DoxyCodeLine{00017\ \ \ EXPORT\_COMPRESS\_ZSTD\_ERROR,}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \ \ EXPORT\_DATABASE\_ERROR,}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \ \ DATA\_DECK\_EMPTY\_ERROR,}
-\DoxyCodeLine{00022\ \ \ DATA\_NOTE\_WITHOUT\_TYPE\_ERROR,}
-\DoxyCodeLine{00023\ \};}
-\DoxyCodeLine{00024\ \textcolor{keyword}{extern}\ Error\ error;}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \textcolor{keywordtype}{bool}\ exportDeck(\textcolor{keyword}{const}\ std::shared\_ptr<Deck>\ \&deck,\ std::string\_view\ filename);}
-\DoxyCodeLine{00027\ \textcolor{keywordtype}{bool}\ createFiles(std::filesystem::path\ outPath,\ std::filesystem::path\ metaPath,}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::filesystem::path\ mediaPath,}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::filesystem::path\ databasePath);}
-\DoxyCodeLine{00030\ \textcolor{keywordtype}{bool}\ populateDatabase(\textcolor{keyword}{const}\ std::shared\_ptr<Deck>\ \&,\ std::string\ filename);}
-\DoxyCodeLine{00031\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}resources/proto/media.pb.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <filesystem>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string\_view>}}
+\DoxyCodeLine{00008\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{enum\ class}\ Error\ \{}
+\DoxyCodeLine{00010\ \ \ EXPORT\_NO\_ERROR,}
+\DoxyCodeLine{00011\ \ \ EXPORT\_UNKNOWN\_ERROR,}
+\DoxyCodeLine{00012\ \ \ EXPORT\_FILE\_READING\_ERROR,}
+\DoxyCodeLine{00013\ \ \ EXPORT\_FILE\_WRITING\_ERROR,}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ EXPORT\_COMPRESS\_FILE\_NOT\_FOUND\_ERROR,}
+\DoxyCodeLine{00016\ \ \ EXPORT\_COMPRESS\_FILE\_READING\_ERROR,}
+\DoxyCodeLine{00017\ \ \ EXPORT\_COMPRESS\_MINIZIP\_ERROR,}
+\DoxyCodeLine{00018\ \ \ EXPORT\_COMPRESS\_ZSTD\_ERROR,}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ EXPORT\_MEDIA\_ERROR,}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ EXPORT\_DATABASE\_ERROR,}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ DATA\_DECK\_EMPTY\_ERROR,}
+\DoxyCodeLine{00025\ \ \ DATA\_NOTE\_WITHOUT\_TYPE\_ERROR,}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ \textcolor{keyword}{extern}\ Error\ error;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structankicpp_1_1ExportContext}{ExportContext}}\ \{}
+\DoxyCodeLine{00030\ \ \ std::shared\_ptr<Deck>\ deck;}
+\DoxyCodeLine{00031\ \ \ \textcolor{keyword}{const}\ std::filesystem::path\ \&out;}
+\DoxyCodeLine{00032\ \ \ \textcolor{keyword}{const}\ std::filesystem::path\ \&meta;}
+\DoxyCodeLine{00033\ \ \ \textcolor{keyword}{const}\ std::filesystem::path\ \&media;}
+\DoxyCodeLine{00034\ \ \ \textcolor{keyword}{const}\ std::filesystem::path\ \&zstdMedia;}
+\DoxyCodeLine{00035\ \ \ \textcolor{keyword}{const}\ std::filesystem::path\ \&database;}
+\DoxyCodeLine{00036\ \ \ \textcolor{keyword}{const}\ std::filesystem::path\ \&zstdDatabase;}
+\DoxyCodeLine{00037\ \ \ std::set<std::filesystem::path>\ \&medias;}
+\DoxyCodeLine{00038\ \ \ std::vector<std::string>\ \&zip;\ \ }
+\DoxyCodeLine{00039\ \ \ anki::MediaEntries\ \&ankiMedias;}
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{bool}\ exportDeck(\textcolor{keyword}{const}\ std::shared\_ptr<Deck>\ \&deck,\ std::string\_view\ filename);}
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{bool}\ createFiles(\mbox{\hyperlink{structankicpp_1_1ExportContext}{ExportContext}}\ \&context);}
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{bool}\ populateDatabase(\mbox{\hyperlink{structankicpp_1_1ExportContext}{ExportContext}}\ \&context);}
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{bool}\ populateMedia(\mbox{\hyperlink{structankicpp_1_1ExportContext}{ExportContext}}\ \&context);}
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{bool}\ readMedia(\mbox{\hyperlink{structankicpp_1_1ExportContext}{ExportContext}}\ \&context,\ \textcolor{keyword}{const}\ std::filesystem::path\ \&singleMediaPath);}
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{bool}\ writeToMediaRootFile(\mbox{\hyperlink{structankicpp_1_1ExportContext}{ExportContext}}\ \&context);}
+\DoxyCodeLine{00048\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
 
 \end{DoxyCode}

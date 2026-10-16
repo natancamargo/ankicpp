@@ -1,7 +1,9 @@
 <map id="ankicpp::Deck" name="ankicpp::Deck">
-<area shape="rect" id="Node000001" title=" " alt="" coords="115,79,230,104"/>
-<area shape="rect" id="Node000002" href="$classankicpp_1_1Identifyable.html" title=" " alt="" coords="5,5,164,31"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,37,160,76,157,81,108,41"/>
-<area shape="rect" id="Node000003" href="$classankicpp_1_1Nameable.html" title=" " alt="" coords="188,5,336,31"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="239,41,189,81,186,76,235,37"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="205,93,319,119"/>
+<area shape="rect" id="Node000002" href="$classankicpp_1_1Identifyable.html" title=" " alt="" coords="5,13,164,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,41,237,91,235,96,122,46"/>
+<area shape="rect" id="Node000003" href="$classankicpp_1_1Nameable.html" title=" " alt="" coords="188,13,336,38"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="265,52,265,93,259,93,259,52"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="361,5,515,45"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="385,53,289,96,287,91,383,48"/>
 </map>

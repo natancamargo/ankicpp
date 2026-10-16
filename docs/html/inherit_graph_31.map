@@ -1,0 +1,23 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="12,9,157,49"/>
+<area shape="rect" id="Node000001" href="$classankicpp_1_1Deck.html" title=" " alt="" coords="226,5,341,31"/>
+<area shape="poly" id="edge10_Node000000_Node000001" title=" " alt="" coords="172,21,225,18,226,24,172,27"/>
+<area shape="rect" id="Node000006" href="$classankicpp_1_1NoteType.html" title=" " alt="" coords="212,55,355,80"/>
+<area shape="poly" id="edge11_Node000000_Node000006" title=" " alt="" coords="172,43,218,52,217,57,171,48"/>
+<area shape="rect" id="Node000002" href="$classankicpp_1_1Identifyable.html" title=" " alt="" coords="5,143,164,168"/>
+<area shape="poly" id="edge13_Node000002_Node000001" title=" " alt="" coords="154,134,162,128,179,107,186,85,193,63,210,40,229,28,232,33,214,44,197,65,191,87,184,110,166,132,157,138"/>
+<area shape="poly" id="edge16_Node000002_Node000006" title=" " alt="" coords="146,135,163,128,186,109,211,89,236,78,238,82,213,94,190,113,165,132,148,140"/>
+<area shape="rect" id="Node000003" href="$classankicpp_1_1Card.html" title=" " alt="" coords="228,203,339,228"/>
+<area shape="poly" id="edge12_Node000002_Node000003" title=" " alt="" coords="141,169,241,200,240,205,140,175"/>
+<area shape="rect" id="Node000004" href="$classankicpp_1_1Field.html" title=" " alt="" coords="227,104,339,129"/>
+<area shape="poly" id="edge14_Node000002_Node000004" title=" " alt="" coords="164,137,227,125,228,130,165,142"/>
+<area shape="rect" id="Node000008" href="$classankicpp_1_1Note.html" title=" " alt="" coords="227,252,339,277"/>
+<area shape="poly" id="edge15_Node000002_Node000008" title=" " alt="" coords="114,174,159,206,213,238,240,249,238,254,211,243,156,211,111,179"/>
+<area shape="rect" id="Node000007" href="$classankicpp_1_1Template.html" title=" " alt="" coords="213,153,354,179"/>
+<area shape="poly" id="edge17_Node000002_Node000007" title=" " alt="" coords="178,158,213,160,212,165,178,163"/>
+<area shape="rect" id="Node000005" href="$classankicpp_1_1Nameable.html" title=" " alt="" coords="11,93,159,119"/>
+<area shape="poly" id="edge18_Node000005_Node000001" title=" " alt="" coords="119,84,211,40,241,28,243,33,213,44,122,89"/>
+<area shape="poly" id="edge20_Node000005_Node000006" title=" " alt="" coords="164,88,217,77,218,83,165,93"/>
+<area shape="poly" id="edge19_Node000005_Node000004" title=" " alt="" coords="173,108,227,111,227,116,173,113"/>
+<area shape="poly" id="edge21_Node000005_Node000007" title=" " alt="" coords="141,120,241,151,240,156,140,125"/>
+</map>

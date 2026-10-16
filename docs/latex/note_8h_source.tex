@@ -33,13 +33,19 @@
 \DoxyCodeLine{00029\ }
 \DoxyCodeLine{00030\ \ \ \textcolor{keyword}{const}\ std::shared\_ptr<Note>\ \&getReversedParent();\ \ \ \ }
 \DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{void}\ setReversedParent(\textcolor{keyword}{const}\ std::shared\_ptr<Note>\ \&reversedParent);}
-\DoxyCodeLine{00032\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00033\ \ \ std::shared\_ptr<NoteType>\ \_noteType;}
-\DoxyCodeLine{00034\ \ \ std::vector<std::tuple<std::string,\ std::string>>\ \_fields;}
-\DoxyCodeLine{00035\ \ \ std::set<std::string>\ \_tags;}
-\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{int}\ \_flags\ =\ 0;}
-\DoxyCodeLine{00037\ \ \ std::shared\_ptr<Note>\ \_reversedParent;}
-\DoxyCodeLine{00038\ \};}
-\DoxyCodeLine{00039\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \textcolor{keyword}{const}\ std::set<std::string>\ \&getMedias();}
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{void}\ setMedias(\textcolor{keyword}{const}\ std::set<std::string>\ \&medias);}
+\DoxyCodeLine{00035\ \ \ \textcolor{keywordtype}{void}\ addMedia(\textcolor{keyword}{const}\ std::string\ \&media);\ \ }
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{void}\ removeMedia(\textcolor{keyword}{const}\ std::string\ \&media);\ \ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00038\ \ \ std::shared\_ptr<NoteType>\ \_noteType;}
+\DoxyCodeLine{00039\ \ \ std::vector<std::tuple<std::string,\ std::string>>\ \_fields;}
+\DoxyCodeLine{00040\ \ \ std::set<std::string>\ \_tags;}
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordtype}{int}\ \_flags\ =\ 0;}
+\DoxyCodeLine{00042\ \ \ std::shared\_ptr<Note>\ \_reversedParent;}
+\DoxyCodeLine{00043\ \ \ std::set<std::string>\ \_medias;}
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
 
 \end{DoxyCode}

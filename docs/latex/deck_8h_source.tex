@@ -9,14 +9,14 @@
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
 \DoxyCodeLine{00006\ }
 \DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}card/card.h"{}}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}deck/deck-\/config-\/dto.h"{}}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}deck/deck-\/dto.h"{}}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}note/note.h"{}}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}util/identifyable.h"{}}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}util/nameable.h"{}}}
-\DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
-\DoxyCodeLine{00015\ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classankicpp_1_1Deck}{Deck}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classankicpp_1_1Identifyable}{Identifyable}},\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classankicpp_1_1Nameable}{Nameable}}\ \{}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}note/note.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}util/identifyable.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}util/nameable.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }ankicpp\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classankicpp_1_1Deck}{Deck}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classankicpp_1_1Identifyable}{Identifyable}},}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{classankicpp_1_1Nameable}{Nameable}},}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ std::enable\_shared\_from\_this<Deck>\ \{}
 \DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
 \DoxyCodeLine{00017\ \ \ \mbox{\hyperlink{classankicpp_1_1Deck}{Deck}}(std::string\ name);}
 \DoxyCodeLine{00018\ }
@@ -29,12 +29,23 @@
 \DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{void}\ removeCard(std::shared\_ptr<Card>\ card);}
 \DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{void}\ clearCards();}
 \DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{bool}\ generateCards();}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00031\ \ \ std::set<std::shared\_ptr<Note>>\ \_notes;}
-\DoxyCodeLine{00032\ \ \ std::set<std::shared\_ptr<Card>>\ \_cards;}
-\DoxyCodeLine{00033\ \};}
-\DoxyCodeLine{00034\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
+\DoxyCodeLine{00028\ \ \ \textcolor{keyword}{const}\ std::set<std::shared\_ptr<Deck>>\ \&getDecks();}
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{void}\ setDecks(\textcolor{keyword}{const}\ std::set<std::shared\_ptr<Deck>>\ \&decks);}
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{void}\ addDeck(std::shared\_ptr<Deck>\ \&deck);}
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{void}\ removeDeck(std::shared\_ptr<Deck>\ \&deck);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \textcolor{keyword}{const}\ std::weak\_ptr<Deck>\ \&getParent();}
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{void}\ setParent(\textcolor{keyword}{const}\ std::weak\_ptr<Deck>\ \&deck);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{bool}\ generateCards();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00039\ \ \ std::set<std::shared\_ptr<Note>>\ \_notes;}
+\DoxyCodeLine{00040\ \ \ std::set<std::shared\_ptr<Card>>\ \_cards;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ std::set<std::shared\_ptr<Deck>>\ \_decks;}
+\DoxyCodeLine{00043\ \ \ std::weak\_ptr<Deck>\ \_parent;}
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ \}\ \textcolor{comment}{//\ namespace\ ankicpp}}
 
 \end{DoxyCode}

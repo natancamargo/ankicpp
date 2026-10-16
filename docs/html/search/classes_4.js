@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['identifyable_0',['Identifyable',['../classankicpp_1_1Identifyable.html',1,'ankicpp']]]
+  ['gravedto_0',['GraveDTO',['../classankicpp_1_1GraveDTO.html',1,'ankicpp']]]
 ];
