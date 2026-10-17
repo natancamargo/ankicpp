@@ -30,16 +30,14 @@ void NoteType::addTemplate(std::shared_ptr<Template> templatee) {
                      return *templatee == *_template;
                    });
   if (it == _templates.end()) {
-    Template templateeCopy{*templatee};
-    templateeCopy.setNoteType(shared_from_this());
-    std::shared_ptr<Template> templatePtr =
-        std::make_shared<Template>(std::move(templateeCopy));
-    _templates.push_back(templatePtr);
+    templatee->setNoteType(shared_from_this());
+    _templates.push_back(templatee);
   }
 }
 void NoteType::removeTemplate(std::shared_ptr<Template> templatee) {
   _templates.erase(
       std::remove(_templates.begin(), _templates.end(), templatee));
+  templatee->setNoteType(std::weak_ptr<NoteType>{});
 }
 
 std::vector<std::shared_ptr<Field>> &NoteType::getFields() { return _fields; }
@@ -48,11 +46,8 @@ void NoteType::addField(std::shared_ptr<Field> field) {
       _fields.begin(), _fields.end(),
       [field](std::shared_ptr<Field> _field) { return *field == *_field; });
   if (it == _fields.end()) {
-    Field fieldCopy{*field};
-    fieldCopy.setNoteType(shared_from_this());
-    std::shared_ptr<Field> fieldPtr =
-        std::make_shared<Field>(std::move(fieldCopy));
-    _fields.push_back(fieldPtr);
+    field->setNoteType(shared_from_this());    
+    _fields.push_back(field);
   }
 }
 std::size_t NoteType::getFieldIndex(std::shared_ptr<Field> field) {
@@ -67,6 +62,7 @@ std::size_t NoteType::getFieldIndex(std::shared_ptr<Field> field) {
 }
 void NoteType::removeField(std::shared_ptr<Field> field) {
   _fields.erase(std::remove(_fields.begin(), _fields.end(), field));
+  field->setNoteType(std::weak_ptr<NoteType>{});  
 }
 
 std::string NoteType::getHeader() const { return _header; }
@@ -116,7 +112,7 @@ const std::shared_ptr<Template> reversedTemplate = []() {
 const std::shared_ptr<NoteType> basicNoteType = []() {
   const std::shared_ptr<NoteType> noteType =
       std::make_shared<NoteType>("ankicpp::Basic");
-  noteType->addTemplate(basicTemplate);
+  noteType->addTemplate(std::make_shared<Template>(*basicTemplate));
   noteType->setStyle(style);
   noteType->setHeader(header);
   noteType->setFooter(footer);
@@ -134,8 +130,8 @@ const std::shared_ptr<NoteType> basicNoteType = []() {
 const std::shared_ptr<NoteType> basicAndReversedNoteType = []() {
   const std::shared_ptr<NoteType> noteType =
       std::make_shared<NoteType>("ankicpp::Basic_and_Reversed");
-  noteType->addTemplate(basicTemplate);
-  noteType->addTemplate(reversedTemplate);
+  noteType->addTemplate(std::make_shared<Template>(*basicTemplate));
+  noteType->addTemplate(std::make_shared<Template>(*reversedTemplate));
   noteType->setStyle(style);
   noteType->setHeader(header);
   noteType->setFooter(footer);
@@ -178,7 +174,7 @@ const std::string clozeStyle = R"(.card {
 const std::shared_ptr<NoteType> clozeNoteType = []() {
   const std::shared_ptr<NoteType> noteType =
       std::make_shared<NoteType>("ankicpp::Cloze");
-  noteType->addTemplate(clozeTemplate);
+  noteType->addTemplate(std::make_shared<Template>(*clozeTemplate));
   noteType->setStyle(clozeStyle);
   noteType->setHeader(header);
   noteType->setFooter(footer);

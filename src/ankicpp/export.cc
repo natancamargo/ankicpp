@@ -143,19 +143,20 @@ bool populateDatabase(ExportContext &context) {
   return true;
 }
 bool populateMedia(ExportContext &context) {
-  // 24 bytes of each image
-  // size+index+sha1
+  std::shared_ptr<Deck> &oldDeck = context.deck;  
   for (const std::shared_ptr<Note> &note : context.deck->getNotes()) {
     context.medias.insert(note->getMedias().begin(), note->getMedias().end());
   }
   for (const std::shared_ptr<Deck> &_deck : context.deck->getDecks()) {
-    ExportContext newContext = context;
-    newContext.deck = _deck;
-    if (!populateMedia(newContext)) {
+    context.deck = _deck;
+    if (!populateMedia(context)) {
       error = Error::EXPORT_MEDIA_ERROR;
       return false;
     }
   }
+  
+  // Return the oldDeck has primary deck  
+  context.deck = oldDeck;
 
   // Executed only at root deck
   if (!context.deck->getParent().lock() && context.medias.size() != 0) {

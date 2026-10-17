@@ -75,7 +75,7 @@ bool Deck::generateCards() {
     return false;
   }
 
-  for (std::shared_ptr<Note> note : notes) {
+  for (const std::shared_ptr<Note> &note : notes) {
     const std::shared_ptr<NoteType> &noteType = note->getType();
     if (!noteType) {
       error = Error::DATA_NOTE_WITHOUT_TYPE_ERROR;

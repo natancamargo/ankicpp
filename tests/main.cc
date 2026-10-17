@@ -111,8 +111,8 @@ TEST_CASE("Export should work properly", "[export]") {
     std::shared_ptr<Note> note = std::make_shared<Note>();
 
     note->setType(basicNoteType);
-    note->addField("Front", "Front content");
-    note->addField("Back", "Back content");
+    note->addField("Front", "=Front content=");
+    note->addField("Back", "=Back content=");
 
     deck->addNote(note);
     deck->generateCards();
@@ -131,8 +131,8 @@ TEST_CASE("Export should work properly", "[export]") {
     std::shared_ptr<Note> note = std::make_shared<Note>();
 
     note->setType(basicAndReversedNoteType);
-    note->addField("Front", "<Front Content>");
-    note->addField("Back", "<Back Content>");
+    note->addField("Front", "=Front Content=");
+    note->addField("Back", "=Back Content=");
 
     deck->addNote(note);
     deck->generateCards();
@@ -151,8 +151,8 @@ TEST_CASE("Export should work properly", "[export]") {
     std::shared_ptr<Note> note = std::make_shared<Note>();
 
     note->setType(basicNoteType);
-    note->addField("Front", "<Front content>");
-    note->addField("Back", "<Back content>");
+    note->addField("Front", "=Front content=");
+    note->addField("Back", "=Back content=");
     note->addTag("tag1");
     note->addTag("tag2");
 
@@ -170,7 +170,7 @@ TEST_CASE("Export should work properly", "[export]") {
     note->setType(clozeNoteType);
     note->addField("Text",
                    "Canberra was founded in {{c1::1913}}. {{c2::Test}}.");
-    note->addField("Back Extra", "<Back Extra Content>");
+    note->addField("Back Extra", "=Back Extra Content=");
 
     deck->addNote(note);
     deck->generateCards();
@@ -189,8 +189,8 @@ TEST_CASE("Export should work properly", "[export]") {
     std::shared_ptr<Note> note = std::make_shared<Note>();
 
     note->setType(basicNoteType);
-    note->addField("Front", "<Front Content>");
-    note->addField("Back", "<Back Content>");
+    note->addField("Front", "=Front Content=");
+    note->addField("Back", "=Back Content=");
 
     deck2->addNote(note);
     deck1->addDeck(deck2);
@@ -208,11 +208,11 @@ TEST_CASE("Export should work properly", "[export]") {
 
     note->setType(basicNoteType);
     note->addField("Front", R"(
-&lt;Front Content&gt;\n
+&lt;Front Content&gt;<br>
 <img src="flynn.jpeg">
 )");
     note->addMedia("./images/flynn.jpeg");
-    note->addField("Back", "<Back Content>");
+    note->addField("Back", "=Back Content=");
 
     deck->addNote(note);
     deck->generateCards();

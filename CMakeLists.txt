@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5.0)
-project(ankicpp VERSION 0.1.2)
+project(ankicpp VERSION 0.1.3)
 
 # enable unit tests
 option(ENABLE_TEST "Enable unit testing" ON)
@@ -84,6 +84,7 @@ add_library(${LIBRARY_NAME} STATIC
   "${CMAKE_SOURCE_DIR}/src/util/crypto.cc"
 
   "${CMAKE_SOURCE_DIR}/resources/proto/media.proto"
+  "${CMAKE_SOURCE_DIR}/resources/proto/note-type.proto"
 )
 target_link_libraries(${LIBRARY_NAME} PUBLIC
   MINIZIP::minizipstatic

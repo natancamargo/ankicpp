@@ -1,6 +1,8 @@
 #include "deck/deck.h"
 #include "note/note-type-dto.h"
 #include "note/note-type.h"
+#include "resources/proto/note-type.pb.h"
+
 namespace ankicpp {
 namespace noteTypeMapper {
 NoteTypeDTO modelToDTO(NoteType &model) {
@@ -10,35 +12,39 @@ NoteTypeDTO modelToDTO(NoteType &model) {
   noteTypeDTO.mtime_secs = 0;
   noteTypeDTO.usn = 0;
 
+  anki::Notetype::Config config;
+
   if (model == *clozeNoteType) {
-    noteTypeDTO.config.insert(noteTypeDTO.config.end(),
-                              {0x08, 0x01, 0x1a, 0xf3, 0x01});
+    config.set_kind(
+        anki::Notetype_Config_Kind::Notetype_Config_Kind_KIND_CLOZE);
+    config.set_original_stock_kind(
+        anki::StockNotetype_OriginalStockKind::
+            StockNotetype_OriginalStockKind_ORIGINAL_STOCK_KIND_CLOZE);
+
   } else {
-    noteTypeDTO.config.insert(noteTypeDTO.config.end(), {0x1a, 0x94, 0x01});
+    config.set_kind(
+        anki::Notetype_Config_Kind::Notetype_Config_Kind_KIND_NORMAL);
+    config.set_original_stock_kind(
+        anki::StockNotetype_OriginalStockKind::
+            StockNotetype_OriginalStockKind_ORIGINAL_STOCK_KIND_BASIC);
   }
 
   const std::string &header = model.getHeader();
   const std::string &footer = model.getFooter();
   const std::string &style = model.getStyle();
-  std::copy(style.begin(), style.end(), std::back_inserter(noteTypeDTO.config));
+  config.set_css(style);
+  config.set_latex_pre(header);
+  config.set_latex_post(footer);
 
-  noteTypeDTO.config.insert(noteTypeDTO.config.end(), {0x0a, 0x2a, 0xb2, 0x01});
-  std::copy(header.begin(), header.end(),
-            std::back_inserter(noteTypeDTO.config));
-  noteTypeDTO.config.insert(noteTypeDTO.config.end(), {0x0a, 0x32, 0x0e});
-  std::copy(footer.begin(), footer.end(),
+  anki::Notetype_Config_CardRequirement *cardRequirement = config.add_reqs();
+  cardRequirement->set_kind(anki::Notetype_Config_CardRequirement_Kind::
+                                Notetype_Config_CardRequirement_Kind_KIND_ANY);
+  cardRequirement->add_field_ords(0);  
+
+  const std::string configSerialized = config.SerializeAsString();
+  std::copy(configSerialized.begin(), configSerialized.end(),
             std::back_inserter(noteTypeDTO.config));
 
-  if (model == *clozeNoteType) {
-    noteTypeDTO.config.insert(
-        noteTypeDTO.config.end(),
-        {0x42, 0x05, 0x10, 0x01, 0x1a, 0x01, 0x00, 0x48, 0x05});
-  } else {
-    noteTypeDTO.config.insert(
-        noteTypeDTO.config.end(),
-        {0x42, 0x05, 0x10, 0x01, 0x1a, 0x01, 0x00, 0x48, 0x01});
-  }
-  
   return noteTypeDTO;
 }
 // NoteType modelFromDTO(NoteTypeDTO dto) {

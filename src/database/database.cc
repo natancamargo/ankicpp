@@ -110,7 +110,7 @@ bool populateDatabase(const std::shared_ptr<Deck> &deck) {
   deckRepository.create(deckMapper::modelToDTO(*deck));
 
   // Run only one time
-  // Entries for configuration only  
+  // Entries for configuration only
   if (!deck->getParent().lock()) {
     // col
     colRepository.create(ColDTO::createDTO());
@@ -139,7 +139,7 @@ bool populateDatabase(const std::shared_ptr<Deck> &deck) {
     const std::shared_ptr<NoteType> &noteType = note->getType();
     const NoteTypeDTO noteTypeDTO = noteTypeMapper::modelToDTO(*noteType);
     noteTypeRepository.create(noteTypeDTO);
-
+    
     // Templates
     for (const std::shared_ptr<Template> &templatee :
          noteType->getTemplates()) {
@@ -164,7 +164,8 @@ bool populateDatabase(const std::shared_ptr<Deck> &deck) {
   for (const std::shared_ptr<Deck> &childDeck : deck->getDecks()) {
     const std::shared_ptr<Deck> childDeckCopied =
         std::make_shared<Deck>(*childDeck);
-    childDeckCopied->setName(deck->getName() + '\x1f' + childDeckCopied->getName());
+    childDeckCopied->setName(deck->getName() + '\x1f' +
+                             childDeckCopied->getName());
     populateDatabase(childDeckCopied);
   }
 

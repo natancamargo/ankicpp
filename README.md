@@ -88,7 +88,7 @@ Small library to create anki notes.
 
   note->setType(basicNoteType);
   note->addField("Front", R"(
-&lt;Front Content&gt;\n
+&lt;Front Content&gt;<br>
 <img src="flynn.jpeg">
 )");
   note->addMedia("./images/flynn.jpeg");
