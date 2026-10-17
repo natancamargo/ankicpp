@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5.0)
-project(ankicpp VERSION 0.1.4)
+project(ankicpp VERSION 0.1.5)
 
 # enable unit tests
 option(ENABLE_TEST "Enable unit testing" ON)
@@ -28,8 +28,9 @@ endif()
 
 # dependencies
 # ----------------------------------------------------------------------------------------
-set (VCPKG_DIR ${CMAKE_SOURCE_DIR}/external/vcpkg)
-include(${VCPKG_DIR}/scripts/buildsystems/vcpkg.cmake)
+#set (VCPKG_DIR ${CMAKE_SOURCE_DIR}/external/vcpkg)
+#include(${VCPKG_DIR}/scripts/buildsystems/vcpkg.cmake)
+include($ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake)
 
 find_package(minizip CONFIG REQUIRED)
 find_package(Catch2 CONFIG REQUIRED)
