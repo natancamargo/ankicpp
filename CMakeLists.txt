@@ -55,6 +55,7 @@ add_library(${LIBRARY_NAME} STATIC
   "${CMAKE_SOURCE_DIR}/src/config/config-repository.cc"
 
   "${CMAKE_SOURCE_DIR}/src/database/database.cc"
+  "${CMAKE_SOURCE_DIR}/src/database/ddl.cc"
 
   "${CMAKE_SOURCE_DIR}/src/deck/deck.cc"
   "${CMAKE_SOURCE_DIR}/src/deck/deck-mapper.cc"
@@ -129,7 +130,6 @@ add_custom_target(docs
 # copy schema.sql
 add_custom_command(
   TARGET ${TEST_NAME} POST_BUILD
-  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/resources/database/schema.sql ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/database/schema.sql
   COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/resources/images ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/images
 )
 # create testing directories

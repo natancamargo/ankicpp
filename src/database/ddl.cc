@@ -1,3 +1,8 @@
+#include "database/ddl.h"
+
+namespace ankicpp {
+namespace database {
+std::string ddl = R"(
 BEGIN TRANSACTION;
 CREATE TABLE IF NOT EXISTS "col" (
 	"id"	integer,
@@ -176,3 +181,6 @@ CREATE INDEX IF NOT EXISTS "idx_graves_pending" ON "graves" (
 	"usn"
 );
 COMMIT;
+)";
+}
+} // namespace anki

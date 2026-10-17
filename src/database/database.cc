@@ -24,10 +24,10 @@
 #include "template/template-dto.h"
 #include "template/template-mapper.h"
 #include "template/template.h"
+#include "database/ddl.h"
 #include <cerrno>
 #include <cstdint>
 #include <format>
-#include <fstream>
 #include <functional>
 #include <iostream>
 #include <memory>
@@ -57,37 +57,15 @@ bool connect(std::string filename) {
   return true;
 }
 bool createDatabase() {
-  std::ifstream inStream = std::ifstream{"database/schema.sql"};
-  if (!inStream.is_open()) {
+  char *errorMsg;
+  int rc = sqlite3_exec(db, ddl.c_str(), NULL, 0, &errorMsg);
+  if (rc != SQLITE_OK) {
     error = Error::EXPORT_DATABASE_ERROR;
-    perror("database: Error while opening the database ddl.\n");
+    std::cout << std::format("database: Error: {}\n", errorMsg);
+    std::cout << "database: Error in executing ddl\n";
+    sqlite3_free(errorMsg);
     return false;
   }
-
-  std::stringstream ddlBuffer = std::stringstream{};
-  if (inStream) {
-
-    try {
-      inStream.exceptions(inStream.failbit | inStream.badbit);
-      ddlBuffer << inStream.rdbuf();
-    } catch (const std::ifstream::failure &e) {
-      error = Error::EXPORT_DATABASE_ERROR;
-      std::cout << std::format("database: Error:\n{}\nError code: {}\n",
-                               e.what(), e.code().value());
-      inStream.close();
-      return false;
-    }
-    char *errorMsg;
-    int rc = sqlite3_exec(db, ddlBuffer.str().c_str(), NULL, 0, &errorMsg);
-    if (rc != SQLITE_OK) {
-      error = Error::EXPORT_DATABASE_ERROR;
-      std::cout << std::format("database: Error: {}\n", errorMsg);
-      std::cout << "database: Error in executing ddl\n";
-      sqlite3_free(errorMsg);
-      return false;
-    }
-  }
-  inStream.close();
 
   return true;
 }
@@ -139,7 +117,7 @@ bool populateDatabase(const std::shared_ptr<Deck> &deck) {
     const std::shared_ptr<NoteType> &noteType = note->getType();
     const NoteTypeDTO noteTypeDTO = noteTypeMapper::modelToDTO(*noteType);
     noteTypeRepository.create(noteTypeDTO);
-    
+
     // Templates
     for (const std::shared_ptr<Template> &templatee :
          noteType->getTemplates()) {
