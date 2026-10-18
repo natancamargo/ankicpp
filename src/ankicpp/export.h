@@ -41,8 +41,9 @@ struct ExportContext {
 
 bool exportDeck(const std::shared_ptr<Deck> &deck, std::string_view filename);
 bool createFiles(ExportContext &context);
-bool populateDatabase(ExportContext &context);
-bool populateMedia(ExportContext &context);
+bool writeToDatabase(ExportContext &context);
+bool writeToMedia(ExportContext &context);
 bool readMedia(ExportContext &context, const std::filesystem::path &singleMediaPath);
-bool writeToMediaRootFile(ExportContext &context);
+bool writeToMediaRoot(ExportContext &context);
+bool writeToMeta(ExportContext &context);
 } // namespace ankicpp

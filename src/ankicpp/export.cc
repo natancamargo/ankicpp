@@ -4,6 +4,7 @@
 #include "database/database.h"
 #include "deck/deck.h"
 #include "resources/proto/media.pb.h"
+#include "resources/proto/meta.pb.h"
 #include "util/crypto.h"
 #include <cstddef>
 #include <cstdio>
@@ -45,17 +46,8 @@ bool exportDeck(const std::shared_ptr<Deck> &deck, std::string_view filename) {
   ExportContext context = {deck,     out,          meta,   media, zstdMedia,
                            database, zstdDatabase, medias, zip,   ankiMedias};
 
-  if (!createFiles(context)) {
-    std::cout << std::format("export: Failed.\n");
-    return false;
-  }
-
-  if (!populateMedia(context)) {
-    std::cout << std::format("export: Failed.\n");
-    return true;
-  }
-
-  if (!populateDatabase(context)) {
+  if (!createFiles(context) || !writeToMeta(context) ||
+      !writeToMedia(context) || !writeToDatabase(context)) {
     std::cout << std::format("export: Failed.\n");
     return false;
   }
@@ -120,7 +112,7 @@ bool createFiles(ExportContext &context) {
 
   return true;
 }
-bool populateDatabase(ExportContext &context) {
+bool writeToDatabase(ExportContext &context) {
   if (!context.deck->generateCards()) {
     return false;
   }
@@ -132,7 +124,7 @@ bool populateDatabase(ExportContext &context) {
     database::disconnect();
     return false;
   }
-  if (!database::populateDatabase(context.deck)) {
+  if (!database::writeToDatabase(context.deck)) {
     database::disconnect();
     return false;
   }
@@ -142,20 +134,20 @@ bool populateDatabase(ExportContext &context) {
 
   return true;
 }
-bool populateMedia(ExportContext &context) {
-  std::shared_ptr<Deck> &oldDeck = context.deck;  
+bool writeToMedia(ExportContext &context) {
+  std::shared_ptr<Deck> &oldDeck = context.deck;
   for (const std::shared_ptr<Note> &note : context.deck->getNotes()) {
     context.medias.insert(note->getMedias().begin(), note->getMedias().end());
   }
   for (const std::shared_ptr<Deck> &_deck : context.deck->getDecks()) {
     context.deck = _deck;
-    if (!populateMedia(context)) {
+    if (!writeToMedia(context)) {
       error = Error::EXPORT_MEDIA_ERROR;
       return false;
     }
   }
-  
-  // Return the oldDeck has primary deck  
+
+  // Return the oldDeck has primary deck
   context.deck = oldDeck;
 
   // Executed only at root deck
@@ -169,12 +161,12 @@ bool populateMedia(ExportContext &context) {
           std::filesystem::path{std::to_string(index)};
 
       zstd::compress(mediaInputPath, zstdMediaOutPath);
-      context.zip.push_back(zstdMediaOutPath);      
+      context.zip.push_back(zstdMediaOutPath);
 
       readMedia(context, mediaInputPath);
     }
 
-    writeToMediaRootFile(context);
+    writeToMediaRoot(context);
   }
 
   return true;
@@ -204,7 +196,7 @@ bool readMedia(ExportContext &context,
 
   return true;
 }
-bool writeToMediaRootFile(ExportContext &context) {
+bool writeToMediaRoot(ExportContext &context) {
   std::ofstream mediaOutstream =
       std::ofstream(context.media, std::ios::app | std::ios::binary);
 
@@ -225,6 +217,34 @@ bool writeToMediaRootFile(ExportContext &context) {
   }
 
   mediaOutstream.close();
+  return true;
+}
+bool writeToMeta(ExportContext &context) {
+  anki::PackageMetadata meta;
+  meta.set_version(
+      anki::PackageMetadata_Version::PackageMetadata_Version_VERSION_LATEST);
+
+  std::ofstream metaOutstream =
+      std::ofstream(context.meta, std::ios::app | std::ios::binary);
+
+  if (!metaOutstream.is_open()) {
+    perror("export: Error while persisting meta.");
+    error = Error::EXPORT_MEDIA_ERROR;
+    return false;
+  }
+
+  try {
+    metaOutstream.exceptions(metaOutstream.failbit | metaOutstream.badbit);
+    meta.SerializeToOstream(&metaOutstream);
+  } catch (const std::ifstream::failure &e) {
+    error = Error::EXPORT_MEDIA_ERROR;
+    std::cout << std::format("export:\n{}\nError code: {}\n", e.what(),
+                             e.code().value());
+    return false;
+  }
+
+  metaOutstream.close();
+
   return true;
 }
 } // namespace ankicpp

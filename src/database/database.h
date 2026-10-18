@@ -8,7 +8,7 @@ namespace database {
 extern soci::session sql;
 bool connect(std::string filename);
 bool createDatabase();
-bool populateDatabase(const std::shared_ptr<Deck> &deck);
+bool writeToDatabase(const std::shared_ptr<Deck> &deck);
 bool disconnect();
 bool safeSql(std::function<void(void)> function);
 } // namespace database

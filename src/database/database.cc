@@ -69,7 +69,7 @@ bool createDatabase() {
 
   return true;
 }
-bool populateDatabase(const std::shared_ptr<Deck> &deck) {
+bool writeToDatabase(const std::shared_ptr<Deck> &deck) {
   const Repository<DeckDTO, std::int64_t> &deckRepository = DeckRepository();
   const Repository<CardDTO, std::int64_t> &cardRepository = CardRepository();
   const Repository<TemplateDTO, std::int64_t> &templateRepository =
@@ -144,7 +144,7 @@ bool populateDatabase(const std::shared_ptr<Deck> &deck) {
         std::make_shared<Deck>(*childDeck);
     childDeckCopied->setName(deck->getName() + '\x1f' +
                              childDeckCopied->getName());
-    populateDatabase(childDeckCopied);
+    writeToDatabase(childDeckCopied);
   }
 
   return true;

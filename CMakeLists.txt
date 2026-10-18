@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5.0)
-project(ankicpp VERSION 0.1.10)
+project(ankicpp VERSION 0.1.11)
 
 # generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -82,6 +82,7 @@ add_library(${LIBRARY_NAME} STATIC
   "${CMAKE_CURRENT_SOURCE_DIR}/src/util/time.cc"
   "${CMAKE_CURRENT_SOURCE_DIR}/src/util/crypto.cc"
 
+  "${CMAKE_CURRENT_SOURCE_DIR}/resources/proto/meta.proto"
   "${CMAKE_CURRENT_SOURCE_DIR}/resources/proto/media.proto"
   "${CMAKE_CURRENT_SOURCE_DIR}/resources/proto/note-type.proto"
 )
