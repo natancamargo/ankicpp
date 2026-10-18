@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5.0)
-project(ankicpp VERSION 0.1.5)
+project(ankicpp VERSION 0.1.6)
 
 # enable unit tests
 option(ENABLE_TEST "Enable unit testing" ON)
@@ -152,3 +152,8 @@ if(Protobuf_FOUND)
 endif()
 
 target_include_directories(${LIBRARY_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+
+
+# install
+# ----------------------------------------------------------------------------------------
+install(TARGETS ${LIBRARY_NAME} LIBRARY)

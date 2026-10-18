@@ -103,19 +103,18 @@ Small library to create anki notes.
 
 Official Link: <https://vcpkg.io/en/index.html>
 
-```cmd
-cd external
-git clone https://github.com/Microsoft/vcpkg.git
-.\vcpkg\bootstrap-vcpkg.bat # windows
-./vcpkg/bootstrap-vcpkg.sh # Unix
-```
-
 Export vcpkg to the path if you have it not installed:
 ```cmd
 # Go to repository root
-cd ..
-export VCPKG_ROOT=./external/vcpkg
+export VCPKG_ROOT=/path/to/vcpkg
 export PATH=$VCPKG_ROOT:$PATH
+```
+
+Run bootstrap:
+```cmd
+cd $VCPKG_ROOT
+.\vcpkg\bootstrap-vcpkg.bat # windows
+./vcpkg/bootstrap-vcpkg.sh # Unix
 ```
 
 Then, build at repository root:
