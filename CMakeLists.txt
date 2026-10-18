@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5.0)
-project(ankicpp VERSION 0.1.9)
+project(ankicpp VERSION 0.1.10)
 
 # generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -104,16 +104,16 @@ add_executable(${TEST_NAME}
 )
 target_link_libraries(${TEST_NAME} PUBLIC ${LIBRARY_NAME} Catch2::Catch2WithMain)
 set_target_properties(${TEST_NAME} PROPERTIES
-RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${PROJECT_NAME})
+RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME})
 set_property(TARGET ${TEST_NAME} PROPERTY VS_DEBUGGER_WORKING_DIRECTORY $<TARGET_FILE_DIR:${PROJECT_NAME}>)
 
 # config file
 # ----------------------------------------------------------------------------------------
 configure_file(
   "${CMAKE_CURRENT_SOURCE_DIR}/src/ankicpp/config-lib.h.in"
-  "${CMAKE_BINARY_DIR}/ankicpp/config-lib.h" ESCAPE_QUOTES
+  "${CMAKE_CURRENT_BINARY_DIR}/ankicpp/config-lib.h" ESCAPE_QUOTES
 )
-target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_BINARY_DIR})
+target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 
 # docs
 # ----------------------------------------------------------------------------------------
@@ -125,21 +125,21 @@ add_custom_target(docs
 
 # create and copy resources
 # ----------------------------------------------------------------------------------------
-# copy schema.sql
+# copy file
 add_custom_command(
   TARGET ${TEST_NAME} POST_BUILD
-  COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/resources/images ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/images
+  COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/resources/images ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/images
 )
 # create testing directories
 add_custom_command(
   TARGET ${TEST_NAME} POST_BUILD
-  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/empty
-  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/basic
-  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/basic-and-reversed
-  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/tags
-  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/cloze
-  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/nested
-  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_BINARY_DIR}/${PROJECT_NAME}/media
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/empty
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/basic
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/basic-and-reversed
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/tags
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/cloze
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/nested
+  COMMAND ${CMAKE_COMMAND} -E make_directory ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}/media
 )
 
 # protobuf
@@ -152,4 +152,4 @@ target_include_directories(${LIBRARY_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 
 # install
 # ----------------------------------------------------------------------------------------
-install(TARGETS ${LIBRARY_NAME} LIBRARY DESTINATION ${CMAKE_BINARY_DIR})
+install(TARGETS ${LIBRARY_NAME} LIBRARY DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
