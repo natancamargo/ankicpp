@@ -1,8 +1,5 @@
 cmake_minimum_required(VERSION 3.5.0)
-project(ankicpp VERSION 0.1.6)
-
-# enable unit tests
-option(ENABLE_TEST "Enable unit testing" ON)
+project(ankicpp VERSION 0.1.7)
 
 # generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -153,7 +150,6 @@ endif()
 
 target_include_directories(${LIBRARY_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 
-
 # install
 # ----------------------------------------------------------------------------------------
-install(TARGETS ${LIBRARY_NAME} LIBRARY)
+install(TARGETS ${LIBRARY_NAME} LIBRARY DESTINATION ${CMAKE_BINARY_DIR})
