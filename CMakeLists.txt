@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10.0)
-project(ankicpp VERSION 0.1.13)
+project(ankicpp VERSION 0.1.14)
 
 # generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -155,8 +155,28 @@ target_include_directories(${LIBRARY_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 # ----------------------------------------------------------------------------------------
 #install(TARGETS ${LIBRARY_NAME} LIBRARY DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
-install(TARGETS ${LIBRARY_NAME}
-  RUNTIME DESTINATION bin
-  LIBRARY DESTINATION lib
-  ARCHIVE DESTINATION lib
+include(GNUInstallDirs)
+include(CMakePackageConfigHelpers)
+
+set(CMAKE_CONFIG_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ankicpp")
+
+configure_package_config_file(
+  ${CMAKE_CURRENT_SOURCE_DIR}/ankiConfig.cmake.in
+  ${CMAKE_CURRENT_BINARY_DIR}/ankiConfig.cmake
+  INSTALL_DESTINATION
+    ${CMAKE_CONFIG_DESTINATION}
+)
+
+write_basic_package_version_file(
+  "${CMAKE_CURRENT_BINARY_DIR}/ankiConfigVersion.cmake"
+  COMPATIBILITY
+    SameMajorVersion
+)
+
+install(
+  FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/ankiConfig.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/ankiConfigVersion.cmake"
+  DESTINATION
+    ${CMAKE_CONFIG_DESTINATION}
 )
