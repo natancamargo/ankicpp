@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10.0)
-project(ankicpp VERSION 0.1.19)
+project(ankicpp VERSION 0.1.20)
 
 # generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -94,7 +94,11 @@ target_link_libraries(${LIBRARY_NAME} PUBLIC
   OpenSSL::SSL
   protobuf::libprotobuf
 )
-target_include_directories(${LIBRARY_NAME} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src")
+
+target_include_directories(${LIBRARY_NAME} PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+)
 
 # target tests
 # ----------------------------------------------------------------------------------------
@@ -114,7 +118,10 @@ configure_file(
   "${CMAKE_CURRENT_SOURCE_DIR}/src/ankicpp/config-lib.h.in"
   "${CMAKE_CURRENT_BINARY_DIR}/ankicpp/config-lib.h" ESCAPE_QUOTES
 )
-target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+
+target_include_directories(${LIBRARY_NAME} PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
+)
 
 # docs
 # ----------------------------------------------------------------------------------------
@@ -153,12 +160,19 @@ target_include_directories(${LIBRARY_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 
 # install
 # ----------------------------------------------------------------------------------------
-install(TARGETS ${LIBRARY_NAME} LIBRARY DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 
 set(CMAKE_CONFIG_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ankicpp")
+
+install(TARGETS ${LIBRARY_NAME}
+  EXPORT ankicpp-targets
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
+
 
 configure_package_config_file(
   ${CMAKE_CURRENT_SOURCE_DIR}/ankicppConfig.cmake.in
