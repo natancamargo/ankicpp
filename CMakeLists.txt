@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.5.0)
-project(ankicpp VERSION 0.1.11)
+cmake_minimum_required(VERSION 3.10.0)
+project(ankicpp VERSION 0.1.12)
 
 # generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -94,7 +94,11 @@ target_link_libraries(${LIBRARY_NAME} PUBLIC
   OpenSSL::SSL
   protobuf::libprotobuf
 )
-target_include_directories(${LIBRARY_NAME} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src")
+
+target_include_directories(${LIBRARY_NAME} PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+)
 
 # target tests
 # ----------------------------------------------------------------------------------------
@@ -114,7 +118,10 @@ configure_file(
   "${CMAKE_CURRENT_SOURCE_DIR}/src/ankicpp/config-lib.h.in"
   "${CMAKE_CURRENT_BINARY_DIR}/ankicpp/config-lib.h" ESCAPE_QUOTES
 )
-target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
+
+target_include_directories(${LIBRARY_NAME} PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
+)
 
 # docs
 # ----------------------------------------------------------------------------------------
@@ -153,4 +160,37 @@ target_include_directories(${LIBRARY_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 
 # install
 # ----------------------------------------------------------------------------------------
-install(TARGETS ${LIBRARY_NAME} LIBRARY DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+# install(TARGETS ${LIBRARY_NAME} LIBRARY DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
+include(GNUInstallDirs)
+
+# Define onde os arquivos de configuração CMake do ankicpp ficarão
+set(ANKICPP_CMAKE_DIR "${CMAKE_INSTALL_LIBDIR}/cmake/ankicpp")
+
+# 1. Instala os arquivos de cabeçalho (headers)
+install(DIRECTORY src/
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
+
+# 2. Instala os alvos/binários da biblioteca e associa ao grupo de exportação
+install(TARGETS ankicpp
+    EXPORT ankicpp-targets
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}   # .dll no Windows
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}   # .so/.dylib no Linux/macOS
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}   # .lib/.a
+    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
+
+# 3. Instala os arquivos de configuração gerados (ankicppConfig.cmake / ankicppConfigVersion.cmake)
+install(FILES ${project_config} ${version_config}
+    DESTINATION ${ANKICPP_CMAKE_DIR}
+    COMPONENT ankicpp_development
+)
+
+# 4. Exporta e instala os alvos (targets) com o namespace ankicpp::
+install(EXPORT ankicpp-targets
+    FILE ankicpp-targets.cmake
+    NAMESPACE ankicpp::
+    DESTINATION ${ANKICPP_CMAKE_DIR}
+    COMPONENT ankicpp_development
+)

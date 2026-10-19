@@ -5,3 +5,4 @@ collection.anki21b-wal
 tmp
 vcpkg
 custom-overlay
+custom-overlay-test
