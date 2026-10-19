@@ -96,9 +96,9 @@ target_link_libraries(${LIBRARY_NAME} PUBLIC
 )
 
 target_include_directories(${LIBRARY_NAME} PUBLIC
-    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
-    $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
-    $<INSTALL_INTERFACE:include>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
+  $<INSTALL_INTERFACE:include>
 )
 
 # target tests
@@ -127,9 +127,9 @@ target_include_directories(${LIBRARY_NAME} PUBLIC
 # docs
 # ----------------------------------------------------------------------------------------
 add_custom_target(docs
-    COMMAND doxygen doxygen
-    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-    COMMENT "Generating HTML documentation with Doxygen"
+  COMMAND doxygen doxygen
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+  COMMENT "Generating HTML documentation with Doxygen"
 )
 
 # create and copy resources
@@ -203,5 +203,5 @@ install(EXPORT ankicpp-targets
 
 install(DIRECTORY src/
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
-    FILES_MATCHING PATTERN "*.h" PATTERN "*.hpp"
+    FILES_MATCHING PATTERN "*.h"
 )
