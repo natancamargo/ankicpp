@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10.0)
-project(ankicpp VERSION 0.1.14)
+project(ankicpp VERSION 0.1.15)
 
 # generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -161,22 +161,22 @@ include(CMakePackageConfigHelpers)
 set(CMAKE_CONFIG_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/ankicpp")
 
 configure_package_config_file(
-  ${CMAKE_CURRENT_SOURCE_DIR}/ankiConfig.cmake.in
-  ${CMAKE_CURRENT_BINARY_DIR}/ankiConfig.cmake
+  ${CMAKE_CURRENT_SOURCE_DIR}/ankicppConfig.cmake.in
+  ${CMAKE_CURRENT_BINARY_DIR}/ankicppConfig.cmake
   INSTALL_DESTINATION
     ${CMAKE_CONFIG_DESTINATION}
 )
 
 write_basic_package_version_file(
-  "${CMAKE_CURRENT_BINARY_DIR}/ankiConfigVersion.cmake"
+  "${CMAKE_CURRENT_BINARY_DIR}/ankicppConfigVersion.cmake"
   COMPATIBILITY
     SameMajorVersion
 )
 
 install(
   FILES
-    "${CMAKE_CURRENT_BINARY_DIR}/ankiConfig.cmake"
-    "${CMAKE_CURRENT_BINARY_DIR}/ankiConfigVersion.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/ankicppConfig.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/ankicppConfigVersion.cmake"
   DESTINATION
     ${CMAKE_CONFIG_DESTINATION}
 )
