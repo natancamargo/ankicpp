@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10.0)
-project(ankicpp VERSION 0.1.18)
+project(ankicpp VERSION 0.1.19)
 
 # generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -181,3 +181,9 @@ install(
     ${CMAKE_CONFIG_DESTINATION}
 )
 
+install(EXPORT ankicpp-targets
+    FILE ankicpp-targets.cmake
+    NAMESPACE ankicpp::
+    DESTINATION ${CMAKE_CONFIG_DESTINATION}
+    COMPONENT ankicpp_development
+)
