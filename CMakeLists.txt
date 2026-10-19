@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10.0)
-project(ankicpp VERSION 0.1.23)
+project(ankicpp VERSION 0.1.24)
 
 # generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -173,7 +173,6 @@ install(TARGETS ${LIBRARY_NAME}
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
-
 configure_package_config_file(
   ${CMAKE_CURRENT_SOURCE_DIR}/ankicppConfig.cmake.in
   ${CMAKE_CURRENT_BINARY_DIR}/ankicppConfig.cmake
@@ -200,4 +199,9 @@ install(EXPORT ankicpp-targets
     NAMESPACE ankicpp::
     DESTINATION ${CMAKE_CONFIG_DESTINATION}
     COMPONENT ankicpp_development
+)
+
+install(DIRECTORY src/
+    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+    FILES_MATCHING PATTERN "*.h" PATTERN "*.hpp"
 )
