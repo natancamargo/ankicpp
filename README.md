@@ -103,9 +103,8 @@ Small library to create anki notes.
 
 Official Link: <https://vcpkg.io/en/index.html>
 
-Export vcpkg to the path if you have it not installed:
+Export vcpkg to the path and export vcpkg root:
 ```cmd
-# Go to repository root
 export VCPKG_ROOT=/path/to/vcpkg
 export PATH=$VCPKG_ROOT:$PATH
 ```
