@@ -124,26 +124,20 @@ cmake -S . -B ./build -G "Ninja"
 cmake --build build
 ```
 
-### Run
----
-```shell
-./build/ankicpp/exe
-```
-
-### Debug
----
-```shell
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -G "Ninja"
-cmake --build build
-gdb ./build/ankicpp/exe
-```
-
 ### Tests
 ---
 ```shell
 cmake -S . -B build
 cmake --build build --target unit-tests
 ./build/unit-tests
+```
+
+### Debug tests
+---
+```shell
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -G "Ninja"
+cmake --build build
+gdb ./build/unit-tests
 ```
 
 ### Docs
