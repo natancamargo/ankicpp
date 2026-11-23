@@ -6,8 +6,8 @@
 #include "database/database.h"
 #include "deck/deck.h"
 #include "field/field.h"
-#include "note/note.h"
 #include "note/note-type.h"
+#include "note/note.h"
 #include "tag/tag.h"
 #include "template/template.h"
 #include "util/util.h"
@@ -15,10 +15,4 @@
 #include <format>
 #include <iostream>
 
-namespace ankicpp {
-inline int initialized = []() {
-  std::cout << std::format("================\n{}@{}\n================\n",
-                           project_name, project_version);
-  return 0;
- }();
-} // namespace ankicpp
+namespace ankicpp {} // namespace ankicpp
