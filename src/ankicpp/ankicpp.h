@@ -16,7 +16,7 @@
 #include <iostream>
 
 namespace ankicpp {
-int initialized = []() {
+inline int initialized = []() {
   std::cout << std::format("================\n{}@{}\n================\n",
                            project_name, project_version);
   return 0;
