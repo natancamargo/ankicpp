@@ -23,7 +23,7 @@ TemplateDTO modelToDTO(Template &model) {
   const std::string &frontTemplate = model.getFrontTemplate();  
   config.set_q_format(frontTemplate);
 
-  const std::string &backTemplate = model.getFrontTemplate();  
+  const std::string &backTemplate = model.getBackTemplate();  
   config.set_a_format(backTemplate);
 
   config.set_id(templateDTO.ntid);
