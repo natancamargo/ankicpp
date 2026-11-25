@@ -10,7 +10,7 @@ namespace ankicpp {
 
 bool Repository<FieldDTO, std::int64_t>::create(FieldDTO fieldDTO) const {
   return database::safeSql([&fieldDTO]() {
-    database::sql.begin();
+    soci::transaction tr(database::sql);
     soci::blob blob(ankicpp::database::sql);
     blob.write_from_start(fieldDTO.config.data(), fieldDTO.config.size());
     database::sql << R"(
@@ -18,8 +18,8 @@ INSERT INTO fields(ntid, ord, name, config)
 VALUES(:ntid, :ord, :name, :config);
 )",
       soci::use(fieldDTO), use(blob, "config");
-    database::sql.commit();
-  });
+    tr.commit();
+  }, false);
 }
 // bool FieldRepository::update(FieldDTO fieldDTO) const { return {}; }
 // bool FieldRepository::del(FieldDTO fieldDTO) const { return {}; }

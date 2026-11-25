@@ -10,14 +10,14 @@ namespace ankicpp {
 
 bool Repository<CardDTO, std::int64_t>::create(CardDTO cardDTO) const {
   return database::safeSql([&cardDTO]() {
-    database::sql.begin();
+    soci::transaction tr(database::sql);
     database::sql << R"(
 INSERT INTO cards(id,nid,did,ord,mod,usn,type,queue,due,ivl,factor,reps,lapses,left,odue,odid,flags,data)
 VALUES(:id,:nid,:did,:ord,:mod,:usn,:type,:queue,:due,:ivl,:factor,:reps,:lapses,:left,:odue,:odid,:flags,:data);
 )",
         soci::use(cardDTO);
-    database::sql.commit();
-  });
+    tr.commit();
+  }, false);
 }
 // bool CardRepository::update(CardDTO cardDTO) const { return {}; }
 // bool CardRepository::del(CardDTO cardDTO) const { return {}; }

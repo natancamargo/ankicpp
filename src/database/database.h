@@ -10,6 +10,6 @@ bool connect(std::string filename);
 bool createDatabase();
 bool writeToDatabase(const std::shared_ptr<Deck> &deck);
 bool disconnect();
-bool safeSql(std::function<void(void)> function);
+bool safeSql(std::function<void(void)> function, bool log = true);
 } // namespace database
 } // namespace ankicpp

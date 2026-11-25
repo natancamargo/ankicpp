@@ -7,6 +7,7 @@
 #include "col/col-repository.h"
 #include "config/config-dto.h"
 #include "config/config-repository.h"
+#include "database/ddl.h"
 #include "database/repository.h"
 #include "deck/deck-config-dto.h"
 #include "deck/deck-config-repository.h"
@@ -24,7 +25,6 @@
 #include "template/template-dto.h"
 #include "template/template-mapper.h"
 #include "template/template.h"
-#include "database/ddl.h"
 #include <cerrno>
 #include <cstdint>
 #include <format>
@@ -154,17 +154,21 @@ bool disconnect() {
   sqlite3_close(db);
   return true;
 }
-bool safeSql(std::function<void(void)> function) {
+bool safeSql(std::function<void(void)> function, bool log) {
   try {
     function();
   } catch (soci::sqlite3_soci_error const &e) {
     error = Error::EXPORT_DATABASE_ERROR;
-    std::cout << "database: SQLite3 error " << e.what()
-              << ", error code: " << e.result() << std::endl;
+    if (log) {
+      std::cout << "database: SQLite3 error " << e.what()
+                << ", error code: " << e.result() << std::endl;
+    }
     return false;
   } catch (soci::soci_error const &e) {
     error = Error::EXPORT_DATABASE_ERROR;
-    std::cout << "database:  SOCI error: " << e.what() << std::endl;
+    if (log) {
+      std::cout << "database:  SOCI error: " << e.what() << std::endl;
+    }      
     return false;
   }
 

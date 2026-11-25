@@ -11,7 +11,7 @@ namespace ankicpp {
 
 bool Repository<ConfigDTO, std::int64_t>::create(ConfigDTO configDTO) const {
   return database::safeSql([&configDTO]() {
-    database::sql.begin();
+    soci::transaction tr(database::sql);    
     soci::blob blob(ankicpp::database::sql);
     blob.write_from_start(configDTO.val.data(), configDTO.val.size());
     database::sql << R"(
@@ -19,7 +19,7 @@ INSERT INTO config(KEY, usn, mtime_secs, val)
 VALUES(:KEY, :usn, :mtime_secs, :val);
 )",
         soci::use(configDTO), use(blob, "val");
-    database::sql.commit();
+    tr.commit();
   });
 }
 // bool ConfigRepository::update(ConfigDTO configDTO) const { return {}; }

@@ -1,6 +1,7 @@
 #include "note/note-type-repository.h"
 #include "database/database.h"
 #include <soci/sqlite3/soci-sqlite3.h>
+#include <soci/transaction.h>
 #include <soci/use.h>
 #include <string>
 
@@ -13,7 +14,7 @@ namespace ankicpp {
 bool Repository<NoteTypeDTO, std::int64_t>::create(
     NoteTypeDTO noteTypeDTO) const {
   return database::safeSql([&noteTypeDTO]() {
-    database::sql.begin();
+    soci::transaction tr(database::sql);    
     soci::blob blob(ankicpp::database::sql);
     blob.write_from_start(noteTypeDTO.config.data(), noteTypeDTO.config.size());
     database::sql << R"(
@@ -21,8 +22,8 @@ INSERT INTO noteTypes(id, name, mtime_secs, usn, config)
 VALUES(:id, :name, :mtime_secs, :usn, :config);
 )",
         soci::use(noteTypeDTO), use(blob, "config");
-    database::sql.commit();
-  });
+    tr.commit();
+  }, false);
 }
 // bool FieldRepository::update(NoteTypeDTO noteTypeDTO) const { return {}; }
 // bool FieldRepository::del(NoteTypeDTO noteTypeDTO) const { return {}; }

@@ -10,13 +10,13 @@ namespace ankicpp {
 
 bool Repository<ColDTO, std::int64_t>::create(ColDTO colDTO) const {
   return database::safeSql([&colDTO]() {
-    database::sql.begin();
+    soci::transaction tr(database::sql);
     database::sql << R"(
 INSERT INTO col(id, crt, mod, scm, ver, dty, usn, ls, conf, models, decks, dconf, tags)
 VALUES(:id, :crt, :mod, :scm, :ver, :dty, :usn, :ls, :conf, :models, :decks, :dconf, :tags);
 )",
         soci::use(colDTO);
-    database::sql.commit();
+    tr.commit();
   });
 }
 // bool ColRepository::update(ColDTO colDTO) const { return {}; }

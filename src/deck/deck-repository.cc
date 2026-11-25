@@ -10,7 +10,7 @@ namespace ankicpp {
 
 bool Repository<DeckDTO, std::int64_t>::create(DeckDTO deckDTO) const {
   return database::safeSql([&deckDTO]() {
-    database::sql.begin();
+    soci::transaction tr(database::sql);    
     soci::blob common(ankicpp::database::sql);
     soci::blob kind(ankicpp::database::sql);
     common.write_from_start(deckDTO.common.data(), deckDTO.common.size());
@@ -20,7 +20,7 @@ INSERT INTO decks(id, name, mtime_secs, usn, common, kind)
 VALUES(:id, :name, :mtime_secs, :usn, :common, :kind);
 )",
         soci::use(deckDTO), use(common, "common"), use(kind, "kind");
-    database::sql.commit();
+    tr.commit();
   });
 }
 // bool DeckRepository::update(DeckDTO deckDTO) const { return {}; }

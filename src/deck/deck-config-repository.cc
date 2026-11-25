@@ -12,7 +12,7 @@ namespace ankicpp {
 bool Repository<DeckConfigDTO, std::int64_t>::create(
     DeckConfigDTO deckConfigDTO) const {
   return database::safeSql([&deckConfigDTO]() {
-    database::sql.begin();
+    soci::transaction tr(database::sql);    
     soci::blob blob(ankicpp::database::sql);
     blob.write_from_start(deckConfigDTO.config.data(),
                           deckConfigDTO.config.size());
@@ -21,7 +21,7 @@ INSERT INTO deck_config(id, name, mtime_secs, usn, config)
 VALUES(:id, :name, :mtime_secs, :usn, :config);
 )",
         soci::use(deckConfigDTO), use(blob, "config");
-    database::sql.commit();
+    tr.commit();
   });
 }
 // bool ColRepository::update(ColDTO deckConfigDTO) const { return {}; }

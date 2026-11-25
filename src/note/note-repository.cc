@@ -10,13 +10,13 @@ namespace ankicpp {
 
 bool Repository<NoteDTO, std::int64_t>::create(NoteDTO noteDTO) const {
   return database::safeSql([&noteDTO]() {
-    database::sql.begin();
+    soci::transaction tr(database::sql);    
     database::sql << R"(
 INSERT INTO notes(id, guid, mid, mod, usn, tags, flds, sfld, csum, flags, data)
 VALUES(:id, :guid, :mid, :mod, :usn, :tags, :flds, :sfld, :csum, :flags, :data);
 )",
         soci::use(noteDTO);
-    database::sql.commit();
+    tr.commit();
   });
 }
 // bool NoteRepository::update(NoteDTO noteDTO) const { return {}; }

@@ -13,7 +13,7 @@ namespace ankicpp {
 
 bool Repository<TemplateDTO,std::int64_t>::create(TemplateDTO templateDTO) const {
   return database::safeSql([&templateDTO]() {
-    database::sql.begin();
+    soci::transaction tr(database::sql);    
     soci::blob blob(ankicpp::database::sql);
     blob.write_from_start(templateDTO.config.data(), templateDTO.config.size());
     database::sql << R"(
@@ -21,9 +21,8 @@ INSERT INTO templates(ntid, ord, name, mtime_secs, usn, config)
 VALUES(:ntid, :ord, :name, :mtime_secs, :usn, :config);
 )",
         soci::use(templateDTO), use(blob, "config");
-    database::sql.commit();
-  });
-  return true;
+    tr.commit();
+  }, false);
 }
 // bool TemplateRepository::update(TemplateDTO templateDTO) const { return {}; }
 // bool TemplateRepository::del(TemplateDTO templateDTO) const { return {}; }
