@@ -135,7 +135,7 @@ bool writeToDatabase(ExportContext &context) {
   return true;
 }
 bool writeToMedia(ExportContext &context) {
-  std::shared_ptr<Deck> &oldDeck = context.deck;
+  std::shared_ptr<Deck> oldDeck = context.deck;
   for (const std::shared_ptr<Note> &note : context.deck->getNotes()) {
     context.medias.insert(note->getMedias().begin(), note->getMedias().end());
   }
