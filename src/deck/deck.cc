@@ -69,7 +69,7 @@ void Deck::clearCards() { _cards.clear(); }
 bool Deck::generateCards() {
   clearCards();
   const std::set<std::shared_ptr<Note>> &notes = getNotes();
-  if (getNotes().size() == 0 && getDecks().size() == 0) {
+  if (getNotes().size() == 0 && getDecks().size() == 0 && !getParent().lock()) {
     error = Error::DATA_DECK_EMPTY_ERROR;
     std::cout << std::format("data: deck without notes.\n");
     return false;
